@@ -6,55 +6,59 @@ export default function Home() {
       {/* Gravity Stars Animated Background */}
       <GravityStarsBackground 
         starsCount={200}
+        starsOpacity={1}
+        glowIntensity={20}
         className="absolute inset-0 z-0 pointer-events-none" 
         style={{ color: '#01B2D6' }} 
       />
-      {/* Glassmorphic Navbar */}
-      <nav className="fixed left-1/2 top-8 z-50 -translate-x-1/2 transform">
-        <div className="rounded-full border border-gray-200 bg-white/80 px-8 py-4 shadow-2xl backdrop-blur-md">
-          <ul className="flex items-center gap-6 text-sm font-medium text-gray-900 lg:gap-8 lg:text-base">
+      {/* Top Navbar with Fade */}
+      <nav className="fixed top-0 left-0 right-0 z-50" style={{ 
+        background: 'linear-gradient(to bottom, #01B2D6 0%, #01B2D6 80%, rgba(1, 178, 214, 0) 100%)'
+      }}>
+        <div className="mx-auto flex items-center justify-center px-6 py-6">
+          <ul className="flex items-center gap-6 text-sm font-medium text-white lg:gap-8 lg:text-base">
             <li>
-              <a href="#about" className="transition-all hover:text-[#01B2D6]">
+              <a href="#about" className="transition-all hover:text-white/80">
                 About Us
               </a>
             </li>
             <li>
-              <a href="#services" className="transition-all hover:text-[#01B2D6]">
+              <a href="#services" className="transition-all hover:text-white/80">
                 Services
               </a>
             </li>
             <li>
-              <a href="#partnership" className="transition-all hover:text-[#01B2D6]">
+              <a href="#partnership" className="transition-all hover:text-white/80">
                 Partnership
               </a>
             </li>
             <li>
-              <a href="#resources" className="transition-all hover:text-[#01B2D6]">
+              <a href="#resources" className="transition-all hover:text-white/80">
                 Resources
               </a>
             </li>
             <li>
-              <a href="#blogs" className="transition-all hover:text-[#01B2D6]">
+              <a href="#blogs" className="transition-all hover:text-white/80">
                 Blogs
               </a>
             </li>
             <li>
-              <a href="#news" className="transition-all hover:text-[#01B2D6]">
+              <a href="#news" className="transition-all hover:text-white/80">
                 News
               </a>
             </li>
             <li>
-              <a href="#events" className="transition-all hover:text-[#01B2D6]">
+              <a href="#events" className="transition-all hover:text-white/80">
                 Events
               </a>
             </li>
             <li>
-              <a href="#care" className="transition-all hover:text-[#01B2D6]">
+              <a href="#care" className="transition-all hover:text-white/80">
                 We Care
               </a>
             </li>
             <li>
-              <a href="#contact" className="transition-all hover:text-[#01B2D6]">
+              <a href="#contact" className="transition-all hover:text-white/80">
                 Contact Us
               </a>
             </li>
