@@ -11,9 +11,9 @@ export default function Home() {
         className="absolute inset-0 z-0 pointer-events-none" 
         style={{ color: '#01B2D6' }} 
       />
-      {/* Top Navbar with Fade */}
-      <nav className="fixed top-0 left-0 right-0 z-50" style={{ 
-        background: 'linear-gradient(to bottom, #01B2D6 0%, #01B2D6 80%, rgba(1, 178, 214, 0) 100%)'
+      {/* Top Navbar with Extended Fade */}
+      <nav className="fixed top-0 left-0 right-0 z-50 pb-32" style={{ 
+        background: 'linear-gradient(to bottom, #01B2D6 0%, #01B2D6 30%, rgba(1, 178, 214, 0.8) 50%, rgba(1, 178, 214, 0.4) 70%, rgba(1, 178, 214, 0.1) 85%, rgba(1, 178, 214, 0) 100%)'
       }}>
         <div className="mx-auto flex items-center justify-center px-6 py-6">
           <ul className="flex items-center gap-6 text-sm font-medium text-white lg:gap-8 lg:text-base">

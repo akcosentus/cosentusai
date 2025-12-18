@@ -1,5 +1,12 @@
 import type { Metadata } from 'next'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-plus-jakarta-sans',
+})
 
 export const metadata: Metadata = {
   title: 'Cosentus AI - One platform. Patient to payment.',
@@ -12,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={plusJakartaSans.variable}>
+      <body className={plusJakartaSans.className}>{children}</body>
     </html>
   )
 }
