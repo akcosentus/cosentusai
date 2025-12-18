@@ -9,6 +9,8 @@ export default function Home() {
         starsOpacity={1}
         glowIntensity={30}
         movementSpeed={0.6}
+        starsInteraction={true}
+        starsInteractionType="merge"
         className="absolute inset-0 z-0 pointer-events-none" 
         style={{ color: '#01B2D6' }} 
       />
