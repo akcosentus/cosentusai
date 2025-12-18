@@ -2,7 +2,7 @@ import { GravityStarsBackground } from '@/components/animate-ui/components/backg
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black">
+    <main className="relative min-h-screen overflow-hidden bg-white">
       {/* Gravity Stars Animated Background */}
       <GravityStarsBackground className="absolute inset-0 z-0 pointer-events-none" style={{ color: '#01B2D6' }} />
       {/* Glassmorphic Navbar */}
