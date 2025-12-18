@@ -5,18 +5,19 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden bg-white">
       {/* Gravity Stars Animated Background */}
       <GravityStarsBackground 
-        starsCount={200}
+        starsCount={300}
         starsOpacity={1}
-        glowIntensity={20}
+        glowIntensity={30}
+        movementSpeed={0.6}
         className="absolute inset-0 z-0 pointer-events-none" 
         style={{ color: '#01B2D6' }} 
       />
       {/* Top Navbar with Extended Fade */}
-      <nav className="fixed top-0 left-0 right-0 z-50 pb-32" style={{ 
-        background: 'linear-gradient(to bottom, #01B2D6 0%, #01B2D6 30%, rgba(1, 178, 214, 0.8) 50%, rgba(1, 178, 214, 0.4) 70%, rgba(1, 178, 214, 0.1) 85%, rgba(1, 178, 214, 0) 100%)'
+      <nav className="fixed top-0 left-1/2 -translate-x-1/2 z-50 pb-32" style={{ 
+        background: 'radial-gradient(ellipse 100% 100% at 50% 0%, #01B2D6 0%, #01B2D6 15%, rgba(1, 178, 214, 0.8) 40%, rgba(1, 178, 214, 0.4) 60%, rgba(1, 178, 214, 0.1) 80%, rgba(1, 178, 214, 0) 100%)'
       }}>
-        <div className="mx-auto flex items-center justify-center px-6 py-6">
-          <ul className="flex items-center gap-6 text-sm font-medium text-white lg:gap-8 lg:text-base">
+        <div className="mx-auto flex items-center justify-center px-12 py-6">
+          <ul className="flex items-center gap-8 text-base font-light text-white lg:gap-10 lg:text-lg">
             <li>
               <a href="#about" className="transition-all hover:text-white/80">
                 About Us
