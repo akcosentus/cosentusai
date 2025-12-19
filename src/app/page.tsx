@@ -76,19 +76,9 @@ export default function Home() {
             One platform. Patient to payment.
           </h1>
           
-          <p className="mt-8 text-xl text-gray-700 sm:text-2xl md:text-3xl lg:mt-10">
+          <p className="mt-8 text-lg text-gray-700 sm:text-xl md:text-2xl lg:mt-10">
             Stop juggling vendors. Full-cycle healthcare automation built on 25 years of expertise.
           </p>
-          
-          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 lg:mt-16">
-            <button className="w-full rounded-lg bg-[#01B2D6] px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 sm:w-auto sm:text-xl">
-              Chat with AI
-            </button>
-            
-            <button className="w-full rounded-lg border-2 border-gray-900 bg-transparent px-8 py-4 text-lg font-semibold text-gray-900 transition-all hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-400 sm:w-auto sm:text-xl">
-              Watch Demo
-            </button>
-          </div>
         </div>
       </div>
 
