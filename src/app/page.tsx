@@ -39,9 +39,15 @@ export default function Home() {
         style={{ color: '#01B2D6' }} 
       />
       {/* Top Navbar with Extended Fade */}
-      <nav className="fixed top-0 left-1/2 -translate-x-1/2 z-50 pb-24 w-[100vw] pointer-events-none" style={{ 
-        background: 'radial-gradient(ellipse 65vw 80% at 50% 0%, #01B2D6 0%, #01B2D6 25%, rgba(1, 178, 214, 0.8) 45%, rgba(1, 178, 214, 0.5) 65%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 95%, rgba(1, 178, 214, 0) 100%)'
-      }}>
+      <nav 
+        className="fixed top-0 z-50 pb-24 pointer-events-none transition-all duration-500" 
+        style={{ 
+          background: 'radial-gradient(ellipse 65vw 80% at 50% 0%, #01B2D6 0%, #01B2D6 25%, rgba(1, 178, 214, 0.8) 45%, rgba(1, 178, 214, 0.5) 65%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 95%, rgba(1, 178, 214, 0) 100%)',
+          left: isChatOpen ? '40vw' : '50%',
+          transform: 'translateX(-50%)',
+          width: isChatOpen ? '80vw' : '100vw'
+        }}
+      >
         <div className="mx-auto flex items-center justify-center px-4 py-6 sm:px-8 pointer-events-auto">
           <ul className="flex flex-wrap items-center justify-center gap-4 text-sm font-light text-white sm:gap-6 md:gap-8 md:text-base lg:gap-10 lg:text-lg">
             <li className="whitespace-nowrap">
