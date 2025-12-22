@@ -46,8 +46,14 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
         audioEl.srcObject = event.streams[0];
       };
 
-      // Add local audio track (microphone)
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      // Add local audio track (microphone) with noise suppression
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        }
+      });
       pc.addTrack(stream.getTracks()[0]);
 
       // Set up data channel for messages
@@ -92,24 +98,28 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
       setIsConnected(true);
       setIsRecording(true);
       
-      // Send initial session configuration
-      // Note: Prompt is already set in the session creation, 
-      // but we can update transcription settings here
-      if (dc.readyState === 'open') {
-        dc.send(JSON.stringify({
-          type: 'session.update',
-          session: {
-            input_audio_transcription: { model: 'whisper-1' },
+      // Send initial session configuration with English-only settings
+      const sessionConfig = {
+        type: 'session.update',
+        session: {
+          instructions: 'You are a helpful healthcare assistant. Speak and respond only in English.',
+          input_audio_transcription: { 
+            model: 'whisper-1'
           },
-        }));
+          turn_detection: {
+            type: 'server_vad',
+            threshold: 0.5,
+            prefix_padding_ms: 300,
+            silence_duration_ms: 500
+          }
+        },
+      };
+      
+      if (dc.readyState === 'open') {
+        dc.send(JSON.stringify(sessionConfig));
       } else {
         dc.addEventListener('open', () => {
-          dc.send(JSON.stringify({
-            type: 'session.update',
-            session: {
-              input_audio_transcription: { model: 'whisper-1' },
-            },
-          }));
+          dc.send(JSON.stringify(sessionConfig));
         });
       }
       
