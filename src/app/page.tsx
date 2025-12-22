@@ -13,7 +13,7 @@ export default function Home() {
   const [isResizing, setIsResizing] = useState(false);
   const resizeRef = useRef<HTMLDivElement>(null);
 
-  const { isConnected, isRecording, error, connect, disconnect } = useRealtimeVoice({
+  const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRealtimeVoice({
     scenario: activeDemo || undefined,
     onTranscript: (text, isUser) => {
       setMessages(prev => [...prev, { text, isUser }]);
@@ -40,8 +40,13 @@ export default function Home() {
   const handleStartVoiceDemo = async (demoType: string) => {
     setActiveDemo(demoType);
     setIsChatOpen(true);
-    setMessages([{ text: `Starting ${demoType} demo... Please allow microphone access.`, isUser: false }]);
+    setMessages([{ text: `Connecting to ${demoType} demo... Please allow microphone access if prompted.`, isUser: false }]);
     await connect();
+    
+    // Add success message after connection
+    if (!error) {
+      setMessages(prev => [...prev, { text: 'Connected! You can start speaking now.', isUser: false }]);
+    }
   };
 
   const handleEndVoiceDemo = () => {
@@ -211,10 +216,18 @@ export default function Home() {
               </p>
               <button 
                 onClick={() => handleStartVoiceDemo('patient-intake')}
-                disabled={isConnected}
-                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={isConnected || isConnecting}
+                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {isConnected && activeDemo === 'patient-intake' ? 'Demo Active' : 'Try Demo'}
+                {isConnecting && activeDemo === 'patient-intake' ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Connecting...
+                  </>
+                ) : isConnected && activeDemo === 'patient-intake' ? 'Demo Active' : 'Try Demo'}
               </button>
             </div>
 
@@ -231,10 +244,18 @@ export default function Home() {
               </p>
               <button 
                 onClick={() => handleStartVoiceDemo('appointment-booking')}
-                disabled={isConnected}
-                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={isConnected || isConnecting}
+                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {isConnected && activeDemo === 'appointment-booking' ? 'Demo Active' : 'Try Demo'}
+                {isConnecting && activeDemo === 'appointment-booking' ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Connecting...
+                  </>
+                ) : isConnected && activeDemo === 'appointment-booking' ? 'Demo Active' : 'Try Demo'}
               </button>
             </div>
 
@@ -251,10 +272,18 @@ export default function Home() {
               </p>
               <button 
                 onClick={() => handleStartVoiceDemo('symptoms')}
-                disabled={isConnected}
-                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={isConnected || isConnecting}
+                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {isConnected && activeDemo === 'symptoms' ? 'Demo Active' : 'Try Demo'}
+                {isConnecting && activeDemo === 'symptoms' ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Connecting...
+                  </>
+                ) : isConnected && activeDemo === 'symptoms' ? 'Demo Active' : 'Try Demo'}
               </button>
             </div>
           </div>

@@ -9,14 +9,17 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
   const [isConnected, setIsConnected] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isConnecting, setIsConnecting] = useState(false);
   
   const peerConnectionRef = useRef<RTCPeerConnection | null>(null);
   const dataChannelRef = useRef<RTCDataChannel | null>(null);
   const audioElementRef = useRef<HTMLAudioElement | null>(null);
+  const mediaStreamRef = useRef<MediaStream | null>(null);
 
   const connect = useCallback(async () => {
     try {
       setError(null);
+      setIsConnecting(true);
 
       // Check browser compatibility
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -27,20 +30,44 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
         throw new Error('Your browser does not support WebRTC. Please update your browser.');
       }
       
-      // Get ephemeral token from our API with scenario
-      const tokenResponse = await fetch('/api/voice/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ scenario }),
-      });
+      // Get ephemeral token from our API with scenario - with retry logic
+      let client_secret: string | undefined;
+      let lastError: Error | null = null;
+      const maxRetries = 3;
+      const retryDelay = 1000; // 1 second
       
-      if (!tokenResponse.ok) {
-        throw new Error('Failed to get session token');
+      for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+          const tokenResponse = await fetch('/api/voice/token', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ scenario }),
+          });
+          
+          if (!tokenResponse.ok) {
+            const errorData = await tokenResponse.json();
+            throw new Error(errorData.error || 'Failed to get session token');
+          }
+          
+          const data = await tokenResponse.json();
+          client_secret = data.client_secret;
+          break; // Success, exit retry loop
+        } catch (err) {
+          lastError = err instanceof Error ? err : new Error('Unknown error');
+          console.warn(`Token fetch attempt ${attempt}/${maxRetries} failed:`, lastError.message);
+          
+          if (attempt < maxRetries) {
+            // Wait before retrying (exponential backoff)
+            await new Promise(resolve => setTimeout(resolve, retryDelay * attempt));
+          }
+        }
       }
       
-      const { client_secret } = await tokenResponse.json();
+      if (!client_secret) {
+        throw new Error(lastError?.message || 'Failed to get session token after multiple attempts');
+      }
       
       // Create peer connection
       const pc = new RTCPeerConnection();
@@ -65,6 +92,7 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
             autoGainControl: true,
           }
         });
+        mediaStreamRef.current = stream; // Store stream reference for cleanup
       } catch (micError) {
         if (micError instanceof Error && micError.name === 'NotAllowedError') {
           throw new Error('Microphone access denied. Please allow microphone access and try again.');
@@ -117,6 +145,7 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
 
       setIsConnected(true);
       setIsRecording(true);
+      setIsConnecting(false);
       
       // Send initial session configuration with English-only settings
       const sessionConfig = {
@@ -147,10 +176,19 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
       console.error('Connection error:', err);
       setError(err instanceof Error ? err.message : 'Failed to connect');
       setIsConnected(false);
+      setIsConnecting(false);
     }
   }, [scenario, onTranscript]);
 
   const disconnect = useCallback(() => {
+    // Stop all media stream tracks (microphone)
+    if (mediaStreamRef.current) {
+      mediaStreamRef.current.getTracks().forEach(track => {
+        track.stop();
+      });
+      mediaStreamRef.current = null;
+    }
+    
     if (peerConnectionRef.current) {
       peerConnectionRef.current.close();
       peerConnectionRef.current = null;
@@ -165,11 +203,13 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
     }
     setIsConnected(false);
     setIsRecording(false);
+    setIsConnecting(false);
   }, []);
 
   return {
     isConnected,
     isRecording,
+    isConnecting,
     error,
     connect,
     disconnect,
