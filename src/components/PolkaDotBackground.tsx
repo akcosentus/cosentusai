@@ -21,10 +21,21 @@ export const PolkaDotBackground = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
+    // Set canvas size with device pixel ratio for crisp rendering
     const setCanvasSize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      
+      // Set actual size in memory (scaled to account for extra pixel density)
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      
+      // Set display size (css pixels)
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+      
+      // Scale all drawing operations by the dpr
+      ctx.scale(dpr, dpr);
       
       // Regenerate dots on resize
       generateDots();
@@ -36,8 +47,12 @@ export const PolkaDotBackground = () => {
       const spacing = 35; // Space between dots (closer together)
       const dotRadius = 3; // Dot size (smaller)
       
-      for (let x = spacing; x < canvas.width; x += spacing) {
-        for (let y = spacing; y < canvas.height; y += spacing) {
+      // Use display dimensions, not canvas buffer dimensions
+      const width = canvas.clientWidth || window.innerWidth;
+      const height = canvas.clientHeight || window.innerHeight;
+      
+      for (let x = spacing; x < width; x += spacing) {
+        for (let y = spacing; y < height; y += spacing) {
           dotsRef.current.push({
             x,
             y,
@@ -49,14 +64,20 @@ export const PolkaDotBackground = () => {
       }
     };
 
-    // Handle mouse move
+    // Handle mouse move (account for scroll position)
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+      mouseRef.current = { 
+        x: e.clientX, 
+        y: e.clientY + window.scrollY 
+      };
     };
 
     // Animation loop
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Clear using display dimensions
+      const width = canvas.clientWidth || window.innerWidth;
+      const height = canvas.clientHeight || window.innerHeight;
+      ctx.clearRect(0, 0, width, height);
       
       const hoverRadius = 80; // Distance for hover effect
       const mouseX = mouseRef.current.x;
