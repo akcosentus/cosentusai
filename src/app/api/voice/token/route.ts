@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     }
 
     // Generate ephemeral token from OpenAI with scenario-specific prompt
-    // Note: Model, voice, VAD, and all settings are configured in the prompt itself
+    // The prompt object contains the prompt ID - all settings are in the prompt
     const response = await fetch('https://api.openai.com/v1/realtime/sessions', {
       method: 'POST',
       headers: {
@@ -42,7 +42,9 @@ export async function POST(request: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        prompt: promptId
+        prompt: {
+          id: promptId
+        }
       }),
     });
 
