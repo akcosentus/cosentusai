@@ -9,8 +9,8 @@ export default function Home() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [agentStatus, setAgentStatus] = useState<string>('');
 
-  // Replace with your actual ElevenLabs Agent ID
-  const AGENT_ID = process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID || 'your-agent-id-here';
+  // ElevenLabs Agent ID for Chloe
+  const AGENT_ID = process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID || 'agent_3701kd42k7zjeatbhwc31kbwpn78';
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useElevenLabsAgent({
     agentId: AGENT_ID,
