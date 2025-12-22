@@ -1,167 +1,198 @@
 # Retell AI Setup Guide
 
-This guide explains how to set up Retell AI for browser-based voice conversations.
+Complete guide for setting up Retell AI voice agents in this project.
 
-## What is Retell AI?
+## Overview
 
-Retell AI is a platform for building AI voice agents that work in browsers (no phone numbers needed!). It supports:
-- ✅ Direct browser WebRTC connections
-- ✅ ElevenLabs voices (high quality)
-- ✅ Custom agent configuration via dashboard
-- ✅ Real-time transcripts and conversation updates
+This project uses [Retell AI](https://www.retellai.com/) for browser-based voice conversations. Retell handles:
+- Voice synthesis (ElevenLabs, OpenAI, etc.)
+- Speech recognition
+- WebRTC connections
+- LLM integration
 
----
+## Prerequisites
 
-## Step 1: Get Your Retell API Key
+1. **Retell AI Account**: Sign up at [beta.retellai.com](https://beta.retellai.com/)
+2. **Node.js 18+**: For running the Next.js application
 
-1. Go to [Retell AI Dashboard](https://beta.retellai.com/)
-2. Log in to your account
-3. Navigate to **Settings** → **API Keys**
-4. Copy your API key (starts with `key_...`)
+## Step 1: Get Your Retell Credentials
 
----
+### A. Get API Key
 
-## Step 2: Get Your Agent ID
+1. Log in to [Retell Dashboard](https://beta.retellai.com/)
+2. Navigate to **Settings** → **API Keys**
+3. Copy your API key (starts with `key_...`)
 
-1. In the Retell AI Dashboard, go to **Agents**
-2. Select the agent you want to use (e.g., "Chloe")
+### B. Get Agent ID
+
+1. In Retell Dashboard, go to **Agents**
+2. Select or create an agent
 3. Copy the **Agent ID** (starts with `agent_...`)
-   - You can find this in the agent's settings or in the URL
 
----
+## Step 2: Configure Your Agent
 
-## Step 3: Configure Environment Variables
+In the Retell Dashboard, configure your agent:
 
-### For Local Development (`.env.local`)
+### Required Settings:
 
-Create or update `.env.local` in the project root:
+1. **Response Engine**:
+   - Create or select an LLM configuration
+   - Add your prompt/instructions
+   - Choose model (GPT-4, Claude, etc.)
+
+2. **Voice**:
+   - Select a voice provider (ElevenLabs recommended)
+   - Choose a specific voice
+   - Adjust speed, temperature, etc.
+
+3. **General Settings**:
+   - **Start Speaker**: Choose "Agent" or "User"
+   - **Begin Message**: If agent speaks first, add greeting
+   - **Language**: Set to `en-US` or your preferred language
+
+4. **Advanced** (Optional):
+   - Responsiveness, interruption sensitivity
+   - Backchannel, ambient sound
+   - End call timeout
+
+### Test Your Agent:
+
+Use the "Test" button in Retell dashboard to verify it works before integrating.
+
+## Step 3: Set Up Environment Variables
+
+### Local Development
+
+Create `.env.local` in project root:
 
 ```bash
 # Retell AI Configuration
-RETELL_API_KEY=key_YOUR_RETELL_API_KEY_HERE
-NEXT_PUBLIC_RETELL_AGENT_ID=agent_YOUR_RETELL_AGENT_ID_HERE
+RETELL_API_KEY=key_your_api_key_here
+NEXT_PUBLIC_RETELL_AGENT_ID=agent_your_agent_id_here
 ```
 
-**Important:**
+**Important**: 
 - `RETELL_API_KEY` is server-side only (no `NEXT_PUBLIC_` prefix)
-- `NEXT_PUBLIC_RETELL_AGENT_ID` is client-side accessible
+- `NEXT_PUBLIC_RETELL_AGENT_ID` is client-side accessible (safe to expose)
+- `.env.local` is gitignored - never commit it!
 
----
-
-### For Vercel Deployment
+### Production (Vercel)
 
 1. Go to your Vercel project dashboard
 2. Navigate to **Settings** → **Environment Variables**
-3. Add these variables:
+3. Add:
+   - **Name**: `RETELL_API_KEY`
+     **Value**: `key_...` (mark as **Secret**)
+   - **Name**: `NEXT_PUBLIC_RETELL_AGENT_ID`
+     **Value**: `agent_...`
+4. Redeploy your project
 
-| Name | Value | Type |
-|------|-------|------|
-| `RETELL_API_KEY` | `key_...` | Secret |
-| `NEXT_PUBLIC_RETELL_AGENT_ID` | `agent_...` | Plain Text |
+## Step 4: Run the Application
 
-4. **Redeploy** your project after adding variables
+```bash
+# Install dependencies
+npm install
 
----
+# Start development server
+npm run dev
+```
 
-## Step 4: Configure Your Agent in Retell Dashboard
-
-In the Retell AI dashboard, configure your agent:
-
-1. **Voice Settings:**
-   - Choose an ElevenLabs voice
-   - Adjust speaking rate, pitch, etc.
-
-2. **Prompt/Instructions:**
-   - Set the agent's personality and behavior
-   - Define what it can and cannot do
-
-3. **Language Model:**
-   - Choose GPT-4 or other available models
-
-4. **Advanced Settings:**
-   - Enable/disable features like interruption handling
-   - Set response latency preferences
-
----
+Open [http://localhost:3000](http://localhost:3000) and test the voice agent!
 
 ## How It Works
 
-### Browser Flow:
+### Architecture
 
-1. User clicks "Begin Conversation"
-2. Frontend calls `/api/retell/register-call` with agent ID
-3. Backend authenticates with Retell API and gets an access token
-4. Frontend uses `retell-client-js-sdk` to start WebRTC connection
-5. User speaks → Retell processes → Agent responds with voice
+```
+User Browser
+    ↓
+Frontend (React)
+    ↓ (requests access token)
+Backend API (/api/retell/register-call)
+    ↓ (authenticates with API key)
+Retell AI API
+    ↓ (returns access token)
+Frontend (React)
+    ↓ (establishes WebRTC connection)
+Retell AI (Voice Agent)
+```
 
-### No Phone Numbers Required!
+### Security
 
-Unlike traditional voice AI, Retell's web SDK connects directly from the browser using WebRTC. No Twilio, no phone numbers, no complexity.
-
----
-
-## Testing Locally
-
-1. Set up your `.env.local` file with credentials
-2. Run `npm run dev`
-3. Navigate to the AI Demos section
-4. Click on "Chloe" card
-5. Click "Begin Conversation"
-6. Allow microphone access when prompted
-7. Start talking!
-
----
+- **API Key**: Stored server-side only, never exposed to browser
+- **Access Token**: Short-lived (30 seconds), generated per call
+- **WebRTC**: Encrypted peer-to-peer audio streaming
 
 ## Troubleshooting
 
-### "Failed to register call"
-- Check that `RETELL_API_KEY` is set correctly in `.env.local` or Vercel
-- Verify the API key is valid in Retell dashboard
+### "API key not configured"
+- Check `.env.local` exists and has correct format
+- Restart dev server after changing env variables
+- For Vercel: verify environment variables in dashboard
 
 ### "Agent ID is required"
 - Ensure `NEXT_PUBLIC_RETELL_AGENT_ID` is set
-- Check that the agent ID exists in your Retell dashboard
+- Check agent ID is correct (starts with `agent_`)
 
-### Microphone not working
-- Make sure you're using HTTPS (or localhost)
-- Check browser permissions for microphone access
-- Try a different browser (Chrome/Edge recommended)
+### Call connects but immediately ends
+- Verify agent is fully configured in Retell dashboard
+- Check agent has a voice selected
+- Ensure LLM/prompt is configured
+- Test agent in Retell dashboard first
 
-### No audio from agent
-- Check your speaker/headphone volume
-- Verify the agent has a voice selected in Retell dashboard
-- Check browser console for errors
+### No audio / Microphone not working
+- Use HTTPS (or localhost for development)
+- Check browser permissions for microphone
+- Try Chrome/Edge (best WebRTC support)
+- Disable VPN if having connection issues
 
----
+### "Failed to register call"
+- Verify API key is correct
+- Check API key has proper permissions
+- Ensure agent ID exists and is accessible
 
 ## API Reference
 
-### `useRetellAgent` Hook
+### useRetellAgent Hook
 
 ```typescript
-const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
+const {
+  isConnected,    // Boolean: Call is active
+  isRecording,    // Boolean: Agent is speaking
+  isConnecting,   // Boolean: Connection in progress
+  error,          // String | null: Error message
+  connect,        // Function: Start call
+  disconnect,     // Function: End call
+} = useRetellAgent({
   agentId: 'agent_xxx',
   onStatusChange: (status) => console.log(status),
 });
 ```
 
-**Returns:**
-- `isConnected`: Boolean - Whether call is active
-- `isRecording`: Boolean - Whether agent is speaking
-- `isConnecting`: Boolean - Whether connection is in progress
-- `error`: String | null - Error message if any
-- `connect()`: Function - Start the call
-- `disconnect()`: Function - End the call
+### API Route
 
----
+**Endpoint**: `POST /api/retell/register-call`
+
+**Request**:
+```json
+{
+  "agentId": "agent_xxx"
+}
+```
+
+**Response**:
+```json
+{
+  "accessToken": "eyJ...",
+  "callId": "call_xxx"
+}
+```
 
 ## Additional Resources
 
 - [Retell AI Documentation](https://docs.retellai.com/)
 - [Retell AI Dashboard](https://beta.retellai.com/)
-- [Web SDK GitHub](https://github.com/RetellAI/retell-client-js-sdk)
-
----
+- [Retell AI Pricing](https://www.retellai.com/pricing)
 
 ## Cost Estimate
 
@@ -170,3 +201,6 @@ Retell AI pricing (as of 2024):
 - Includes LLM costs, voice synthesis, and infrastructure
 - Check [Retell Pricing](https://www.retellai.com/pricing) for latest rates
 
+---
+
+**Need Help?** Check the [Retell AI Documentation](https://docs.retellai.com/) or contact support.

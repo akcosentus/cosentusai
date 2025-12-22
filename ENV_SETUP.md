@@ -1,5 +1,7 @@
 # Environment Variables Setup
 
+Quick reference for environment variables used in this project.
+
 ## ⚠️ SECURITY WARNING
 
 **NEVER commit `.env.local` to Git!**
@@ -11,47 +13,90 @@ All sensitive credentials should ONLY exist in:
 
 ---
 
-## Retell AI Configuration
+## Required Environment Variables
 
-### Required Environment Variables
+### Local Development (`.env.local`)
 
-Create a `.env.local` file in the project root (this file is gitignored):
+Create a `.env.local` file in the project root:
 
 ```bash
-# Retell AI API Key (KEEP SECRET!)
-RETELL_API_KEY=your_api_key_here
-
-# Retell Agent ID (safe to expose client-side)
-NEXT_PUBLIC_RETELL_AGENT_ID=your_agent_id_here
+# Retell AI Configuration
+RETELL_API_KEY=key_your_api_key_here
+NEXT_PUBLIC_RETELL_AGENT_ID=agent_your_agent_id_here
 ```
 
-### For Vercel Deployment
+### Production (Vercel)
 
-Add these environment variables in Vercel dashboard:
-1. Go to Project Settings → Environment Variables
-2. Add:
-   - `RETELL_API_KEY` (mark as **Secret**)
-   - `NEXT_PUBLIC_RETELL_AGENT_ID`
-3. Redeploy after adding variables
+Add these in Vercel Dashboard → Settings → Environment Variables:
 
-### Security Notes
-
-- ✅ `RETELL_API_KEY` - Server-side only (no `NEXT_PUBLIC_` prefix) - NEVER exposed to browser
-- ✅ `NEXT_PUBLIC_RETELL_AGENT_ID` - Client-side accessible (safe to expose)
-- ✅ `.env.local` is in `.gitignore` - never committed to Git
-- ✅ No fallback values in code - forces proper environment setup
+| Variable | Value | Type |
+|----------|-------|------|
+| `RETELL_API_KEY` | `key_...` | Secret |
+| `NEXT_PUBLIC_RETELL_AGENT_ID` | `agent_...` | Plain Text |
 
 ---
 
-# Previous Configuration (Deprecated)
+## Variable Descriptions
 
-## ElevenLabs & OpenAI (No longer used)
+### `RETELL_API_KEY`
+- **Type**: Server-side only (Secret)
+- **Purpose**: Authenticates with Retell AI API
+- **Get it from**: [Retell Dashboard](https://beta.retellai.com/) → Settings → API Keys
+- **Security**: NEVER expose to browser, kept server-side only
 
-These services have been replaced by Retell AI.
+### `NEXT_PUBLIC_RETELL_AGENT_ID`
+- **Type**: Client-side accessible
+- **Purpose**: Identifies which Retell AI agent to use
+- **Get it from**: [Retell Dashboard](https://beta.retellai.com/) → Agents → Your Agent
+- **Security**: Safe to expose (public identifier)
 
-**All old API keys have been removed from this documentation for security.**
+---
 
-If you need to reference old configuration:
-- Store credentials in `.env.local` only (never in code or docs)
-- See `RETELL_SETUP.md` for current implementation
+## Setup Instructions
 
+1. **Get credentials** from [Retell Dashboard](https://beta.retellai.com/)
+2. **Create `.env.local`** with the template above
+3. **Add values** from your Retell account
+4. **Restart dev server** (`npm run dev`)
+5. **For production**: Add to Vercel dashboard and redeploy
+
+---
+
+## Verification
+
+To verify your setup:
+
+```bash
+# Check if .env.local exists
+ls -la .env.local
+
+# Start dev server
+npm run dev
+
+# Open http://localhost:3000 and test voice agent
+```
+
+If you see "Environment variables not configured" error:
+- Check `.env.local` exists
+- Verify variable names match exactly
+- Restart dev server
+
+---
+
+## Security Best Practices
+
+✅ **DO**:
+- Store credentials in `.env.local` (gitignored)
+- Use Vercel environment variables for production
+- Mark `RETELL_API_KEY` as Secret in Vercel
+- Restart server after changing env variables
+
+❌ **DON'T**:
+- Commit `.env.local` to Git
+- Hardcode credentials in source code
+- Share API keys publicly
+- Use production keys in development
+
+---
+
+For detailed Retell AI setup, see [RETELL_SETUP.md](./RETELL_SETUP.md).
