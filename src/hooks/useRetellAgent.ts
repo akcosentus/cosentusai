@@ -93,7 +93,6 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
       await retellClientRef.current.startCall({
         accessToken,
         sampleRate: 24000, // or 16000
-        enableUpdate: true, // Enable real-time transcripts
       });
 
     } catch (err: any) {

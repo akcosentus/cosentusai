@@ -1,47 +1,57 @@
 # Environment Variables Setup
 
-## Local Development
+## ⚠️ SECURITY WARNING
 
-Create a `.env.local` file in the root of your project with:
+**NEVER commit `.env.local` to Git!**
+**NEVER hardcode API keys or secrets in your code!**
+
+All sensitive credentials should ONLY exist in:
+1. `.env.local` (local development - gitignored)
+2. Vercel Environment Variables (production)
+
+---
+
+## Retell AI Configuration
+
+### Required Environment Variables
+
+Create a `.env.local` file in the project root (this file is gitignored):
 
 ```bash
-ELEVENLABS_API_KEY=sk_1f4f09ecd7b2e7e715bb57ac142b95f469cde2f98a636459
-NEXT_PUBLIC_ELEVENLABS_AGENT_ID=agent_3701kd42k7zjeatbhwc31kbwpn78
+# Retell AI API Key (KEEP SECRET!)
+RETELL_API_KEY=your_api_key_here
+
+# Retell Agent ID (safe to expose client-side)
+NEXT_PUBLIC_RETELL_AGENT_ID=your_agent_id_here
 ```
 
-## Vercel Deployment
+### For Vercel Deployment
 
-Add these environment variables in your Vercel project:
-
-1. Go to: https://vercel.com/your-project/settings/environment-variables
-
+Add these environment variables in Vercel dashboard:
+1. Go to Project Settings → Environment Variables
 2. Add:
-   - **Name**: `ELEVENLABS_API_KEY`
-   - **Value**: `sk_1f4f09ecd7b2e7e715bb57ac142b95f469cde2f98a636459`
-   - **Environment**: Production, Preview, Development
-   - ✅ Mark as "Secret"
+   - `RETELL_API_KEY` (mark as **Secret**)
+   - `NEXT_PUBLIC_RETELL_AGENT_ID`
+3. Redeploy after adding variables
 
-3. Add:
-   - **Name**: `NEXT_PUBLIC_ELEVENLABS_AGENT_ID`
-   - **Value**: `agent_3701kd42k7zjeatbhwc31kbwpn78`
-   - **Environment**: Production, Preview, Development
+### Security Notes
 
-4. Redeploy your project
+- ✅ `RETELL_API_KEY` - Server-side only (no `NEXT_PUBLIC_` prefix) - NEVER exposed to browser
+- ✅ `NEXT_PUBLIC_RETELL_AGENT_ID` - Client-side accessible (safe to expose)
+- ✅ `.env.local` is in `.gitignore` - never committed to Git
+- ✅ No fallback values in code - forces proper environment setup
 
-## Testing Locally
+---
 
-After adding `.env.local`:
+# Previous Configuration (Deprecated)
 
-```bash
-npm run dev
-```
+## ElevenLabs & OpenAI (No longer used)
 
-Then visit http://localhost:3000 and click on Chloe's card to test!
+These services have been replaced by Retell AI.
 
-## Security Note
+**All old API keys have been removed from this documentation for security.**
 
-⚠️ **IMPORTANT**: 
-- Never commit `.env.local` to git (it's already in .gitignore)
-- The API key is sensitive - keep it secure
-- `NEXT_PUBLIC_` variables are exposed to the browser (that's okay for the Agent ID)
+If you need to reference old configuration:
+- Store credentials in `.env.local` only (never in code or docs)
+- See `RETELL_SETUP.md` for current implementation
 

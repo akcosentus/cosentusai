@@ -9,15 +9,18 @@ export default function Home() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [agentStatus, setAgentStatus] = useState<string>('');
 
-  // Retell Agent ID for Chloe
-  const AGENT_ID = process.env.NEXT_PUBLIC_RETELL_AGENT_ID || '';
+  // Retell Agent ID for Chloe (from environment variables only)
+  const AGENT_ID = process.env.NEXT_PUBLIC_RETELL_AGENT_ID;
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
-    agentId: AGENT_ID,
+    agentId: AGENT_ID || '',
     onStatusChange: (status) => {
       setAgentStatus(status);
     },
   });
+
+  // Check if environment variables are configured
+  const isConfigured = !!AGENT_ID;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -226,9 +229,13 @@ export default function Home() {
                             <button 
                               onClick={(e) => {
                                 e.stopPropagation();
+                                if (!isConfigured) {
+                                  alert('⚠️ Environment variables not configured!\n\nPlease add RETELL_API_KEY and NEXT_PUBLIC_RETELL_AGENT_ID to your .env.local file.\n\nSee ENV_SETUP.md for instructions.');
+                                  return;
+                                }
                                 handleBeginDemo();
                               }}
-                              disabled={isConnecting}
+                              disabled={isConnecting || !isConfigured}
                               className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                             >
                               {isConnecting ? (
