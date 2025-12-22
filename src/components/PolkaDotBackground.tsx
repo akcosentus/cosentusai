@@ -82,11 +82,12 @@ export const PolkaDotBackground = () => {
         
         // Smooth transition to target
         if (dot.hoverProgress < targetProgress) {
+          const oldProgress = dot.hoverProgress;
           dot.hoverProgress = Math.min(targetProgress, dot.hoverProgress + 0.15);
           
-          // Pop up animation when first hovered
-          if (!wasHovered && dot.isHovered) {
-            dot.scale = 2.5; // Pop to 2.5x size
+          // Pop up animation when transitioning to blue (not grey dots)
+          if (oldProgress < 0.1 && dot.hoverProgress > 0.1) {
+            dot.scale = 1.4; // Subtle pop (was 2.5)
           }
         } else {
           dot.hoverProgress = Math.max(targetProgress, dot.hoverProgress - 0.08);
@@ -94,11 +95,19 @@ export const PolkaDotBackground = () => {
 
         // Animate scale back down
         if (dot.scale > 1) {
-          dot.scale = Math.max(1, dot.scale - 0.15); // Smooth return to normal
+          dot.scale = Math.max(1, dot.scale - 0.12); // Smooth return to normal
+        }
+        
+        // Scale should be tied to color intensity for blue dots
+        if (dot.hoverProgress > 0.3) {
+          const scaleBoost = 1 + (dot.hoverProgress * 0.15); // Max 1.15x at full blue
+          if (dot.scale < scaleBoost) {
+            dot.scale = Math.min(scaleBoost, dot.scale + 0.05);
+          }
         }
 
         // Interpolate color
-        const lightGrey = { r: 229, g: 231, b: 235 }; // gray-200 (lighter)
+        const lightGrey = { r: 243, g: 244, b: 246 }; // gray-100 (even lighter)
         const cosentusBlue = { r: 1, g: 178, b: 214 }; // #01B2D6
         
         const r = Math.round(lightGrey.r + (cosentusBlue.r - lightGrey.r) * dot.hoverProgress);
