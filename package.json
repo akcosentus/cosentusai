@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.28.0",
     "animate-ui": "^0.0.4",
     "clsx": "^2.1.1",
     "motion": "^12.23.26",

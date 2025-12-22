@@ -1,17 +1,21 @@
 'use client';
 
 import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
-import { useState, useRef, useEffect } from 'react';
-import { useRealtimeVoice } from '@/hooks/useRealtimeVoice';
+import { useState } from 'react';
+import { useElevenLabsAgent } from '@/hooks/useElevenLabsAgent';
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
-  const [audioLevel, setAudioLevel] = useState(0);
+  const [agentStatus, setAgentStatus] = useState<string>('');
 
-  const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRealtimeVoice({
-    onTranscript: (text, isUser) => {
-      // Handle transcripts if needed
+  // Replace with your actual ElevenLabs Agent ID
+  const AGENT_ID = process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID || 'your-agent-id-here';
+
+  const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useElevenLabsAgent({
+    agentId: AGENT_ID,
+    onStatusChange: (status) => {
+      setAgentStatus(status);
     },
   });
 
@@ -35,8 +39,8 @@ export default function Home() {
     }
   };
 
-  const handleBeginDemo = async (demoType: string) => {
-    await connect(demoType);
+  const handleBeginDemo = async () => {
+    await connect();
   };
 
   const handleEndDemo = () => {
@@ -222,7 +226,7 @@ export default function Home() {
                             <button 
                               onClick={(e) => {
                                 e.stopPropagation();
-                                handleBeginDemo('patient-intake');
+                                handleBeginDemo();
                               }}
                               disabled={isConnecting}
                               className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
