@@ -62,7 +62,7 @@ export default function Home() {
       />
       {/* Top Navbar with Extended Fade */}
       <nav 
-        className="fixed top-0 z-50 pb-24 pointer-events-none transition-all duration-500" 
+        className="fixed top-0 z-30 pb-24 pointer-events-none transition-all duration-500" 
         style={{ 
           background: 'radial-gradient(ellipse 65vw 80% at 50% 0%, #01B2D6 0%, #01B2D6 25%, rgba(1, 178, 214, 0.8) 45%, rgba(1, 178, 214, 0.5) 65%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 95%, rgba(1, 178, 214, 0) 100%)',
           left: isChatOpen ? '40vw' : '50%',
@@ -265,16 +265,18 @@ export default function Home() {
 
       {/* Chat Window - Right Side */}
       <div 
-        className={`fixed top-0 right-0 h-screen w-[20vw] bg-white border-l border-gray-200 shadow-2xl z-40 transition-transform duration-500 flex flex-col ${
+        className={`fixed top-0 right-0 h-screen w-[20vw] bg-white border-l border-gray-200 shadow-2xl z-50 transition-transform duration-500 flex flex-col ${
           isChatOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Chat Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-[#01B2D6]">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-black">
           <div className="flex items-center gap-3">
-            <h3 className="text-lg font-semibold text-white">
-              {isConnected ? `Voice Demo: ${activeDemo}` : 'AI Assistant'}
-            </h3>
+            <img 
+              src="https://cosentus.com/wp-content/uploads/2023/11/Cosentus_Logo_White.png" 
+              alt="Cosentus" 
+              className="h-6 w-auto"
+            />
             {isRecording && (
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
