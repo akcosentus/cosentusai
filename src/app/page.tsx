@@ -1,7 +1,7 @@
 'use client';
 
 import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useRealtimeVoice } from '@/hooks/useRealtimeVoice';
 
 export default function Home() {
@@ -9,6 +9,9 @@ export default function Home() {
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean }>>([]);
   const [inputValue, setInputValue] = useState('');
   const [activeDemo, setActiveDemo] = useState<string | null>(null);
+  const [chatWidth, setChatWidth] = useState(20); // Width in vw
+  const [isResizing, setIsResizing] = useState(false);
+  const resizeRef = useRef<HTMLDivElement>(null);
 
   const { isConnected, isRecording, error, connect, disconnect } = useRealtimeVoice({
     scenario: activeDemo || undefined,
@@ -47,6 +50,36 @@ export default function Home() {
     setMessages(prev => [...prev, { text: 'Voice demo ended.', isUser: false }]);
   };
 
+  // Handle resize
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isResizing) return;
+      
+      const newWidth = ((window.innerWidth - e.clientX) / window.innerWidth) * 100;
+      // Constrain between 15vw and 50vw
+      const constrainedWidth = Math.max(15, Math.min(50, newWidth));
+      setChatWidth(constrainedWidth);
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+
+    if (isResizing) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = 'ew-resize';
+      document.body.style.userSelect = 'none';
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+  }, [isResizing]);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-white">
       {/* Gravity Stars Animated Background */}
@@ -65,9 +98,9 @@ export default function Home() {
         className="fixed top-0 z-30 pb-24 pointer-events-none transition-all duration-500" 
         style={{ 
           background: 'radial-gradient(ellipse 65vw 80% at 50% 0%, #01B2D6 0%, #01B2D6 25%, rgba(1, 178, 214, 0.8) 45%, rgba(1, 178, 214, 0.5) 65%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 95%, rgba(1, 178, 214, 0) 100%)',
-          left: isChatOpen ? '40vw' : '50%',
+          left: isChatOpen ? `${(100 - chatWidth) / 2}vw` : '50%',
           transform: 'translateX(-50%)',
-          width: isChatOpen ? '80vw' : '100vw'
+          width: isChatOpen ? `${100 - chatWidth}vw` : '100vw'
         }}
       >
         <div className="mx-auto flex items-center justify-center px-4 py-6 sm:px-8 pointer-events-auto">
@@ -124,7 +157,7 @@ export default function Home() {
       {/* Hero Section */}
       <div 
         className="relative z-10 flex min-h-screen items-center justify-center px-6 py-12 transition-all duration-500"
-        style={{ marginRight: isChatOpen ? '20vw' : '0' }}
+        style={{ marginRight: isChatOpen ? `${chatWidth}vw` : '0' }}
       >
         <div className="max-w-5xl text-center">
           <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl">
@@ -150,7 +183,7 @@ export default function Home() {
       {/* Voice Demo Section */}
       <section 
         className="relative z-10 py-24 px-6 transition-all duration-500"
-        style={{ marginRight: isChatOpen ? '20vw' : '0' }}
+        style={{ marginRight: isChatOpen ? `${chatWidth}vw` : '0' }}
       >
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -228,47 +261,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bottom Search Bar */}
-      <div 
-        className="fixed bottom-8 z-50 w-full px-4 transition-all duration-500"
-        style={{ 
-          left: isChatOpen ? '40vw' : '50%',
-          transform: isChatOpen ? 'translateX(-50%)' : 'translateX(-50%)',
-          maxWidth: isChatOpen ? '35vw' : '48rem'
-        }}
-      >
-        <form onSubmit={handleSubmit} className="relative flex items-center rounded-full border border-gray-300 bg-white shadow-2xl">
-          {/* Plus Icon */}
-          <button type="button" className="absolute left-5 flex h-10 w-10 items-center justify-center text-gray-500 hover:text-gray-700 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-          </button>
+      {/* Bottom Search Bar - Only show when chat is closed */}
+      {!isChatOpen && (
+        <div 
+          className="fixed bottom-8 z-50 w-full px-4 transition-all duration-500"
+          style={{ 
+            left: '50%',
+            transform: 'translateX(-50%)',
+            maxWidth: '48rem'
+          }}
+        >
+          <form onSubmit={handleSubmit} className="relative flex items-center rounded-full border border-gray-300 bg-white shadow-2xl">
+            {/* Plus Icon */}
+            <button type="button" className="absolute left-5 flex h-10 w-10 items-center justify-center text-gray-500 hover:text-gray-700 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </button>
 
-          {/* Input */}
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Ask anything"
-            className="w-full rounded-full py-4 pl-20 pr-20 text-base text-gray-900 placeholder-gray-400 focus:outline-none"
-          />
+            {/* Input */}
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Ask anything"
+              className="w-full rounded-full py-4 pl-20 pr-20 text-base text-gray-900 placeholder-gray-400 focus:outline-none"
+            />
 
-          {/* Microphone Icon */}
-          <button type="submit" className="absolute right-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#01B2D6] text-white hover:bg-[#0195b3] transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-            </svg>
-          </button>
-        </form>
-      </div>
+            {/* Microphone Icon */}
+            <button type="submit" className="absolute right-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#01B2D6] text-white hover:bg-[#0195b3] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      )}
 
       {/* Chat Window - Right Side */}
       <div 
-        className={`fixed top-0 right-0 h-screen w-[20vw] bg-white border-l border-gray-200 shadow-2xl z-50 transition-transform duration-500 flex flex-col ${
+        className={`fixed top-0 right-0 h-screen bg-white border-l border-gray-200 shadow-2xl z-50 transition-transform duration-500 flex flex-col ${
           isChatOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
+        style={{ width: `${chatWidth}vw` }}
       >
+        {/* Resize Handle */}
+        <div 
+          ref={resizeRef}
+          onMouseDown={() => setIsResizing(true)}
+          className="absolute left-0 top-0 h-full w-1 cursor-ew-resize hover:bg-[#01B2D6] transition-colors group"
+          style={{ marginLeft: '-2px' }}
+        >
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-16 bg-gray-300 rounded-full group-hover:bg-[#01B2D6] transition-colors" />
+        </div>
         {/* Chat Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-black">
           <div className="flex items-center gap-3">
@@ -330,6 +375,34 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Chat Input - Search Bar Style */}
+        <div className="p-4 border-t border-gray-200">
+          <form onSubmit={handleSubmit} className="relative flex items-center rounded-full border border-gray-300 bg-white shadow-lg">
+            {/* Plus Icon */}
+            <button type="button" className="absolute left-4 flex h-8 w-8 items-center justify-center text-gray-500 hover:text-gray-700 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </button>
+
+            {/* Input */}
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Ask anything"
+              className="w-full rounded-full py-3 pl-16 pr-16 text-sm text-gray-900 placeholder-gray-400 focus:outline-none"
+            />
+
+            {/* Send Icon */}
+            <button type="submit" className="absolute right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#01B2D6] text-white hover:bg-[#0195b3] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
     </main>
