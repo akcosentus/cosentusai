@@ -273,7 +273,7 @@ export default function Home() {
         <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-black">
           <div className="flex items-center gap-3">
             <img 
-              src="https://cosentus.com/wp-content/uploads/2023/11/Cosentus_Logo_White.png" 
+              src="https://cosentus.com/wp-content/uploads/2021/08/New-Cosentus-Logo-1.png" 
               alt="Cosentus" 
               className="h-6 w-auto"
             />
