@@ -278,34 +278,71 @@ export default function Home() {
                         </div>
                       </div>
 
-                      {/* Right Side - Waveform Visualization */}
+                      {/* Right Side - Glowing Orb Visualization */}
                       <div className="flex-1 flex items-center justify-center">
-                        <div className="w-full max-w-md">
-                          {isConnected && isRecording ? (
-                            <div className="flex items-center justify-center gap-1 h-32">
-                              {/* Animated Waveform Bars */}
-                              {[...Array(20)].map((_, i) => (
-                                <div
-                                  key={i}
-                                  className="w-2 bg-[#01B2D6] rounded-full transition-all duration-150"
-                                  style={{
-                                    height: `${Math.random() * 80 + 20}%`,
-                                    animation: `wave 0.${5 + i}s ease-in-out infinite alternate`,
-                                    animationDelay: `${i * 0.05}s`
-                                  }}
-                                />
-                              ))}
+                        <div className="w-full max-w-md flex items-center justify-center h-64">
+                          {isConnected ? (
+                            <div className="relative flex items-center justify-center">
+                              {/* Outer glow rings (only when speaking) */}
+                              {isRecording && (
+                                <>
+                                  <div 
+                                    className="absolute w-48 h-48 rounded-full bg-[#01B2D6] opacity-20"
+                                    style={{
+                                      animation: 'ripple 2s ease-out infinite',
+                                      animationDelay: '0s'
+                                    }}
+                                  />
+                                  <div 
+                                    className="absolute w-48 h-48 rounded-full bg-[#01B2D6] opacity-20"
+                                    style={{
+                                      animation: 'ripple 2s ease-out infinite',
+                                      animationDelay: '0.5s'
+                                    }}
+                                  />
+                                  <div 
+                                    className="absolute w-48 h-48 rounded-full bg-[#01B2D6] opacity-20"
+                                    style={{
+                                      animation: 'ripple 2s ease-out infinite',
+                                      animationDelay: '1s'
+                                    }}
+                                  />
+                                </>
+                              )}
+                              
+                              {/* Main orb */}
+                              <div 
+                                className={`relative w-32 h-32 rounded-full transition-all duration-500 ${
+                                  isRecording 
+                                    ? 'bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] shadow-2xl' 
+                                    : 'bg-gradient-to-br from-[#01B2D6]/60 via-[#0195b3]/60 to-[#017a8f]/60 shadow-lg'
+                                }`}
+                                style={{
+                                  animation: isRecording ? 'pulse-glow 1.5s ease-in-out infinite' : 'none',
+                                  boxShadow: isRecording 
+                                    ? '0 0 60px rgba(1, 178, 214, 0.6), 0 0 100px rgba(1, 178, 214, 0.4), inset 0 0 60px rgba(255, 255, 255, 0.3)'
+                                    : '0 0 30px rgba(1, 178, 214, 0.3), inset 0 0 30px rgba(255, 255, 255, 0.2)'
+                                }}
+                              >
+                                {/* Inner highlight */}
+                                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-white/40 to-transparent" />
+                                
+                                {/* Center dot */}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className={`w-3 h-3 rounded-full bg-white transition-all duration-300 ${
+                                    isRecording ? 'opacity-100 scale-100' : 'opacity-60 scale-75'
+                                  }`} />
+                                </div>
+                              </div>
                             </div>
                           ) : (
-                            <div className="flex items-center justify-center h-32">
-                              <div className="text-center text-gray-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-2 opacity-50">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
-                                </svg>
-                                <p className="text-sm">
-                                  {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
-                                </p>
-                              </div>
+                            <div className="text-center text-gray-400">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-2 opacity-50">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                              </svg>
+                              <p className="text-sm">
+                                {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                              </p>
                             </div>
                           )}
                           
