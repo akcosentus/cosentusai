@@ -51,9 +51,20 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('OpenAI API error:', error);
+      console.error('OpenAI API error:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: error,
+        promptId: promptId,
+        scenario: scenario
+      });
       return NextResponse.json(
-        { error: 'Failed to create session', details: error },
+        { 
+          error: 'Failed to create session', 
+          details: error,
+          status: response.status,
+          promptId: promptId 
+        },
         { status: response.status }
       );
     }
@@ -66,7 +77,10 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error generating token:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { 
+        error: 'Internal server error',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }
