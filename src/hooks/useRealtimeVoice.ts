@@ -146,30 +146,8 @@ export function useRealtimeVoice({ onTranscript }: UseRealtimeVoiceProps = {}) {
       setIsRecording(true);
       setIsConnecting(false);
       
-      // Send initial session configuration with English-only settings
-      const sessionConfig = {
-        type: 'session.update',
-        session: {
-          instructions: 'You are a helpful healthcare assistant. Speak and respond only in English.',
-          input_audio_transcription: { 
-            model: 'whisper-1'
-          },
-          turn_detection: {
-            type: 'server_vad',
-            threshold: 0.5,
-            prefix_padding_ms: 300,
-            silence_duration_ms: 500
-          }
-        },
-      };
-      
-      if (dc.readyState === 'open') {
-        dc.send(JSON.stringify(sessionConfig));
-      } else {
-        dc.addEventListener('open', () => {
-          dc.send(JSON.stringify(sessionConfig));
-        });
-      }
+      // Note: Session configuration (instructions, VAD, transcription) is now set 
+      // in the API route when creating the ephemeral token for better control
       
     } catch (err) {
       console.error('Connection error:', err);
