@@ -29,8 +29,9 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
       onStatusChange?.('Connected');
     });
 
-    client.on('call_ended', () => {
-      console.log('❌ Retell: Call ended');
+    client.on('call_ended', (endData) => {
+      console.log('❌ Retell: Call ended', endData);
+      console.log('Call end reason:', endData);
       setIsConnected(false);
       setIsRecording(false);
       onStatusChange?.('Disconnected');
@@ -64,6 +65,18 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
       console.log('📊 Retell metadata:', metadata);
     });
 
+    client.on('audio', (audio) => {
+      console.log('🔊 Retell audio event:', audio);
+    });
+
+    client.on('conversationStarted', () => {
+      console.log('💬 Retell: Conversation started');
+    });
+
+    client.on('conversationEnded', (data) => {
+      console.log('💬 Retell: Conversation ended', data);
+    });
+
     return () => {
       // Cleanup on unmount
       if (retellClientRef.current) {
@@ -86,23 +99,12 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
         throw new Error('Retell client not initialized');
       }
 
-      console.log('🔄 Requesting microphone access...');
-      
-      // Request microphone permission explicitly first
-      const stream = await navigator.mediaDevices.getUserMedia({ 
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-        } 
-      });
-      
-      console.log('✅ Microphone access granted');
-      
-      // Stop the test stream - Retell will create its own
-      stream.getTracks().forEach(track => track.stop());
+      if (!agentId) {
+        throw new Error('Agent ID is not configured');
+      }
 
       console.log('🔄 Registering call with Retell...');
+      console.log('Agent ID:', agentId);
 
       // Get access token from your API
       const response = await fetch('/api/retell/register-call', {
@@ -121,15 +123,18 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
       console.log('✅ Got access token, call ID:', callId);
 
       console.log('🔄 Starting Retell call...');
+      console.log('Access token (first 20 chars):', accessToken.substring(0, 20) + '...');
 
       // Start the call with Retell
+      // Note: Retell SDK will automatically request microphone access
       await retellClientRef.current.startCall({
         accessToken,
         sampleRate: 24000,
-        emitRawAudioSamples: false,
+        captureDeviceId: undefined, // Let browser choose default mic
       });
 
       console.log('✅ Retell startCall completed');
+      console.log('Waiting for agent to speak...');
 
     } catch (err: any) {
       console.error('❌ Connection error:', err);
