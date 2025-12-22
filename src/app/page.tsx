@@ -191,9 +191,9 @@ export default function Home() {
 
                   {/* Expanded State */}
                   {expandedCard === 'chloe' && (
-                    <div className="flex flex-col md:flex-row gap-12 items-center">
+                    <div className="flex flex-col md:flex-row gap-12 items-start">
                       {/* Left Side - Agent Info */}
-                      <div className="flex-1">
+                      <div className="flex-1 md:max-w-md">
                         <div className="flex items-center gap-4 mb-6">
                           <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#01B2D6]/10">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-[#01B2D6]">
@@ -279,94 +279,44 @@ export default function Home() {
                       </div>
 
                       {/* Right Side - Glowing Orb Visualization */}
-                      <div className="flex-1 flex items-center justify-center">
-                        <div className="w-full max-w-md flex items-center justify-center h-64">
-                          {isConnected ? (
-                            <div className="relative flex items-center justify-center">
-                              {/* Outer glow rings (only when speaking) */}
-                              {isRecording && (
-                                <>
-                                  <div 
-                                    className="absolute w-48 h-48 rounded-full bg-[#01B2D6] opacity-20"
-                                    style={{
-                                      animation: 'ripple 2s ease-out infinite',
-                                      animationDelay: '0s'
-                                    }}
-                                  />
-                                  <div 
-                                    className="absolute w-48 h-48 rounded-full bg-[#01B2D6] opacity-20"
-                                    style={{
-                                      animation: 'ripple 2s ease-out infinite',
-                                      animationDelay: '0.5s'
-                                    }}
-                                  />
-                                  <div 
-                                    className="absolute w-48 h-48 rounded-full bg-[#01B2D6] opacity-20"
-                                    style={{
-                                      animation: 'ripple 2s ease-out infinite',
-                                      animationDelay: '1s'
-                                    }}
-                                  />
-                                </>
-                              )}
-                              
-                              {/* Main orb */}
-                              <div 
-                                className={`relative w-32 h-32 rounded-full transition-all duration-500 ${
-                                  isRecording 
-                                    ? 'bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] shadow-2xl' 
-                                    : 'bg-gradient-to-br from-[#01B2D6]/60 via-[#0195b3]/60 to-[#017a8f]/60 shadow-lg'
-                                }`}
-                                style={{
-                                  animation: isRecording ? 'pulse-glow 1.5s ease-in-out infinite' : 'none',
-                                  boxShadow: isRecording 
-                                    ? '0 0 60px rgba(1, 178, 214, 0.6), 0 0 100px rgba(1, 178, 214, 0.4), inset 0 0 60px rgba(255, 255, 255, 0.3)'
-                                    : '0 0 30px rgba(1, 178, 214, 0.3), inset 0 0 30px rgba(255, 255, 255, 0.2)'
-                                }}
-                              >
-                                {/* Inner highlight */}
-                                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-white/40 to-transparent" />
-                                
-                                {/* Center dot */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className={`w-3 h-3 rounded-full bg-white transition-all duration-300 ${
-                                    isRecording ? 'opacity-100 scale-100' : 'opacity-60 scale-75'
-                                  }`} />
-                                </div>
-                              </div>
-                            </div>
-                          ) : (
-                            <div className="text-center text-gray-400">
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-2 opacity-50">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
-                              </svg>
-                              <p className="text-sm">
-                                {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
-                              </p>
-                            </div>
+                      <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
+                        {isConnected ? (
+                          <div className="flex flex-col items-center gap-6">
+                            {/* Single Glowing Orb */}
+                            <div 
+                              className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                              style={{
+                                boxShadow: isRecording 
+                                  ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
+                                  : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
+                                animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
+                              }}
+                            />
+                            
+                            {/* Status Text */}
+                            <p className="text-gray-600 text-center">
+                              {isRecording ? 'Chloe is speaking...' : 'Listening...'}
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="text-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                            </svg>
+                            <p className="text-sm">
+                              {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                            </p>
+                          </div>
                           )}
-                          
-                          {/* Error Display */}
-                          {error && (
-                            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                              <p className="text-sm text-red-800">
-                                <strong>Error:</strong> {error}
-                              </p>
-                              <p className="text-xs text-red-600 mt-1">
-                                Check console for details
-                              </p>
-                            </div>
-                          )}
-                          
-                          {/* Status Display */}
-                          {agentStatus && !error && (
-                            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                              <p className="text-sm text-blue-800 text-center">
-                                {agentStatus}
-                              </p>
-                            </div>
-                          )}
-                        </div>
+                        
+                        {/* Error Display - Below orb */}
+                        {error && (
+                          <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg max-w-md">
+                            <p className="text-sm text-red-800 text-center">
+                              <strong>Error:</strong> {error}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
