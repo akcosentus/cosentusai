@@ -14,7 +14,6 @@ export default function Home() {
   const resizeRef = useRef<HTMLDivElement>(null);
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRealtimeVoice({
-    scenario: activeDemo || undefined,
     onTranscript: (text, isUser) => {
       setMessages(prev => [...prev, { text, isUser }]);
     },
@@ -41,7 +40,9 @@ export default function Home() {
     setActiveDemo(demoType);
     setIsChatOpen(true);
     setMessages([{ text: `Connecting to ${demoType} demo... Please allow microphone access if prompted.`, isUser: false }]);
-    await connect();
+    
+    // Pass scenario directly to connect to avoid race condition
+    await connect(demoType);
     
     // Add success message after connection
     if (!error) {

@@ -1,11 +1,10 @@
 import { useState, useRef, useCallback } from 'react';
 
 interface UseRealtimeVoiceProps {
-  scenario?: string;
   onTranscript?: (text: string, isUser: boolean) => void;
 }
 
-export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoiceProps = {}) {
+export function useRealtimeVoice({ onTranscript }: UseRealtimeVoiceProps = {}) {
   const [isConnected, setIsConnected] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +15,7 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
   const audioElementRef = useRef<HTMLAudioElement | null>(null);
   const mediaStreamRef = useRef<MediaStream | null>(null);
 
-  const connect = useCallback(async () => {
+  const connect = useCallback(async (scenario: string) => {
     try {
       setError(null);
       setIsConnecting(true);
@@ -178,7 +177,7 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
       setIsConnected(false);
       setIsConnecting(false);
     }
-  }, [scenario, onTranscript]);
+  }, [onTranscript]);
 
   const disconnect = useCallback(() => {
     // Stop all media stream tracks (microphone)
