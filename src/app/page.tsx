@@ -1,6 +1,6 @@
 'use client';
 
-import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
+import { PolkaDotBackground } from '@/components/PolkaDotBackground';
 import { useState } from 'react';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 
@@ -53,22 +53,13 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-white">
-      {/* Gravity Stars Animated Background */}
-      <GravityStarsBackground 
-        starsCount={300}
-        starsOpacity={1}
-        glowIntensity={30}
-        movementSpeed={0.6}
-        starsInteraction={true}
-        starsInteractionType="merge"
-        className="absolute inset-0 z-0 pointer-events-none" 
-        style={{ color: '#01B2D6' }} 
-      />
+      {/* Polka Dot Interactive Background */}
+      <PolkaDotBackground />
       {/* Top Navbar with Extended Fade */}
       <nav 
-        className="fixed top-0 left-1/2 -translate-x-1/2 z-30 pb-24 w-full pointer-events-none" 
+        className="fixed top-0 left-1/2 -translate-x-1/2 z-30 pb-32 w-full pointer-events-none" 
         style={{ 
-          background: 'radial-gradient(ellipse 65vw 80% at 50% 0%, #01B2D6 0%, #01B2D6 25%, rgba(1, 178, 214, 0.8) 45%, rgba(1, 178, 214, 0.5) 65%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 95%, rgba(1, 178, 214, 0) 100%)'
+          background: 'radial-gradient(ellipse 75vw 100% at 50% 0%, #01B2D6 0%, #01B2D6 35%, rgba(1, 178, 214, 0.8) 50%, rgba(1, 178, 214, 0.5) 68%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 93%, rgba(1, 178, 214, 0) 100%)'
         }}
       >
         <div className="mx-auto flex items-center justify-center px-4 py-6 sm:px-8 pointer-events-auto">
