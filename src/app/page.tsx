@@ -5,86 +5,44 @@ import { useState, useRef, useEffect } from 'react';
 import { useRealtimeVoice } from '@/hooks/useRealtimeVoice';
 
 export default function Home() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean }>>([]);
   const [inputValue, setInputValue] = useState('');
-  const [activeDemo, setActiveDemo] = useState<string | null>(null);
-  const [chatWidth, setChatWidth] = useState(20); // Width in vw
-  const [isResizing, setIsResizing] = useState(false);
-  const resizeRef = useRef<HTMLDivElement>(null);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [audioLevel, setAudioLevel] = useState(0);
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRealtimeVoice({
     onTranscript: (text, isUser) => {
-      setMessages(prev => [...prev, { text, isUser }]);
+      // Handle transcripts if needed
     },
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue.trim()) {
-      setMessages([...messages, { text: inputValue, isUser: true }]);
+      // Handle search submission
       setInputValue('');
-      setIsChatOpen(true);
-      
-      // Simulate AI response
-      setTimeout(() => {
-        setMessages(prev => [...prev, { 
-          text: "Thanks for your message! Our AI assistant is processing your request.", 
-          isUser: false 
-        }]);
-      }, 1000);
     }
   };
 
-  const handleStartVoiceDemo = async (demoType: string) => {
-    setActiveDemo(demoType);
-    setIsChatOpen(true);
-    setMessages([{ text: `Connecting to ${demoType} demo... Please allow microphone access if prompted.`, isUser: false }]);
-    
-    // Pass scenario directly to connect to avoid race condition
+  const handleExpandCard = (cardId: string) => {
+    if (expandedCard === cardId) {
+      // Collapse if already expanded
+      setExpandedCard(null);
+      if (isConnected) {
+        disconnect();
+      }
+    } else {
+      setExpandedCard(cardId);
+    }
+  };
+
+  const handleBeginDemo = async (demoType: string) => {
     await connect(demoType);
-    
-    // Add success message after connection
-    if (!error) {
-      setMessages(prev => [...prev, { text: 'Connected! You can start speaking now.', isUser: false }]);
-    }
   };
 
-  const handleEndVoiceDemo = () => {
+  const handleEndDemo = () => {
     disconnect();
-    setActiveDemo(null);
-    setMessages(prev => [...prev, { text: 'Voice demo ended.', isUser: false }]);
+    setExpandedCard(null);
   };
-
-  // Handle resize
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isResizing) return;
-      
-      const newWidth = ((window.innerWidth - e.clientX) / window.innerWidth) * 100;
-      // Constrain between 15vw and 50vw
-      const constrainedWidth = Math.max(15, Math.min(50, newWidth));
-      setChatWidth(constrainedWidth);
-    };
-
-    const handleMouseUp = () => {
-      setIsResizing(false);
-    };
-
-    if (isResizing) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      document.body.style.cursor = 'ew-resize';
-      document.body.style.userSelect = 'none';
-    }
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.body.style.cursor = '';
-      document.body.style.userSelect = '';
-    };
-  }, [isResizing]);
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-white">
@@ -101,12 +59,9 @@ export default function Home() {
       />
       {/* Top Navbar with Extended Fade */}
       <nav 
-        className="fixed top-0 z-30 pb-24 pointer-events-none transition-all duration-500" 
+        className="fixed top-0 left-1/2 -translate-x-1/2 z-30 pb-24 w-full pointer-events-none" 
         style={{ 
-          background: 'radial-gradient(ellipse 65vw 80% at 50% 0%, #01B2D6 0%, #01B2D6 25%, rgba(1, 178, 214, 0.8) 45%, rgba(1, 178, 214, 0.5) 65%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 95%, rgba(1, 178, 214, 0) 100%)',
-          left: isChatOpen ? `${(100 - chatWidth) / 2}vw` : '50%',
-          transform: 'translateX(-50%)',
-          width: isChatOpen ? `${100 - chatWidth}vw` : '100vw'
+          background: 'radial-gradient(ellipse 65vw 80% at 50% 0%, #01B2D6 0%, #01B2D6 25%, rgba(1, 178, 214, 0.8) 45%, rgba(1, 178, 214, 0.5) 65%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 95%, rgba(1, 178, 214, 0) 100%)'
         }}
       >
         <div className="mx-auto flex items-center justify-center px-4 py-6 sm:px-8 pointer-events-auto">
@@ -161,10 +116,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <div 
-        className="relative z-10 flex min-h-screen items-center justify-center px-6 py-12 transition-all duration-500"
-        style={{ marginRight: isChatOpen ? `${chatWidth}vw` : '0' }}
-      >
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-6 py-12">
         <div className="max-w-5xl text-center">
           <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl">
             One platform. Patient to payment.
@@ -187,253 +139,231 @@ export default function Home() {
       </div>
 
       {/* Voice Demo Section */}
-      <section 
-        className="relative z-10 py-24 px-6 transition-all duration-500"
-        style={{ marginRight: isChatOpen ? `${chatWidth}vw` : '0' }}
-      >
+      <section className="relative z-10 py-24 px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-              Experience AI Voice Assistance
+              Meet Our AI Voice Agents
             </h2>
             <p className="mt-6 text-lg text-gray-600 sm:text-xl max-w-3xl mx-auto">
-              Try our real-time voice agents powered by OpenAI. Natural conversations for healthcare workflows.
+              Experience natural, real-time conversations powered by OpenAI's latest technology.
             </p>
           </div>
 
           {/* Demo Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Patient Intake Demo */}
-            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Patient Intake</h3>
-              <p className="text-gray-600 mb-6">
-                Automated patient information collection with natural conversation flow.
-              </p>
-              <button 
-                onClick={() => handleStartVoiceDemo('patient-intake')}
-                disabled={isConnected || isConnecting}
-                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {isConnecting && activeDemo === 'patient-intake' ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Connecting...
-                  </>
-                ) : isConnected && activeDemo === 'patient-intake' ? 'Demo Active' : 'Try Demo'}
-              </button>
+          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Chloe - Customer Service Agent */}
+            <div 
+              onClick={() => !isConnected && handleExpandCard('chloe')}
+              className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+                expandedCard === 'chloe' 
+                  ? 'md:col-span-3 p-12' 
+                  : 'p-8 hover:shadow-2xl hover:-translate-y-1'
+              } ${expandedCard && expandedCard !== 'chloe' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+            >
+              {!expandedCard || expandedCard === 'chloe' ? (
+                <>
+                  {/* Collapsed State */}
+                  {expandedCard !== 'chloe' && (
+                    <>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">Chloe</h3>
+                      <p className="text-gray-600 mb-6">
+                        General customer service agent ready to assist with any questions.
+                      </p>
+                      <div className="text-sm text-[#01B2D6] font-medium">
+                        Click to learn more →
+                      </div>
+                    </>
+                  )}
+
+                  {/* Expanded State */}
+                  {expandedCard === 'chloe' && (
+                    <div className="flex flex-col md:flex-row gap-12 items-center">
+                      {/* Left Side - Agent Info */}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#01B2D6]/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-[#01B2D6]">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-4xl font-bold text-gray-900">Chloe</h3>
+                            <p className="text-lg text-gray-600">Customer Service Agent</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">About Chloe</h4>
+                            <p className="text-gray-600">
+                              Chloe is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
+                            <ul className="text-gray-600 space-y-1">
+                              <li>• Natural conversation flow</li>
+                              <li>• Real-time voice interaction</li>
+                              <li>• Professional and empathetic responses</li>
+                              <li>• Available 24/7</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-4">
+                          {!isConnected ? (
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleBeginDemo('patient-intake');
+                              }}
+                              disabled={isConnecting}
+                              className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                            >
+                              {isConnecting ? (
+                                <>
+                                  <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                  </svg>
+                                  Connecting...
+                                </>
+                              ) : (
+                                <>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                                  </svg>
+                                  Begin Conversation
+                                </>
+                              )}
+                            </button>
+                          ) : (
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleEndDemo();
+                              }}
+                              className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                            >
+                              End Conversation
+                            </button>
+                          )}
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleExpandCard('chloe');
+                            }}
+                            className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Right Side - Waveform Visualization */}
+                      <div className="flex-1 flex items-center justify-center">
+                        <div className="w-full max-w-md">
+                          {isConnected && isRecording ? (
+                            <div className="flex items-center justify-center gap-1 h-32">
+                              {/* Animated Waveform Bars */}
+                              {[...Array(20)].map((_, i) => (
+                                <div
+                                  key={i}
+                                  className="w-2 bg-[#01B2D6] rounded-full transition-all duration-150"
+                                  style={{
+                                    height: `${Math.random() * 80 + 20}%`,
+                                    animation: `wave 0.${5 + i}s ease-in-out infinite alternate`,
+                                    animationDelay: `${i * 0.05}s`
+                                  }}
+                                />
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="flex items-center justify-center h-32">
+                              <div className="text-center text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-2 opacity-50">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                                </svg>
+                                <p className="text-sm">Click "Begin Conversation" to start</p>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : null}
             </div>
 
-            {/* Appointment Booking Demo */}
-            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+            {/* Appointment Booking Demo - Coming Soon */}
+            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg opacity-60">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-gray-400">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Appointment Booking</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Agent 2</h3>
               <p className="text-gray-600 mb-6">
-                Schedule appointments through voice with intelligent calendar management.
+                Coming soon...
               </p>
-              <button 
-                onClick={() => handleStartVoiceDemo('appointment-booking')}
-                disabled={isConnected || isConnecting}
-                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {isConnecting && activeDemo === 'appointment-booking' ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Connecting...
-                  </>
-                ) : isConnected && activeDemo === 'appointment-booking' ? 'Demo Active' : 'Try Demo'}
-              </button>
+              <div className="text-sm text-gray-400 font-medium text-center">
+                Available Soon
+              </div>
             </div>
 
-            {/* Symptom Checker Demo */}
-            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+            {/* Symptom Checker Demo - Coming Soon */}
+            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg opacity-60">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-gray-400">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Symptom Checker</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Agent 3</h3>
               <p className="text-gray-600 mb-6">
-                AI-powered symptom assessment with empathetic conversation.
+                Coming soon...
               </p>
-              <button 
-                onClick={() => handleStartVoiceDemo('symptoms')}
-                disabled={isConnected || isConnecting}
-                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {isConnecting && activeDemo === 'symptoms' ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Connecting...
-                  </>
-                ) : isConnected && activeDemo === 'symptoms' ? 'Demo Active' : 'Try Demo'}
-              </button>
+              <div className="text-sm text-gray-400 font-medium text-center">
+                Available Soon
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Bottom Search Bar - Only show when chat is closed */}
-      {!isChatOpen && (
-        <div 
-          className="fixed bottom-8 z-50 w-full px-4 transition-all duration-500"
-          style={{ 
-            left: '50%',
-            transform: 'translateX(-50%)',
-            maxWidth: '48rem'
-          }}
-        >
-          <form onSubmit={handleSubmit} className="relative flex items-center rounded-full border border-gray-300 bg-white shadow-2xl">
-            {/* Plus Icon */}
-            <button type="button" className="absolute left-5 flex h-10 w-10 items-center justify-center text-gray-500 hover:text-gray-700 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </button>
+      {/* Bottom Search Bar */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-3xl px-6">
+        <form onSubmit={handleSubmit} className="relative flex items-center rounded-full border border-gray-300 bg-white shadow-2xl">
+          {/* Plus Icon */}
+          <button type="button" className="absolute left-5 flex h-10 w-10 items-center justify-center text-gray-500 hover:text-gray-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
 
-            {/* Input */}
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask anything"
-              className="w-full rounded-full py-4 pl-20 pr-20 text-base text-gray-900 placeholder-gray-400 focus:outline-none"
-            />
+          {/* Input */}
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Ask anything"
+            className="w-full rounded-full py-4 pl-20 pr-20 text-base text-gray-900 placeholder-gray-400 focus:outline-none"
+          />
 
-            {/* Microphone Icon */}
-            <button type="submit" className="absolute right-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#01B2D6] text-white hover:bg-[#0195b3] transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-              </svg>
-            </button>
-          </form>
-        </div>
-      )}
-
-      {/* Chat Window - Right Side */}
-      <div 
-        className={`fixed top-0 right-0 h-screen bg-white border-l border-gray-200 shadow-2xl z-50 transition-transform duration-500 flex flex-col ${
-          isChatOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-        style={{ width: `${chatWidth}vw` }}
-      >
-        {/* Resize Handle */}
-        <div 
-          ref={resizeRef}
-          onMouseDown={() => setIsResizing(true)}
-          className="absolute left-0 top-0 h-full w-1 cursor-ew-resize hover:bg-[#01B2D6] transition-colors group"
-          style={{ marginLeft: '-2px' }}
-        >
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-16 bg-gray-300 rounded-full group-hover:bg-[#01B2D6] transition-colors" />
-        </div>
-        {/* Chat Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-black">
-          <div className="flex items-center gap-3">
-            <img 
-              src="https://cosentus.com/wp-content/uploads/2021/08/New-Cosentus-Logo-1.png" 
-              alt="Cosentus" 
-              className="h-6 w-auto"
-            />
-            {isRecording && (
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-xs text-white/80">Recording</span>
-              </div>
-            )}
-          </div>
-          <div className="flex items-center gap-2">
-            {isConnected && (
-              <button 
-                onClick={handleEndVoiceDemo}
-                className="px-3 py-1 text-sm bg-white/20 hover:bg-white/30 text-white rounded transition-colors"
-              >
-                End Call
-              </button>
-            )}
-            <button 
-              onClick={() => {
-                setIsChatOpen(false);
-                if (isConnected) disconnect();
-              }}
-              className="text-white hover:text-gray-200 transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Chat Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
-          {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-sm text-red-800">
-              Error: {error}
-            </div>
-          )}
-          {messages.map((message, index) => (
-            <div 
-              key={index}
-              className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
-            >
-              <div 
-                className={`max-w-[80%] rounded-2xl px-4 py-2 ${
-                  message.isUser 
-                    ? 'bg-[#01B2D6] text-white' 
-                    : 'bg-gray-100 text-gray-900'
-                }`}
-              >
-                <p className="text-sm">{message.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Chat Input - Search Bar Style */}
-        <div className="p-4 border-t border-gray-200">
-          <form onSubmit={handleSubmit} className="relative flex items-center rounded-full border border-gray-300 bg-white shadow-lg">
-            {/* Plus Icon */}
-            <button type="button" className="absolute left-4 flex h-8 w-8 items-center justify-center text-gray-500 hover:text-gray-700 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </button>
-
-            {/* Input */}
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask anything"
-              className="w-full rounded-full py-3 pl-16 pr-16 text-sm text-gray-900 placeholder-gray-400 focus:outline-none"
-            />
-
-            {/* Send Icon */}
-            <button type="submit" className="absolute right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#01B2D6] text-white hover:bg-[#0195b3] transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-              </svg>
-            </button>
-          </form>
-        </div>
+          {/* Send Icon */}
+          <button type="submit" className="absolute right-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#01B2D6] text-white hover:bg-[#0195b3] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+            </svg>
+          </button>
+        </form>
       </div>
     </main>
   )
