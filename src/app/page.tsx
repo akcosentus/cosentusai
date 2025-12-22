@@ -2,17 +2,17 @@
 
 import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
 import { useState } from 'react';
-import { useElevenLabsAgent } from '@/hooks/useElevenLabsAgent';
+import { useRetellAgent } from '@/hooks/useRetellAgent';
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [agentStatus, setAgentStatus] = useState<string>('');
 
-  // ElevenLabs Agent ID for Chloe
-  const AGENT_ID = process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID || 'agent_3701kd42k7zjeatbhwc31kbwpn78';
+  // Retell Agent ID for Chloe
+  const AGENT_ID = process.env.NEXT_PUBLIC_RETELL_AGENT_ID || '';
 
-  const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useElevenLabsAgent({
+  const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
     agentId: AGENT_ID,
     onStatusChange: (status) => {
       setAgentStatus(status);
