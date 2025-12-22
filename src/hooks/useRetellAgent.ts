@@ -121,15 +121,21 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
 
       // Start the call with Retell (must be within 30 seconds of token creation)
       // SDK will automatically request microphone access and handle audio
+      // Note: Removed playbackDeviceId as it's not supported in all browsers
       await retellClientRef.current.startCall({
         accessToken,
-        sampleRate: 24000, // Optional: 24000 or 16000
-        captureDeviceId: 'default', // Optional: default mic
-        playbackDeviceId: 'default', // Optional: default speaker
+        sampleRate: 24000, // 24000 or 16000
       });
 
       console.log('✅ Retell startCall completed');
       console.log('🎤 Call is now active - speak or wait for agent...');
+      
+      // Give the agent a moment to initialize
+      setTimeout(() => {
+        if (!isConnected) {
+          console.warn('⚠️ Call may have ended prematurely - check agent configuration');
+        }
+      }, 2000);
 
     } catch (err: any) {
       console.error('❌ Connection error:', err);
