@@ -2,11 +2,20 @@
 
 import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
 import { useState } from 'react';
+import { useRealtimeVoice } from '@/hooks/useRealtimeVoice';
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean }>>([]);
   const [inputValue, setInputValue] = useState('');
+  const [activeDemo, setActiveDemo] = useState<string | null>(null);
+
+  const { isConnected, isRecording, error, connect, disconnect } = useRealtimeVoice({
+    scenario: activeDemo || undefined,
+    onTranscript: (text, isUser) => {
+      setMessages(prev => [...prev, { text, isUser }]);
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,6 +32,19 @@ export default function Home() {
         }]);
       }, 1000);
     }
+  };
+
+  const handleStartVoiceDemo = async (demoType: string) => {
+    setActiveDemo(demoType);
+    setIsChatOpen(true);
+    setMessages([{ text: `Starting ${demoType} demo... Please allow microphone access.`, isUser: false }]);
+    await connect();
+  };
+
+  const handleEndVoiceDemo = () => {
+    disconnect();
+    setActiveDemo(null);
+    setMessages(prev => [...prev, { text: 'Voice demo ended.', isUser: false }]);
   };
 
   return (
@@ -125,6 +147,87 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Voice Demo Section */}
+      <section 
+        className="relative z-10 py-24 px-6 transition-all duration-500"
+        style={{ marginRight: isChatOpen ? '20vw' : '0' }}
+      >
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+              Experience AI Voice Assistance
+            </h2>
+            <p className="mt-6 text-lg text-gray-600 sm:text-xl max-w-3xl mx-auto">
+              Try our real-time voice agents powered by OpenAI. Natural conversations for healthcare workflows.
+            </p>
+          </div>
+
+          {/* Demo Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Patient Intake Demo */}
+            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Patient Intake</h3>
+              <p className="text-gray-600 mb-6">
+                Automated patient information collection with natural conversation flow.
+              </p>
+              <button 
+                onClick={() => handleStartVoiceDemo('patient-intake')}
+                disabled={isConnected}
+                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isConnected && activeDemo === 'patient-intake' ? 'Demo Active' : 'Try Demo'}
+              </button>
+            </div>
+
+            {/* Appointment Booking Demo */}
+            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Appointment Booking</h3>
+              <p className="text-gray-600 mb-6">
+                Schedule appointments through voice with intelligent calendar management.
+              </p>
+              <button 
+                onClick={() => handleStartVoiceDemo('appointment-booking')}
+                disabled={isConnected}
+                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isConnected && activeDemo === 'appointment-booking' ? 'Demo Active' : 'Try Demo'}
+              </button>
+            </div>
+
+            {/* Symptom Checker Demo */}
+            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Symptom Checker</h3>
+              <p className="text-gray-600 mb-6">
+                AI-powered symptom assessment with empathetic conversation.
+              </p>
+              <button 
+                onClick={() => handleStartVoiceDemo('symptoms')}
+                disabled={isConnected}
+                className="w-full rounded-lg bg-[#01B2D6] px-6 py-3 text-base font-semibold text-white transition-all hover:bg-[#0195b3] focus:outline-none focus:ring-4 focus:ring-[#01B2D6]/50 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isConnected && activeDemo === 'symptoms' ? 'Demo Active' : 'Try Demo'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom Search Bar */}
       <div 
         className="fixed bottom-8 z-50 w-full px-4 transition-all duration-500"
@@ -168,19 +271,47 @@ export default function Home() {
       >
         {/* Chat Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-[#01B2D6]">
-          <h3 className="text-lg font-semibold text-white">AI Assistant</h3>
-          <button 
-            onClick={() => setIsChatOpen(false)}
-            className="text-white hover:text-gray-200 transition-colors"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          <div className="flex items-center gap-3">
+            <h3 className="text-lg font-semibold text-white">
+              {isConnected ? `Voice Demo: ${activeDemo}` : 'AI Assistant'}
+            </h3>
+            {isRecording && (
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                <span className="text-xs text-white/80">Recording</span>
+              </div>
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            {isConnected && (
+              <button 
+                onClick={handleEndVoiceDemo}
+                className="px-3 py-1 text-sm bg-white/20 hover:bg-white/30 text-white rounded transition-colors"
+              >
+                End Call
+              </button>
+            )}
+            <button 
+              onClick={() => {
+                setIsChatOpen(false);
+                if (isConnected) disconnect();
+              }}
+              className="text-white hover:text-gray-200 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Chat Messages */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          {error && (
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-sm text-red-800">
+              Error: {error}
+            </div>
+          )}
           {messages.map((message, index) => (
             <div 
               key={index}
