@@ -20,7 +20,9 @@ export async function POST(request: Request) {
       );
     }
 
-    // Register a web call with Retell
+    console.log('🔄 Creating Retell web call for agent:', agentId);
+
+    // Register a web call with Retell (v2 API)
     const response = await fetch('https://api.retellai.com/v2/create-web-call', {
       method: 'POST',
       headers: {
@@ -32,9 +34,15 @@ export async function POST(request: Request) {
       }),
     });
 
+    console.log('📡 Retell API response status:', response.status);
+
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Retell API error:', errorData);
+      const errorData = await response.json().catch(() => ({ message: 'Unknown error' }));
+      console.error('❌ Retell API error:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData,
+      });
       return NextResponse.json(
         { error: 'Failed to register call with Retell', details: errorData },
         { status: response.status }
@@ -42,6 +50,10 @@ export async function POST(request: Request) {
     }
 
     const data = await response.json();
+    console.log('✅ Retell web call created:', {
+      callId: data.call_id,
+      callType: data.call_type,
+    });
 
     return NextResponse.json({
       accessToken: data.access_token,
