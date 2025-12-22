@@ -33,6 +33,7 @@ export async function POST(request: Request) {
     }
 
     // Generate ephemeral token from OpenAI with scenario-specific prompt
+    // Temporarily removing prompt to test if API key works
     const response = await fetch('https://api.openai.com/v1/realtime/sessions', {
       method: 'POST',
       headers: {
@@ -42,10 +43,10 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         model: 'gpt-4o-realtime-preview-2024-12-17',
         voice: 'alloy',
-        prompt: {
-          id: promptId,
-          version: 'latest'
-        }
+        // prompt: {
+        //   id: promptId,
+        //   version: 'latest'
+        // }
       }),
     });
 
