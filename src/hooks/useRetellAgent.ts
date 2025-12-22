@@ -19,31 +19,33 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
     const client = new RetellWebClient();
     retellClientRef.current = client;
 
-    // Set up event listeners
+    // Set up event listeners BEFORE starting call (as per Retell docs)
     client.on('call_started', () => {
       console.log('✅ Retell: Call started');
       setIsConnected(true);
-      setIsRecording(true);
+      setIsRecording(false); // Not recording until agent/user speaks
       setIsConnecting(false);
       setError(null);
-      onStatusChange?.('Connected');
+      onStatusChange?.('Connected - Listening...');
     });
 
-    client.on('call_ended', (endData) => {
-      console.log('❌ Retell: Call ended', endData);
-      console.log('Call end reason:', endData);
+    client.on('call_ended', () => {
+      console.log('❌ Retell: Call ended');
       setIsConnected(false);
       setIsRecording(false);
-      onStatusChange?.('Disconnected');
+      onStatusChange?.('Call ended');
     });
 
     client.on('agent_start_talking', () => {
       console.log('🗣️ Retell: Agent started talking');
       setIsRecording(true);
+      onStatusChange?.('Agent speaking...');
     });
 
     client.on('agent_stop_talking', () => {
       console.log('🤐 Retell: Agent stopped talking');
+      setIsRecording(false);
+      onStatusChange?.('Listening...');
     });
 
     client.on('error', (error) => {
@@ -54,27 +56,18 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
       setIsRecording(false);
       setIsConnecting(false);
       onStatusChange?.('Error: ' + errorMessage);
+      
+      // Stop call on error as per Retell docs
+      try {
+        client.stopCall();
+      } catch (e) {
+        console.error('Error stopping call after error:', e);
+      }
     });
 
     client.on('update', (update) => {
       // Handle real-time updates (transcript, etc.)
       console.log('📝 Retell update:', update);
-    });
-
-    client.on('metadata', (metadata) => {
-      console.log('📊 Retell metadata:', metadata);
-    });
-
-    client.on('audio', (audio) => {
-      console.log('🔊 Retell audio event:', audio);
-    });
-
-    client.on('conversationStarted', () => {
-      console.log('💬 Retell: Conversation started');
-    });
-
-    client.on('conversationEnded', (data) => {
-      console.log('💬 Retell: Conversation ended', data);
     });
 
     return () => {
@@ -124,17 +117,19 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
 
       console.log('🔄 Starting Retell call...');
       console.log('Access token (first 20 chars):', accessToken.substring(0, 20) + '...');
+      console.log('⏰ Note: Access token expires in 30 seconds from creation');
 
-      // Start the call with Retell
-      // Note: Retell SDK will automatically request microphone access
+      // Start the call with Retell (must be within 30 seconds of token creation)
+      // SDK will automatically request microphone access and handle audio
       await retellClientRef.current.startCall({
         accessToken,
-        sampleRate: 24000,
-        captureDeviceId: undefined, // Let browser choose default mic
+        sampleRate: 24000, // Optional: 24000 or 16000
+        captureDeviceId: 'default', // Optional: default mic
+        playbackDeviceId: 'default', // Optional: default speaker
       });
 
       console.log('✅ Retell startCall completed');
-      console.log('Waiting for agent to speak...');
+      console.log('🎤 Call is now active - speak or wait for agent...');
 
     } catch (err: any) {
       console.error('❌ Connection error:', err);
