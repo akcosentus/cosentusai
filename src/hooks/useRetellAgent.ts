@@ -13,24 +13,53 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
   const [isConnecting, setIsConnecting] = useState(false);
   
   const retellClientRef = useRef<RetellWebClient | null>(null);
+  const callActiveRef = useRef(false);
 
   // Initialize Retell client once
   useEffect(() => {
+    // Only initialize if not already initialized
+    if (retellClientRef.current) {
+      console.log('⚠️ Retell client already initialized');
+      return;
+    }
+    
+    console.log('🔧 Initializing Retell Web Client...');
     const client = new RetellWebClient();
     retellClientRef.current = client;
 
     // Set up event listeners BEFORE starting call (as per Retell docs)
     client.on('call_started', () => {
       console.log('✅ Retell: Call started');
+      callActiveRef.current = true;
       setIsConnected(true);
       setIsRecording(false); // Not recording until agent/user speaks
       setIsConnecting(false);
       setError(null);
-      onStatusChange?.('Connected - Listening...');
+      onStatusChange?.('Connected - Waiting for agent...');
     });
 
-    client.on('call_ended', () => {
+    client.on('call_ended', async () => {
       console.log('❌ Retell: Call ended');
+      callActiveRef.current = false;
+      
+      // Try to get call details to understand why it ended
+      const lastCallId = sessionStorage.getItem('lastRetellCallId');
+      if (lastCallId) {
+        try {
+          const response = await fetch(`/api/retell/get-call?callId=${lastCallId}`);
+          if (response.ok) {
+            const callData = await response.json();
+            console.log('📊 Call details:', {
+              status: callData.call_status,
+              disconnection_reason: callData.disconnection_reason,
+              duration_ms: callData.duration_ms,
+            });
+          }
+        } catch (e) {
+          console.error('Could not fetch call details:', e);
+        }
+      }
+      
       setIsConnected(false);
       setIsRecording(false);
       onStatusChange?.('Call ended');
@@ -68,6 +97,11 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
     client.on('update', (update) => {
       // Handle real-time updates (transcript, etc.)
       console.log('📝 Retell update:', update);
+      
+      // Keep call alive by acknowledging updates
+      if (callActiveRef.current && update) {
+        console.log('📡 Received update, call is active');
+      }
     });
 
     return () => {
@@ -114,6 +148,9 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
 
       const { accessToken, callId } = await response.json();
       console.log('✅ Got access token, call ID:', callId);
+      
+      // Store call ID for later debugging
+      sessionStorage.setItem('lastRetellCallId', callId);
 
       console.log('🔄 Starting Retell call...');
       console.log('Access token (first 20 chars):', accessToken.substring(0, 20) + '...');
@@ -128,12 +165,19 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
       });
 
       console.log('✅ Retell startCall completed');
-      console.log('🎤 Call is now active - speak or wait for agent...');
+      console.log('🎤 Call is now active - waiting for agent to speak...');
+      console.log('💡 Agent should speak first (configured to start conversation)');
       
-      // Give the agent a moment to initialize
+      // Monitor call status
       setTimeout(() => {
-        if (!isConnected) {
-          console.warn('⚠️ Call may have ended prematurely - check agent configuration');
+        if (!callActiveRef.current) {
+          console.error('❌ Call ended within 2 seconds - this suggests:');
+          console.error('   1. Network/firewall blocking WebRTC');
+          console.error('   2. Agent configuration changed');
+          console.error('   3. Retell service issue');
+          console.error('   Try: Check Retell dashboard for call logs');
+        } else {
+          console.log('✅ Call still active after 2 seconds');
         }
       }, 2000);
 
