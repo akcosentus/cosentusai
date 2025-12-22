@@ -77,33 +77,22 @@ export const PolkaDotBackground = () => {
         }
         
         // Update hover state
-        const wasHovered = dot.isHovered;
         dot.isHovered = distance < hoverRadius;
         
-        // Smooth transition to target
+        // Smooth transition to target with longer trail
         if (dot.hoverProgress < targetProgress) {
-          const oldProgress = dot.hoverProgress;
-          dot.hoverProgress = Math.min(targetProgress, dot.hoverProgress + 0.15);
-          
-          // Pop up animation when transitioning to blue (not grey dots)
-          if (oldProgress < 0.1 && dot.hoverProgress > 0.1) {
-            dot.scale = 1.4; // Subtle pop (was 2.5)
-          }
+          dot.hoverProgress = Math.min(targetProgress, dot.hoverProgress + 0.15); // Fast fade in
         } else {
-          dot.hoverProgress = Math.max(targetProgress, dot.hoverProgress - 0.08);
+          dot.hoverProgress = Math.max(targetProgress, dot.hoverProgress - 0.02); // Slow fade out = longer trail
         }
 
-        // Animate scale back down
-        if (dot.scale > 1) {
-          dot.scale = Math.max(1, dot.scale - 0.12); // Smooth return to normal
-        }
+        // Scale based on color intensity - darkest blues are bigger
+        const targetScale = 1 + (dot.hoverProgress * 0.5); // 1.0 to 1.5x based on blueness
         
-        // Scale should be tied to color intensity for blue dots
-        if (dot.hoverProgress > 0.3) {
-          const scaleBoost = 1 + (dot.hoverProgress * 0.15); // Max 1.15x at full blue
-          if (dot.scale < scaleBoost) {
-            dot.scale = Math.min(scaleBoost, dot.scale + 0.05);
-          }
+        if (dot.scale < targetScale) {
+          dot.scale = Math.min(targetScale, dot.scale + 0.08);
+        } else {
+          dot.scale = Math.max(targetScale, dot.scale - 0.08);
         }
 
         // Interpolate color

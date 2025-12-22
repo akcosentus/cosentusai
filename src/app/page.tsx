@@ -62,7 +62,17 @@ export default function Home() {
           background: 'radial-gradient(ellipse 75vw 100% at 50% 0%, #01B2D6 0%, #01B2D6 35%, rgba(1, 178, 214, 0.8) 50%, rgba(1, 178, 214, 0.5) 68%, rgba(1, 178, 214, 0.2) 82%, rgba(1, 178, 214, 0.05) 93%, rgba(1, 178, 214, 0) 100%)'
         }}
       >
-        <div className="mx-auto flex items-center justify-center px-4 py-6 sm:px-8 pointer-events-auto">
+        <div className="mx-auto flex items-center justify-between px-4 py-6 sm:px-8 max-w-7xl pointer-events-auto">
+          {/* Logo - Top Right */}
+          <div className="flex-shrink-0">
+            <img 
+              src="https://cosentus.com/wp-content/uploads/2021/08/New-Cosentus-Logo-1.png" 
+              alt="Cosentus Logo" 
+              className="h-8 sm:h-10 w-auto"
+            />
+          </div>
+
+          {/* Navigation Menu - Centered */}
           <ul className="flex flex-wrap items-center justify-center gap-4 text-sm font-light text-white sm:gap-6 md:gap-8 md:text-base lg:gap-10 lg:text-lg">
             <li className="whitespace-nowrap">
               <a href="#about" className="transition-all hover:text-white/80">
