@@ -17,6 +17,15 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
   const connect = useCallback(async () => {
     try {
       setError(null);
+
+      // Check browser compatibility
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error('Your browser does not support voice calls. Please use Chrome, Firefox, Safari, or Edge.');
+      }
+
+      if (!window.RTCPeerConnection) {
+        throw new Error('Your browser does not support WebRTC. Please update your browser.');
+      }
       
       // Get ephemeral token from our API with scenario
       const tokenResponse = await fetch('/api/voice/token', {
@@ -47,13 +56,24 @@ export function useRealtimeVoice({ scenario, onTranscript }: UseRealtimeVoicePro
       };
 
       // Add local audio track (microphone) with noise suppression
-      const stream = await navigator.mediaDevices.getUserMedia({ 
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
+      let stream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ 
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true,
+          }
+        });
+      } catch (micError) {
+        if (micError instanceof Error && micError.name === 'NotAllowedError') {
+          throw new Error('Microphone access denied. Please allow microphone access and try again.');
+        } else if (micError instanceof Error && micError.name === 'NotFoundError') {
+          throw new Error('No microphone found. Please connect a microphone and try again.');
+        } else {
+          throw new Error('Could not access microphone. Please check your browser settings.');
         }
-      });
+      }
       pc.addTrack(stream.getTracks()[0]);
 
       // Set up data channel for messages
