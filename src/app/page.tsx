@@ -53,8 +53,6 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-white">
-      {/* Polka Dot Interactive Background */}
-      <PolkaDotBackground />
       {/* Crisp Black Oval Navbar */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
         <div className="bg-black/90 backdrop-blur-md rounded-full shadow-2xl px-8 py-4 pointer-events-auto border border-white/10">
@@ -122,7 +120,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6 py-12">
-        <div className="max-w-5xl text-center">
+        {/* Polka Dot Interactive Background - Only in Hero Section */}
+        <PolkaDotBackground />
+        <div className="max-w-5xl text-center relative z-10">
           <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl md:text-7xl lg:text-8xl">
             One platform. Patient to payment.
           </h1>
@@ -170,7 +170,7 @@ export default function Home() {
       </div>
 
       {/* Voice Demo Section */}
-      <section className="relative z-10 py-24 px-6">
+      <section className="relative z-10 py-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
