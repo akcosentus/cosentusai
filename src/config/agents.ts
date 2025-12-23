@@ -1,0 +1,63 @@
+/**
+ * Cosentus Voice Agent Configuration
+ * 
+ * Centralized configuration for all voice agents.
+ * This is the single source of truth for agent IDs.
+ * 
+ * When agent IDs change:
+ * 1. Update this file
+ * 2. Update lib/cosentus-voice/config.js (for third-party library)
+ * 3. Redeploy
+ */
+
+export const AGENTS = {
+  /**
+   * Chloe - Customer Service Agent
+   * General customer service, handles inquiries
+   */
+  chloe: process.env.NEXT_PUBLIC_RETELL_AGENT_ID || '',
+
+  /**
+   * Cindy - Payment & Balance Specialist
+   * Handles outstanding balances, payment processing
+   * Speaks 50+ languages, handles 20 calls simultaneously
+   */
+  cindy: 'agent_65a721eac689079c9ce91d7a9b',
+} as const;
+
+/**
+ * Type-safe agent names
+ */
+export type AgentName = keyof typeof AGENTS;
+
+/**
+ * Helper to get agent ID by name
+ */
+export function getAgentId(name: AgentName): string {
+  const id = AGENTS[name];
+  if (!id) {
+    throw new Error(`Agent ID not configured for: ${name}`);
+  }
+  return id;
+}
+
+/**
+ * Helper to validate agent configuration
+ */
+export function validateAgentConfig(): { valid: boolean; errors: string[] } {
+  const errors: string[] = [];
+
+  if (!AGENTS.chloe) {
+    errors.push('NEXT_PUBLIC_RETELL_AGENT_ID not set for Chloe');
+  }
+
+  if (!AGENTS.cindy) {
+    errors.push('Agent ID not set for Cindy');
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors,
+  };
+}
+
