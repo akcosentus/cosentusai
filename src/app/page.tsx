@@ -60,7 +60,7 @@ export default function Home() {
         <div className="bg-black/90 backdrop-blur-md rounded-full shadow-2xl px-8 py-4 pointer-events-auto border border-white/10">
           <div className="flex items-center gap-8">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 pl-2">
               <img 
                 src="https://cosentus.com/wp-content/uploads/2021/08/New-Cosentus-Logo-1.png" 
                 alt="Cosentus Logo" 
@@ -69,7 +69,7 @@ export default function Home() {
             </div>
 
             {/* Navigation Menu */}
-            <ul className="hidden lg:flex items-center gap-6 text-sm font-light text-white">
+            <ul className="hidden lg:flex items-center gap-6 text-sm font-light text-white pr-4">
               <li className="whitespace-nowrap">
                 <a href="#about" className="transition-all hover:text-white/70">
                   About Us
