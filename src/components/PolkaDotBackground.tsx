@@ -96,21 +96,12 @@ export const PolkaDotBackground = () => {
         // Update hover state
         dot.isHovered = distance < hoverRadius;
         
-        // Smooth transition to target with longer trail
-        if (dot.hoverProgress < targetProgress) {
-          dot.hoverProgress = Math.min(targetProgress, dot.hoverProgress + 0.15); // Fast fade in
-        } else {
-          dot.hoverProgress = Math.max(targetProgress, dot.hoverProgress - 0.02); // Slow fade out = longer trail
-        }
+        // Instant color change (no trail)
+        dot.hoverProgress = targetProgress;
 
         // Scale based on color intensity - darkest blues are bigger
         const targetScale = 1 + (dot.hoverProgress * 0.5); // 1.0 to 1.5x based on blueness
-        
-        if (dot.scale < targetScale) {
-          dot.scale = Math.min(targetScale, dot.scale + 0.08);
-        } else {
-          dot.scale = Math.max(targetScale, dot.scale - 0.08);
-        }
+        dot.scale = targetScale; // Instant scale change too
 
         // Interpolate color
         const lightGrey = { r: 243, g: 244, b: 246 }; // gray-100 (even lighter)

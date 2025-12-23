@@ -8,19 +8,25 @@ export default function Home() {
   const [inputValue, setInputValue] = useState('');
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [agentStatus, setAgentStatus] = useState<string>('');
+  const [activeAgent, setActiveAgent] = useState<'chloe' | 'cindy' | null>(null);
 
-  // Retell Agent ID for Chloe (from environment variables only)
-  const AGENT_ID = process.env.NEXT_PUBLIC_RETELL_AGENT_ID;
+  // Agent IDs
+  const CHLOE_AGENT_ID = process.env.NEXT_PUBLIC_RETELL_AGENT_ID; // Chloe
+  const CINDY_AGENT_ID = 'agent_65a721eac689079c9ce91d7a9b'; // Cindy
+
+  // Determine which agent ID to use
+  const currentAgentId = activeAgent === 'chloe' ? CHLOE_AGENT_ID : 
+                         activeAgent === 'cindy' ? CINDY_AGENT_ID : '';
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
-    agentId: AGENT_ID || '',
+    agentId: currentAgentId || '',
     onStatusChange: (status) => {
       setAgentStatus(status);
     },
   });
 
   // Check if environment variables are configured
-  const isConfigured = !!AGENT_ID;
+  const isConfigured = !!CHLOE_AGENT_ID;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,11 +40,13 @@ export default function Home() {
     if (expandedCard === cardId) {
       // Collapse if already expanded
       setExpandedCard(null);
+      setActiveAgent(null);
       if (isConnected) {
         disconnect();
       }
     } else {
       setExpandedCard(cardId);
+      setActiveAgent(cardId as 'chloe' | 'cindy');
     }
   };
 
@@ -49,6 +57,7 @@ export default function Home() {
   const handleEndDemo = () => {
     disconnect();
     setExpandedCard(null);
+    setActiveAgent(null);
   };
 
   return (
@@ -348,20 +357,165 @@ export default function Home() {
               ) : null}
             </div>
 
-            {/* Appointment Booking Demo - Coming Soon */}
-            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg opacity-60">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-gray-400">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Agent 2</h3>
-              <p className="text-gray-600 mb-6">
-                Coming soon...
-              </p>
-              <div className="text-sm text-gray-400 font-medium text-center">
-                Available Soon
-              </div>
+            {/* Cindy - Payment & Balance Agent */}
+            <div 
+              onClick={() => !isConnected && handleExpandCard('cindy')}
+              className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+                expandedCard === 'cindy' 
+                  ? 'md:col-span-3 p-12' 
+                  : 'p-8 hover:shadow-2xl hover:-translate-y-1'
+              } ${expandedCard && expandedCard !== 'cindy' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+            >
+              {!expandedCard || expandedCard === 'cindy' ? (
+                <>
+                  {/* Collapsed State */}
+                  {expandedCard !== 'cindy' && (
+                    <>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">Cindy</h3>
+                      <p className="text-gray-600 mb-6">
+                        Handles outstanding balances and payment processing in 50+ languages.
+                      </p>
+                      <div className="text-sm text-[#01B2D6] font-medium">
+                        Click to learn more →
+                      </div>
+                    </>
+                  )}
+
+                  {/* Expanded State */}
+                  {expandedCard === 'cindy' && (
+                    <div className="flex flex-col md:flex-row gap-12 items-start">
+                      {/* Left Side - Agent Info */}
+                      <div className="flex-1 md:max-w-md">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#01B2D6]/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-[#01B2D6]">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-4xl font-bold text-gray-900">Cindy</h3>
+                            <p className="text-lg text-gray-600">Payment & Balance Specialist</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">About Cindy</h4>
+                            <p className="text-gray-600">
+                              Cindy specializes in handling inbound patient calls for outstanding balance inquiries and payment processing. She provides clear, empathetic assistance to help patients understand and resolve their billing questions.
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
+                            <ul className="text-gray-600 space-y-1">
+                              <li>• Outstanding balance information</li>
+                              <li>• Secure payment processing</li>
+                              <li>• Speaks 50+ languages fluently</li>
+                              <li>• Handles up to 20 calls simultaneously</li>
+                              <li>• Payment plan setup assistance</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-4">
+                          {!isConnected ? (
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleBeginDemo();
+                              }}
+                              disabled={isConnecting}
+                              className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                            >
+                              {isConnecting ? (
+                                <>
+                                  <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                  </svg>
+                                  Connecting...
+                                </>
+                              ) : (
+                                <>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                                  </svg>
+                                  Begin Conversation
+                                </>
+                              )}
+                            </button>
+                          ) : (
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleEndDemo();
+                              }}
+                              className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                            >
+                              End Conversation
+                            </button>
+                          )}
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleExpandCard('cindy');
+                            }}
+                            className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Right Side - Glowing Orb Visualization */}
+                      <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
+                        {isConnected ? (
+                          <div className="flex flex-col items-center gap-6">
+                            {/* Single Glowing Orb */}
+                            <div 
+                              className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                              style={{
+                                boxShadow: isRecording 
+                                  ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
+                                  : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
+                                animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
+                              }}
+                            />
+                            
+                            {/* Status Text */}
+                            <p className="text-gray-600 text-center">
+                              {isRecording ? 'Cindy is speaking...' : 'Listening...'}
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="text-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                            </svg>
+                            <p className="text-sm">
+                              {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                            </p>
+                          </div>
+                        )}
+                        
+                        {/* Error Display - Below orb */}
+                        {error && (
+                          <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg max-w-md">
+                            <p className="text-sm text-red-800 text-center">
+                              <strong>Error:</strong> {error}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : null}
             </div>
 
             {/* Symptom Checker Demo - Coming Soon */}
