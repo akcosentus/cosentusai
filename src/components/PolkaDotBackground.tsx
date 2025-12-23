@@ -13,6 +13,7 @@ export const PolkaDotBackground = () => {
   }>>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const animationFrameRef = useRef<number | undefined>(undefined);
+  const canvasOffsetRef = useRef({ top: 0, left: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -35,6 +36,13 @@ export const PolkaDotBackground = () => {
       
       // Scale all drawing operations by the dpr
       ctx.scale(dpr, dpr);
+      
+      // Update canvas offset position
+      const rect = canvas.getBoundingClientRect();
+      canvasOffsetRef.current = { 
+        top: rect.top + window.scrollY, 
+        left: rect.left + window.scrollX 
+      };
       
       // Regenerate dots on resize
       generateDots();
@@ -62,11 +70,13 @@ export const PolkaDotBackground = () => {
       }
     };
 
-    // Handle mouse move (no scroll offset needed for absolute positioning)
+    // Handle mouse move (account for canvas position and scroll)
     const handleMouseMove = (e: MouseEvent) => {
+      // Get mouse position relative to the canvas
+      const rect = canvas.getBoundingClientRect();
       mouseRef.current = { 
-        x: e.clientX, 
-        y: e.clientY
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
       };
     };
 
