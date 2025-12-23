@@ -24,15 +24,14 @@ export const PolkaDotBackground = () => {
     // Set canvas size with device pixel ratio for crisp rendering
     const setCanvasSize = () => {
       const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
       
-      // Set actual size in memory (scaled to account for extra pixel density)
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      // Set canvas to full viewport size
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = document.documentElement.scrollHeight * dpr;
       
       // Set display size (css pixels)
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${document.documentElement.scrollHeight}px`;
       
       // Scale all drawing operations by the dpr
       ctx.scale(dpr, dpr);
@@ -45,11 +44,10 @@ export const PolkaDotBackground = () => {
     const generateDots = () => {
       dotsRef.current = [];
       const spacing = 35; // Space between dots (closer together)
-      const dotRadius = 3; // Dot size (smaller)
       
-      // Use display dimensions, not canvas buffer dimensions
-      const width = canvas.clientWidth || window.innerWidth;
-      const height = canvas.clientHeight || window.innerHeight;
+      // Use window dimensions for dot grid
+      const width = window.innerWidth;
+      const height = document.documentElement.scrollHeight;
       
       for (let x = spacing; x < width; x += spacing) {
         for (let y = spacing; y < height; y += spacing) {
@@ -74,10 +72,8 @@ export const PolkaDotBackground = () => {
 
     // Animation loop
     const animate = () => {
-      // Clear using display dimensions
-      const width = canvas.clientWidth || window.innerWidth;
-      const height = canvas.clientHeight || window.innerHeight;
-      ctx.clearRect(0, 0, width, height);
+      // Clear using window dimensions
+      ctx.clearRect(0, 0, window.innerWidth, document.documentElement.scrollHeight);
       
       const hoverRadius = 80; // Distance for hover effect
       const mouseX = mouseRef.current.x;
@@ -141,12 +137,14 @@ export const PolkaDotBackground = () => {
     // Initialize
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
+    window.addEventListener('scroll', setCanvasSize); // Recalculate on scroll for dynamic height
     window.addEventListener('mousemove', handleMouseMove);
     animate();
 
     // Cleanup
     return () => {
       window.removeEventListener('resize', setCanvasSize);
+      window.removeEventListener('scroll', setCanvasSize);
       window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -157,8 +155,8 @@ export const PolkaDotBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
-      style={{ zIndex: 0 }}
+      className="fixed top-0 left-0 pointer-events-none"
+      style={{ zIndex: 0, width: '100vw', height: '100vh' }}
     />
   );
 };

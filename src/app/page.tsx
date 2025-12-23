@@ -55,71 +55,68 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden bg-white">
       {/* Polka Dot Interactive Background */}
       <PolkaDotBackground />
-      {/* Top Navbar with Extended Fade - Black */}
-      <nav 
-        className="fixed top-0 left-1/2 -translate-x-1/2 z-30 pb-32 w-full pointer-events-none" 
-        style={{ 
-          background: 'radial-gradient(ellipse 75vw 100% at 50% 0%, #000000 0%, #000000 35%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.5) 68%, rgba(0, 0, 0, 0.2) 82%, rgba(0, 0, 0, 0.05) 93%, rgba(0, 0, 0, 0) 100%)'
-        }}
-      >
-        <div className="mx-auto flex items-center justify-between px-4 py-6 sm:px-8 max-w-7xl pointer-events-auto">
-          {/* Logo - Top Left */}
-          <div className="flex-shrink-0">
-            <img 
-              src="https://cosentus.com/wp-content/uploads/2021/08/New-Cosentus-Logo-1.png" 
-              alt="Cosentus Logo" 
-              className="h-8 sm:h-10 w-auto"
-            />
-          </div>
+      {/* Crisp Black Oval Navbar */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+        <div className="bg-black/90 backdrop-blur-md rounded-full shadow-2xl px-8 py-4 pointer-events-auto border border-white/10">
+          <div className="flex items-center gap-8">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <img 
+                src="https://cosentus.com/wp-content/uploads/2021/08/New-Cosentus-Logo-1.png" 
+                alt="Cosentus Logo" 
+                className="h-8 w-auto"
+              />
+            </div>
 
-          {/* Navigation Menu - Centered */}
-          <ul className="flex flex-wrap items-center justify-center gap-4 text-sm font-light text-white sm:gap-6 md:gap-8 md:text-base lg:gap-10 lg:text-lg">
-            <li className="whitespace-nowrap">
-              <a href="#about" className="transition-all hover:text-white/80">
-                About Us
-              </a>
-            </li>
-            <li className="whitespace-nowrap">
-              <a href="#services" className="transition-all hover:text-white/80">
-                Services
-              </a>
-            </li>
-            <li className="whitespace-nowrap">
-              <a href="#partnership" className="transition-all hover:text-white/80">
-                Partnership
-              </a>
-            </li>
-            <li className="whitespace-nowrap">
-              <a href="#resources" className="transition-all hover:text-white/80">
-                Resources
-              </a>
-            </li>
-            <li className="whitespace-nowrap">
-              <a href="#blogs" className="transition-all hover:text-white/80">
-                Blogs
-              </a>
-            </li>
-            <li className="whitespace-nowrap">
-              <a href="#news" className="transition-all hover:text-white/80">
-                News
-              </a>
-            </li>
-            <li className="whitespace-nowrap">
-              <a href="#events" className="transition-all hover:text-white/80">
-                Events
-              </a>
-            </li>
-            <li className="whitespace-nowrap">
-              <a href="#care" className="transition-all hover:text-white/80">
-                We Care
-              </a>
-            </li>
-            <li className="whitespace-nowrap">
-              <a href="#contact" className="transition-all hover:text-white/80">
-                Contact Us
-              </a>
-            </li>
-          </ul>
+            {/* Navigation Menu */}
+            <ul className="hidden lg:flex items-center gap-6 text-sm font-light text-white">
+              <li className="whitespace-nowrap">
+                <a href="#about" className="transition-all hover:text-white/70">
+                  About Us
+                </a>
+              </li>
+              <li className="whitespace-nowrap">
+                <a href="#services" className="transition-all hover:text-white/70">
+                  Services
+                </a>
+              </li>
+              <li className="whitespace-nowrap">
+                <a href="#partnership" className="transition-all hover:text-white/70">
+                  Partnership
+                </a>
+              </li>
+              <li className="whitespace-nowrap">
+                <a href="#resources" className="transition-all hover:text-white/70">
+                  Resources
+                </a>
+              </li>
+              <li className="whitespace-nowrap">
+                <a href="#blogs" className="transition-all hover:text-white/70">
+                  Blogs
+                </a>
+              </li>
+              <li className="whitespace-nowrap">
+                <a href="#news" className="transition-all hover:text-white/70">
+                  News
+                </a>
+              </li>
+              <li className="whitespace-nowrap">
+                <a href="#events" className="transition-all hover:text-white/70">
+                  Events
+                </a>
+              </li>
+              <li className="whitespace-nowrap">
+                <a href="#care" className="transition-all hover:text-white/70">
+                  We Care
+                </a>
+              </li>
+              <li className="whitespace-nowrap">
+                <a href="#contact" className="transition-all hover:text-white/70">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
 
