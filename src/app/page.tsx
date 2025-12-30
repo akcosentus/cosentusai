@@ -63,6 +63,12 @@ export default function Home() {
         })
       });
       const data = await resp.json();
+      
+      if (!resp.ok || data.error) {
+        setAiError(data.error || "Failed to get response from AI");
+        return;
+      }
+      
       setThreadId(data.thread_id || null);
       setChatHistory([...updatedChat, { role: "assistant" as const, content: data.response }]);
       setTimeout(() => {
@@ -70,8 +76,9 @@ export default function Home() {
           chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100);
-    } catch (e) {
-      setAiError("Error connecting to Cosentus AI");
+    } catch (e: any) {
+      console.error("Chat error:", e);
+      setAiError(e.message || "Error connecting to Cosentus AI");
     } finally {
       setAiLoading(false);
     }
