@@ -197,10 +197,14 @@ export default function Home() {
           <div className={`mt-12 lg:mt-16 w-full max-w-3xl mx-auto transition-all duration-300 ${chatOpen ? 'h-[60vh]' : ''}`}>
             {chatOpen ? (
               // Expanded chat window
-              <div className="h-full flex flex-col bg-white rounded-3xl shadow-xl overflow-hidden">
-                {/* Chat Header with Close Button */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-                  <h3 className="text-lg font-semibold text-gray-900">Cosentus AI Assistant</h3>
+              <div className="h-full flex flex-col bg-white rounded-3xl border border-gray-200 shadow-lg overflow-hidden">
+                {/* Chat Header with Logo and Close Button - Same background as chat */}
+                <div className="flex items-center justify-between px-6 py-4 bg-white">
+                  <img 
+                    src="https://cosentus.com/wp-content/uploads/2021/08/New-Cosentus-Logo-1.png" 
+                    alt="Cosentus" 
+                    className="h-7 w-auto"
+                  />
                   <button
                     type="button"
                     aria-label="Close chat"
@@ -214,7 +218,7 @@ export default function Home() {
                 </div>
 
                 {/* Chat Messages Area - Scrollable */}
-                <div className="flex-1 overflow-y-auto px-6 py-4 bg-gray-50">
+                <div className="flex-1 overflow-y-auto px-6 py-4 bg-white">
                   <div className="flex flex-col gap-4">
                     {chatHistory.map((msg, idx) => (
                       <div key={idx} className={`flex ${msg.role === "user" ? 'justify-end' : 'justify-start'}`}>
@@ -246,7 +250,7 @@ export default function Home() {
                 </div>
 
                 {/* Input Area - Sticky at Bottom */}
-                <div className="px-6 py-4 bg-white border-t border-gray-200">
+                <div className="px-6 py-4 bg-white">
                   <form onSubmit={handleAiChatSubmit} className="relative">
                     <input
                       type="text"
@@ -258,7 +262,7 @@ export default function Home() {
                       }}
                       placeholder="Type your message..."
                       disabled={aiLoading}
-                      className="w-full bg-gray-50 border border-gray-300 rounded-full pl-5 pr-14 py-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#01B2D6] focus:border-transparent transition-all"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-full pl-5 pr-14 py-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#01B2D6] focus:border-transparent transition-all"
                     />
                     <button
                       type="submit"
