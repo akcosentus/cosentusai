@@ -249,10 +249,83 @@ CosentusVoice.configure({
 
 ## Available Agents
 
-| Name | Description |
-|------|-------------|
-| `chloe` | Customer service agent |
-| `cindy` | Payment & balance specialist |
+| Name    | Description                                  |
+|---------|----------------------------------------------|
+| `chloe` | Medical billing & RCM info assistant         |
+| `cindy` | Patient billing support (Q&A + mock call)    |
+| `chris` | Insurance claim follow-up specialist         |
+
+---
+
+### `chloe` – Medical Billing & RCM Assistant
+
+Chloe is a friendly, knowledgeable AI representative for Cosentus. She answers any question about Cosentus, medical billing, revenue cycle management, AI capabilities, company background, pricing, and customer support—drawing from a comprehensive company knowledge base.
+
+**Key capabilities:**
+- Answers any and all questions about Cosentus: company, RCM/billing services, AI tech, value, pricing, process, team, company mission, and more
+- Supports practices across all medical specialties
+- Explains the benefits of Cosentus’s automation and revenue cycle solutions
+- Can handle up to 20 conversations at once, multilingual (see below)
+- Provides concise, conversational, accurate responses
+- Never gives medical advice, PHI, or technical/implementation details
+
+**For dev teams:**
+- Chloe is reliable for all company, services, and AI questions—no strict question list; show her in UX as a “Cosentus info expert.”
+- If unsure, Chloe will gently steer users to real Cosentus staff for details: “That’s a great question—but I don’t have that information right now. Please contact the Cosentus team.”
+- Instructs users to dial 911 for emergencies; never gives medical advice.
+
+### `cindy` – Patient Billing Support Specialist (Q&A + Mock Call)
+
+Cindy is an empathetic AI assistant who helps medical practice patients with billing questions and outstanding balances. On the demo site, Cindy supports **two modes**:
+
+**1. Q&A Mode (Default):**
+- Answers questions about her job, Cosentus' patient billing support, and types of billing questions handled (see below)
+- Explains how she verifies patient identity, what she can/can’t look up
+- Covers the 4 most common patient billing questions:
+  1. Was this billed to primary or secondary insurance?
+  2. Do you have my updated insurance on file?
+  3. Why do I owe this amount?
+  4. I already paid / this isn't my bill
+
+**2. Mock Call Demo Mode:**
+- If the visitor asks for a “mock call” (or to pretend to be a patient), Cindy will roleplay a real support call:
+  1. Greets and verifies name/DOB
+  2. Asks for provider/facility (date of service if needed)
+  3. Responds to one of the 4 billing questions in a natural way
+  4. Closes politely
+- **Encourage users:** “To see Cindy in action, type ‘Can we do a mock call?’ and roleplay a billing question!”
+
+**Key capabilities:**
+- Patient billing Q&A, secure ID verification, supports 20 calls, answers in 10+ languages
+- Transfers to live billing specialist if needed
+- Never gives medical advice or discusses PHI
+
+**Demo safety:**
+- If unsure/off-topic: “That’s a great question – but I’m just a demo version right now. Please reach out to the Cosentus team for specifics.”
+- If user mentions a medical emergency, instructs them to call 911
+
+### `chris` – Insurance Claim Follow-Up Specialist
+
+Handles outbound calls to insurance companies on behalf of medical practices to check claim statuses, resolve denials, and gather information needed for billing.
+
+**Key capabilities:**
+- Calls any insurance carrier to check claim status
+- Handles claim scenarios (not on file, denied, paid, eligibility issues, prior auth problems)
+- Can manage 20 calls at once
+- Speaks English, Spanish, French, German, Hindi, Russian, Portuguese, Japanese, Italian, and Dutch
+- Navigates complex phone menus (IVRs) and talks naturally with real reps
+- Documents and shares next steps
+
+**What to ask Chris:**
+- "What do you do?"
+- "How do you follow up on denied claims?"
+- "Show me a sample insurance call."
+- "Which languages do you speak?"
+- "How many calls can you do at once?"
+
+**Demo safety:**
+- Doesn’t give medical advice, PHI, or ops details
+- If unsure, Chris replies: "That’s a great question – but I’m just a demo version. For more specifics, reach out to Cosentus."
 
 ## React Integration
 
