@@ -15,14 +15,15 @@ export const AGENTS = {
    * Chloe - Customer Service Agent
    * General customer service, handles inquiries
    */
-  chloe: process.env.NEXT_PUBLIC_RETELL_AGENT_ID || '',
+  chloe: 'agent_9d9f880dbde25925f75e5b2739',
 
   /**
    * Cindy - Payment & Balance Specialist
    * Handles outstanding balances, payment processing
    * Speaks 50+ languages, handles 20 calls simultaneously
    */
-  cindy: 'agent_65a721eac689079c9ce91d7a9b',
+  cindy: 'agent_4510e7416ee31ca808b8546ed7',
+  chris: 'agent_9571fe9261e3944f33777a1406',
 } as const;
 
 /**

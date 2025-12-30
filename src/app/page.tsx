@@ -1,18 +1,29 @@
 'use client';
 
 import { PolkaDotBackground } from '@/components/PolkaDotBackground';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 
 export default function Home() {
+  // AI chat state
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatHistory, setChatHistory] = useState<Array<{ role: "user" | "assistant", content: string }>>([]);
+  const [aiInput, setAiInput] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
+  const [threadId, setThreadId] = useState<string | null>(null);
+  const chatBottomRef = useRef<HTMLDivElement>(null);
+  
+  // Old voice demo state:
   const [inputValue, setInputValue] = useState('');
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [agentStatus, setAgentStatus] = useState<string>('');
   const [activeAgent, setActiveAgent] = useState<'chloe' | 'cindy' | null>(null);
 
-  // Agent IDs
-  const CHLOE_AGENT_ID = process.env.NEXT_PUBLIC_RETELL_AGENT_ID; // Chloe
-  const CINDY_AGENT_ID = 'agent_65a721eac689079c9ce91d7a9b'; // Cindy
+  import { AGENTS } from '@/config/agents';
+// Centralized Agent IDs
+const CHLOE_AGENT_ID = AGENTS.chloe;
+const CINDY_AGENT_ID = AGENTS.cindy;
 
   // Determine which agent ID to use
   const currentAgentId = activeAgent === 'chloe' ? CHLOE_AGENT_ID : 
@@ -28,13 +39,52 @@ export default function Home() {
   // Check if environment variables are configured
   const isConfigured = !!CHLOE_AGENT_ID;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (inputValue.trim()) {
-      // Handle search submission
-      setInputValue('');
+  // Chat submit handler
+  const handleAiChatSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const value = aiInput.trim();
+    if (!value) return;
+    setAiLoading(true);
+    setAiError(null);
+    setChatOpen(true);
+    
+    const updatedChat = [...chatHistory, { role: "user" as const, content: value }];
+    setChatHistory(updatedChat);
+    setAiInput("");
+    
+    // Fire request to your API (keep thread if exists)
+    try {
+      const resp = await fetch("/api/assist-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [{ role: "user", content: value }],
+          ...(threadId ? { thread_id: threadId } : {}),
+        })
+      });
+      const data = await resp.json();
+      setThreadId(data.thread_id || null);
+      setChatHistory([...updatedChat, { role: "assistant" as const, content: data.response }]);
+      setTimeout(() => {
+        if (chatBottomRef.current) {
+          chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } catch (e) {
+      setAiError("Error connecting to Cosentus AI");
+    } finally {
+      setAiLoading(false);
     }
   };
+
+  // Old: (deletes the voice-agent search feature, now replaced by chat)
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (inputValue.trim()) {
+  //     setInputValue("");
+  //   }
+  // };
+
 
   const handleExpandCard = (cardId: string) => {
     if (expandedCard === cardId) {
@@ -136,41 +186,80 @@ export default function Home() {
             One platform. Patient to payment.
           </h1>
           
-          {/* Search Bar - Between Hero and Subheading */}
-          <div className="mt-12 lg:mt-16 w-full max-w-3xl mx-auto">
-            <form onSubmit={handleSubmit} className="relative flex items-center rounded-full border border-gray-300 bg-white shadow-2xl">
-              {/* Plus Icon */}
-              <button type="button" className="absolute left-5 flex h-10 w-10 items-center justify-center text-gray-500 hover:text-gray-700 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </button>
+          {/* AI Chat Bubble (Expands vertically when chatOpen) */}
+<div className={`mt-12 lg:mt-16 w-full max-w-3xl mx-auto flex flex-col items-center transition-all duration-300 ${chatOpen ? 'rounded-3xl shadow-2xl border border-gray-300 bg-white py-6 px-4' : ''}`}
+  style={chatOpen ? { height: '60vh', maxHeight: '60vh' } : {}}>
+  <form
+    onSubmit={handleAiChatSubmit}
+    className={`w-full flex items-center gap-2 transition-all ${chatOpen ? 'mb-4' : ''}`}
+  >
+    {/* Input grows/collapses based on chatOpen */}
+    <input
+      type="text"
+      value={aiInput}
+      autoFocus={chatOpen}
+      onChange={(e) => setAiInput(e.target.value)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' && !e.shiftKey) handleAiChatSubmit(e);
+      }}
+      placeholder="Ask Cosentus anything..."
+      disabled={aiLoading}
+      className={`transition-all focus:ring-2 ring-[#01B2D6] bg-white border focus:border-[#01B2D6] placeholder-gray-400 text-base py-4 px-6 rounded-full w-full ${chatOpen ? 'rounded-2xl' : ''}`}
+    />
+    <button
+      type="submit"
+      disabled={!aiInput.trim() || aiLoading}
+      className={`flex h-10 w-10 items-center justify-center rounded-full bg-[#01B2D6] text-white transition-all ml-2 ${aiInput.trim() && !aiLoading ? 'opacity-100 hover:bg-[#0195b3]' : 'opacity-30 cursor-not-allowed'}`}
+    >
+      {aiLoading ? (
+        <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+        </svg>
+      )}
+    </button>
+    {/* Close button when chat is open */}
+    {chatOpen && (
+      <button
+        type="button"
+        aria-label="Close chat"
+        onClick={() => { setChatOpen(false); setChatHistory([]); setThreadId(null); setAiError(null); }}
+        className="ml-2 text-gray-400 hover:text-gray-700 text-xl focus:outline-none p-1 rounded transition-colors"
+      >
+        &times;
+      </button>
+    )}
+  </form>
 
-              {/* Input */}
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask anything"
-                className="w-full rounded-full py-4 pl-20 pr-20 text-base text-gray-900 placeholder-gray-400 focus:outline-none"
-              />
-
-              {/* Send Button - Up Arrow with Fade */}
-              <button 
-                type="submit" 
-                disabled={!inputValue.trim()}
-                className={`absolute right-5 flex h-10 w-10 items-center justify-center rounded-full bg-[#01B2D6] text-white transition-all ${
-                  inputValue.trim() 
-                    ? 'opacity-100 hover:bg-[#0195b3]' 
-                    : 'opacity-30 cursor-not-allowed'
-                }`}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
-                </svg>
-              </button>
-            </form>
+  {/* Chat history bubble - only shown when chatOpen true */}
+  {chatOpen && (
+    <div className="w-full flex-1 flex flex-col rounded-2xl bg-gray-50 overflow-y-auto transition-all" style={{ maxHeight: "calc(60vh - 70px)", minHeight: 170, padding: '14px' }}>
+      <div className="flex flex-col gap-4 w-full">
+        {chatHistory.map((msg, idx) => (
+          <div key={idx} className={`w-full flex ${msg.role === "user" ? 'justify-end' : 'justify-start'}`}>
+            <div className={`max-w-[90%] px-4 py-2 rounded-2xl shadow text-base break-words whitespace-pre-line ${msg.role === "user" ? 'bg-[#01B2D6] text-white rounded-br-lg' : 'bg-white text-gray-800 rounded-bl-lg border border-gray-200'}`}>
+              {msg.content}
+            </div>
           </div>
+        ))}
+        {aiLoading && (
+          <div className="flex justify-start">
+            <div className="bg-white border border-gray-200 px-4 py-2 rounded-2xl text-base text-gray-400 animate-pulse">Assistant is typing…</div>
+          </div>
+        )}
+        {aiError && (
+          <div className="flex justify-center"><div className="text-sm text-red-800 bg-red-50 border border-red-200 rounded-lg px-4 py-2">{aiError}</div></div>
+        )}
+        <div ref={chatBottomRef} tabIndex={-1}></div>
+      </div>
+    </div>
+  )}
+</div>
+
 
           <p className="mt-8 text-lg text-gray-700 sm:text-xl md:text-2xl lg:mt-10">
             Stop juggling vendors. Full-cycle healthcare automation built on 25 years of expertise.
