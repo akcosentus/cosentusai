@@ -194,83 +194,131 @@ export default function Home() {
           </h1>
           
           {/* AI Chat Bubble (Expands vertically when chatOpen) */}
-<div className={`mt-12 lg:mt-16 w-full max-w-3xl mx-auto flex flex-col items-center transition-all duration-300 ${chatOpen ? 'rounded-3xl shadow-2xl border border-gray-300 bg-white py-6 px-4' : ''}`}
-  style={chatOpen ? { height: '60vh', maxHeight: '60vh' } : {}}>
-  <form
-    onSubmit={handleAiChatSubmit}
-    className={`w-full flex items-center gap-2 transition-all ${chatOpen ? 'mb-4' : ''}`}
-  >
-    {/* Input grows/collapses based on chatOpen */}
-    <input
-      type="text"
-      value={aiInput}
-      autoFocus={chatOpen}
-      onChange={(e) => setAiInput(e.target.value)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' && !e.shiftKey) handleAiChatSubmit(e);
-      }}
-      placeholder="Ask Cosentus anything..."
-      disabled={aiLoading}
-      className={`transition-all focus:ring-2 ring-[#01B2D6] bg-white border focus:border-[#01B2D6] placeholder-gray-400 text-base py-4 px-6 rounded-full w-full ${chatOpen ? 'rounded-2xl' : ''}`}
-    />
-    <button
-      type="submit"
-      disabled={!aiInput.trim() || aiLoading}
-      className={`flex h-10 w-10 items-center justify-center rounded-full bg-[#01B2D6] text-white transition-all ml-2 ${aiInput.trim() && !aiLoading ? 'opacity-100 hover:bg-[#0195b3]' : 'opacity-30 cursor-not-allowed'}`}
-    >
-      {aiLoading ? (
-        <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-        </svg>
-      ) : (
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
-        </svg>
-      )}
-    </button>
-    {/* Close button when chat is open */}
-    {chatOpen && (
-      <button
-        type="button"
-        aria-label="Close chat"
-        onClick={() => { setChatOpen(false); setChatHistory([]); setThreadId(null); setAiError(null); }}
-        className="ml-2 text-gray-400 hover:text-gray-700 text-xl focus:outline-none p-1 rounded transition-colors"
-      >
-        &times;
-      </button>
-    )}
-  </form>
+          <div className={`mt-12 lg:mt-16 w-full max-w-3xl mx-auto transition-all duration-300 ${chatOpen ? 'h-[60vh]' : ''}`}>
+            {chatOpen ? (
+              // Expanded chat window
+              <div className="h-full flex flex-col bg-white rounded-3xl shadow-xl overflow-hidden">
+                {/* Chat Header with Close Button */}
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                  <h3 className="text-lg font-semibold text-gray-900">Cosentus AI Assistant</h3>
+                  <button
+                    type="button"
+                    aria-label="Close chat"
+                    onClick={() => { setChatOpen(false); setChatHistory([]); setThreadId(null); setAiError(null); }}
+                    className="text-gray-400 hover:text-gray-700 transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
 
-  {/* Chat history bubble - only shown when chatOpen true */}
-  {chatOpen && (
-    <div className="w-full flex-1 flex flex-col rounded-2xl bg-gray-50 overflow-y-auto transition-all" style={{ maxHeight: "calc(60vh - 70px)", minHeight: 170, padding: '14px' }}>
-      <div className="flex flex-col gap-4 w-full">
-        {chatHistory.map((msg, idx) => (
-          <div key={idx} className={`w-full flex ${msg.role === "user" ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[90%] px-4 py-2 rounded-2xl shadow text-base break-words whitespace-pre-line ${msg.role === "user" ? 'bg-[#01B2D6] text-white rounded-br-lg' : 'bg-white text-gray-800 rounded-bl-lg border border-gray-200'}`}>
-              {msg.content}
-            </div>
+                {/* Chat Messages Area - Scrollable */}
+                <div className="flex-1 overflow-y-auto px-6 py-4 bg-gray-50">
+                  <div className="flex flex-col gap-4">
+                    {chatHistory.map((msg, idx) => (
+                      <div key={idx} className={`flex ${msg.role === "user" ? 'justify-end' : 'justify-start'}`}>
+                        <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-base break-words whitespace-pre-line ${msg.role === "user" ? 'bg-[#01B2D6] text-white rounded-br-sm' : 'bg-white text-gray-800 rounded-bl-sm shadow-sm'}`}>
+                          {msg.content}
+                        </div>
+                      </div>
+                    ))}
+                    {aiLoading && (
+                      <div className="flex justify-start">
+                        <div className="bg-white px-4 py-3 rounded-2xl rounded-bl-sm text-base text-gray-400 shadow-sm">
+                          <div className="flex items-center gap-2">
+                            <div className="flex gap-1">
+                              <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                              <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                              <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {aiError && (
+                      <div className="flex justify-center">
+                        <div className="text-sm text-red-800 bg-red-50 rounded-lg px-4 py-2 shadow-sm">{aiError}</div>
+                      </div>
+                    )}
+                    <div ref={chatBottomRef} tabIndex={-1}></div>
+                  </div>
+                </div>
+
+                {/* Input Area - Sticky at Bottom */}
+                <div className="px-6 py-4 bg-white border-t border-gray-200">
+                  <form onSubmit={handleAiChatSubmit} className="relative">
+                    <input
+                      type="text"
+                      value={aiInput}
+                      autoFocus
+                      onChange={(e) => setAiInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) handleAiChatSubmit(e);
+                      }}
+                      placeholder="Type your message..."
+                      disabled={aiLoading}
+                      className="w-full bg-gray-50 border border-gray-300 rounded-full pl-5 pr-14 py-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#01B2D6] focus:border-transparent transition-all"
+                    />
+                    <button
+                      type="submit"
+                      disabled={!aiInput.trim() || aiLoading}
+                      className={`absolute right-2 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-[#01B2D6] text-white transition-all ${aiInput.trim() && !aiLoading ? 'opacity-100 hover:bg-[#0195b3] hover:scale-105' : 'opacity-40 cursor-not-allowed'}`}
+                    >
+                      {aiLoading ? (
+                        <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                        </svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+                        </svg>
+                      )}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            ) : (
+              // Collapsed search bar
+              <form onSubmit={handleAiChatSubmit} className="relative bg-white rounded-full shadow-lg hover:shadow-xl transition-shadow">
+                <input
+                  type="text"
+                  value={aiInput}
+                  onChange={(e) => setAiInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) handleAiChatSubmit(e);
+                  }}
+                  placeholder="Ask Cosentus anything..."
+                  disabled={aiLoading}
+                  className="w-full rounded-full py-4 pl-6 pr-14 text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#01B2D6] bg-transparent"
+                />
+                <button
+                  type="submit"
+                  disabled={!aiInput.trim() || aiLoading}
+                  className={`absolute right-2 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-[#01B2D6] text-white transition-all ${aiInput.trim() && !aiLoading ? 'opacity-100 hover:bg-[#0195b3] hover:scale-105' : 'opacity-40 cursor-not-allowed'}`}
+                >
+                  {aiLoading ? (
+                    <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+                    </svg>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
-        ))}
-        {aiLoading && (
-          <div className="flex justify-start">
-            <div className="bg-white border border-gray-200 px-4 py-2 rounded-2xl text-base text-gray-400 animate-pulse">Assistant is typing…</div>
-          </div>
-        )}
-        {aiError && (
-          <div className="flex justify-center"><div className="text-sm text-red-800 bg-red-50 border border-red-200 rounded-lg px-4 py-2">{aiError}</div></div>
-        )}
-        <div ref={chatBottomRef} tabIndex={-1}></div>
-      </div>
-    </div>
-  )}
-</div>
 
 
-          <p className="mt-8 text-lg text-gray-700 sm:text-xl md:text-2xl lg:mt-10">
-            Stop juggling vendors. Full-cycle healthcare automation built on 25 years of expertise.
-          </p>
+          {!chatOpen && (
+            <p className="mt-8 text-lg text-gray-700 sm:text-xl md:text-2xl lg:mt-10">
+              Stop juggling vendors. Full-cycle healthcare automation built on 25 years of expertise.
+            </p>
+          )}
         </div>
       </div>
 
