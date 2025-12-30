@@ -281,7 +281,7 @@ export default function Home() {
               </div>
             ) : (
               // Collapsed search bar
-              <form onSubmit={handleAiChatSubmit} className="relative bg-white rounded-full shadow-lg hover:shadow-xl transition-shadow">
+              <form onSubmit={handleAiChatSubmit} className="relative bg-white rounded-full border border-gray-200 shadow-md hover:shadow-lg transition-all">
                 <input
                   type="text"
                   value={aiInput}
@@ -291,7 +291,7 @@ export default function Home() {
                   }}
                   placeholder="Ask Cosentus anything..."
                   disabled={aiLoading}
-                  className="w-full rounded-full py-4 pl-6 pr-14 text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#01B2D6] bg-transparent"
+                  className="w-full rounded-full py-4 pl-6 pr-14 text-base text-gray-900 placeholder-gray-400 focus:outline-none bg-transparent"
                 />
                 <button
                   type="submit"
