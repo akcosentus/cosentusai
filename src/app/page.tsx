@@ -3,6 +3,7 @@
 import { PolkaDotBackground } from '@/components/PolkaDotBackground';
 import { useRef, useState } from 'react';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
+import { AGENTS } from '@/config/agents';
 
 export default function Home() {
   // AI chat state
@@ -20,10 +21,9 @@ export default function Home() {
   const [agentStatus, setAgentStatus] = useState<string>('');
   const [activeAgent, setActiveAgent] = useState<'chloe' | 'cindy' | null>(null);
 
-  import { AGENTS } from '@/config/agents';
-// Centralized Agent IDs
-const CHLOE_AGENT_ID = AGENTS.chloe;
-const CINDY_AGENT_ID = AGENTS.cindy;
+  // Centralized Agent IDs
+  const CHLOE_AGENT_ID = AGENTS.chloe;
+  const CINDY_AGENT_ID = AGENTS.cindy;
 
   // Determine which agent ID to use
   const currentAgentId = activeAgent === 'chloe' ? CHLOE_AGENT_ID : 
