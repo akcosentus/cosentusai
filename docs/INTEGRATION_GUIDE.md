@@ -139,6 +139,7 @@ Use these names when creating agents:
 | `'chris'` | Insurance claim specialist | Claim follow-ups, denial resolution, carrier calls |
 | `'cara'` | Eligibility & benefits verification | Insurance verification, coverage checks, benefits |
 | `'carly'` | Prior authorization follow-up | Auth status checks, expedited reviews, approvals |
+| `'carson'` | Payment reconciliation | Missing payments, discrepancies, EOB retrieval |
 
 **Example:**
 ```javascript
@@ -147,6 +148,7 @@ const cindy = CosentusVoice.createAgent('cindy');
 const chris = CosentusVoice.createAgent('chris');
 const cara = CosentusVoice.createAgent('cara');
 const carly = CosentusVoice.createAgent('carly');
+const carson = CosentusVoice.createAgent('carson');
 ```
 
 ---

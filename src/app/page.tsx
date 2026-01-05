@@ -27,13 +27,15 @@ export default function Home() {
   const CHRIS_AGENT_ID = AGENTS.chris;
   const CARA_AGENT_ID = AGENTS.cara;
   const CARLY_AGENT_ID = AGENTS.carly;
+  const CARSON_AGENT_ID = AGENTS.carson;
 
   // Determine which agent ID to use
   const currentAgentId = activeAgent === 'chloe' ? CHLOE_AGENT_ID : 
                          activeAgent === 'cindy' ? CINDY_AGENT_ID :
                          activeAgent === 'chris' ? CHRIS_AGENT_ID :
                          activeAgent === 'cara' ? CARA_AGENT_ID :
-                         activeAgent === 'carly' ? CARLY_AGENT_ID : '';
+                         activeAgent === 'carly' ? CARLY_AGENT_ID :
+                         activeAgent === 'carson' ? CARSON_AGENT_ID : '';
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
     agentId: currentAgentId || '',
@@ -969,6 +971,160 @@ export default function Home() {
                           <div className="text-center text-gray-500">
                             <p className="mb-4">Click "Begin Conversation" to start talking with Carly</p>
                             <p className="text-sm">She'll demonstrate how she tracks prior authorization approvals</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : null}
+            </div>
+
+            {/* Carson - Payment Reconciliation */}
+            <div 
+              onClick={() => !isConnected && handleExpandCard('carson')}
+              className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+                expandedCard === 'carson' 
+                  ? 'md:col-span-3 p-12' 
+                  : 'p-8 hover:shadow-2xl hover:-translate-y-1'
+              } ${expandedCard && expandedCard !== 'carson' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+            >
+              {!expandedCard || expandedCard === 'carson' ? (
+                <>
+                  {/* Collapsed State */}
+                  {expandedCard !== 'carson' && (
+                    <>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">Carson</h3>
+                      <p className="text-gray-600 mb-6">
+                        Tracks down payment discrepancies and resolves missing or incorrect payments.
+                      </p>
+                      <div className="text-sm text-[#01B2D6] font-medium">
+                        Click to learn more →
+                      </div>
+                    </>
+                  )}
+
+                  {/* Expanded State */}
+                  {expandedCard === 'carson' && (
+                    <div className="flex flex-col md:flex-row gap-12 items-start">
+                      {/* Left Side - Agent Info */}
+                      <div className="flex-1 md:max-w-md">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#01B2D6]/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-[#01B2D6]">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-4xl font-bold text-gray-900">Carson</h3>
+                            <p className="text-lg text-gray-600">Payment Reconciliation</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">About Carson</h4>
+                            <p className="text-gray-600">
+                              Carson is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
+                            <ul className="text-gray-600 space-y-1">
+                              <li>• Missing payment investigation</li>
+                              <li>• Payment discrepancy resolution</li>
+                              <li>• Check trace and reissue requests</li>
+                              <li>• Duplicate EOB retrieval</li>
+                              <li>• Overpayment refund processing</li>
+                              <li>• EFT payment tracking</li>
+                              <li>• Handles hundreds of reconciliation calls per day</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-4">
+                          {!isConnected ? (
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleBeginDemo();
+                              }}
+                              disabled={isConnecting}
+                              className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                            >
+                              {isConnecting ? (
+                                <>
+                                  <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                  </svg>
+                                  Connecting...
+                                </>
+                              ) : (
+                                <>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                                  </svg>
+                                  Begin Conversation
+                                </>
+                              )}
+                            </button>
+                          ) : (
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleEndDemo();
+                              }}
+                              className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                            >
+                              End Conversation
+                            </button>
+                          )}
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleExpandCard('carson');
+                            }}
+                            className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Right Side - Glowing Orb Visualization */}
+                      <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
+                        {isConnected ? (
+                          <div className="flex flex-col items-center gap-6">
+                            {/* Single Glowing Orb */}
+                            <div 
+                              className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                              style={{
+                                boxShadow: isRecording 
+                                  ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
+                                  : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
+                                animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
+                              }}
+                            />
+                            
+                            {/* Status Text */}
+                            <p className="text-gray-600 text-center">
+                              {isRecording ? 'Carson is speaking...' : 'Listening...'}
+                            </p>
+                            
+                            <p className="text-sm text-gray-500 text-center max-w-xs">
+                              Try asking: "Can you track down a missing payment?" or "Show me how you resolve a discrepancy"
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="text-center text-gray-500">
+                            <p className="mb-4">Click "Begin Conversation" to start talking with Carson</p>
+                            <p className="text-sm">He'll demonstrate how he tracks down payment issues</p>
                           </div>
                         )}
                       </div>

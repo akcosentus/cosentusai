@@ -41,6 +41,12 @@ export const AGENTS = {
    * Tracks prior authorization approvals with insurance companies
    */
   carly: 'agent_a8f606995d3160a92be6874661',
+  
+  /**
+   * Carson - Payment Reconciliation
+   * Tracks down and resolves payment discrepancies with insurance companies
+   */
+  carson: 'agent_443ead51c8a35f874d0ca1a8c1',
 } as const;
 
 /**
