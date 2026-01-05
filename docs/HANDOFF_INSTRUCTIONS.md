@@ -20,6 +20,9 @@ Available Agents:
 - chloe (company info)
 - cindy (patient billing)  
 - chris (insurance claims)
+- cara (eligibility verification)
+- carly (prior authorization)
+- carson (payment reconciliation)
 ```
 
 **That's it!** No git access, no codebase, just docs + URLs.
@@ -116,6 +119,9 @@ Attached are the integration docs for the Cosentus AI agents. Here's what you ne
 • chloe - Company info expert
 • cindy - Patient billing support
 • chris - Insurance claim follow-up
+• cara - Eligibility & benefits verification
+• carly - Prior authorization follow-up
+• carson - Payment reconciliation
 • Homepage AI Chat - Text-based assistant
 
 📚 DOCUMENTATION:
@@ -135,7 +141,7 @@ Best,
 ## ✅ Checklist Before Sending
 
 - [x] Replace `YOUR_VERCEL_URL` in all docs with actual URL (https://cosentusai.vercel.app)
-- [ ] Test all 3 voice agents on your demo site
+- [ ] Test all 6 voice agents on your demo site
 - [ ] Test the chat agent on your demo site
 - [ ] Verify SDK loads from `https://cosentusai.vercel.app/cosentus-voice.js`
 - [ ] Verify both API endpoints work

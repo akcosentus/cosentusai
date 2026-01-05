@@ -12,6 +12,9 @@ This guide will help you integrate Cosentus AI agents (voice + chat) into your w
 - **Chloe** - Cosentus company information expert
 - **Cindy** - Patient billing support specialist
 - **Chris** - Insurance claim follow-up specialist
+- **Cara** - Eligibility & benefits verification
+- **Carly** - Prior authorization follow-up
+- **Carson** - Payment reconciliation specialist
 
 ### **Chat Agent** (Text-based AI assistant)
 - **Homepage AI Chat** - Answers questions about Cosentus using knowledge base

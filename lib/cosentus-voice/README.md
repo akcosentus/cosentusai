@@ -249,11 +249,14 @@ CosentusVoice.configure({
 
 ## Available Agents
 
-| Name    | Description                                  |
-|---------|----------------------------------------------|
-| `chloe` | Medical billing & RCM info assistant         |
-| `cindy` | Patient billing support (Q&A + mock call)    |
-| `chris` | Insurance claim follow-up specialist         |
+| Name     | Description                                  |
+|----------|----------------------------------------------|
+| `chloe`  | Medical billing & RCM info assistant         |
+| `cindy`  | Patient billing support (Q&A + mock call)    |
+| `chris`  | Insurance claim follow-up specialist         |
+| `cara`   | Eligibility & benefits verification          |
+| `carly`  | Prior authorization follow-up                |
+| `carson` | Payment reconciliation specialist            |
 
 ---
 
@@ -324,8 +327,75 @@ Handles outbound calls to insurance companies on behalf of medical practices to 
 - "How many calls can you do at once?"
 
 **Demo safety:**
-- Doesn’t give medical advice, PHI, or ops details
-- If unsure, Chris replies: "That’s a great question – but I’m just a demo version. For more specifics, reach out to Cosentus."
+- Doesn't give medical advice, PHI, or ops details
+- If unsure, Chris replies: "That's a great question – but I'm just a demo version. For more specifics, reach out to Cosentus."
+
+### `cara` – Eligibility & Benefits Verification
+
+Cara specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status.
+
+**Key capabilities:**
+- Insurance eligibility verification
+- Benefits and coverage details
+- Deductible and out-of-pocket tracking
+- In-network vs out-of-network status
+- Secondary insurance coordination
+- Handles hundreds of verification calls per day
+
+**What to ask Cara:**
+- "What do you do?"
+- "Can you show me how you verify insurance?"
+- "Walk me through an eligibility check"
+- "How do you handle secondary insurance?"
+
+**Demo safety:**
+- Doesn't access real patient data
+- If unsure, Cara replies: "That's a great question – but I'm just a demo version. For more specifics, reach out to Cosentus."
+
+### `carly` – Prior Authorization Follow-Up
+
+Carly tracks down prior authorization approvals with insurance companies. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases.
+
+**Key capabilities:**
+- Prior authorization status checks
+- Approval tracking and documentation
+- Expedited review requests for urgent cases
+- Denial reason capture and appeals support
+- Auth number and validity date tracking
+- Handles dozens of auth calls per day
+
+**What to ask Carly:**
+- "What do you do?"
+- "Can you check on a prior auth?"
+- "Show me how you handle an urgent case"
+- "How do you expedite authorizations?"
+
+**Demo safety:**
+- Doesn't access real auth data
+- If unsure, Carly replies: "That's a great question – but I'm just a demo version. For more specifics, reach out to Cosentus."
+
+### `carson` – Payment Reconciliation Specialist
+
+Carson is your financial detective, tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, and incorrect amounts.
+
+**Key capabilities:**
+- Missing payment investigation
+- Payment discrepancy resolution
+- Check trace and reissue requests
+- Duplicate EOB retrieval
+- Overpayment refund processing
+- EFT payment tracking
+- Handles hundreds of reconciliation calls per day
+
+**What to ask Carson:**
+- "What do you do?"
+- "Can you track down a missing payment?"
+- "Show me how you resolve a discrepancy"
+- "How do you handle overpayments?"
+
+**Demo safety:**
+- Doesn't access real financial data
+- If unsure, Carson replies: "That's a great question – but I'm just a demo version. For more specifics, reach out to Cosentus."
 
 ## React Integration
 
