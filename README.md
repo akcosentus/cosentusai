@@ -1,30 +1,36 @@
-# Cosentus AI - Voice Agent Demo & Integration Kit
+# Cosentus AI - Voice Agent Integration Kit
 
-A Next.js application showcasing Retell AI voice agents and AI chat for healthcare automation. Includes a headless JavaScript SDK for easy third-party integration.
+Production-ready AI voice agents and chat assistant for healthcare automation. Includes a headless JavaScript SDK for seamless third-party integration.
+
+**Live Demo:** https://cosentusai.vercel.app
 
 ---
 
 ## 🚀 For Third-Party Developers
 
-**Looking to integrate Cosentus AI agents into your website?**
+**Integrating Cosentus AI agents into your website?**
 
 👉 **Start here:** [`docs/INTEGRATION_GUIDE.md`](docs/INTEGRATION_GUIDE.md)
 
-### Quick Links:
-- 📚 **Integration Guide:** [`docs/INTEGRATION_GUIDE.md`](docs/INTEGRATION_GUIDE.md) - Complete guide with code examples
-- 🎤 **Voice SDK Docs:** [`lib/cosentus-voice/README.md`](lib/cosentus-voice/README.md) - Detailed SDK documentation
-- 🔗 **Live Demo:** https://cosentusai.vercel.app
-- 📦 **SDK File:** https://cosentusai.vercel.app/cosentus-voice.js
+### Quick Links
 
-### API Endpoints:
+- 📚 [Integration Guide](docs/INTEGRATION_GUIDE.md) - Complete guide with code examples
+- 🎤 [Voice SDK Docs](lib/cosentus-voice/README.md) - Detailed SDK documentation
+- 📦 **SDK:** https://cosentusai.vercel.app/cosentus-voice.js
+
+### API Endpoints
+
 - **Voice Agents:** `https://cosentusai.vercel.app/api/retell/register-call`
 - **Chat Agent:** `https://cosentusai.vercel.app/api/assist-chat`
 
-### Available Agents:
-- **chloe** - Cosentus company information expert
-- **cindy** - Patient billing support specialist
-- **chris** - Insurance claim follow-up specialist
-- **Homepage AI Chat** - Text-based Q&A assistant
+### Available Agents
+
+| Agent | Description |
+|-------|-------------|
+| `chloe` | Cosentus company information expert |
+| `cindy` | Patient billing support specialist |
+| `chris` | Insurance claim follow-up specialist |
+| Chat AI | Text-based Q&A assistant |
 
 ---
 
@@ -32,136 +38,89 @@ A Next.js application showcasing Retell AI voice agents and AI chat for healthca
 
 ```
 cosentusai/
-├── docs/                          # Documentation for third-party developers
-│   ├── INTEGRATION_GUIDE.md       # 👈 START HERE - Complete integration guide
-│   ├── CALL_CHEAT_SHEET.md        # Quick reference for stakeholder calls
-│   ├── HANDOFF_INSTRUCTIONS.md    # How to hand off to developers
-│   ├── N8N_SETUP.md               # n8n webhook configuration
-│   └── internal/                  # Internal Cosentus documentation
-│       ├── AUDIT.md
-│       ├── ENV_SETUP.md
-│       ├── RETELL_SETUP.md
-│       └── cleanup.sh
-├── lib/
-│   └── cosentus-voice/            # Voice agent SDK
-│       ├── cosentus-voice.js      # SDK source file
-│       └── README.md              # Detailed SDK documentation
+├── docs/                          # Third-party developer documentation
+│   ├── INTEGRATION_GUIDE.md       # 👈 START HERE
+│   ├── N8N_SETUP.md               # n8n webhook setup
+│   └── internal/                  # Internal documentation
+├── lib/cosentus-voice/            # Voice agent SDK
+│   ├── cosentus-voice.js          # SDK source
+│   └── README.md                  # SDK documentation
 ├── public/
-│   └── cosentus-voice.js          # SDK hosted for CDN access
+│   └── cosentus-voice.js          # Hosted SDK (CDN)
 ├── src/
 │   ├── app/
 │   │   ├── api/
-│   │   │   ├── assist-chat/       # AI chat API endpoint
-│   │   │   └── retell/            # Voice agent API endpoint
+│   │   │   ├── assist-chat/       # Chat API endpoint
+│   │   │   └── retell/            # Voice API endpoint
 │   │   └── page.tsx               # Demo homepage
 │   ├── config/
-│   │   └── agents.ts              # Centralized agent ID configuration
+│   │   └── agents.ts              # Agent ID configuration
 │   └── hooks/
-│       └── useRetellAgent.ts      # React hook for voice agents
-├── update-sdk.sh                  # Script to sync SDK to public folder
-└── README.md                      # This file
+│       └── useRetellAgent.ts      # React voice hook
+└── update-sdk.sh                  # SDK sync script
 ```
 
 ---
 
-## Features
+## 🛠️ Tech Stack
 
-- 🎤 **Real-time Voice Conversations** - Browser-based voice AI powered by Retell AI
-- 💬 **AI Chat Assistant** - Powered by n8n workflow with custom AI logic
-- 🎨 **Modern UI** - Clean, responsive design with Tailwind CSS
-- ⚡ **WebRTC Integration** - Low-latency voice streaming
-- 🔒 **Secure** - API keys protected server-side, rate limiting enabled
-- 📦 **Headless SDK** - Framework-agnostic voice agent library for third-party developers
+- **Frontend:** Next.js 16, React, Tailwind CSS
+- **Voice AI:** Retell AI (WebRTC)
+- **Chat AI:** n8n workflow
+- **Deployment:** Vercel
+- **SDK:** Vanilla JavaScript (framework-agnostic)
 
-## Tech Stack
+---
 
-- **Frontend**: Next.js 16 (App Router), React, Tailwind CSS
-- **Voice AI**: Retell AI (WebRTC + Voice Agents)
-- **Chat AI**: n8n workflow (flexible AI backend)
-- **Deployment**: Vercel
-- **SDK**: Vanilla JavaScript (works with any framework)
-
-## Getting Started
+## 🚀 Quick Start (Internal Development)
 
 ### Prerequisites
 
-- Node.js 18+ and npm
-- Retell AI account ([sign up here](https://beta.retellai.com/))
+- Node.js 18+
+- Retell AI account ([sign up](https://beta.retellai.com/))
+- n8n instance (for chat feature)
 
 ### Installation
 
-1. Clone the repository:
 ```bash
+# Clone repository
 git clone https://github.com/akcosentus/cosentusai.git
 cd cosentusai
-```
 
-2. Install dependencies:
-```bash
+# Install dependencies
 npm install
-```
 
-3. Set up environment variables:
+# Create .env.local
+echo "RETELL_API_KEY=your_key_here" >> .env.local
+echo "N8N_WEBHOOK_SECRET=cosentus-internal-2024" >> .env.local
 
-Create a `.env.local` file in the root directory:
-
-```bash
-# Retell AI Configuration (for voice agents)
-RETELL_API_KEY=key_your_api_key_here
-
-# n8n Webhook Secret (for AI chat)
-N8N_WEBHOOK_SECRET=cosentus-internal-2024
-```
-
-Get your Retell API key from your [Retell AI Dashboard](https://beta.retellai.com/).
-
-4. Run the development server:
-```bash
+# Run development server
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open http://localhost:3000
 
-## Project Structure
+### Environment Variables
 
-```
-cosentusai/
-├── src/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── retell/
-│   │   │   │   └── register-call/    # Secure voice token generation
-│   │   │   └── assist-chat/          # AI chat proxy (n8n webhook)
-│   │   ├── page.tsx                  # Main homepage with demos
-│   │   ├── layout.tsx                # Root layout
-│   │   └── globals.css               # Global styles
-│   ├── hooks/
-│   │   └── useRetellAgent.ts         # Retell AI voice hook
-│   ├── config/
-│   │   └── agents.ts                 # Centralized agent IDs
-│   └── components/
-│       └── animate-ui/               # UI components
-├── lib/
-│   └── cosentus-voice/               # Headless SDK for third-party devs
-│       ├── cosentus-voice.js         # Main SDK file
-│       └── README.md                 # SDK documentation
-├── public/                           # Static assets
-├── N8N_SETUP.md                      # n8n integration guide
-└── .env.local                        # Environment variables (gitignored)
-```
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `RETELL_API_KEY` | Retell AI API key | Yes |
+| `N8N_WEBHOOK_SECRET` | n8n webhook authentication | Yes |
 
-## Usage
+⚠️ Never commit `.env.local` to version control.
 
-### For Internal Development (Next.js)
+---
 
-The voice agent functionality is encapsulated in the `useRetellAgent` hook:
+## 💻 Usage
+
+### Internal Development (React)
 
 ```typescript
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 import { AGENTS } from '@/config/agents';
 
-const { isConnected, isRecording, error, connect, disconnect } = useRetellAgent({
-  agentId: AGENTS.chloe, // or AGENTS.cindy, AGENTS.chris
+const { isConnected, connect, disconnect } = useRetellAgent({
+  agentId: AGENTS.chloe,
   onStatusChange: (status) => console.log(status),
 });
 
@@ -172,107 +131,100 @@ await connect();
 disconnect();
 ```
 
-### For Third-Party Developers (Headless SDK)
+### Third-Party Integration (SDK)
 
-See `lib/cosentus-voice/README.md` for complete SDK documentation.
-
-Quick example:
 ```javascript
-// Include the SDK
+// Include SDK
 <script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/web/index.js"></script>
-<script src="/lib/cosentus-voice/cosentus-voice.js"></script>
+<script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
 
-// Create and use agent
+// Use agent
 const chloe = CosentusVoice.createAgent('chloe');
 await chloe.connect();
 ```
 
-### Environment Variables
+See [`docs/INTEGRATION_GUIDE.md`](docs/INTEGRATION_GUIDE.md) for complete examples.
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `RETELL_API_KEY` | Your Retell AI API key (server-side) | Yes |
-| `N8N_WEBHOOK_SECRET` | Secret for authenticating n8n webhook requests | Yes |
+---
 
-⚠️ **Security**: Never commit `.env.local` to version control. API keys are kept server-side only.
-
-**Note:** Agent IDs are centralized in `src/config/agents.ts` - no need for environment variables!
-
-## Deployment
+## 🚢 Deployment
 
 ### Vercel (Recommended)
 
-1. Push your code to GitHub
+1. Push code to GitHub
 2. Import project in [Vercel](https://vercel.com)
-3. Add environment variables in Vercel dashboard:
-   - `RETELL_API_KEY` (mark as Secret)
-   - `N8N_WEBHOOK_SECRET` (mark as Secret)
-4. Deploy!
+3. Add environment variables:
+   - `RETELL_API_KEY`
+   - `N8N_WEBHOOK_SECRET`
+4. Deploy
 
-**Important:** Make sure your n8n workflow is set up and active before deploying. See `N8N_SETUP.md` for details.
+**Note:** Ensure n8n workflow is active before deploying. See [`docs/N8N_SETUP.md`](docs/N8N_SETUP.md).
 
-### Other Platforms
+---
 
-This is a standard Next.js app and can be deployed to any platform that supports Next.js 16+.
+## 🔧 Configuration
 
-## Configuration
+### Agent IDs
 
-### Available Voice Agents
+Centralized in `src/config/agents.ts`:
 
-This demo includes three pre-configured voice agents:
+```typescript
+export const AGENTS = {
+  chloe: 'agent_9d9f880dbde25925f75e5b2739',
+  cindy: 'agent_4510e7416ee31ca808b8546ed7',
+  chris: 'agent_9571fe9261e3944f33777a1406',
+};
+```
 
-- **Chloe** (`agent_9d9f880dbde25925f75e5b2739`) - Cosentus info expert
-- **Cindy** (`agent_4510e7416ee31ca808b8546ed7`) - Patient billing support
-- **Chris** (`agent_9571fe9261e3944f33777a1406`) - Insurance claim follow-up
+To add/update agents, edit this file and run `./update-sdk.sh`.
 
-Agent IDs are managed in `src/config/agents.ts`. To add or update agents, edit this file.
+### n8n Chat Setup
 
-### n8n Workflow Setup
+See [`docs/N8N_SETUP.md`](docs/N8N_SETUP.md) for complete configuration.
 
-The AI chat feature uses an n8n workflow. See `N8N_SETUP.md` for complete setup instructions.
+---
 
-## Troubleshooting
+## 🐛 Troubleshooting
 
-### Call Connects but Immediately Ends
+### Voice Agent Issues
 
-- Check agent configuration in Retell dashboard
-- Ensure agent has a voice selected
-- Verify LLM/prompt is configured
-- Check browser console for errors
+- **Call ends immediately:** Check agent config in Retell dashboard
+- **No microphone:** Ensure HTTPS (required for WebRTC)
+- **Connection fails:** Verify `RETELL_API_KEY` in environment variables
 
-### Microphone Not Working
+### Chat Agent Issues
 
-- Ensure HTTPS (or localhost for development)
-- Check browser permissions
-- Try Chrome/Edge (best WebRTC support)
+- **500 errors:** Check n8n workflow is active
+- **429 errors:** Rate limit hit (10 messages per 5 minutes)
 
-### "API key not configured" Error
+---
 
-- Verify `.env.local` exists and has correct values
-- Restart dev server after changing env variables
-- For Vercel: Check environment variables in dashboard
+## 📚 Documentation
 
-## Documentation
-
-### Internal Documentation
-- `N8N_SETUP.md` - n8n webhook integration guide
-- `lib/cosentus-voice/README.md` - Headless SDK documentation for third-party developers
-
-### External Resources
+- [`docs/INTEGRATION_GUIDE.md`](docs/INTEGRATION_GUIDE.md) - Third-party integration guide
+- [`lib/cosentus-voice/README.md`](lib/cosentus-voice/README.md) - SDK documentation
+- [`docs/N8N_SETUP.md`](docs/N8N_SETUP.md) - n8n setup guide
 - [Retell AI Docs](https://docs.retellai.com/)
 - [Next.js Docs](https://nextjs.org/docs)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
-- [n8n Docs](https://docs.n8n.io/)
 
-## License
+---
 
-This project is proprietary software owned by Cosentus.
+## 🤝 Contributing
 
-## Support
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines.
 
-For issues or questions:
-- Check [Retell AI Documentation](https://docs.retellai.com/)
-- Contact Cosentus support
+---
+
+## 📄 License
+
+Proprietary software © Cosentus
+
+---
+
+## 📞 Support
+
+- **Integration help:** Open a [GitHub issue](https://github.com/akcosentus/cosentusai/issues)
+- **Technical support:** support@cosentus.com
 
 ---
 
