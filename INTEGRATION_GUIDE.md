@@ -70,10 +70,8 @@ You'll receive:
 <script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/web/index.js"></script>
 
 <!-- Cosentus Voice SDK (hosted by Cosentus) -->
-<script src="https://YOUR_VERCEL_URL/cosentus-voice.js"></script>
+<script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
 ```
-
-*(Replace `YOUR_VERCEL_URL` with the actual URL provided by Cosentus)*
 
 ---
 
@@ -253,7 +251,7 @@ add_action('wp_footer', 'cosentus_voice_scripts');
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/web/index.js"></script>
-<script src="YOUR_VERCEL_URL/cosentus-voice.js"></script>
+<script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
 
 <script>
   const chloe = CosentusVoice.createAgent('chloe');
@@ -327,17 +325,15 @@ Registers an event listener.
 ### **API Endpoint**
 
 ```
-POST https://YOUR_VERCEL_URL/api/assist-chat
+POST https://cosentusai.vercel.app/api/assist-chat
 ```
-
-*(Replace `YOUR_VERCEL_URL` with the actual URL provided by Cosentus)*
 
 ---
 
 ### **Request Format**
 
 ```javascript
-fetch('https://YOUR_VERCEL_URL/api/assist-chat', {
+fetch('https://cosentusai.vercel.app/api/assist-chat', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -397,7 +393,7 @@ fetch('https://YOUR_VERCEL_URL/api/assist-chat', {
     
     // Call API
     try {
-      const response = await fetch('https://YOUR_VERCEL_URL/api/assist-chat', {
+      const response = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -444,7 +440,7 @@ function ChatWidget() {
     setLoading(true);
     
     try {
-      const response = await fetch('https://YOUR_VERCEL_URL/api/assist-chat', {
+      const response = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

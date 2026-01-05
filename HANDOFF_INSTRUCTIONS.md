@@ -11,10 +11,10 @@ Send these 2 files as attachments:
 ### **In the Email, Include:**
 
 ```
-🔗 SDK URL: https://YOUR_VERCEL_URL/cosentus-voice.js
-🔗 Voice API: https://YOUR_VERCEL_URL/api/retell/register-call
-🔗 Chat API: https://YOUR_VERCEL_URL/api/assist-chat
-🔗 Demo Site: https://YOUR_VERCEL_URL
+🔗 SDK URL: https://cosentusai.vercel.app/cosentus-voice.js
+🔗 Voice API: https://cosentusai.vercel.app/api/retell/register-call
+🔗 Chat API: https://cosentusai.vercel.app/api/assist-chat
+🔗 Demo Site: https://cosentusai.vercel.app
 
 Available Agents:
 - chloe (company info)
@@ -107,10 +107,10 @@ Hi [Team],
 Attached are the integration docs for the Cosentus AI agents. Here's what you need:
 
 📦 RESOURCES:
-• Voice SDK: https://YOUR_VERCEL_URL/cosentus-voice.js
-• Voice API: https://YOUR_VERCEL_URL/api/retell/register-call  
-• Chat API: https://YOUR_VERCEL_URL/api/assist-chat
-• Live Demo: https://YOUR_VERCEL_URL
+• Voice SDK: https://cosentusai.vercel.app/cosentus-voice.js
+• Voice API: https://cosentusai.vercel.app/api/retell/register-call  
+• Chat API: https://cosentusai.vercel.app/api/assist-chat
+• Live Demo: https://cosentusai.vercel.app
 
 🎤 AGENTS:
 • chloe - Company info expert
@@ -134,10 +134,10 @@ Best,
 
 ## ✅ Checklist Before Sending
 
-- [ ] Replace `YOUR_VERCEL_URL` in all docs with actual URL
+- [x] Replace `YOUR_VERCEL_URL` in all docs with actual URL (https://cosentusai.vercel.app)
 - [ ] Test all 3 voice agents on your demo site
 - [ ] Test the chat agent on your demo site
-- [ ] Verify SDK loads from `https://YOUR_VERCEL_URL/cosentus-voice.js`
+- [ ] Verify SDK loads from `https://cosentusai.vercel.app/cosentus-voice.js`
 - [ ] Verify both API endpoints work
 - [ ] Check that `INTEGRATION_GUIDE.md` has correct URLs
 - [ ] Attach both documentation files to email

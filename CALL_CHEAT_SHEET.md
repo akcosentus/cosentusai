@@ -32,7 +32,7 @@ document.getElementById('button').onclick = () => chloe.connect();
 
 ### **Chat Agent (1 API call):**
 ```javascript
-fetch('https://your-site.com/api/assist-chat', {
+fetch('https://cosentusai.vercel.app/api/assist-chat', {
   method: 'POST',
   body: JSON.stringify({ messages: [{ role: 'user', content: 'question' }] })
 })
@@ -46,9 +46,9 @@ fetch('https://your-site.com/api/assist-chat', {
 2. ✅ `INTEGRATION_GUIDE.md` - Complete integration guide (voice + chat)
 3. ✅ `lib/cosentus-voice/README.md` - Detailed SDK documentation
 4. ✅ API endpoint URLs:
-   - Voice: `https://YOUR_VERCEL_URL/api/retell/register-call`
-   - Chat: `https://YOUR_VERCEL_URL/api/assist-chat`
-5. ✅ Demo site URL: `https://YOUR_VERCEL_URL`
+   - Voice: `https://cosentusai.vercel.app/api/retell/register-call`
+   - Chat: `https://cosentusai.vercel.app/api/assist-chat`
+5. ✅ Demo site URL: `https://cosentusai.vercel.app`
 
 ---
 
@@ -78,7 +78,7 @@ fetch('https://your-site.com/api/assist-chat', {
 > "Everything's hosted on Vercel with 99.9% uptime. If there's an issue, error messages will show what's wrong. Plus I'm available for support."
 
 ### **"Can we see a demo?"**
-> "Yes! The demo site is live at [YOUR_VERCEL_URL]. But remember, that's just my demo UI - you'll build your own that matches the new website design."
+> "Yes! The demo site is live at https://cosentusai.vercel.app. You can see all the agents in action. But remember, that's just my demo UI - you'll build your own that matches the new website design."
 
 ### **"What about security?"**
 > "Built-in rate limiting prevents abuse. API keys are server-side only. All traffic is logged for monitoring."
@@ -108,7 +108,7 @@ fetch('https://your-site.com/api/assist-chat', {
 
 Send them:
 1. The 4 files listed above
-2. Your Vercel URL (replace `YOUR_VERCEL_URL` in docs)
+2. Your Vercel URL: https://cosentusai.vercel.app
 3. Offer to answer questions via email/Slack
 
 ---
@@ -131,7 +131,7 @@ Send them:
 
 ## 📝 Notes Section (Fill in before call)
 
-**Your Vercel URL:** `_______________________________`
+**Your Vercel URL:** `https://cosentusai.vercel.app`
 
 **Demo site username/password (if needed):** `_______________________________`
 
