@@ -24,10 +24,14 @@ export default function Home() {
   // Centralized Agent IDs
   const CHLOE_AGENT_ID = AGENTS.chloe;
   const CINDY_AGENT_ID = AGENTS.cindy;
+  const CHRIS_AGENT_ID = AGENTS.chris;
+  const CARA_AGENT_ID = AGENTS.cara;
 
   // Determine which agent ID to use
   const currentAgentId = activeAgent === 'chloe' ? CHLOE_AGENT_ID : 
-                         activeAgent === 'cindy' ? CINDY_AGENT_ID : '';
+                         activeAgent === 'cindy' ? CINDY_AGENT_ID :
+                         activeAgent === 'chris' ? CHRIS_AGENT_ID :
+                         activeAgent === 'cara' ? CARA_AGENT_ID : '';
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
     agentId: currentAgentId || '',
@@ -666,20 +670,157 @@ export default function Home() {
               ) : null}
             </div>
 
-            {/* Symptom Checker Demo - Coming Soon */}
-            <div className="group relative bg-white rounded-2xl border border-gray-200 p-8 shadow-lg opacity-60">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-gray-400">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Agent 3</h3>
-              <p className="text-gray-600 mb-6">
-                Coming soon...
-              </p>
-              <div className="text-sm text-gray-400 font-medium text-center">
-                Available Soon
-              </div>
+            {/* Cara - Eligibility & Benefits Verification */}
+            <div 
+              onClick={() => !isConnected && handleExpandCard('cara')}
+              className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+                expandedCard === 'cara' 
+                  ? 'md:col-span-3 p-12' 
+                  : 'p-8 hover:shadow-2xl hover:-translate-y-1'
+              } ${expandedCard && expandedCard !== 'cara' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+            >
+              {!expandedCard || expandedCard === 'cara' ? (
+                <>
+                  {/* Collapsed State */}
+                  {expandedCard !== 'cara' && (
+                    <>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">Cara</h3>
+                      <p className="text-gray-600 mb-6">
+                        Verifies patient insurance eligibility and benefits before services.
+                      </p>
+                      <div className="text-sm text-[#01B2D6] font-medium">
+                        Click to learn more →
+                      </div>
+                    </>
+                  )}
+
+                  {/* Expanded State */}
+                  {expandedCard === 'cara' && (
+                    <div className="flex flex-col md:flex-row gap-12 items-start">
+                      {/* Left Side - Agent Info */}
+                      <div className="flex-1 md:max-w-md">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#01B2D6]/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-[#01B2D6]">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h3 className="text-4xl font-bold text-gray-900">Cara</h3>
+                            <p className="text-lg text-gray-600">Eligibility & Benefits Verification</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">About Cara</h4>
+                            <p className="text-gray-600">
+                              Cara specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
+                            <ul className="text-gray-600 space-y-1">
+                              <li>• Insurance eligibility verification</li>
+                              <li>• Benefits and coverage details</li>
+                              <li>• Deductible and out-of-pocket tracking</li>
+                              <li>• In-network vs out-of-network status</li>
+                              <li>• Secondary insurance coordination</li>
+                              <li>• Handles hundreds of calls per day</li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-4">
+                          {!isConnected ? (
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleBeginDemo();
+                              }}
+                              disabled={isConnecting}
+                              className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                            >
+                              {isConnecting ? (
+                                <>
+                                  <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                  </svg>
+                                  Connecting...
+                                </>
+                              ) : (
+                                <>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                                  </svg>
+                                  Begin Conversation
+                                </>
+                              )}
+                            </button>
+                          ) : (
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleEndDemo();
+                              }}
+                              className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                            >
+                              End Conversation
+                            </button>
+                          )}
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleExpandCard('cara');
+                            }}
+                            className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Right Side - Glowing Orb Visualization */}
+                      <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
+                        {isConnected ? (
+                          <div className="flex flex-col items-center gap-6">
+                            {/* Single Glowing Orb */}
+                            <div 
+                              className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                              style={{
+                                boxShadow: isRecording 
+                                  ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
+                                  : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
+                                animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
+                              }}
+                            />
+                            
+                            {/* Status Text */}
+                            <p className="text-gray-600 text-center">
+                              {isRecording ? 'Cara is speaking...' : 'Listening...'}
+                            </p>
+                            
+                            <p className="text-sm text-gray-500 text-center max-w-xs">
+                              Try asking: "Can you show me how you verify insurance?" or "Walk me through an eligibility check"
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="text-center text-gray-500">
+                            <p className="mb-4">Click "Begin Conversation" to start talking with Cara</p>
+                            <p className="text-sm">She'll demonstrate how she verifies patient insurance eligibility</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : null}
             </div>
           </div>
         </div>

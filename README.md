@@ -30,6 +30,7 @@ Production-ready AI voice agents and chat assistant for healthcare automation. I
 | `chloe` | Cosentus company information expert |
 | `cindy` | Patient billing support specialist |
 | `chris` | Insurance claim follow-up specialist |
+| `cara` | Eligibility & benefits verification |
 | Chat AI | Text-based Q&A assistant |
 
 ---
@@ -173,6 +174,7 @@ export const AGENTS = {
   chloe: 'agent_9d9f880dbde25925f75e5b2739',
   cindy: 'agent_4510e7416ee31ca808b8546ed7',
   chris: 'agent_9571fe9261e3944f33777a1406',
+  cara: 'agent_f7e96fe43ce9bb611481839af8',
 };
 ```
 

@@ -137,12 +137,14 @@ Use these names when creating agents:
 | `'chloe'` | Cosentus info expert | Company info, services, pricing, general questions |
 | `'cindy'` | Patient billing support | Billing questions, payment help, mock call demos |
 | `'chris'` | Insurance claim specialist | Claim follow-ups, denial resolution, carrier calls |
+| `'cara'` | Eligibility & benefits verification | Insurance verification, coverage checks, benefits |
 
 **Example:**
 ```javascript
 const chloe = CosentusVoice.createAgent('chloe');
 const cindy = CosentusVoice.createAgent('cindy');
 const chris = CosentusVoice.createAgent('chris');
+const cara = CosentusVoice.createAgent('cara');
 ```
 
 ---

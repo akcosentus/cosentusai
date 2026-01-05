@@ -23,7 +23,18 @@ export const AGENTS = {
    * Speaks 50+ languages, handles 20 calls simultaneously
    */
   cindy: 'agent_4510e7416ee31ca808b8546ed7',
+  
+  /**
+   * Chris - Insurance Claim Follow-Up Specialist
+   * Handles outbound insurance claim follow-ups
+   */
   chris: 'agent_9571fe9261e3944f33777a1406',
+  
+  /**
+   * Cara - Eligibility & Benefits Verification
+   * Verifies patient insurance coverage and benefits
+   */
+  cara: 'agent_f7e96fe43ce9bb611481839af8',
 } as const;
 
 /**
