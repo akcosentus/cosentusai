@@ -104,7 +104,6 @@ export function useRetellChat({ onMessagesUpdate, onError }: UseRetellChatProps 
         await retellClientRef.current.startCall({
           accessToken,
           emitRawAudioSamples: false,
-          enableUpdate: true,
         });
       }
     } catch (err: any) {
