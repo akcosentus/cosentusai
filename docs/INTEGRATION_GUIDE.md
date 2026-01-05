@@ -344,17 +344,23 @@ POST https://cosentusai.vercel.app/api/assist-chat
 
 ### **Request Format**
 
+**Step 1: Initialize Chat Session**
 ```javascript
 fetch('https://cosentusai.vercel.app/api/assist-chat', {
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ messages: [] })
+})
+```
+
+**Step 2: Send Message**
+```javascript
+fetch('https://cosentusai.vercel.app/api/chat/send-message', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    messages: [
-      { role: 'user', content: 'What is Cosentus?' }
-    ],
-    thread_id: null  // Optional: for conversation continuity
+    chatId: 'chat_abc123',  // From step 1
+    message: 'What is Cosentus?'
   })
 })
 ```
@@ -363,11 +369,21 @@ fetch('https://cosentusai.vercel.app/api/assist-chat', {
 
 ### **Response Format**
 
-**Success (200):**
+**Initialize Chat (200):**
 ```json
 {
-  "response": "Cosentus is a medical RCM firm that...",
-  "thread_id": "thread_abc123"
+  "chatId": "chat_abc123",
+  "agentId": "agent_90d094ac45b9da3833c3fc835b",
+  "chatStatus": "ongoing"
+}
+```
+
+**Send Message (200):**
+```json
+{
+  "content": "Cosentus is a medical RCM firm that...",
+  "role": "agent",
+  "messageId": "msg_xyz789"
 }
 ```
 
@@ -403,23 +419,30 @@ fetch('https://cosentusai.vercel.app/api/assist-chat', {
     messagesDiv.innerHTML += `<div class="user-msg">${question}</div>`;
     input.value = '';
     
-    // Call API
     try {
-      const response = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
+      // Initialize chat session if needed
+      if (!threadId) {
+        const initResp = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: [] })
+        });
+        const initData = await initResp.json();
+        threadId = initData.chatId;
+      }
+      
+      // Send message
+      const msgResp = await fetch('https://cosentusai.vercel.app/api/chat/send-message', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: [{ role: 'user', content: question }],
-          thread_id: threadId
-        })
+        body: JSON.stringify({ chatId: threadId, message: question })
       });
       
-      const data = await response.json();
+      const data = await msgResp.json();
       
-      if (response.ok) {
+      if (msgResp.ok) {
         // Display AI response
-        messagesDiv.innerHTML += `<div class="ai-msg">${data.response}</div>`;
-        threadId = data.thread_id;  // Save for conversation continuity
+        messagesDiv.innerHTML += `<div class="ai-msg">${data.content}</div>`;
       } else {
         messagesDiv.innerHTML += `<div class="error-msg">Error: ${data.error}</div>`;
       }
@@ -452,20 +475,30 @@ function ChatWidget() {
     setLoading(true);
     
     try {
-      const response = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
+      // Initialize chat session if needed
+      let chatId = threadId;
+      if (!chatId) {
+        const initResp = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: [] })
+        });
+        const initData = await initResp.json();
+        chatId = initData.chatId;
+        setThreadId(chatId);
+      }
+      
+      // Send message
+      const msgResp = await fetch('https://cosentusai.vercel.app/api/chat/send-message', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: [userMessage],
-          thread_id: threadId
-        })
+        body: JSON.stringify({ chatId, message: input })
       });
       
-      const data = await response.json();
+      const data = await msgResp.json();
       
-      if (response.ok) {
-        setMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
-        setThreadId(data.thread_id);
+      if (msgResp.ok) {
+        setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
       } else {
         alert('Error: ' + data.error);
       }

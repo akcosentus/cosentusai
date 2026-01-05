@@ -33,11 +33,19 @@ const chloe = CosentusVoice.createAgent('chloe');
 document.getElementById('button').onclick = () => chloe.connect();
 ```
 
-### **Chat Agent (1 API call):**
+### **Chat Agent (2 API calls):**
 ```javascript
-fetch('https://cosentusai.vercel.app/api/assist-chat', {
+// 1. Initialize chat
+const init = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
   method: 'POST',
-  body: JSON.stringify({ messages: [{ role: 'user', content: 'question' }] })
+  body: JSON.stringify({ messages: [] })
+});
+const { chatId } = await init.json();
+
+// 2. Send message
+fetch('https://cosentusai.vercel.app/api/chat/send-message', {
+  method: 'POST',
+  body: JSON.stringify({ chatId, message: 'question' })
 })
 ```
 
