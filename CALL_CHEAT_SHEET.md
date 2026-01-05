@@ -1,0 +1,147 @@
+# 📞 Developer Call Cheat Sheet
+
+**Quick reference for tomorrow's call**
+
+---
+
+## 🎯 The Pitch (30 seconds)
+
+> "I've built the backend for 4 AI agents - 3 voice agents and 1 chat agent. Everything's hosted, secure, and production-ready. You just need to integrate them into the new website using the SDK and API I'm providing. You control all the design, I handle all the AI."
+
+---
+
+## 📦 What They're Getting
+
+### **Voice Agents:**
+- **Chloe** - Cosentus info expert (company, services, pricing)
+- **Cindy** - Patient billing support (can do mock calls)
+- **Chris** - Insurance claim follow-up
+
+### **Chat Agent:**
+- **Homepage AI Chat** - Text-based Q&A assistant
+
+---
+
+## 🔧 How Simple It Is
+
+### **Voice Agent (3 lines of code):**
+```javascript
+const chloe = CosentusVoice.createAgent('chloe');
+document.getElementById('button').onclick = () => chloe.connect();
+```
+
+### **Chat Agent (1 API call):**
+```javascript
+fetch('https://your-site.com/api/assist-chat', {
+  method: 'POST',
+  body: JSON.stringify({ messages: [{ role: 'user', content: 'question' }] })
+})
+```
+
+---
+
+## 📁 What You're Sending Them
+
+1. ✅ `cosentus-voice.js` - Voice agent SDK
+2. ✅ `INTEGRATION_GUIDE.md` - Complete integration guide (voice + chat)
+3. ✅ `lib/cosentus-voice/README.md` - Detailed SDK documentation
+4. ✅ API endpoint URLs:
+   - Voice: `https://YOUR_VERCEL_URL/api/retell/register-call`
+   - Chat: `https://YOUR_VERCEL_URL/api/assist-chat`
+5. ✅ Demo site URL: `https://YOUR_VERCEL_URL`
+
+---
+
+## 💡 Key Selling Points
+
+- ✅ **Framework-agnostic** - Works with Framer, React, WordPress, anything
+- ✅ **You control design** - They build the UI, you handle AI
+- ✅ **Agent names, not IDs** - Use 'chloe', 'cindy', 'chris' (future-proof)
+- ✅ **Secure** - Rate limiting, hidden API keys
+- ✅ **Production-ready** - Deployed on Vercel, tested, documented
+- ✅ **30-minute integration** - Per agent, with copy-paste examples
+
+---
+
+## 🤔 Anticipated Questions
+
+### **"What tech stack does this work with?"**
+> "Any. It's vanilla JavaScript. Works with Framer, Webflow, WordPress, React, Vue, plain HTML."
+
+### **"How long will integration take?"**
+> "About 30 minutes per agent. The docs have copy-paste examples for every major framework."
+
+### **"What if we need to change something?"**
+> "Design changes? You handle it. AI behavior changes? I handle it on my end, your code doesn't break."
+
+### **"What if something breaks?"**
+> "Everything's hosted on Vercel with 99.9% uptime. If there's an issue, error messages will show what's wrong. Plus I'm available for support."
+
+### **"Can we see a demo?"**
+> "Yes! The demo site is live at [YOUR_VERCEL_URL]. But remember, that's just my demo UI - you'll build your own that matches the new website design."
+
+### **"What about security?"**
+> "Built-in rate limiting prevents abuse. API keys are server-side only. All traffic is logged for monitoring."
+
+### **"Do we need access to your backend?"**
+> "Nope. You just call the API endpoints. Everything else is handled on my end."
+
+---
+
+## 🎨 What They Control vs. What You Control
+
+### **They Control:**
+- Button design, colors, sizes, fonts
+- Chat UI design, message bubbles, animations
+- Where agents appear on the website
+- Text labels and copy
+
+### **You Control:**
+- AI agent behavior and responses
+- Backend infrastructure and APIs
+- Agent IDs and configuration
+- Security and rate limiting
+
+---
+
+## 🚀 After the Call
+
+Send them:
+1. The 4 files listed above
+2. Your Vercel URL (replace `YOUR_VERCEL_URL` in docs)
+3. Offer to answer questions via email/Slack
+
+---
+
+## 📊 Demo Flow (If They Ask)
+
+1. Show them your demo site
+2. Click "Talk to Chloe" → Have a quick conversation
+3. Show the chat widget → Ask a question
+4. Pull up the code → Show how simple the integration is
+5. Show the documentation → Highlight copy-paste examples
+
+---
+
+## 🎯 Closing
+
+> "So you've got everything you need - the SDK, the API endpoints, and detailed documentation with examples for every major framework. Integration should be straightforward. I'm available if you hit any snags. Any questions?"
+
+---
+
+## 📝 Notes Section (Fill in before call)
+
+**Your Vercel URL:** `_______________________________`
+
+**Demo site username/password (if needed):** `_______________________________`
+
+**Your contact for support:** `_______________________________`
+
+**Timeline/deadline:** `_______________________________`
+
+**Their tech stack (if known):** `_______________________________`
+
+---
+
+**You've got this! 🚀**
+
