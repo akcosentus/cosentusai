@@ -9,7 +9,14 @@ export async function POST(req: Request) {
     if (!process.env.OPENAI_API_KEY) {
       return NextResponse.json(
         { error: "OPENAI_API_KEY not configured. Please add it to your environment variables." },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
@@ -32,7 +39,14 @@ export async function POST(req: Request) {
         console.error("OpenAI thread creation error:", errorData);
         return NextResponse.json(
           { error: `Failed to create thread: ${errorData.error?.message || 'Unknown error'}` },
-          { status: 500 }
+          { 
+            status: 500,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Methods': 'POST, OPTIONS',
+              'Access-Control-Allow-Headers': 'Content-Type',
+            },
+          }
         );
       }
       
@@ -59,7 +73,14 @@ export async function POST(req: Request) {
       console.error("OpenAI add message error:", errorData);
       return NextResponse.json(
         { error: `Failed to add message: ${errorData.error?.message || 'Unknown error'}` },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
@@ -79,7 +100,14 @@ export async function POST(req: Request) {
       console.error("OpenAI run creation error:", errorData);
       return NextResponse.json(
         { error: `Failed to run assistant: ${errorData.error?.message || 'Unknown error'}` },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
@@ -105,7 +133,14 @@ export async function POST(req: Request) {
       console.error("Assistant run did not complete:", run_result);
       return NextResponse.json(
         { error: `Assistant run timed out or failed. Status: ${status}` },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
@@ -123,23 +158,67 @@ export async function POST(req: Request) {
       console.error("OpenAI get messages error:", errorData);
       return NextResponse.json(
         { error: `Failed to get messages: ${errorData.error?.message || 'Unknown error'}` },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
     const msgs = await msgsResp.json();
     const lastMessage = msgs.data.find((msg: any) => msg.role === "assistant");
 
-    return NextResponse.json({
-      response: lastMessage?.content[0]?.text?.value || "Sorry, I didn't find an answer.",
-      thread_id: session_thread_id
-    });
+    // Get the raw response text
+    let responseText = lastMessage?.content[0]?.text?.value || "Sorry, I didn't find an answer.";
+    
+    // Remove citation annotations like 【6:1†source】
+    responseText = responseText.replace(/【[^】]*】/g, '');
+    
+    // Clean up any extra spaces left behind
+    responseText = responseText.replace(/\s+/g, ' ').trim();
+
+    return NextResponse.json(
+      {
+        response: responseText,
+        thread_id: session_thread_id
+      },
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
+    );
   } catch (error: any) {
     console.error("Unexpected error in assist-chat:", error);
     return NextResponse.json(
       { error: `Internal server error: ${error.message}` },
-      { status: 500 }
+      { 
+        status: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
     );
   }
+}
+
+// Handle preflight OPTIONS request
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
 }
 

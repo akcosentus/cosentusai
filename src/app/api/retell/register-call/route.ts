@@ -29,7 +29,14 @@ export async function POST(request: Request) {
     console.warn(`[RATE LIMIT BLOCK] ${ip} hit limit (${MAX_REQUESTS_PER_IP} in ${RATE_LIMIT_WINDOW / 60000}min) - ${new Date().toISOString()}`);
     return NextResponse.json(
       { error: "Too many demo attempts from your device. Please wait a few minutes and try again." },
-      { status: 429 }
+      { 
+        status: 429,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
     );
   }
   timestamps.push(now);
@@ -45,13 +52,27 @@ export async function POST(request: Request) {
     if (!retellApiKey) {
       return NextResponse.json(
         { error: 'Retell API key not configured' },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
     if (!agentId) {
       return NextResponse.json(
         { error: 'Agent ID is required' },
-        { status: 400 }
+        { 
+          status: 400,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
     // Create web call with Retell AI
@@ -71,20 +92,55 @@ export async function POST(request: Request) {
       console.error('Retell API error:', errorData);
       return NextResponse.json(
         { error: 'Failed to create demo session. Please try again later.' },
-        { status: response.status }
+        { 
+          status: response.status,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
     const data = await response.json();
-    return NextResponse.json({
-      accessToken: data.access_token,
-      callId: data.call_id,
-    });
+    return NextResponse.json(
+      {
+        accessToken: data.access_token,
+        callId: data.call_id,
+      },
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
+    );
   } catch (error) {
     console.error('Error registering Retell call:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
-      { status: 500 }
+      { 
+        status: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
     );
   }
+}
+
+// Handle preflight OPTIONS request
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
 }
 
