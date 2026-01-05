@@ -31,6 +31,7 @@ Production-ready AI voice agents and chat assistant for healthcare automation. I
 | `cindy` | Patient billing support specialist |
 | `chris` | Insurance claim follow-up specialist |
 | `cara` | Eligibility & benefits verification |
+| `carly` | Prior authorization follow-up |
 | Chat AI | Text-based Q&A assistant |
 
 ---
@@ -175,6 +176,7 @@ export const AGENTS = {
   cindy: 'agent_4510e7416ee31ca808b8546ed7',
   chris: 'agent_9571fe9261e3944f33777a1406',
   cara: 'agent_f7e96fe43ce9bb611481839af8',
+  carly: 'agent_a8f606995d3160a92be6874661',
 };
 ```
 

@@ -35,6 +35,12 @@ export const AGENTS = {
    * Verifies patient insurance coverage and benefits
    */
   cara: 'agent_f7e96fe43ce9bb611481839af8',
+  
+  /**
+   * Carly - Prior Authorization Follow-Up
+   * Tracks prior authorization approvals with insurance companies
+   */
+  carly: 'agent_a8f606995d3160a92be6874661',
 } as const;
 
 /**
