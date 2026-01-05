@@ -61,40 +61,88 @@ export default function Home() {
     setChatHistory(updatedChat);
     setAiInput("");
     
-    // Call Retell AI chat API
     try {
-      const resp = await fetch("/api/assist-chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: updatedChat })
-      });
-      
-      if (!resp.ok) {
-        const data = await resp.json();
-        setAiError(data.error || "Failed to get response from AI");
+      // Create or use existing chat session
+      if (!threadId) {
+        // Create new chat session
+        const initResp = await fetch("/api/assist-chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: [] })
+        });
+        
+        if (!initResp.ok) {
+          const data = await initResp.json();
+          setAiError(data.error || "Failed to initialize chat");
+          setAiLoading(false);
+          return;
+        }
+        
+        const initData = await initResp.json();
+        setThreadId(initData.chatId);
+        
+        // Send the first message
+        const msgResp = await fetch("/api/chat/send-message", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            chatId: initData.chatId,
+            message: value 
+          })
+        });
+        
+        if (!msgResp.ok) {
+          setAiError("Failed to send message");
+          setAiLoading(false);
+          return;
+        }
+        
+        const msgData = await msgResp.json();
+        
+        // Add agent response to chat history
+        if (msgData.content) {
+          setChatHistory([...updatedChat, { 
+            role: "assistant" as const, 
+            content: msgData.content
+          }]);
+        }
         setAiLoading(false);
-        return;
+        
+      } else {
+        // Send message to existing chat session
+        const msgResp = await fetch("/api/chat/send-message", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            chatId: threadId,
+            message: value 
+          })
+        });
+        
+        if (!msgResp.ok) {
+          setAiError("Failed to send message");
+          setAiLoading(false);
+          return;
+        }
+        
+        const msgData = await msgResp.json();
+        
+        // Add agent response to chat history
+        if (msgData.content) {
+          setChatHistory([...updatedChat, { 
+            role: "assistant" as const, 
+            content: msgData.content
+          }]);
+        }
+        setAiLoading(false);
       }
       
-      const data = await resp.json();
-      
-      // For now, simulate a response (Retell's chat agent will be configured to respond via their system)
-      // In production, you would integrate with Retell's Web SDK or use their chat API
-      // This is a simplified version that matches your existing UI
-      
-      // Simulate AI thinking time
+      // Scroll to bottom
       setTimeout(() => {
-        setChatHistory([...updatedChat, { 
-          role: "assistant" as const, 
-          content: "I'm the new Retell AI chat agent! I'm now integrated and ready to help answer questions about Cosentus. This is using agent ID: agent_90d094ac45b9da3833c3fc835b"
-        }]);
-        setAiLoading(false);
-        setTimeout(() => {
-          if (chatBottomRef.current) {
-            chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      }, 1000);
+        if (chatBottomRef.current) {
+          chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
       
     } catch (e: any) {
       console.error("Chat error:", e);

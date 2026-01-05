@@ -70,10 +70,10 @@ export async function POST(req: Request) {
     const userAgent = req.headers.get("user-agent") || "unknown";
     console.log(`[COSENTUS CHAT] Request from IP=${ip}, UA=${userAgent}, Time=${new Date().toISOString()}`);
 
-    // Call Retell API to create a web call (chat) session
+    // Call Retell API to create a chat session
     console.log(`[RETELL] Creating chat session with agent: ${chatAgentId}`);
     
-    const retellResponse = await fetch("https://api.retellai.com/v2/create-web-call", {
+    const retellResponse = await fetch("https://api.retellai.com/create-chat", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${RETELL_API_KEY}`,
@@ -106,11 +106,12 @@ export async function POST(req: Request) {
     const data = await retellResponse.json();
     console.log(`[RETELL] Chat session created successfully`);
 
-    // Return the access token and call ID for frontend to use
+    // Return the chat ID and session info for frontend to use
     return NextResponse.json(
       {
-        accessToken: data.access_token,
-        callId: data.call_id,
+        chatId: data.chat_id,
+        agentId: data.agent_id,
+        chatStatus: data.chat_status,
       },
       {
         headers: {
