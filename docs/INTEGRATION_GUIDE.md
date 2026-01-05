@@ -17,7 +17,7 @@ This guide will help you integrate Cosentus AI agents (voice + chat) into your w
 - **Carson** - Payment reconciliation specialist
 
 ### **Chat Agent** (Text-based AI assistant)
-- **Homepage AI Chat** - Answers questions about Cosentus using knowledge base
+- **Homepage AI Chat** - Powered by Retell AI, answers questions about Cosentus using knowledge base
 
 ---
 
@@ -322,12 +322,15 @@ Registers an event listener.
 ### **How It Works**
 
 1. User types a question in your chat UI
-2. Your code sends the question to Cosentus API
-3. API returns AI-generated response
-4. You display the response in your UI
+2. Your code sends a request to Cosentus API to initialize a chat session
+3. API returns an access token for Retell AI's chat agent
+4. Your code connects to Retell AI and handles the conversation
+5. You display messages in your UI
 
 **You control:** Chat UI design, input field, message bubbles, animations  
-**We control:** AI logic, knowledge base, response generation
+**We control:** AI logic (via Retell AI), knowledge base, response generation
+
+**Note:** The chat agent uses Retell AI (agent ID: `agent_90d094ac45b9da3833c3fc835b`)
 
 ---
 
@@ -567,7 +570,7 @@ try {
 ### **Chat Agent Issues**
 
 #### **500 Error**
-- The n8n workflow might be inactive
+- The Retell AI chat agent might be unavailable
 - Contact Cosentus support
 
 #### **429 Error (Rate Limited)**

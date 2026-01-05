@@ -21,7 +21,7 @@
 - **Carson** - Payment reconciliation
 
 ### **Chat Agent:**
-- **Homepage AI Chat** - Text-based Q&A assistant
+- **Homepage AI Chat** - Text-based Q&A assistant (Retell AI)
 
 ---
 

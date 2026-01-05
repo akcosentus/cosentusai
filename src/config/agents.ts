@@ -47,6 +47,12 @@ export const AGENTS = {
    * Tracks down and resolves payment discrepancies with insurance companies
    */
   carson: 'agent_443ead51c8a35f874d0ca1a8c1',
+  
+  /**
+   * Chat Agent - Text-based AI Assistant
+   * Answers questions about Cosentus using knowledge base
+   */
+  chat: 'agent_90d094ac45b9da3833c3fc835b',
 } as const;
 
 /**

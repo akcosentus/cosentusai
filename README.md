@@ -33,7 +33,7 @@ Production-ready AI voice agents and chat assistant for healthcare automation. I
 | `cara` | Eligibility & benefits verification |
 | `carly` | Prior authorization follow-up |
 | `carson` | Payment reconciliation specialist |
-| Chat AI | Text-based Q&A assistant |
+| Chat AI | Text-based Q&A assistant (Retell AI) |
 
 ---
 
@@ -43,7 +43,6 @@ Production-ready AI voice agents and chat assistant for healthcare automation. I
 cosentusai/
 ├── docs/                          # Third-party developer documentation
 │   ├── INTEGRATION_GUIDE.md       # 👈 START HERE
-│   ├── N8N_SETUP.md               # n8n webhook setup
 │   └── internal/                  # Internal documentation
 ├── lib/cosentus-voice/            # Voice agent SDK
 │   ├── cosentus-voice.js          # SDK source
@@ -69,7 +68,7 @@ cosentusai/
 
 - **Frontend:** Next.js 16, React, Tailwind CSS
 - **Voice AI:** Retell AI (WebRTC)
-- **Chat AI:** n8n workflow
+- **Chat AI:** Retell AI chat agent
 - **Deployment:** Vercel
 - **SDK:** Vanilla JavaScript (framework-agnostic)
 
@@ -81,7 +80,7 @@ cosentusai/
 
 - Node.js 18+
 - Retell AI account ([sign up](https://beta.retellai.com/))
-- n8n instance (for chat feature)
+- Retell AI account (for chat and voice features)
 
 ### Installation
 
@@ -95,8 +94,6 @@ npm install
 
 # Create .env.local
 echo "RETELL_API_KEY=your_key_here" >> .env.local
-echo "N8N_WEBHOOK_SECRET=cosentus-internal-2024" >> .env.local
-
 # Run development server
 npm run dev
 ```
@@ -108,7 +105,6 @@ Open http://localhost:3000
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `RETELL_API_KEY` | Retell AI API key | Yes |
-| `N8N_WEBHOOK_SECRET` | n8n webhook authentication | Yes |
 
 ⚠️ Never commit `.env.local` to version control.
 
@@ -158,10 +154,9 @@ See [`docs/INTEGRATION_GUIDE.md`](docs/INTEGRATION_GUIDE.md) for complete exampl
 2. Import project in [Vercel](https://vercel.com)
 3. Add environment variables:
    - `RETELL_API_KEY`
-   - `N8N_WEBHOOK_SECRET`
 4. Deploy
 
-**Note:** Ensure n8n workflow is active before deploying. See [`docs/N8N_SETUP.md`](docs/N8N_SETUP.md).
+**Note:** Ensure all Retell AI agents are configured and active.
 
 ---
 
@@ -184,9 +179,9 @@ export const AGENTS = {
 
 To add/update agents, edit this file and run `./update-sdk.sh`.
 
-### n8n Chat Setup
+### Retell AI Chat Agent
 
-See [`docs/N8N_SETUP.md`](docs/N8N_SETUP.md) for complete configuration.
+The chat agent is configured in Retell AI with agent ID `agent_90d094ac45b9da3833c3fc835b`. It's automatically integrated via the `/api/assist-chat` endpoint.
 
 ---
 
@@ -200,8 +195,8 @@ See [`docs/N8N_SETUP.md`](docs/N8N_SETUP.md) for complete configuration.
 
 ### Chat Agent Issues
 
-- **500 errors:** Check n8n workflow is active
-- **429 errors:** Rate limit hit (10 messages per 5 minutes)
+- **500 errors:** Check Retell AI agent is active
+- **429 errors:** Rate limit hit (10 requests per 5 minutes)
 
 ---
 
@@ -209,7 +204,6 @@ See [`docs/N8N_SETUP.md`](docs/N8N_SETUP.md) for complete configuration.
 
 - [`docs/INTEGRATION_GUIDE.md`](docs/INTEGRATION_GUIDE.md) - Third-party integration guide
 - [`lib/cosentus-voice/README.md`](lib/cosentus-voice/README.md) - SDK documentation
-- [`docs/N8N_SETUP.md`](docs/N8N_SETUP.md) - n8n setup guide
 - [Retell AI Docs](https://docs.retellai.com/)
 - [Next.js Docs](https://nextjs.org/docs)
 

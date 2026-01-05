@@ -1,20 +1,22 @@
 /**
  * Cosentus AI Chat API Route
  * 
- * This endpoint acts as a secure proxy to the n8n AI workflow.
- * It handles user questions and returns AI-generated responses.
+ * This endpoint handles text-based chat with Retell AI's chat agent.
+ * It creates a web call session and returns the access token for the frontend
+ * to connect via Retell's Web SDK.
  * 
- * Security: n8n webhook URL and auth are kept server-side.
- * Rate limiting: Inherits from parent API security measures.
+ * Security: RETELL_API_KEY is kept server-side.
+ * Rate limiting: 10 chat sessions per 5 minutes per IP.
  */
 
 import { NextResponse } from "next/server";
+import { AGENTS } from "@/config/agents";
 
-const N8N_WEBHOOK_URL = "https://cosentus.app.n8n.cloud/webhook/chat";
+const RETELL_API_KEY = process.env.RETELL_API_KEY;
 
-// Rate limiting (similar to voice agent)
+// Rate limiting
 const RATE_LIMIT_WINDOW = 5 * 60 * 1000;   // 5 minutes
-const MAX_REQUESTS_PER_IP = 10;            // 10 chat messages per 5 min
+const MAX_REQUESTS_PER_IP = 10;            // 10 chat sessions per 5 min
 const rateLimitStore: { [ip: string]: number[] } = {};
 
 export async function POST(req: Request) {
@@ -31,7 +33,7 @@ export async function POST(req: Request) {
     if (timestamps.length >= MAX_REQUESTS_PER_IP) {
       console.warn(`[RATE LIMIT BLOCK - CHAT] ${ip} hit limit (${MAX_REQUESTS_PER_IP} in ${RATE_LIMIT_WINDOW / 60000}min)`);
       return NextResponse.json(
-        { error: "Too many questions from your device. Please wait a few minutes and try again." },
+        { error: "Too many chat requests from your device. Please wait a few minutes and try again." },
         { 
           status: 429,
           headers: {
@@ -45,52 +47,11 @@ export async function POST(req: Request) {
     timestamps.push(now);
     rateLimitStore[ip] = timestamps;
 
-    // Parse request
-    const { messages, thread_id } = await req.json();
-    
-    if (!messages || messages.length === 0) {
+    // Validate API key
+    if (!RETELL_API_KEY) {
+      console.error("[CHAT] RETELL_API_KEY not configured");
       return NextResponse.json(
-        { error: "No message provided" },
-        { 
-          status: 400,
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type',
-          },
-        }
-      );
-    }
-
-    // Get the latest user message
-    const userMessage = messages[messages.length - 1].content;
-
-    // Log the request (for monitoring)
-    const userAgent = req.headers.get("user-agent") || "unknown";
-    console.log(`[COSENTUS CHAT] Question from IP=${ip}, UA=${userAgent}, Time=${new Date().toISOString()}`);
-
-    // Forward to n8n webhook
-    console.log(`[n8n] Sending to webhook: ${N8N_WEBHOOK_URL}`);
-    console.log(`[n8n] Payload:`, { question: userMessage });
-    
-    const n8nResponse = await fetch(N8N_WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        question: userMessage,
-      }),
-    });
-
-    console.log(`[n8n] Response status: ${n8nResponse.status}`);
-    
-    if (!n8nResponse.ok) {
-      const errorText = await n8nResponse.text();
-      console.error(`[n8n] Webhook error: ${n8nResponse.status} ${n8nResponse.statusText}`);
-      console.error(`[n8n] Error body:`, errorText);
-      return NextResponse.json(
-        { error: "Failed to get response from AI. Please try again later." },
+        { error: "Chat service not configured" },
         { 
           status: 500,
           headers: {
@@ -102,23 +63,54 @@ export async function POST(req: Request) {
       );
     }
 
-    const responseText = await n8nResponse.text();
-    console.log(`[n8n] Raw response:`, responseText);
+    // Get the chat agent ID
+    const chatAgentId = AGENTS.chat;
+
+    // Log the request (for monitoring)
+    const userAgent = req.headers.get("user-agent") || "unknown";
+    console.log(`[COSENTUS CHAT] Request from IP=${ip}, UA=${userAgent}, Time=${new Date().toISOString()}`);
+
+    // Call Retell API to create a web call (chat) session
+    console.log(`[RETELL] Creating chat session with agent: ${chatAgentId}`);
     
-    let n8nData;
-    try {
-      n8nData = JSON.parse(responseText);
-    } catch (e) {
-      console.error(`[n8n] Failed to parse JSON response:`, e);
-      // If n8n returns plain text, use it directly
-      n8nData = { answer: responseText };
+    const retellResponse = await fetch("https://api.retellai.com/v2/create-web-call", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${RETELL_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        agent_id: chatAgentId,
+      }),
+    });
+
+    console.log(`[RETELL] Response status: ${retellResponse.status}`);
+    
+    if (!retellResponse.ok) {
+      const errorText = await retellResponse.text();
+      console.error(`[RETELL] API error: ${retellResponse.status} ${retellResponse.statusText}`);
+      console.error(`[RETELL] Error body:`, errorText);
+      return NextResponse.json(
+        { error: "Failed to initialize chat. Please try again later." },
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
+      );
     }
 
-    // Return the AI response
+    const data = await retellResponse.json();
+    console.log(`[RETELL] Chat session created successfully`);
+
+    // Return the access token and call ID for frontend to use
     return NextResponse.json(
       {
-        response: n8nData.answer || n8nData.response || "Sorry, I couldn't generate a response.",
-        thread_id: n8nData.thread_id || thread_id || null,
+        accessToken: data.access_token,
+        callId: data.call_id,
       },
       {
         headers: {
@@ -155,4 +147,3 @@ export async function OPTIONS() {
     },
   });
 }
-
