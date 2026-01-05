@@ -1,8 +1,10 @@
 /**
  * Cosentus AI Chat - Send Message API Route
  * 
- * This endpoint sends a message to an active Retell AI chat session.
+ * This endpoint sends a message to an active Retell AI chat session
+ * and returns the agent's response synchronously.
  * 
+ * Uses Retell AI's /create-chat-completion endpoint.
  * Security: RETELL_API_KEY is kept server-side.
  */
 
@@ -31,16 +33,17 @@ export async function POST(req: Request) {
       );
     }
 
-    // Send message to Retell API
+    // Send message to Retell API using create-chat-completion
     console.log(`[RETELL] Sending message to chat: ${chatId}`);
     
-    const retellResponse = await fetch(`https://api.retellai.com/send-chat-message/${chatId}`, {
+    const retellResponse = await fetch("https://api.retellai.com/create-chat-completion", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${RETELL_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        chat_id: chatId,
         content: message,
       }),
     });
@@ -56,9 +59,27 @@ export async function POST(req: Request) {
     }
 
     const data = await retellResponse.json();
-    console.log(`[RETELL] Message sent successfully`);
+    console.log(`[RETELL] Received response from agent`);
 
-    return NextResponse.json(data);
+    // Extract agent response from messages array
+    const agentMessage = data.messages && data.messages.length > 0 
+      ? data.messages[0] 
+      : null;
+
+    if (!agentMessage || !agentMessage.content) {
+      console.error(`[RETELL] No agent response in completion`);
+      return NextResponse.json(
+        { error: "No response from agent" },
+        { status: 500 }
+      );
+    }
+
+    // Return the agent's response
+    return NextResponse.json({
+      content: agentMessage.content,
+      role: agentMessage.role,
+      messageId: agentMessage.message_id,
+    });
   } catch (error: any) {
     console.error("Unexpected error in send-message:", error);
     return NextResponse.json(
