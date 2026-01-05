@@ -137,13 +137,6 @@ export default function Home() {
         setAiLoading(false);
       }
       
-      // Scroll to bottom
-      setTimeout(() => {
-        if (chatBottomRef.current) {
-          chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-      
     } catch (e: any) {
       console.error("Chat error:", e);
       setAiError(e.message || "Error connecting to Cosentus AI");
@@ -289,7 +282,7 @@ export default function Home() {
                   <div className="flex flex-col gap-4">
                     {chatHistory.map((msg, idx) => (
                       <div key={idx} className={`flex ${msg.role === "user" ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-base break-words whitespace-pre-line ${msg.role === "user" ? 'bg-[#01B2D6] text-white rounded-br-sm' : 'bg-white text-gray-800 rounded-bl-sm shadow-sm'}`}>
+                        <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-base break-words whitespace-pre-line ${msg.role === "user" ? 'bg-[#01B2D6] text-white rounded-br-sm text-right' : 'bg-white text-gray-800 rounded-bl-sm shadow-sm text-left'}`}>
                           {msg.content}
                         </div>
                       </div>
