@@ -70,25 +70,25 @@ export async function POST(req: Request) {
     console.log(`[COSENTUS CHAT] Question from IP=${ip}, UA=${userAgent}, Time=${new Date().toISOString()}`);
 
     // Forward to n8n webhook
+    console.log(`[n8n] Sending to webhook: ${N8N_WEBHOOK_URL}`);
+    console.log(`[n8n] Payload:`, { question: userMessage });
+    
     const n8nResponse = await fetch(N8N_WEBHOOK_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Add a secret header for n8n to verify requests come from your API
-        "X-Cosentus-Secret": process.env.N8N_WEBHOOK_SECRET || "cosentus-internal-2024",
       },
       body: JSON.stringify({
         question: userMessage,
-        thread_id: thread_id || null,
-        metadata: {
-          ip: ip,
-          timestamp: new Date().toISOString(),
-        }
       }),
     });
 
+    console.log(`[n8n] Response status: ${n8nResponse.status}`);
+    
     if (!n8nResponse.ok) {
-      console.error(`n8n webhook error: ${n8nResponse.status} ${n8nResponse.statusText}`);
+      const errorText = await n8nResponse.text();
+      console.error(`[n8n] Webhook error: ${n8nResponse.status} ${n8nResponse.statusText}`);
+      console.error(`[n8n] Error body:`, errorText);
       return NextResponse.json(
         { error: "Failed to get response from AI. Please try again later." },
         { 
@@ -102,7 +102,17 @@ export async function POST(req: Request) {
       );
     }
 
-    const n8nData = await n8nResponse.json();
+    const responseText = await n8nResponse.text();
+    console.log(`[n8n] Raw response:`, responseText);
+    
+    let n8nData;
+    try {
+      n8nData = JSON.parse(responseText);
+    } catch (e) {
+      console.error(`[n8n] Failed to parse JSON response:`, e);
+      // If n8n returns plain text, use it directly
+      n8nData = { answer: responseText };
+    }
 
     // Return the AI response
     return NextResponse.json(
