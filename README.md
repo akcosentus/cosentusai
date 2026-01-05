@@ -2,6 +2,68 @@
 
 A Next.js application showcasing Retell AI voice agents and AI chat for healthcare automation. Includes a headless JavaScript SDK for easy third-party integration.
 
+---
+
+## 🚀 For Third-Party Developers
+
+**Looking to integrate Cosentus AI agents into your website?**
+
+👉 **Start here:** [`docs/INTEGRATION_GUIDE.md`](docs/INTEGRATION_GUIDE.md)
+
+### Quick Links:
+- 📚 **Integration Guide:** [`docs/INTEGRATION_GUIDE.md`](docs/INTEGRATION_GUIDE.md) - Complete guide with code examples
+- 🎤 **Voice SDK Docs:** [`lib/cosentus-voice/README.md`](lib/cosentus-voice/README.md) - Detailed SDK documentation
+- 🔗 **Live Demo:** https://cosentusai.vercel.app
+- 📦 **SDK File:** https://cosentusai.vercel.app/cosentus-voice.js
+
+### API Endpoints:
+- **Voice Agents:** `https://cosentusai.vercel.app/api/retell/register-call`
+- **Chat Agent:** `https://cosentusai.vercel.app/api/assist-chat`
+
+### Available Agents:
+- **chloe** - Cosentus company information expert
+- **cindy** - Patient billing support specialist
+- **chris** - Insurance claim follow-up specialist
+- **Homepage AI Chat** - Text-based Q&A assistant
+
+---
+
+## 📁 Repository Structure
+
+```
+cosentusai/
+├── docs/                          # Documentation for third-party developers
+│   ├── INTEGRATION_GUIDE.md       # 👈 START HERE - Complete integration guide
+│   ├── CALL_CHEAT_SHEET.md        # Quick reference for stakeholder calls
+│   ├── HANDOFF_INSTRUCTIONS.md    # How to hand off to developers
+│   ├── N8N_SETUP.md               # n8n webhook configuration
+│   └── internal/                  # Internal Cosentus documentation
+│       ├── AUDIT.md
+│       ├── ENV_SETUP.md
+│       ├── RETELL_SETUP.md
+│       └── cleanup.sh
+├── lib/
+│   └── cosentus-voice/            # Voice agent SDK
+│       ├── cosentus-voice.js      # SDK source file
+│       └── README.md              # Detailed SDK documentation
+├── public/
+│   └── cosentus-voice.js          # SDK hosted for CDN access
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── assist-chat/       # AI chat API endpoint
+│   │   │   └── retell/            # Voice agent API endpoint
+│   │   └── page.tsx               # Demo homepage
+│   ├── config/
+│   │   └── agents.ts              # Centralized agent ID configuration
+│   └── hooks/
+│       └── useRetellAgent.ts      # React hook for voice agents
+├── update-sdk.sh                  # Script to sync SDK to public folder
+└── README.md                      # This file
+```
+
+---
+
 ## Features
 
 - 🎤 **Real-time Voice Conversations** - Browser-based voice AI powered by Retell AI
