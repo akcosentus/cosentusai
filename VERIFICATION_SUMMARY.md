@@ -54,7 +54,7 @@
 - [x] All 6 agents listed in INTEGRATION_GUIDE
 - [x] All 6 agents listed in CALL_CHEAT_SHEET
 - [x] All 6 agents listed in HANDOFF_INSTRUCTIONS
-- [x] All 6 agents have demo cards on homepage
+- [x] All 6 agents have demo cards on homepage (Chris was missing, now added!)
 - [x] Public SDK synced with lib SDK
 - [x] All documentation uses correct Vercel URL
 - [x] Rate limiting configured on voice API
