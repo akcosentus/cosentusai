@@ -284,7 +284,7 @@ export default function Home() {
                   <div className="flex flex-col gap-4">
                     {chatHistory.map((msg, idx) => (
                       <div key={idx} className={`flex ${msg.role === "user" ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-base break-words ${msg.role === "user" ? 'bg-[#01B2D6] text-white rounded-br-sm text-right' : 'bg-white text-gray-800 rounded-bl-sm shadow-sm text-left'}`}>
+                        <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-base break-words ${msg.role === "user" ? 'bg-white text-gray-800 rounded-br-sm text-right shadow-sm' : 'bg-gray-100 text-gray-800 rounded-bl-sm text-left'}`}>
                           <div className="prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0">
                             <ReactMarkdown 
                               remarkPlugins={[remarkGfm]}
@@ -295,13 +295,13 @@ export default function Home() {
                                 li: ({node, ...props}) => <li className="my-0.5" {...props} />,
                                 code: ({node, inline, ...props}: any) => 
                                   inline ? (
-                                    <code className={`px-1.5 py-0.5 rounded text-sm font-mono ${msg.role === "user" ? 'bg-white/20' : 'bg-gray-100'}`} {...props} />
+                                    <code className={`px-1.5 py-0.5 rounded text-sm font-mono ${msg.role === "user" ? 'bg-gray-200' : 'bg-gray-200'}`} {...props} />
                                   ) : (
-                                    <code className={`block px-3 py-2 rounded text-sm font-mono overflow-x-auto ${msg.role === "user" ? 'bg-white/20' : 'bg-gray-100'}`} {...props} />
+                                    <code className={`block px-3 py-2 rounded text-sm font-mono overflow-x-auto ${msg.role === "user" ? 'bg-gray-200' : 'bg-gray-200'}`} {...props} />
                                   ),
                                 strong: ({node, ...props}) => <strong className="font-semibold" {...props} />,
                                 em: ({node, ...props}) => <em className="italic" {...props} />,
-                                a: ({node, ...props}) => <a className={`underline ${msg.role === "user" ? 'text-white' : 'text-[#01B2D6]'} hover:opacity-80`} target="_blank" rel="noopener noreferrer" {...props} />,
+                                a: ({node, ...props}) => <a className="underline text-[#01B2D6] hover:opacity-80" target="_blank" rel="noopener noreferrer" {...props} />,
                               }}
                             >
                               {msg.content}
