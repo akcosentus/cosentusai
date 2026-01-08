@@ -18,7 +18,14 @@ export async function POST(req: Request) {
       console.error("[CHAT] RETELL_API_KEY not configured");
       return NextResponse.json(
         { error: "Chat service not configured" },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
@@ -28,7 +35,14 @@ export async function POST(req: Request) {
     if (!chatId) {
       return NextResponse.json(
         { error: "Chat ID is required" },
-        { status: 400 }
+        { 
+          status: 400,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
@@ -49,7 +63,14 @@ export async function POST(req: Request) {
       console.error(`[RETELL] Error body:`, errorText);
       return NextResponse.json(
         { error: "Failed to end chat" },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
       );
     }
 
@@ -60,13 +81,38 @@ export async function POST(req: Request) {
       success: true,
       chatId: data.chat_id,
       chatStatus: data.chat_status,
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
     });
   } catch (error: any) {
     console.error("Unexpected error in end-chat:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { 
+        status: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
     );
   }
+}
+
+// Handle preflight OPTIONS request
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
 }
 
