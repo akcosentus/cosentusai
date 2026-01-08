@@ -21,19 +21,27 @@ A headless, framework-agnostic JavaScript library for integrating Retell AI voic
 <script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
 
 <script>
-  // 1. Create chat assistant
+  // 1. Configure SDK (REQUIRED for external domains)
+  CosentusVoice.configure({
+    chatInitEndpoint: 'https://cosentusai.vercel.app/api/assist-chat',
+    chatSendEndpoint: 'https://cosentusai.vercel.app/api/chat/send-message'
+  });
+  
+  // 2. Create chat assistant
   const chat = CosentusVoice.createChatAssistant();
   
-  // 2. Listen for responses
+  // 3. Listen for responses
   chat.on('message', (data) => {
     console.log('AI:', data.content);
     // Add to your UI here
   });
   
-  // 3. Send messages
+  // 4. Send messages
   await chat.sendMessage('What is Cosentus?');
 </script>
 ```
+
+**⚠️ Important:** If you're integrating from an external domain (not `cosentusai.vercel.app`), you **must** call `configure()` before creating the chat assistant. This tells the SDK to use the Cosentus API instead of relative paths on your domain.
 
 ### Voice Agents
 
@@ -278,10 +286,16 @@ The chat assistant provides API communication for text-based chat. You build you
 ### Basic Usage
 
 ```javascript
-// Create chat assistant
+// Step 1: Configure SDK (REQUIRED for external domains)
+CosentusVoice.configure({
+  chatInitEndpoint: 'https://cosentusai.vercel.app/api/assist-chat',
+  chatSendEndpoint: 'https://cosentusai.vercel.app/api/chat/send-message'
+});
+
+// Step 2: Create chat assistant
 const chat = CosentusVoice.createChatAssistant();
 
-// Listen for events
+// Step 3: Listen for events
 chat.on('message', (data) => {
   // data.content = AI response text
   // data.role = 'assistant'
@@ -382,6 +396,12 @@ const isLoading = chat.getLoadingState();
 
   <script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
   <script>
+    // Configure SDK to use Cosentus API
+    CosentusVoice.configure({
+      chatInitEndpoint: 'https://cosentusai.vercel.app/api/assist-chat',
+      chatSendEndpoint: 'https://cosentusai.vercel.app/api/chat/send-message'
+    });
+    
     const chat = CosentusVoice.createChatAssistant();
     const messagesDiv = document.getElementById('messages');
     const input = document.getElementById('input');

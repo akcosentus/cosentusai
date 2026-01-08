@@ -345,10 +345,73 @@ Same as voice agents - include the SDK in your HTML:
 
 ---
 
+### **IMPORTANT: Configure API Endpoints**
+
+**If you're integrating from an external domain** (not `cosentusai.vercel.app`), you MUST configure the SDK to point to the Cosentus API:
+
+```javascript
+// Configure BEFORE creating chat assistant
+CosentusVoice.configure({
+  chatInitEndpoint: 'https://cosentusai.vercel.app/api/assist-chat',
+  chatSendEndpoint: 'https://cosentusai.vercel.app/api/chat/send-message'
+});
+```
+
+**Why?** By default, the SDK uses relative paths (e.g., `/api/assist-chat`), which would try to call your own domain. This configuration tells it to use the Cosentus API instead.
+
+**Note:** If you're testing locally or on a different domain, this configuration is **required**.
+
+---
+
+### **Handling Async SDK Loading**
+
+Since the SDK loads asynchronously, you may need to wait for it to be available:
+
+```javascript
+// Check if SDK is loaded
+if (window.CosentusVoice) {
+  // SDK is ready, configure and use it
+  CosentusVoice.configure({ /* ... */ });
+} else {
+  // Wait for SDK to load
+  const checkInterval = setInterval(() => {
+    if (window.CosentusVoice) {
+      clearInterval(checkInterval);
+      CosentusVoice.configure({ /* ... */ });
+      // Initialize your chat
+    }
+  }, 100);
+  
+  // Timeout after 10 seconds
+  setTimeout(() => clearInterval(checkInterval), 10000);
+}
+```
+
+**Or use the `async` attribute and wait for the `load` event:**
+
+```html
+<script src="https://cosentusai.vercel.app/cosentus-voice.js" async onload="initChat()"></script>
+<script>
+  function initChat() {
+    CosentusVoice.configure({ /* ... */ });
+    const chat = CosentusVoice.createChatAssistant();
+    // ... rest of your code
+  }
+</script>
+```
+
+---
+
 ### **SDK Usage**
 
 ```javascript
-// 1. Create chat assistant instance
+// 1. Configure SDK (REQUIRED for external domains)
+CosentusVoice.configure({
+  chatInitEndpoint: 'https://cosentusai.vercel.app/api/assist-chat',
+  chatSendEndpoint: 'https://cosentusai.vercel.app/api/chat/send-message'
+});
+
+// 2. Create chat assistant instance
 const chat = CosentusVoice.createChatAssistant();
 
 // 2. Listen for events to update your UI
@@ -444,10 +507,16 @@ async function sendUserMessage(message) {
 
   <!-- Include Cosentus SDK -->
   <script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
-  
-  <script>
+
+<script>
+    // Configure SDK to use Cosentus API
+    CosentusVoice.configure({
+      chatInitEndpoint: 'https://cosentusai.vercel.app/api/assist-chat',
+      chatSendEndpoint: 'https://cosentusai.vercel.app/api/chat/send-message'
+    });
+    
     const chat = CosentusVoice.createChatAssistant();
-    const messagesDiv = document.getElementById('messages');
+  const messagesDiv = document.getElementById('messages');
     const input = document.getElementById('input');
     let loadingDiv = null;
     
@@ -513,7 +582,7 @@ async function sendUserMessage(message) {
         document.getElementById('send').click();
       }
     });
-  </script>
+</script>
 </body>
 </html>
 ```
@@ -532,8 +601,18 @@ function ChatWidget() {
   const [chat, setChat] = useState(null);
   
   useEffect(() => {
-    // Initialize chat assistant
-    const chatInstance = window.CosentusVoice.createChatAssistant();
+    // Wait for SDK to load (if using async script tag)
+    const initChat = () => {
+      if (!window.CosentusVoice) return;
+      
+      // Configure SDK to use Cosentus API
+      window.CosentusVoice.configure({
+        chatInitEndpoint: 'https://cosentusai.vercel.app/api/assist-chat',
+        chatSendEndpoint: 'https://cosentusai.vercel.app/api/chat/send-message'
+      });
+      
+      // Initialize chat assistant
+      const chatInstance = window.CosentusVoice.createChatAssistant();
     
     // Listen for events
     chatInstance.on('message', (data) => {
@@ -548,7 +627,24 @@ function ChatWidget() {
       alert('Error: ' + data.error);
     });
     
-    setChat(chatInstance);
+      setChat(chatInstance);
+    };
+    
+    // Check if SDK is already loaded
+    if (window.CosentusVoice) {
+      initChat();
+    } else {
+      // Wait for SDK to load
+      const checkInterval = setInterval(() => {
+        if (window.CosentusVoice) {
+          initChat();
+          clearInterval(checkInterval);
+        }
+      }, 100);
+      
+      // Cleanup
+      return () => clearInterval(checkInterval);
+    }
   }, []);
   
   const sendMessage = async () => {
@@ -604,6 +700,28 @@ function ChatWidget() {
 export default ChatWidget;
 ```
 
+**TypeScript Support:**
+
+Add this to your type definitions file (e.g., `global.d.ts`):
+
+```typescript
+declare global {
+  interface Window {
+    CosentusVoice?: {
+      createChatAssistant: () => any;
+      createAgent: (name: string) => any;
+      configure: (options: {
+        chatInitEndpoint?: string;
+        chatSendEndpoint?: string;
+        apiEndpoint?: string;
+      }) => void;
+    };
+  }
+}
+
+export {};
+```
+
 ---
 
 ### **WordPress Example**
@@ -619,6 +737,12 @@ export default ChatWidget;
 <script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
 <script>
 jQuery(document).ready(function($) {
+  // Configure SDK to use Cosentus API
+  CosentusVoice.configure({
+    chatInitEndpoint: 'https://cosentusai.vercel.app/api/assist-chat',
+    chatSendEndpoint: 'https://cosentusai.vercel.app/api/chat/send-message'
+  });
+  
   const chat = CosentusVoice.createChatAssistant();
   const messagesDiv = $('#chat-messages');
   const input = $('#chat-input');
