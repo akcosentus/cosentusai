@@ -51,11 +51,12 @@
         const response = await fetch(chatInitEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: [] })
+          body: JSON.stringify({})
         });
 
         if (!response.ok) {
-          throw new Error('Failed to initialize chat session');
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || 'Failed to initialize chat session');
         }
 
         const data = await response.json();
@@ -98,7 +99,8 @@
         });
 
         if (!response.ok) {
-          throw new Error('Failed to send message');
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || 'Failed to send message');
         }
 
         const data = await response.json();
