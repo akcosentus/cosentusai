@@ -1,10 +1,10 @@
 /**
  * Cosentus Voice Agent Library
  * 
- * A headless, framework-agnostic library for integrating Retell AI voice agents.
+ * A headless, framework-agnostic library for integrating Retell AI voice and chat agents.
  * Works with React, Vue, Angular, WordPress, plain HTML, or any web platform.
  * 
- * @version 1.0.0
+ * @version 1.1.0
  * @author Cosentus AI
  */
 
@@ -21,8 +21,160 @@
     carson: 'agent_443ead51c8a35f874d0ca1a8c1'
   };
 
-  // Default API endpoint
+  // Default API endpoints
   let apiEndpoint = '/api/retell/register-call';
+  let chatInitEndpoint = '/api/assist-chat';
+  let chatSendEndpoint = '/api/chat/send-message';
+
+  /**
+   * ChatAssistant Class
+   * Headless chat assistant - handles API communication only, no UI
+   * Third-party developers build their own UI and use this for backend logic
+   */
+  class ChatAssistant {
+    constructor() {
+      this.chatId = null;
+      this.isLoading = false;
+      this.eventListeners = {};
+    }
+
+    /**
+     * Initialize a new chat session
+     * @returns {Promise<string>} Chat ID
+     */
+    async initialize() {
+      if (this.chatId) {
+        return this.chatId;
+      }
+
+      try {
+        const response = await fetch(chatInitEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: [] })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to initialize chat session');
+        }
+
+        const data = await response.json();
+        this.chatId = data.chatId;
+        this._emit('initialized', { chatId: this.chatId });
+        
+        return this.chatId;
+      } catch (error) {
+        this._emit('error', { error: error.message });
+        throw error;
+      }
+    }
+
+    /**
+     * Send a message and get response
+     * @param {string} message - User message
+     * @returns {Promise<Object>} Response object with content, role, messageId
+     */
+    async sendMessage(message) {
+      if (!message || !message.trim()) {
+        throw new Error('Message cannot be empty');
+      }
+
+      // Initialize session if needed
+      if (!this.chatId) {
+        await this.initialize();
+      }
+
+      this.isLoading = true;
+      this._emit('loading', { isLoading: true });
+
+      try {
+        const response = await fetch(chatSendEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            chatId: this.chatId, 
+            message: message.trim() 
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to send message');
+        }
+
+        const data = await response.json();
+        this._emit('message', { 
+          content: data.content,
+          role: data.role,
+          messageId: data.messageId
+        });
+
+        return data;
+      } catch (error) {
+        this._emit('error', { error: error.message });
+        throw error;
+      } finally {
+        this.isLoading = false;
+        this._emit('loading', { isLoading: false });
+      }
+    }
+
+    /**
+     * Reset the chat session
+     */
+    reset() {
+      this.chatId = null;
+      this.isLoading = false;
+      this._emit('reset');
+    }
+
+    /**
+     * Get current chat ID
+     * @returns {string|null} Current chat ID or null
+     */
+    getChatId() {
+      return this.chatId;
+    }
+
+    /**
+     * Check if currently loading
+     * @returns {boolean} Loading state
+     */
+    getLoadingState() {
+      return this.isLoading;
+    }
+
+    /**
+     * Add event listener
+     * Events: 'initialized', 'message', 'loading', 'error', 'reset'
+     * @param {string} event - Event name
+     * @param {Function} callback - Callback function
+     */
+    on(event, callback) {
+      if (!this.eventListeners[event]) {
+        this.eventListeners[event] = [];
+      }
+      this.eventListeners[event].push(callback);
+    }
+
+    /**
+     * Remove event listener
+     * @param {string} event - Event name
+     * @param {Function} callback - Callback function
+     */
+    off(event, callback) {
+      if (!this.eventListeners[event]) return;
+      this.eventListeners[event] = this.eventListeners[event].filter(cb => cb !== callback);
+    }
+
+    /**
+     * Emit event
+     * @private
+     */
+    _emit(event, data) {
+      if (!this.eventListeners[event]) return;
+      this.eventListeners[event].forEach(callback => callback(data));
+    }
+  }
 
   /**
    * VoiceAgent Class
@@ -235,6 +387,15 @@
     agents: AGENTS,
 
     /**
+     * Create a chat assistant instance (headless - no UI)
+     * Third-party developers build their own UI and use this for API communication
+     * @returns {ChatAssistant} Chat assistant instance
+     */
+    createChatAssistant: function() {
+      return new ChatAssistant();
+    },
+
+    /**
      * Create a new voice agent instance
      * @param {string} agentName - Agent name (e.g., 'chloe', 'cindy')
      * @returns {VoiceAgent} Voice agent instance
@@ -256,11 +417,19 @@
     /**
      * Configure the library
      * @param {Object} options - Configuration options
-     * @param {string} options.apiEndpoint - Custom API endpoint for token generation
+     * @param {string} options.apiEndpoint - Custom API endpoint for voice token generation
+     * @param {string} options.chatInitEndpoint - Custom API endpoint for chat initialization
+     * @param {string} options.chatSendEndpoint - Custom API endpoint for sending chat messages
      */
     configure: function(options) {
       if (options.apiEndpoint) {
         apiEndpoint = options.apiEndpoint;
+      }
+      if (options.chatInitEndpoint) {
+        chatInitEndpoint = options.chatInitEndpoint;
+      }
+      if (options.chatSendEndpoint) {
+        chatSendEndpoint = options.chatSendEndpoint;
       }
     },
 
@@ -268,7 +437,7 @@
      * Get library version
      * @returns {string} Version number
      */
-    version: '1.0.0'
+    version: '1.1.0'
   };
 
   // Export for different module systems
