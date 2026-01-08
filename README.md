@@ -1,4 +1,4 @@
-# Cosentus AI - Voice Agent Integration Kit
+# Cosentus AI - Voice & Chat Agent Integration Kit
 
 Production-ready AI voice agents and chat assistant for healthcare automation. Includes a headless JavaScript SDK for seamless third-party integration.
 
@@ -21,10 +21,11 @@ Production-ready AI voice agents and chat assistant for healthcare automation. I
 ### API Endpoints
 
 - **Voice Agents:** `https://cosentusai.vercel.app/api/retell/register-call`
-- **Chat Agent:** `https://cosentusai.vercel.app/api/assist-chat`
+- **Chat Assistant:** `https://cosentusai.vercel.app/api/assist-chat` (auto-handled by SDK)
 
 ### Available Agents
 
+**Voice Agents:**
 | Agent | Description |
 |-------|-------------|
 | `chloe` | Cosentus company information expert |
@@ -33,7 +34,10 @@ Production-ready AI voice agents and chat assistant for healthcare automation. I
 | `cara` | Eligibility & benefits verification |
 | `carly` | Prior authorization follow-up |
 | `carson` | Payment reconciliation specialist |
-| Chat AI | Text-based Q&A assistant (Retell AI) |
+
+**Chat Assistant:**
+- Headless SDK - Build your own UI, SDK handles API calls
+- Usage: `CosentusVoice.createChatAssistant()`
 
 ---
 

@@ -21,7 +21,7 @@
 - **Carson** - Payment reconciliation
 
 ### **Chat Agent:**
-- **Homepage AI Chat** - Text-based Q&A assistant (Retell AI)
+- **Homepage AI Chat** - Text-based Q&A assistant (Retell AI, headless SDK)
 
 ---
 
@@ -33,20 +33,11 @@ const chloe = CosentusVoice.createAgent('chloe');
 document.getElementById('button').onclick = () => chloe.connect();
 ```
 
-### **Chat Agent (2 API calls):**
+### **Chat Agent (SDK - Headless):**
 ```javascript
-// 1. Initialize chat
-const init = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
-  method: 'POST',
-  body: JSON.stringify({ messages: [] })
-});
-const { chatId } = await init.json();
-
-// 2. Send message
-fetch('https://cosentusai.vercel.app/api/chat/send-message', {
-  method: 'POST',
-  body: JSON.stringify({ chatId, message: 'question' })
-})
+const chat = CosentusVoice.createChatAssistant();
+chat.on('message', (data) => console.log(data.content));
+await chat.sendMessage('What is Cosentus?');
 ```
 
 ---

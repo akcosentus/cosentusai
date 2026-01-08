@@ -317,140 +317,205 @@ Registers an event listener.
 
 ---
 
-## 💬 Chat Agent Integration
+## 💬 Chat Assistant Integration (Headless SDK)
+
+The chat assistant is integrated via the same `cosentus-voice.js` SDK. It provides the backend communication logic, and you build the UI.
 
 ### **How It Works**
 
-1. User types a question in your chat UI
-2. Your code sends a request to Cosentus API to initialize a chat session
-3. API returns an access token for Retell AI's chat agent
-4. Your code connects to Retell AI and handles the conversation
-5. You display messages in your UI
+1. **Initialize:** Create a `ChatAssistant` instance using `CosentusVoice.createChatAssistant()`.
+2. **Listen to Events:** Subscribe to `message`, `loading`, and `error` events to update your UI.
+3. **Send Messages:** Call `chatAssistant.sendMessage(userMessage)` to send user input.
+4. **Receive Responses:** The `message` event will fire with the AI's response.
+5. **End Session:** Call `chatAssistant.reset()` when the conversation is complete.
 
-**You control:** Chat UI design, input field, message bubbles, animations  
-**We control:** AI logic (via Retell AI), knowledge base, response generation
-
-**Note:** The chat agent uses Retell AI (agent ID: `agent_90d094ac45b9da3833c3fc835b`)
+**You control:** Chat UI design, input field, message bubbles, animations, loading indicators, error display.  
+**We control:** AI logic, knowledge base, response generation, API calls.
 
 ---
 
-### **API Endpoint**
+### **SDK Installation**
 
-```
-POST https://cosentusai.vercel.app/api/assist-chat
-```
-
----
-
-### **Request Format**
-
-**Step 1: Initialize Chat Session**
-```javascript
-fetch('https://cosentusai.vercel.app/api/assist-chat', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ messages: [] })
-})
-```
-
-**Step 2: Send Message**
-```javascript
-fetch('https://cosentusai.vercel.app/api/chat/send-message', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    chatId: 'chat_abc123',  // From step 1
-    message: 'What is Cosentus?'
-  })
-})
-```
-
----
-
-### **Response Format**
-
-**Initialize Chat (200):**
-```json
-{
-  "chatId": "chat_abc123",
-  "agentId": "agent_90d094ac45b9da3833c3fc835b",
-  "chatStatus": "ongoing"
-}
-```
-
-**Send Message (200):**
-```json
-{
-  "content": "Cosentus is a medical RCM firm that...",
-  "role": "agent",
-  "messageId": "msg_xyz789"
-}
-```
-
-**Error (4xx/5xx):**
-```json
-{
-  "error": "Error message here"
-}
-```
-
----
-
-### **Basic Example**
+Same as voice agents - include the SDK in your HTML:
 
 ```html
-<div id="chat-container">
-  <div id="messages"></div>
-  <input type="text" id="user-input" placeholder="Ask a question...">
-  <button id="send-btn">Send</button>
-</div>
+<!-- Cosentus SDK (includes chat + voice) -->
+<script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
+```
 
-<script>
-  const messagesDiv = document.getElementById('messages');
-  const input = document.getElementById('user-input');
-  const sendBtn = document.getElementById('send-btn');
-  let threadId = null;
-  
-  sendBtn.onclick = async () => {
-    const question = input.value.trim();
-    if (!question) return;
-    
-    // Display user message
-    messagesDiv.innerHTML += `<div class="user-msg">${question}</div>`;
-    input.value = '';
-    
-    try {
-      // Initialize chat session if needed
-      if (!threadId) {
-        const initResp = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: [] })
-        });
-        const initData = await initResp.json();
-        threadId = initData.chatId;
-      }
-      
-      // Send message
-      const msgResp = await fetch('https://cosentusai.vercel.app/api/chat/send-message', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chatId: threadId, message: question })
-      });
-      
-      const data = await msgResp.json();
-      
-      if (msgResp.ok) {
-        // Display AI response
-        messagesDiv.innerHTML += `<div class="ai-msg">${data.content}</div>`;
-      } else {
-        messagesDiv.innerHTML += `<div class="error-msg">Error: ${data.error}</div>`;
-      }
-    } catch (error) {
-      messagesDiv.innerHTML += `<div class="error-msg">Connection error</div>`;
+---
+
+### **SDK Usage**
+
+```javascript
+// 1. Create chat assistant instance
+const chat = CosentusVoice.createChatAssistant();
+
+// 2. Listen for events to update your UI
+chat.on('message', (data) => {
+  console.log('AI Response:', data.content);
+  // Update your chat UI with data.content
+  // data.role = 'assistant'
+  // data.messageId = unique ID
+});
+
+chat.on('loading', (data) => {
+  console.log('Loading:', data.isLoading);
+  // Show/hide loading indicator in your UI
+});
+
+chat.on('error', (data) => {
+  console.error('Chat Error:', data.error);
+  // Display error message in your UI
+});
+
+chat.on('initialized', (data) => {
+  console.log('Chat session created:', data.chatId);
+});
+
+chat.on('reset', () => {
+  console.log('Chat session reset');
+});
+
+// 3. Send a message
+async function sendUserMessage(message) {
+  if (!message.trim()) return;
+  console.log('User Message:', message);
+  // Update your chat UI with user message
+  await chat.sendMessage(message);
+}
+
+// 4. Reset the session (optional)
+// chat.reset();
+```
+
+---
+
+### **Available Methods**
+
+| Method | Description |
+|--------|-------------|
+| `createChatAssistant()` | Create a new chat assistant instance |
+| `sendMessage(message)` | Send a message and get AI response |
+| `reset()` | Reset the chat session |
+| `getChatId()` | Get current chat session ID |
+| `getLoadingState()` | Check if currently loading |
+
+---
+
+### **Available Events**
+
+| Event | Data | Description |
+|-------|------|-------------|
+| `initialized` | `{ chatId }` | Chat session initialized |
+| `message` | `{ content, role, messageId }` | AI response received |
+| `loading` | `{ isLoading }` | Loading state changed |
+| `error` | `{ error }` | Error occurred |
+| `reset` | - | Session reset |
+
+---
+
+### **Basic HTML Example**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat with Cosentus AI</title>
+  <style>
+    #messages {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
     }
-  };
-</script>
+    .user-msg { text-align: right; color: blue; margin: 5px 0; }
+    .ai-msg { text-align: left; color: green; margin: 5px 0; }
+    .loading { color: gray; font-style: italic; }
+  </style>
+</head>
+<body>
+  <h1>Cosentus AI Chat</h1>
+  <div id="messages"></div>
+  <input type="text" id="input" placeholder="Type a message..." style="width: 70%;">
+  <button id="send">Send</button>
+  <button id="reset">Reset</button>
+
+  <!-- Include Cosentus SDK -->
+  <script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
+  
+  <script>
+    const chat = CosentusVoice.createChatAssistant();
+    const messagesDiv = document.getElementById('messages');
+    const input = document.getElementById('input');
+    let loadingDiv = null;
+    
+    // Display message in UI
+    function addMessage(content, role) {
+      const div = document.createElement('div');
+      div.className = role === 'user' ? 'user-msg' : 'ai-msg';
+      div.textContent = content;
+      messagesDiv.appendChild(div);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+    
+    // Show/hide loading indicator
+    function setLoading(isLoading) {
+      if (isLoading) {
+        loadingDiv = document.createElement('div');
+        loadingDiv.className = 'loading';
+        loadingDiv.textContent = 'AI is thinking...';
+        messagesDiv.appendChild(loadingDiv);
+      } else if (loadingDiv) {
+        loadingDiv.remove();
+        loadingDiv = null;
+      }
+    }
+    
+    // Listen for AI responses
+    chat.on('message', (data) => {
+      addMessage(data.content, 'assistant');
+    });
+    
+    chat.on('loading', (data) => {
+      setLoading(data.isLoading);
+    });
+    
+    chat.on('error', (data) => {
+      alert('Error: ' + data.error);
+    });
+    
+    // Send message
+    document.getElementById('send').onclick = async () => {
+      const message = input.value.trim();
+      if (!message) return;
+      
+      addMessage(message, 'user');
+      input.value = '';
+      
+      try {
+        await chat.sendMessage(message);
+      } catch (error) {
+        console.error('Failed to send:', error);
+      }
+    };
+    
+    // Reset chat
+    document.getElementById('reset').onclick = () => {
+      chat.reset();
+      messagesDiv.innerHTML = '';
+    };
+    
+    // Enter to send
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        document.getElementById('send').click();
+      }
+    });
+  </script>
+</body>
+</html>
 ```
 
 ---
@@ -458,54 +523,54 @@ fetch('https://cosentusai.vercel.app/api/chat/send-message', {
 ### **React Example**
 
 ```jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function ChatWidget() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [threadId, setThreadId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [chat, setChat] = useState(null);
+  
+  useEffect(() => {
+    // Initialize chat assistant
+    const chatInstance = window.CosentusVoice.createChatAssistant();
+    
+    // Listen for events
+    chatInstance.on('message', (data) => {
+      setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
+    });
+    
+    chatInstance.on('loading', (data) => {
+      setLoading(data.isLoading);
+    });
+    
+    chatInstance.on('error', (data) => {
+      alert('Error: ' + data.error);
+    });
+    
+    setChat(chatInstance);
+  }, []);
   
   const sendMessage = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || !chat) return;
     
-    const userMessage = { role: 'user', content: input };
-    setMessages([...messages, userMessage]);
+    // Add user message to UI
+    setMessages(prev => [...prev, { role: 'user', content: input }]);
+    const messageToSend = input;
     setInput('');
-    setLoading(true);
     
+    // Send to AI
     try {
-      // Initialize chat session if needed
-      let chatId = threadId;
-      if (!chatId) {
-        const initResp = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: [] })
-        });
-        const initData = await initResp.json();
-        chatId = initData.chatId;
-        setThreadId(chatId);
-      }
-      
-      // Send message
-      const msgResp = await fetch('https://cosentusai.vercel.app/api/chat/send-message', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chatId, message: input })
-      });
-      
-      const data = await msgResp.json();
-      
-      if (msgResp.ok) {
-        setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
-      } else {
-        alert('Error: ' + data.error);
-      }
+      await chat.sendMessage(messageToSend);
     } catch (error) {
-      alert('Connection error');
-    } finally {
-      setLoading(false);
+      console.error('Failed to send:', error);
+    }
+  };
+  
+  const resetChat = () => {
+    if (chat) {
+      chat.reset();
+      setMessages([]);
     }
   };
   
@@ -517,6 +582,7 @@ function ChatWidget() {
             {msg.content}
           </div>
         ))}
+        {loading && <div className="loading">AI is thinking...</div>}
       </div>
       <input
         value={input}
@@ -525,12 +591,57 @@ function ChatWidget() {
         placeholder="Ask a question..."
         disabled={loading}
       />
-      <button onClick={sendMessage} disabled={loading}>
+      <button onClick={sendMessage} disabled={loading || !chat}>
         {loading ? 'Sending...' : 'Send'}
+      </button>
+      <button onClick={resetChat} disabled={!chat}>
+        Reset
       </button>
     </div>
   );
 }
+
+export default ChatWidget;
+```
+
+---
+
+### **WordPress Example**
+
+```php
+<!-- Add to your WordPress theme or page template -->
+<div id="cosentus-chat">
+  <div id="chat-messages"></div>
+  <input type="text" id="chat-input" placeholder="Ask a question...">
+  <button id="chat-send">Send</button>
+</div>
+
+<script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
+<script>
+jQuery(document).ready(function($) {
+  const chat = CosentusVoice.createChatAssistant();
+  const messagesDiv = $('#chat-messages');
+  const input = $('#chat-input');
+  
+  chat.on('message', function(data) {
+    messagesDiv.append('<div class="ai-msg">' + data.content + '</div>');
+  });
+  
+  chat.on('error', function(data) {
+    alert('Error: ' + data.error);
+  });
+  
+  $('#chat-send').on('click', async function() {
+    const message = input.val().trim();
+    if (!message) return;
+    
+    messagesDiv.append('<div class="user-msg">' + message + '</div>');
+    input.val('');
+    
+    await chat.sendMessage(message);
+  });
+});
+</script>
 ```
 
 ---

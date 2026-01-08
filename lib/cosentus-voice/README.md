@@ -1,6 +1,6 @@
-# Cosentus Voice Agent Library
+# Cosentus Voice & Chat Agent Library
 
-A headless, framework-agnostic JavaScript library for integrating Retell AI voice agents into any website.
+A headless, framework-agnostic JavaScript library for integrating Retell AI voice agents and chat assistant into any website.
 
 ## Features
 
@@ -8,10 +8,34 @@ A headless, framework-agnostic JavaScript library for integrating Retell AI voic
 - ✅ **Headless** - No UI included, you build your own interface
 - ✅ **Simple API** - Use agent names, not IDs
 - ✅ **Event-driven** - React to connection states, speaking events, errors
-- ✅ **Lightweight** - ~5KB minified
+- ✅ **Chat Assistant** - Headless chat with your own UI
+- ✅ **Lightweight** - ~8KB minified
 - ✅ **TypeScript support** - Type definitions included
 
 ## Quick Start
+
+### Chat Assistant (Recommended - Start Here)
+
+```html
+<!-- Include Cosentus SDK -->
+<script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
+
+<script>
+  // 1. Create chat assistant
+  const chat = CosentusVoice.createChatAssistant();
+  
+  // 2. Listen for responses
+  chat.on('message', (data) => {
+    console.log('AI:', data.content);
+    // Add to your UI here
+  });
+  
+  // 3. Send messages
+  await chat.sendMessage('What is Cosentus?');
+</script>
+```
+
+### Voice Agents
 
 ### 1. Include Required Scripts
 
@@ -247,7 +271,174 @@ CosentusVoice.configure({
 
 ---
 
-## Available Agents
+## 💬 Chat Assistant (Headless)
+
+The chat assistant provides API communication for text-based chat. You build your own UI, the SDK handles all backend logic.
+
+### Basic Usage
+
+```javascript
+// Create chat assistant
+const chat = CosentusVoice.createChatAssistant();
+
+// Listen for events
+chat.on('message', (data) => {
+  // data.content = AI response text
+  // data.role = 'assistant'
+  // data.messageId = unique ID
+  displayInYourUI(data.content);
+});
+
+chat.on('loading', (data) => {
+  showLoadingIndicator(data.isLoading);
+});
+
+chat.on('error', (data) => {
+  showError(data.error);
+});
+
+// Send messages
+await chat.sendMessage('What is Cosentus?');
+
+// Reset session
+chat.reset();
+```
+
+### Available Methods
+
+#### `createChatAssistant()`
+Creates a new chat assistant instance.
+
+```javascript
+const chat = CosentusVoice.createChatAssistant();
+```
+
+#### `initialize()`
+Manually initialize a chat session. Called automatically on first `sendMessage()`.
+
+```javascript
+const chatId = await chat.initialize();
+```
+
+#### `sendMessage(message)`
+Send a message and get AI response.
+
+```javascript
+const response = await chat.sendMessage('Hello');
+// response.content = AI response text
+// response.role = 'assistant'
+// response.messageId = unique ID
+```
+
+#### `reset()`
+Reset the chat session (clears chatId).
+
+```javascript
+chat.reset();
+```
+
+#### `getChatId()`
+Get current chat session ID.
+
+```javascript
+const chatId = chat.getChatId();
+```
+
+#### `getLoadingState()`
+Check if currently loading.
+
+```javascript
+const isLoading = chat.getLoadingState();
+```
+
+### Available Events
+
+| Event | Data | Description |
+|-------|------|-------------|
+| `initialized` | `{ chatId }` | Chat session initialized |
+| `message` | `{ content, role, messageId }` | AI response received |
+| `loading` | `{ isLoading }` | Loading state changed |
+| `error` | `{ error }` | Error occurred |
+| `reset` | - | Session reset |
+
+### Complete Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat with Cosentus AI</title>
+  <style>
+    #messages { height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
+    .user { text-align: right; color: blue; }
+    .assistant { text-align: left; color: green; }
+  </style>
+</head>
+<body>
+  <div id="messages"></div>
+  <input type="text" id="input" placeholder="Type a message...">
+  <button id="send">Send</button>
+  <button id="reset">Reset</button>
+
+  <script src="https://cosentusai.vercel.app/cosentus-voice.js"></script>
+  <script>
+    const chat = CosentusVoice.createChatAssistant();
+    const messagesDiv = document.getElementById('messages');
+    const input = document.getElementById('input');
+    
+    // Display message in UI
+    function addMessage(content, role) {
+      const div = document.createElement('div');
+      div.className = role;
+      div.textContent = content;
+      messagesDiv.appendChild(div);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+    
+    // Listen for AI responses
+    chat.on('message', (data) => {
+      addMessage(data.content, 'assistant');
+    });
+    
+    chat.on('error', (data) => {
+      alert('Error: ' + data.error);
+    });
+    
+    // Send message
+    document.getElementById('send').onclick = async () => {
+      const message = input.value.trim();
+      if (!message) return;
+      
+      addMessage(message, 'user');
+      input.value = '';
+      
+      try {
+        await chat.sendMessage(message);
+      } catch (error) {
+        console.error('Failed to send:', error);
+      }
+    };
+    
+    // Reset chat
+    document.getElementById('reset').onclick = () => {
+      chat.reset();
+      messagesDiv.innerHTML = '';
+    };
+    
+    // Enter to send
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        document.getElementById('send').click();
+      }
+    });
+  </script>
+</body>
+</html>
+```
+
+---
+
+## 🎤 Available Voice Agents
 
 | Name     | Description                                  |
 |----------|----------------------------------------------|

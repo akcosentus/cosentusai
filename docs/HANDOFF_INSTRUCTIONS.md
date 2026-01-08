@@ -13,16 +13,20 @@ Send these 2 files as attachments:
 ```
 🔗 SDK URL: https://cosentusai.vercel.app/cosentus-voice.js
 🔗 Voice API: https://cosentusai.vercel.app/api/retell/register-call
-🔗 Chat API: https://cosentusai.vercel.app/api/assist-chat
+🔗 Chat API: https://cosentusai.vercel.app/api/assist-chat (auto-handled by SDK)
 🔗 Demo Site: https://cosentusai.vercel.app
 
-Available Agents:
+Available Voice Agents:
 - chloe (company info)
 - cindy (patient billing)  
 - chris (insurance claims)
 - cara (eligibility verification)
 - carly (prior authorization)
 - carson (payment reconciliation)
+
+Chat Assistant:
+- Headless SDK (CosentusVoice.createChatAssistant())
+- Developers build their own UI, SDK handles API calls
 ```
 
 **That's it!** No git access, no codebase, just docs + URLs.
@@ -110,19 +114,22 @@ Hi [Team],
 Attached are the integration docs for the Cosentus AI agents. Here's what you need:
 
 📦 RESOURCES:
-• Voice SDK: https://cosentusai.vercel.app/cosentus-voice.js
+• SDK (Voice + Chat): https://cosentusai.vercel.app/cosentus-voice.js
 • Voice API: https://cosentusai.vercel.app/api/retell/register-call  
-• Chat API: https://cosentusai.vercel.app/api/assist-chat
+• Chat API: https://cosentusai.vercel.app/api/assist-chat (auto-handled by SDK)
 • Live Demo: https://cosentusai.vercel.app
 
-🎤 AGENTS:
+🎤 VOICE AGENTS:
 • chloe - Company info expert
 • cindy - Patient billing support
 • chris - Insurance claim follow-up
 • cara - Eligibility & benefits verification
 • carly - Prior authorization follow-up
 • carson - Payment reconciliation
-• Homepage AI Chat - Text-based assistant
+
+💬 CHAT ASSISTANT:
+• Headless SDK - You build the UI, SDK handles API calls
+• Usage: CosentusVoice.createChatAssistant()
 
 📚 DOCUMENTATION:
 See attached INTEGRATION_GUIDE.md for step-by-step instructions with code examples for React, WordPress, Framer, and vanilla JS.
