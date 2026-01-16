@@ -35,6 +35,7 @@ Production-ready AI voice agents and chat assistant for healthcare automation. I
 | `carly` | Prior authorization follow-up |
 | `carson` | Payment reconciliation specialist |
 | `cassidy` | Pre-service anesthesia cost estimates |
+| `courtney` | Medical appointment scheduling |
 
 **Chat Assistant:**
 - Headless SDK - Build your own UI, SDK handles API calls

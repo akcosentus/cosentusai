@@ -55,6 +55,12 @@ export const AGENTS = {
   cassidy: 'agent_ff8707dccf16f96ecec4c448d3',
   
   /**
+   * Courtney - Medical Appointment Scheduling
+   * Handles inbound and outbound appointment scheduling for medical practices
+   */
+  courtney: 'agent_1b7fe9e057f84254f4fcca9256',
+  
+  /**
    * Chat Agent - Text-based AI Assistant
    * Answers questions about Cosentus using knowledge base
    */
