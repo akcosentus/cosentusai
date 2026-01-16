@@ -21,7 +21,7 @@ export default function Home() {
   const [inputValue, setInputValue] = useState('');
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [agentStatus, setAgentStatus] = useState<string>('');
-  const [activeAgent, setActiveAgent] = useState<'chloe' | 'cindy' | null>(null);
+  const [activeAgent, setActiveAgent] = useState<'chloe' | 'cindy' | 'chris' | 'cara' | 'carly' | 'carson' | 'cassidy' | 'courtney' | null>(null);
 
   // Centralized Agent IDs
   const CHLOE_AGENT_ID = AGENTS.chloe;
@@ -30,6 +30,8 @@ export default function Home() {
   const CARA_AGENT_ID = AGENTS.cara;
   const CARLY_AGENT_ID = AGENTS.carly;
   const CARSON_AGENT_ID = AGENTS.carson;
+  const CASSIDY_AGENT_ID = AGENTS.cassidy;
+  const COURTNEY_AGENT_ID = AGENTS.courtney;
 
   // Determine which agent ID to use
   const currentAgentId = activeAgent === 'chloe' ? CHLOE_AGENT_ID : 
@@ -37,7 +39,9 @@ export default function Home() {
                          activeAgent === 'chris' ? CHRIS_AGENT_ID :
                          activeAgent === 'cara' ? CARA_AGENT_ID :
                          activeAgent === 'carly' ? CARLY_AGENT_ID :
-                         activeAgent === 'carson' ? CARSON_AGENT_ID : '';
+                         activeAgent === 'carson' ? CARSON_AGENT_ID :
+                         activeAgent === 'cassidy' ? CASSIDY_AGENT_ID :
+                         activeAgent === 'courtney' ? COURTNEY_AGENT_ID : '';
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
     agentId: currentAgentId || '',
@@ -165,7 +169,7 @@ export default function Home() {
       }
     } else {
       setExpandedCard(cardId);
-      setActiveAgent(cardId as 'chloe' | 'cindy');
+      setActiveAgent(cardId as 'chloe' | 'cindy' | 'chris' | 'cara' | 'carly' | 'carson' | 'cassidy' | 'courtney');
     }
   };
 
