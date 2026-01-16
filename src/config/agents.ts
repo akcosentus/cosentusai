@@ -49,6 +49,12 @@ export const AGENTS = {
   carson: 'agent_443ead51c8a35f874d0ca1a8c1',
   
   /**
+   * Cassidy - Pre-Service Anesthesia Cost Estimates
+   * Helps patients understand anesthesia costs before surgery
+   */
+  cassidy: 'agent_ff8707dccf16f96ecec4c448d3',
+  
+  /**
    * Chat Agent - Text-based AI Assistant
    * Answers questions about Cosentus using knowledge base
    */

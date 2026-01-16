@@ -23,6 +23,7 @@ Available Voice Agents:
 - cara (eligibility verification)
 - carly (prior authorization)
 - carson (payment reconciliation)
+- cassidy (pre-service anesthesia cost estimates)
 
 Chat Assistant:
 - Headless SDK (CosentusVoice.createChatAssistant())
@@ -126,6 +127,7 @@ Attached are the integration docs for the Cosentus AI agents. Here's what you ne
 • cara - Eligibility & benefits verification
 • carly - Prior authorization follow-up
 • carson - Payment reconciliation
+• cassidy - Pre-service anesthesia cost estimates
 
 💬 CHAT ASSISTANT:
 • Headless SDK - You build the UI, SDK handles API calls
@@ -148,7 +150,7 @@ Best,
 ## ✅ Checklist Before Sending
 
 - [x] Replace `YOUR_VERCEL_URL` in all docs with actual URL (https://cosentusai.vercel.app)
-- [ ] Test all 6 voice agents on your demo site
+- [ ] Test all 7 voice agents on your demo site
 - [ ] Test the chat agent on your demo site
 - [ ] Verify SDK loads from `https://cosentusai.vercel.app/cosentus-voice.js`
 - [ ] Verify both API endpoints work

@@ -6,7 +6,7 @@
 
 ## 🎯 The Pitch (30 seconds)
 
-> "I've built the backend for 7 AI agents - 6 voice agents and 1 chat agent. Everything's hosted, secure, and production-ready. You just need to integrate them into the new website using the SDK and API I'm providing. You control all the design, I handle all the AI."
+> "I've built the backend for 8 AI agents - 7 voice agents and 1 chat agent. Everything's hosted, secure, and production-ready. You just need to integrate them into the new website using the SDK and API I'm providing. You control all the design, I handle all the AI."
 
 ---
 
@@ -19,6 +19,7 @@
 - **Cara** - Eligibility & benefits verification
 - **Carly** - Prior authorization follow-up
 - **Carson** - Payment reconciliation
+- **Cassidy** - Pre-service anesthesia cost estimates
 
 ### **Chat Agent:**
 - **Homepage AI Chat** - Text-based Q&A assistant (Retell AI, headless SDK)
@@ -58,7 +59,7 @@ await chat.sendMessage('What is Cosentus?');
 
 - ✅ **Framework-agnostic** - Works with Framer, React, WordPress, anything
 - ✅ **You control design** - They build the UI, you handle AI
-- ✅ **Agent names, not IDs** - Use 'chloe', 'cindy', 'chris', 'cara', 'carly', 'carson' (future-proof)
+- ✅ **Agent names, not IDs** - Use 'chloe', 'cindy', 'chris', 'cara', 'carly', 'carson', 'cassidy' (future-proof)
 - ✅ **Secure** - Rate limiting, hidden API keys
 - ✅ **Production-ready** - Deployed on Vercel, tested, documented
 - ✅ **30-minute integration** - Per agent, with copy-paste examples

@@ -34,6 +34,7 @@ Production-ready AI voice agents and chat assistant for healthcare automation. I
 | `cara` | Eligibility & benefits verification |
 | `carly` | Prior authorization follow-up |
 | `carson` | Payment reconciliation specialist |
+| `cassidy` | Pre-service anesthesia cost estimates |
 
 **Chat Assistant:**
 - Headless SDK - Build your own UI, SDK handles API calls

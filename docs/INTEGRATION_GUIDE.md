@@ -15,6 +15,7 @@ This guide will help you integrate Cosentus AI agents (voice + chat) into your w
 - **Cara** - Eligibility & benefits verification
 - **Carly** - Prior authorization follow-up
 - **Carson** - Payment reconciliation specialist
+- **Cassidy** - Pre-service anesthesia cost estimates
 
 ### **Chat Agent** (Text-based AI assistant)
 - **Homepage AI Chat** - Powered by Retell AI, answers questions about Cosentus using knowledge base
