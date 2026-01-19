@@ -57,13 +57,32 @@ export default function ChatEmbed() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const streamingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
 
-  // Auto-scroll to bottom when messages change
+  // Auto-scroll to bottom when messages change (only if user hasn't scrolled away)
   useEffect(() => {
-    if (isExpanded) {
+    if (isExpanded && shouldAutoScroll) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages, isExpanded]);
+  }, [messages, isExpanded, shouldAutoScroll]);
+
+  // Detect when user scrolls away from bottom
+  const handleScroll = () => {
+    if (!messagesContainerRef.current) return;
+    
+    const { scrollTop, scrollHeight, clientHeight } = messagesContainerRef.current;
+    const isAtBottom = scrollHeight - scrollTop - clientHeight < 50; // 50px threshold
+    
+    setShouldAutoScroll(isAtBottom);
+  };
+
+  // Re-enable auto-scroll when new message starts
+  useEffect(() => {
+    if (loading) {
+      setShouldAutoScroll(true);
+    }
+  }, [loading]);
 
   // Cleanup streaming timeout on unmount
   useEffect(() => {
@@ -285,7 +304,11 @@ export default function ChatEmbed() {
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden" style={{ height: '50vh' }}>
           {/* Messages Area */}
           <div className="h-full flex flex-col">
-            <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+            <div 
+              ref={messagesContainerRef}
+              onScroll={handleScroll}
+              className="flex-1 overflow-y-auto px-6 py-4 space-y-4"
+            >
               {messages.map((msg) => (
                 <div
                   key={msg.id}
