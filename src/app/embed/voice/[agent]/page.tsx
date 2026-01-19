@@ -163,8 +163,8 @@ export default function VoiceEmbed() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-8 bg-gray-50">
-      <div className="w-full max-w-6xl">
+    <div className="flex items-center justify-center min-h-screen p-8 bg-transparent">
+      <div className={`w-full transition-all duration-700 ${expandedCard ? 'max-w-6xl' : 'max-w-md'}`}>
         {/* Agent Card - EXACT COPY from landing page */}
         <div 
           onClick={() => !isConnected && handleExpandCard(agentKey)}
