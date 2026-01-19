@@ -745,13 +745,9 @@ export default function AllVoiceAgents() {
                             <button 
                               onClick={(e) => {
                                 e.stopPropagation();
-                                if (!isConfigured) {
-                                  alert('⚠️ Environment variables not configured!\n\nPlease add RETELL_API_KEY and NEXT_PUBLIC_RETELL_AGENT_ID to your .env.local file.\n\nSee ENV_SETUP.md for instructions.');
-                                  return;
-                                }
                                 handleBeginDemo();
                               }}
-                              disabled={isConnecting || !isConfigured}
+                              disabled={isConnecting}
                               className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                             >
                               {isConnecting ? (
@@ -1604,9 +1600,8 @@ export default function AllVoiceAgents() {
                   )}
                 </>
               ) : null}
-            
-
-          
+            </div>
+          </div>
         </div>
       </div>
 
