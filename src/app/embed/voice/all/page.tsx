@@ -60,7 +60,7 @@ export default function AllVoiceAgents() {
   return (
     <div className="min-h-screen p-4 md:p-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
-        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 auto-rows-fr">
   {/* Cindy - Payment & Balance Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
@@ -68,7 +68,7 @@ export default function AllVoiceAgents() {
       expandedCard === 'cindy' 
         ? 'md:col-span-3 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'cindy' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+    } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cindy' ? (
       <>
@@ -228,7 +228,7 @@ export default function AllVoiceAgents() {
       expandedCard === 'chris' 
         ? 'md:col-span-3 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'chris' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+    } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'chris' ? (
       <>
@@ -388,7 +388,7 @@ export default function AllVoiceAgents() {
       expandedCard === 'cassidy' 
         ? 'md:col-span-3 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'cassidy' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+    } ${expandedCard && expandedCard !== 'cassidy' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cassidy' ? (
       <>
@@ -541,7 +541,7 @@ export default function AllVoiceAgents() {
       expandedCard === 'courtney' 
         ? 'md:col-span-3 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'courtney' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+    } ${expandedCard && expandedCard !== 'courtney' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'courtney' ? (
       <>
@@ -694,7 +694,7 @@ export default function AllVoiceAgents() {
       expandedCard === 'chloe' 
         ? 'md:col-span-3 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'chloe' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+    } ${expandedCard && expandedCard !== 'chloe' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'chloe' ? (
       <>
@@ -858,7 +858,7 @@ export default function AllVoiceAgents() {
       expandedCard === 'cara' 
         ? 'md:col-span-3 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'cara' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+    } ${expandedCard && expandedCard !== 'cara' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cara' ? (
       <>
