@@ -4,6 +4,30 @@ import { useEffect, useState, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+// Add global styles for animations
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out;
+    }
+  `;
+  if (!document.head.querySelector('style[data-chat-animations]')) {
+    style.setAttribute('data-chat-animations', 'true');
+    document.head.appendChild(style);
+  }
+}
+
 interface Message {
   id: string;
   text: string;
@@ -236,8 +260,8 @@ export default function ChatEmbed() {
             </div>
           </form>
 
-          {/* Suggested Questions */}
-          <div className="space-y-3">
+          {/* Suggested Questions - with fade animation */}
+          <div className="space-y-3 transition-opacity duration-500 ease-out">
             {SUGGESTED_QUESTIONS.map((question, index) => (
               <button
                 key={index}
@@ -253,81 +277,84 @@ export default function ChatEmbed() {
     );
   }
 
-  // Expanded state - full chat widget
+  // Expanded state - chat widget (50vh, same width as search bar)
   return (
-    <div className="flex flex-col h-screen">
-      {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto px-4 py-6">
-        <div className="max-w-3xl mx-auto space-y-4">
-          {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              <div
-                className={`max-w-[85%] rounded-2xl px-5 py-3 ${
-                  msg.sender === 'user'
-                    ? 'bg-gray-900 text-white'
-                    : 'bg-gray-100 text-gray-900'
-                }`}
-              >
-                {msg.sender === 'assistant' ? (
-                  <div className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-li:text-gray-900">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                      {msg.text}
-                    </ReactMarkdown>
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <div className="w-full max-w-3xl animate-fadeIn">
+        {/* Chat Card */}
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden" style={{ height: '50vh' }}>
+          {/* Messages Area */}
+          <div className="h-full flex flex-col">
+            <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+              {messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${
+                      msg.sender === 'user'
+                        ? 'bg-gray-900 text-white'
+                        : 'bg-gray-100 text-gray-900'
+                    }`}
+                  >
+                    {msg.sender === 'assistant' ? (
+                      <div className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-li:text-gray-900">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {msg.text}
+                        </ReactMarkdown>
+                      </div>
+                    ) : (
+                      <p className="text-sm">{msg.text}</p>
+                    )}
                   </div>
-                ) : (
-                  <p className="text-sm">{msg.text}</p>
-                )}
-              </div>
-            </div>
-          ))}
-
-          {loading && (
-            <div className="flex justify-start">
-              <div className="bg-gray-100 rounded-2xl px-5 py-3">
-                <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
                 </div>
-              </div>
+              ))}
+
+              {loading && (
+                <div className="flex justify-start">
+                  <div className="bg-gray-100 rounded-2xl px-4 py-2.5">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {error && (
+                <div className="text-center">
+                  <p className="text-red-500 text-sm">{error}</p>
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
             </div>
-          )}
 
-          {error && (
-            <div className="text-center">
-              <p className="text-red-500 text-sm">{error}</p>
+            {/* Input Area - at bottom of card */}
+            <div className="border-t border-gray-200 px-6 py-4">
+              <form onSubmit={handleSubmit} className="relative">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="Ask a follow-up question..."
+                  className="w-full px-6 py-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors"
+                  disabled={loading}
+                />
+                <button
+                  type="submit"
+                  disabled={loading || !inputValue.trim()}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                  </svg>
+                </button>
+              </form>
             </div>
-          )}
-
-          <div ref={messagesEndRef} />
-        </div>
-      </div>
-
-      {/* Input Area - Sticky at bottom */}
-      <div className="border-t border-gray-200 px-4 py-4">
-        <div className="max-w-3xl mx-auto">
-          <form onSubmit={handleSubmit} className="relative">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask a follow-up question..."
-              className="w-full px-6 py-4 text-base text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors"
-              disabled={loading}
-            />
-            <button
-              type="submit"
-              disabled={loading || !inputValue.trim()}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-              </svg>
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
