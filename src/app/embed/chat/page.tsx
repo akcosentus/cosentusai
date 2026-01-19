@@ -160,7 +160,7 @@ export default function ChatEmbed() {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask me anything about your revenue cycle..."
+                placeholder="Ask me anything about Cosentus..."
                 className="w-full px-6 py-4 text-base text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors shadow-sm"
               />
               <button
