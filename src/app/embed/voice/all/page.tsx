@@ -61,7 +61,7 @@ export default function AllVoiceAgents() {
         {/* Grid of all agents - EXACT COPY from landing page */}
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Cindy - Payment & Balance Agent */}
-            <div 
+          <div 
               onClick={() => !isConnected && handleExpandCard('cindy')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
                 expandedCard === 'cindy' 
@@ -222,7 +222,7 @@ export default function AllVoiceAgents() {
             
 
           {/* Chris - Insurance Claim Follow-Up */}
-            <div 
+          <div 
               onClick={() => !isConnected && handleExpandCard('chris')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
                 expandedCard === 'chris' 
@@ -383,7 +383,7 @@ export default function AllVoiceAgents() {
             
 
           {/* Cassidy - Pre-Service Anesthesia Cost Estimates */}
-            <div 
+          <div 
               onClick={() => !isConnected && handleExpandCard('cassidy')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
                 expandedCard === 'cassidy' 
@@ -543,7 +543,7 @@ export default function AllVoiceAgents() {
             
 
           {/* Courtney - Medical Appointment Scheduling */}
-            <div 
+          <div 
               onClick={() => !isConnected && handleExpandCard('courtney')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
                 expandedCard === 'courtney' 
