@@ -526,9 +526,13 @@ export default function AllVoiceAgents() {
                             </p>
                           </div>
                         ) : (
-                          <div className="text-center text-gray-500">
-                            <p className="mb-4">Click "Begin Conversation" to start talking with Cassidy</p>
-                            <p className="text-sm">She'll help you understand your anesthesia costs</p>
+                          <div className="text-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                            </svg>
+                            <p className="text-sm">
+                              {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                            </p>
                           </div>
                         )}
                       </div>
@@ -682,9 +686,13 @@ export default function AllVoiceAgents() {
                             </p>
                           </div>
                         ) : (
-                          <div className="text-center text-gray-500">
-                            <p className="mb-4">Click "Begin Conversation" to start talking with Courtney</p>
-                            <p className="text-sm">She'll help you schedule an appointment</p>
+                          <div className="text-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                            </svg>
+                            <p className="text-sm">
+                              {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                            </p>
                           </div>
                         )}
                       </div>
@@ -988,15 +996,15 @@ export default function AllVoiceAgents() {
                             <p className="text-gray-600 text-center">
                               {isRecording ? 'Cara is speaking...' : 'Listening...'}
                             </p>
-                            
-                            <p className="text-sm text-gray-500 text-center max-w-xs">
-                              Try asking: "Can you show me how you verify insurance?" or "Walk me through an eligibility check"
-                            </p>
                           </div>
                         ) : (
-                          <div className="text-center text-gray-500">
-                            <p className="mb-4">Click "Begin Conversation" to start talking with Cara</p>
-                            <p className="text-sm">She'll demonstrate how she verifies patient insurance eligibility</p>
+                          <div className="text-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                            </svg>
+                            <p className="text-sm">
+                              {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                            </p>
                           </div>
                         )}
                       </div>
@@ -1141,15 +1149,15 @@ export default function AllVoiceAgents() {
                             <p className="text-gray-600 text-center">
                               {isRecording ? 'Carly is speaking...' : 'Listening...'}
                             </p>
-                            
-                            <p className="text-sm text-gray-500 text-center max-w-xs">
-                              Try asking: "Can you check on a prior auth?" or "Show me how you handle an urgent case"
-                            </p>
                           </div>
                         ) : (
-                          <div className="text-center text-gray-500">
-                            <p className="mb-4">Click "Begin Conversation" to start talking with Carly</p>
-                            <p className="text-sm">She'll demonstrate how she tracks prior authorization approvals</p>
+                          <div className="text-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                            </svg>
+                            <p className="text-sm">
+                              {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                            </p>
                           </div>
                         )}
                       </div>
@@ -1295,15 +1303,15 @@ export default function AllVoiceAgents() {
                             <p className="text-gray-600 text-center">
                               {isRecording ? 'Carson is speaking...' : 'Listening...'}
                             </p>
-                            
-                            <p className="text-sm text-gray-500 text-center max-w-xs">
-                              Try asking: "Can you track down a missing payment?" or "Show me how you resolve a discrepancy"
-                            </p>
                           </div>
                         ) : (
-                          <div className="text-center text-gray-500">
-                            <p className="mb-4">Click "Begin Conversation" to start talking with Carson</p>
-                            <p className="text-sm">He'll demonstrate how he tracks down payment issues</p>
+                          <div className="text-center text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                            </svg>
+                            <p className="text-sm">
+                              {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                            </p>
                           </div>
                         )}
                       </div>
