@@ -79,7 +79,7 @@ export default function AllVoiceAgents() {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
                         </svg>
                       </div>
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">Cindy</h3>
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">Cindy Test</h3>
                       <p className="text-gray-600 mb-6">
                         Handles outstanding balances and payment processing in 50+ languages.
                       </p>
@@ -101,7 +101,7 @@ export default function AllVoiceAgents() {
                             </svg>
                           </div>
                           <div>
-                            <h3 className="text-4xl font-bold text-gray-900">Cindy</h3>
+                            <h3 className="text-4xl font-bold text-gray-900">Cindy Test</h3>
                             <p className="text-lg text-gray-600">Payment & Balance Specialist</p>
                           </div>
                         </div>
@@ -192,7 +192,7 @@ export default function AllVoiceAgents() {
                             
                             {/* Status Text */}
                             <p className="text-gray-600 text-center">
-                              {isRecording ? 'Cindy is speaking...' : 'Listening...'}
+                              {isRecording ? 'Cindy Test is speaking...' : 'Listening...'}
                             </p>
                           </div>
                         ) : (
