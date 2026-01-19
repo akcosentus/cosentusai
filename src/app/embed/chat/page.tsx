@@ -9,6 +9,7 @@ interface Message {
   text: string;
   sender: 'user' | 'assistant';
   timestamp: Date;
+  isStreaming?: boolean;
 }
 
 // Suggested questions
@@ -31,6 +32,7 @@ export default function ChatEmbed() {
   const [isExpanded, setIsExpanded] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const streamingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -38,6 +40,51 @@ export default function ChatEmbed() {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isExpanded]);
+
+  // Cleanup streaming timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (streamingTimeoutRef.current) {
+        clearTimeout(streamingTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Stream text character by character
+  const streamMessage = (fullText: string, messageId: string) => {
+    let currentIndex = 0;
+    const streamSpeed = 20; // milliseconds per character
+
+    const streamNextChunk = () => {
+      if (currentIndex < fullText.length) {
+        const chunkSize = Math.floor(Math.random() * 3) + 1; // 1-3 characters at a time for natural feel
+        const nextIndex = Math.min(currentIndex + chunkSize, fullText.length);
+        const textChunk = fullText.slice(0, nextIndex);
+        
+        setMessages(prev => 
+          prev.map(msg => 
+            msg.id === messageId 
+              ? { ...msg, text: textChunk, isStreaming: nextIndex < fullText.length }
+              : msg
+          )
+        );
+        
+        currentIndex = nextIndex;
+        streamingTimeoutRef.current = setTimeout(streamNextChunk, streamSpeed);
+      } else {
+        // Streaming complete
+        setMessages(prev => 
+          prev.map(msg => 
+            msg.id === messageId 
+              ? { ...msg, isStreaming: false }
+              : msg
+          )
+        );
+      }
+    };
+
+    streamNextChunk();
+  };
 
   const handleSend = async (messageText?: string) => {
     const messageToSend = (messageText || inputValue).trim();
@@ -89,14 +136,21 @@ export default function ChatEmbed() {
         }
 
         const msgData = await msgResp.json();
+        const fullResponse = msgData.content || msgData.response || 'No response received';
+        const messageId = (Date.now() + 1).toString();
         
+        // Add empty message first
         const assistantMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: msgData.content || msgData.response || 'No response received',
+          id: messageId,
+          text: '',
           sender: 'assistant',
-          timestamp: new Date()
+          timestamp: new Date(),
+          isStreaming: true
         };
         setMessages(prev => [...prev, assistantMessage]);
+        
+        // Start streaming the response
+        streamMessage(fullResponse, messageId);
       } else {
         // Send message to existing chat
         const msgResp = await fetch('/api/chat/send-message', {
@@ -113,14 +167,21 @@ export default function ChatEmbed() {
         }
 
         const msgData = await msgResp.json();
+        const fullResponse = msgData.content || msgData.response || 'No response received';
+        const messageId = (Date.now() + 1).toString();
         
+        // Add empty message first
         const assistantMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: msgData.content || msgData.response || 'No response received',
+          id: messageId,
+          text: '',
           sender: 'assistant',
-          timestamp: new Date()
+          timestamp: new Date(),
+          isStreaming: true
         };
         setMessages(prev => [...prev, assistantMessage]);
+        
+        // Start streaming the response
+        streamMessage(fullResponse, messageId);
       }
     } catch (err) {
       console.error('Chat error:', err);
