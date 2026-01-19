@@ -1300,17 +1300,6 @@ export default function AllVoiceAgents() {
               ) : null}
             </div>
 
-          </div>
-        </div>
-      </section>
-
-    </main>
-  )
-}
-
-
-          
-
           {/* Cara - Eligibility & Benefits Verification */}
             <div 
               onClick={() => !isConnected && handleExpandCard('cara')}
