@@ -150,7 +150,7 @@ export default function ChatEmbed() {
   // Initial state - search bar with suggested questions
   if (!isExpanded) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-white p-8">
+      <div className="flex items-center justify-center min-h-screen p-8">
         <div className="w-full max-w-3xl">
           {/* Oval Search Bar */}
           <form onSubmit={handleSubmit} className="mb-6">
@@ -194,7 +194,7 @@ export default function ChatEmbed() {
 
   // Expanded state - full chat widget
   return (
-    <div className="flex flex-col h-screen bg-white">
+    <div className="flex flex-col h-screen">
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <div className="max-w-3xl mx-auto space-y-4">
@@ -246,7 +246,7 @@ export default function ChatEmbed() {
       </div>
 
       {/* Input Area - Sticky at bottom */}
-      <div className="border-t border-gray-200 bg-white px-4 py-4">
+      <div className="border-t border-gray-200 px-4 py-4">
         <div className="max-w-3xl mx-auto">
           <form onSubmit={handleSubmit} className="relative">
             <input
