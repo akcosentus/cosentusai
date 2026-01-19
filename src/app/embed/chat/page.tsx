@@ -254,7 +254,7 @@ export default function ChatEmbed() {
   // Initial state - search bar with suggested questions
   if (!isExpanded) {
     return (
-      <div className="flex items-center justify-center min-h-screen p-8">
+      <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
         <div className="w-full max-w-3xl">
           {/* Oval Search Bar */}
           <form onSubmit={handleSubmit} className="mb-6">
@@ -265,7 +265,7 @@ export default function ChatEmbed() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Ask me anything about Cosentus..."
-                className="w-full px-6 py-4 text-base text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors shadow-sm"
+                className="w-full px-4 md:px-6 py-3 md:py-4 text-sm md:text-base text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors shadow-sm"
               />
               <button
                 type="submit"
@@ -280,12 +280,12 @@ export default function ChatEmbed() {
           </form>
 
           {/* Suggested Questions - with fade animation */}
-          <div className="space-y-3 transition-opacity duration-500 ease-out">
+          <div className="space-y-2 md:space-y-3 transition-opacity duration-500 ease-out">
             {SUGGESTED_QUESTIONS.map((question, index) => (
               <button
                 key={index}
                 onClick={() => handleQuestionClick(question)}
-                className="w-full px-5 py-4 text-left text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm transition-all"
+                className="w-full px-4 md:px-5 py-3 md:py-4 text-left text-xs md:text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm transition-all"
               >
                 {question}
               </button>
@@ -296,18 +296,18 @@ export default function ChatEmbed() {
     );
   }
 
-  // Expanded state - chat widget (50vh, same width as search bar)
+  // Expanded state - chat widget (responsive height, same width as search bar)
   return (
-    <div className="flex items-center justify-center min-h-screen p-8">
+    <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
       <div className="w-full max-w-3xl animate-fadeIn">
         {/* Chat Card */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden" style={{ height: '70vh' }}>
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[80vh] md:h-[70vh]">
           {/* Messages Area */}
           <div className="h-full flex flex-col">
             <div 
               ref={messagesContainerRef}
               onScroll={handleScroll}
-              className="flex-1 overflow-y-auto px-6 py-4 space-y-4"
+              className="flex-1 overflow-y-auto px-4 md:px-6 py-3 md:py-4 space-y-3 md:space-y-4"
             >
               {messages.map((msg) => (
                 <div
@@ -315,7 +315,7 @@ export default function ChatEmbed() {
                   className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${
+                    className={`max-w-[90%] md:max-w-[85%] rounded-2xl px-3 md:px-4 py-2 md:py-2.5 text-sm md:text-base ${
                       msg.sender === 'user'
                         ? 'bg-gray-900 text-white'
                         : 'bg-gray-100 text-gray-900'
@@ -356,14 +356,14 @@ export default function ChatEmbed() {
             </div>
 
             {/* Input Area - at bottom of card */}
-            <div className="bg-white px-6 py-4">
+            <div className="bg-white px-4 md:px-6 py-3 md:py-4">
               <form onSubmit={handleSubmit} className="relative mb-2">
                 <input
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Ask a follow-up question..."
-                  className="w-full pl-6 pr-14 py-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors"
+                  className="w-full pl-4 md:pl-6 pr-12 md:pr-14 py-2.5 md:py-3 text-xs md:text-sm text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors"
                   disabled={loading}
                 />
                 <button
@@ -385,7 +385,7 @@ export default function ChatEmbed() {
               </form>
               
               {/* Disclaimer */}
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-[10px] md:text-xs text-gray-400 text-center">
                 Powered by Cosentus AI - Responses are informational only
               </p>
             </div>
