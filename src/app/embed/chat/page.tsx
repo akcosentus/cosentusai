@@ -92,7 +92,7 @@ export default function ChatEmbed() {
         
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
-          text: msgData.response,
+          text: msgData.content || msgData.response || 'No response received',
           sender: 'assistant',
           timestamp: new Date()
         };
@@ -116,7 +116,7 @@ export default function ChatEmbed() {
         
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
-          text: msgData.response,
+          text: msgData.content || msgData.response || 'No response received',
           sender: 'assistant',
           timestamp: new Date()
         };
