@@ -181,7 +181,7 @@ export default function VoiceEmbed() {
 
   return (
     <div className="flex items-center justify-center min-h-screen p-8">
-      <div className="w-full max-w-5xl">
+      <div className="w-full max-w-5xl bg-white rounded-2xl shadow-lg p-12">
         <div className="flex flex-col md:flex-row gap-12 items-start">
           {/* Left Side - Agent Info */}
           <div className="flex-1 md:max-w-md">
