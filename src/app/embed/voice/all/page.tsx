@@ -117,11 +117,10 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
-                    <li>• Outstanding balance information</li>
-                    <li>• Secure payment processing</li>
-                    <li>• Speaks 50+ languages fluently</li>
-                    <li>• Handles up to 20 calls simultaneously</li>
-                    <li>• Payment plan setup assistance</li>
+                    <li>• Real-time balance inquiries and payment history</li>
+                    <li>• Secure credit card and ACH payment processing</li>
+                    <li>• Payment plan setup and modification</li>
+                    <li>• Insurance coverage explanations</li>
                   </ul>
                 </div>
               </div>
@@ -278,11 +277,10 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
-                    <li>• Insurance claim status checks</li>
-                    <li>• Denial resolution and appeals</li>
-                    <li>• Handles up to 20 calls simultaneously</li>
-                    <li>• Speaks 10+ languages</li>
-                    <li>• Navigates complex IVR systems</li>
+                    <li>• Outbound claim status follow-ups with carriers</li>
+                    <li>• Denial investigation and appeal preparation</li>
+                    <li>• Missing information requests and documentation</li>
+                    <li>• Timely filing deadline tracking</li>
                   </ul>
                 </div>
               </div>
@@ -440,12 +438,9 @@ export default function AllVoiceAgents() {
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
                     <li>• Pre-surgery anesthesia cost estimates</li>
-                    <li>• Insurance and self-pay pricing calculations</li>
-                    <li>• Facility-specific pricing rules application</li>
-                    <li>• Unit-based and flat-rate pricing models</li>
-                    <li>• Payment plan and financial assistance guidance</li>
-                    <li>• Multi-hour complex surgery estimates</li>
-                    <li>• Handles hundreds of estimate calls per day</li>
+                    <li>• Insurance vs. self-pay pricing calculations</li>
+                    <li>• Facility-specific rate application</li>
+                    <li>• Payment plan and financial assistance options</li>
                   </ul>
                 </div>
               </div>
@@ -596,12 +591,10 @@ export default function AllVoiceAgents() {
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
                     <li>• Inbound and outbound appointment scheduling</li>
-                    <li>• Real-time calendar integration</li>
-                    <li>• Patient detail collection and verification</li>
-                    <li>• Appointment reminders and confirmations</li>
-                    <li>• Rescheduling and cancellation management</li>
-                    <li>• Insurance verification during booking</li>
-                    <li>• Handles hundreds of scheduling calls per day</li>
+                    <li>• Inbound and outbound appointment scheduling</li>
+                    <li>• Real-time calendar availability checks</li>
+                    <li>• Insurance verification and referral management</li>
+                    <li>• Automated reminders and rescheduling</li>
                   </ul>
                 </div>
               </div>
@@ -750,10 +743,10 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
-                    <li>• Natural conversation flow</li>
-                    <li>• Real-time voice interaction</li>
-                    <li>• Professional and empathetic responses</li>
-                    <li>• Available 24/7</li>
+                    <li>• General billing and account inquiries</li>
+                    <li>• Appointment scheduling assistance</li>
+                    <li>• Practice information and directions</li>
+                    <li>• After-hours call handling</li>
                   </ul>
                 </div>
               </div>
@@ -914,12 +907,10 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
-                    <li>• Insurance eligibility verification</li>
-                    <li>• Benefits and coverage details</li>
-                    <li>• Deductible and out-of-pocket tracking</li>
-                    <li>• In-network vs out-of-network status</li>
+                    <li>• Real-time insurance eligibility verification</li>
+                    <li>• Benefits, deductibles, and coverage limits</li>
+                    <li>• In-network vs. out-of-network status</li>
                     <li>• Secondary insurance coordination</li>
-                    <li>• Handles hundreds of calls per day</li>
                   </ul>
                 </div>
               </div>
@@ -1069,12 +1060,10 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
-                    <li>• Prior authorization status checks</li>
-                    <li>• Approval tracking and documentation</li>
+                    <li>• Prior authorization status tracking</li>
                     <li>• Expedited review requests for urgent cases</li>
-                    <li>• Denial reason capture and appeals support</li>
-                    <li>• Auth number and validity date tracking</li>
-                    <li>• Handles dozens of auth calls per day</li>
+                    <li>• Denial reason documentation and appeals</li>
+                    <li>• Authorization number and validity tracking</li>
                   </ul>
                 </div>
               </div>
@@ -1222,13 +1211,10 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
-                    <li>• Missing payment investigation</li>
-                    <li>• Payment discrepancy resolution</li>
+                    <li>• Missing payment investigation and recovery</li>
+                    <li>• Payment discrepancy resolution with carriers</li>
                     <li>• Check trace and reissue requests</li>
-                    <li>• Duplicate EOB retrieval</li>
-                    <li>• Overpayment refund processing</li>
-                    <li>• EFT payment tracking</li>
-                    <li>• Handles hundreds of reconciliation calls per day</li>
+                    <li>• EOB retrieval and overpayment refunds</li>
                   </ul>
                 </div>
               </div>
