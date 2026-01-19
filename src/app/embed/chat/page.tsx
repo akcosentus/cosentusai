@@ -257,7 +257,7 @@ export default function ChatEmbed() {
       <div className="flex items-center justify-center min-h-screen p-8">
         <div className="w-full max-w-3xl">
           {/* Oval Search Bar */}
-          <form onSubmit={handleSubmit} className="mb-2">
+          <form onSubmit={handleSubmit} className="mb-6">
             <div className="relative">
               <input
                 ref={inputRef}
@@ -278,11 +278,6 @@ export default function ChatEmbed() {
               </button>
             </div>
           </form>
-
-          {/* Disclaimer */}
-          <p className="text-xs text-gray-400 text-center mb-6">
-            Powered by Cosentus AI - Responses are informational only
-          </p>
 
           {/* Suggested Questions - with fade animation */}
           <div className="space-y-3 transition-opacity duration-500 ease-out">
@@ -362,7 +357,7 @@ export default function ChatEmbed() {
 
             {/* Input Area - at bottom of card */}
             <div className="bg-white px-6 py-4">
-              <form onSubmit={handleSubmit} className="relative">
+              <form onSubmit={handleSubmit} className="relative mb-2">
                 <input
                   type="text"
                   value={inputValue}
@@ -377,10 +372,15 @@ export default function ChatEmbed() {
                   className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 03.27 20.876L5.999 12zm0 0h7.5" />
                   </svg>
                 </button>
               </form>
+              
+              {/* Disclaimer */}
+              <p className="text-xs text-gray-400 text-center">
+                Powered by Cosentus AI - Responses are informational only
+              </p>
             </div>
           </div>
         </div>
