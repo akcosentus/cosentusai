@@ -181,10 +181,8 @@ export default function VoiceEmbed() {
 
   return (
     <div className="flex items-center justify-center min-h-screen p-8">
-      <div className="w-full max-w-5xl bg-white rounded-2xl shadow-lg p-12">
-        <div className="flex flex-col md:flex-row gap-12 items-start">
-          {/* Left Side - Agent Info */}
-          <div className="flex-1 md:max-w-md">
+      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-12">
+        <div>
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#01B2D6]/10">
                 {agentInfo.icon}
@@ -245,62 +243,8 @@ export default function VoiceEmbed() {
                 </button>
               )}
             </div>
-
-            {/* Error Display */}
-            {error && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-600 text-sm">{error}</p>
-              </div>
-            )}
-          </div>
-
-          {/* Right Side - Glowing Orb Visualization */}
-          <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
-            {isConnected ? (
-              <div className="flex flex-col items-center gap-6">
-                {/* Single Glowing Orb */}
-                <div 
-                  className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                  style={{
-                    boxShadow: isRecording 
-                      ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                      : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                    animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                  }}
-                />
-                
-                {/* Status Text */}
-                <p className="text-gray-600 text-center">
-                  {isRecording ? `${agentInfo.name} is speaking...` : 'Listening...'}
-                </p>
-                
-                <p className="text-sm text-gray-500 text-center max-w-xs">
-                  {isRecording 
-                    ? `${agentInfo.name} is responding...` 
-                    : `Speak naturally with ${agentInfo.name}`}
-                </p>
-              </div>
-            ) : (
-              <div className="text-center text-gray-500">
-                <p className="mb-4">Click &quot;Begin Conversation&quot; to start talking with {agentInfo.name}</p>
-                <p className="text-sm">{agentInfo.subtitle}</p>
-              </div>
-            )}
-          </div>
         </div>
       </div>
-
-      {/* Add pulse animation */}
-      <style jsx>{`
-        @keyframes pulse-glow {
-          0%, 100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.05);
-          }
-        }
-      `}</style>
     </div>
   );
 }
