@@ -523,8 +523,12 @@ export default function AllVoiceAgents() {
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
-                  <p className="mb-4">Click "Begin Conversation" to start talking with Cassidy</p>
-                  <p className="text-sm">She'll help you understand your anesthesia costs</p>
+                  <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                  <p className="text-sm">
+                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                  </p>
                 </div>
               )}
             </div>
@@ -677,8 +681,12 @@ export default function AllVoiceAgents() {
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
-                  <p className="mb-4">Click "Begin Conversation" to start talking with Courtney</p>
-                  <p className="text-sm">She'll help you schedule an appointment</p>
+                  <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                  <p className="text-sm">
+                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                  </p>
                 </div>
               )}
             </div>
@@ -991,8 +999,12 @@ export default function AllVoiceAgents() {
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
-                  <p className="mb-4">Click "Begin Conversation" to start talking with Cara</p>
-                  <p className="text-sm">She'll demonstrate how she verifies patient insurance eligibility</p>
+                  <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                  <p className="text-sm">
+                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                  </p>
                 </div>
               )}
             </div>
@@ -1144,8 +1156,12 @@ export default function AllVoiceAgents() {
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
-                  <p className="mb-4">Click "Begin Conversation" to start talking with Carly</p>
-                  <p className="text-sm">She'll demonstrate how she tracks prior authorization approvals</p>
+                  <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                  <p className="text-sm">
+                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                  </p>
                 </div>
               )}
             </div>
@@ -1295,8 +1311,12 @@ export default function AllVoiceAgents() {
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
-                  <p className="mb-4">Click "Begin Conversation" to start talking with Carson</p>
-                  <p className="text-sm">He'll demonstrate how he tracks down payment issues</p>
+                  <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                  <p className="text-sm">
+                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                  </p>
                 </div>
               )}
             </div>
