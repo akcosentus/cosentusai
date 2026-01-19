@@ -257,7 +257,7 @@ export default function ChatEmbed() {
       <div className="flex items-center justify-center min-h-screen p-8">
         <div className="w-full max-w-3xl">
           {/* Oval Search Bar */}
-          <form onSubmit={handleSubmit} className="mb-6">
+          <form onSubmit={handleSubmit} className="mb-2">
             <div className="relative">
               <input
                 ref={inputRef}
@@ -278,6 +278,11 @@ export default function ChatEmbed() {
               </button>
             </div>
           </form>
+
+          {/* Disclaimer */}
+          <p className="text-xs text-gray-400 text-center mb-6">
+            Powered by Cosentus AI - Responses are informational only
+          </p>
 
           {/* Suggested Questions - with fade animation */}
           <div className="space-y-3 transition-opacity duration-500 ease-out">
@@ -301,7 +306,7 @@ export default function ChatEmbed() {
     <div className="flex items-center justify-center min-h-screen p-8">
       <div className="w-full max-w-3xl animate-fadeIn">
         {/* Chat Card */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden" style={{ height: '50vh' }}>
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden" style={{ height: '70vh' }}>
           {/* Messages Area */}
           <div className="h-full flex flex-col">
             <div 
@@ -356,7 +361,7 @@ export default function ChatEmbed() {
             </div>
 
             {/* Input Area - at bottom of card */}
-            <div className="border-t border-gray-200 px-6 py-4">
+            <div className="bg-white px-6 py-4">
               <form onSubmit={handleSubmit} className="relative">
                 <input
                   type="text"
