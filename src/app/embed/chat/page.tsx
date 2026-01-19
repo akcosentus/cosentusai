@@ -229,7 +229,7 @@ export default function ChatEmbed() {
   if (!isExpanded) {
     return (
       <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
-        <div className="w-full max-w-3xl">
+        <div className="w-full max-w-4xl">
           {/* Oval Search Bar */}
           <form onSubmit={handleSubmit} className="mb-6">
             <div className="relative">
@@ -273,7 +273,7 @@ export default function ChatEmbed() {
   // Expanded state - chat widget (responsive height, same width as search bar)
   return (
     <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
-      <div className="w-full max-w-3xl animate-fadeIn">
+      <div className="w-full max-w-4xl animate-fadeIn">
         {/* Chat Card */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[80vh] md:h-[70vh]">
           {/* Messages Area */}
