@@ -1011,15 +1011,17 @@ export default function AllVoiceAgents() {
     ) : null}
   </div>
 
-  {/* Carly - Prior Authorization Follow-Up */}
-  <div 
-    onClick={() => !isConnected && handleExpandCard('carly')}
-    className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer md:col-start-2 ${
-      expandedCard === 'carly' 
-        ? 'md:col-span-3 p-12' 
-        : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'carly' ? 'opacity-0 pointer-events-none absolute' : ''}`}
-  >
+  {/* Bottom Row Wrapper - Centers Carly and Carson */}
+  <div className="md:col-span-3 flex justify-center gap-8">
+    {/* Carly - Prior Authorization Follow-Up */}
+    <div 
+      onClick={() => !isConnected && handleExpandCard('carly')}
+      className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+        expandedCard === 'carly' 
+          ? 'w-full p-12' 
+          : 'w-full max-w-sm p-8 hover:shadow-2xl hover:-translate-y-1'
+      } ${expandedCard && expandedCard !== 'carly' ? 'hidden' : ''}`}
+    >
     {!expandedCard || expandedCard === 'carly' ? (
       <>
         {/* Collapsed State */}
@@ -1162,16 +1164,16 @@ export default function AllVoiceAgents() {
         )}
       </>
     ) : null}
-  </div>
+    </div>
 
-  {/* Carson - Payment Reconciliation */}
-  <div 
-    onClick={() => !isConnected && handleExpandCard('carson')}
-    className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-      expandedCard === 'carson' 
-        ? 'md:col-span-3 p-12' 
-        : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'carson' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+    {/* Carson - Payment Reconciliation */}
+    <div 
+      onClick={() => !isConnected && handleExpandCard('carson')}
+      className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+        expandedCard === 'carson' 
+          ? 'w-full p-12'
+          : 'w-full max-w-sm p-8 hover:shadow-2xl hover:-translate-y-1'
+      } ${expandedCard && expandedCard !== 'carson' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'carson' ? (
       <>
@@ -1316,6 +1318,7 @@ export default function AllVoiceAgents() {
         )}
       </>
     ) : null}
+    </div>
   </div>
 
         </div>
