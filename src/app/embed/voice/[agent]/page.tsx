@@ -11,7 +11,7 @@ const AGENT_INFO: Record<string, {
   subtitle: string;
   about: string;
   capabilities: string[];
-  icon: JSX.Element;
+  icon: React.ReactElement;
 }> = {
   chloe: {
     name: 'Chloe',
