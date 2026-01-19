@@ -41,6 +41,236 @@ You'll receive:
 
 ## 🎤 Voice Agent Integration
 
+### **Choose Your Integration Method**
+
+We offer **3 ways** to integrate voice agents, from simplest to most customizable:
+
+| Method | Complexity | Best For | Customization |
+|--------|-----------|----------|---------------|
+| **🔵 iframe Embed** | Easiest (1 line of code) | Quick demos, landing pages | Low (colors only) |
+| **🟢 Simple JavaScript** | Easy (no SDK needed) | Basic integrations, simple sites | Medium (full UI control) |
+| **🟡 Full SDK** | Moderate (event-driven) | Advanced integrations, React apps | High (complete control) |
+
+---
+
+### **Method 1: iframe Embed (Easiest)**
+
+**Perfect for:** Quick demos, landing pages, no-code builders (Webflow, Wix, Squarespace)
+
+#### **One-Line Integration:**
+
+```html
+<!-- Chloe - Company Info Agent -->
+<iframe 
+  src="https://cosentusai.vercel.app/embed/voice/chloe" 
+  width="400" 
+  height="600" 
+  frameborder="0"
+  allow="microphone"
+></iframe>
+```
+
+#### **Available Agents:**
+
+```html
+<!-- Cindy - Patient Billing Support -->
+<iframe src="https://cosentusai.vercel.app/embed/voice/cindy" width="400" height="600" frameborder="0" allow="microphone"></iframe>
+
+<!-- Chris - Insurance Claims -->
+<iframe src="https://cosentusai.vercel.app/embed/voice/chris" width="400" height="600" frameborder="0" allow="microphone"></iframe>
+
+<!-- Cara - Eligibility Verification -->
+<iframe src="https://cosentusai.vercel.app/embed/voice/cara" width="400" height="600" frameborder="0" allow="microphone"></iframe>
+
+<!-- Carly - Prior Authorization -->
+<iframe src="https://cosentusai.vercel.app/embed/voice/carly" width="400" height="600" frameborder="0" allow="microphone"></iframe>
+
+<!-- Carson - Payment Reconciliation -->
+<iframe src="https://cosentusai.vercel.app/embed/voice/carson" width="400" height="600" frameborder="0" allow="microphone"></iframe>
+
+<!-- Cassidy - Anesthesia Cost Estimates -->
+<iframe src="https://cosentusai.vercel.app/embed/voice/cassidy" width="400" height="600" frameborder="0" allow="microphone"></iframe>
+
+<!-- Courtney - Appointment Scheduling -->
+<iframe src="https://cosentusai.vercel.app/embed/voice/courtney" width="400" height="600" frameborder="0" allow="microphone"></iframe>
+```
+
+#### **Customization Options:**
+
+Add URL parameters to customize the iframe:
+
+```html
+<!-- Custom colors and text -->
+<iframe 
+  src="https://cosentusai.vercel.app/embed/voice/chloe?color=FF5733&buttonText=Chat%20Now" 
+  width="400" 
+  height="600" 
+  frameborder="0"
+  allow="microphone"
+></iframe>
+```
+
+**Available Parameters:**
+- `color` - Primary color (hex without #, e.g., `FF5733`)
+- `buttonText` - Button text (URL encoded, e.g., `Chat%20Now`)
+- `theme` - `light` or `dark`
+
+---
+
+### **Method 2: Simple JavaScript (No SDK)**
+
+**Perfect for:** Simple websites, basic integrations, developers who want full UI control without learning an SDK
+
+#### **How It Works:**
+
+1. User clicks your button
+2. Your code calls our API to get a call token
+3. You load Retell SDK and start the call
+4. User has conversation
+5. Call ends
+
+#### **Complete Example:**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Talk to Chloe</title>
+</head>
+<body>
+  <!-- Your custom button -->
+  <button id="talk-btn">Talk to Chloe</button>
+  <div id="status">Ready</div>
+
+  <!-- Load Retell SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/web/index.js"></script>
+
+  <script>
+    let retellClient = null;
+    let isConnected = false;
+
+    // Initialize Retell client
+    async function initRetell() {
+      if (!retellClient) {
+        retellClient = new RetellWebClient();
+        
+        // Event listeners
+        retellClient.on('call_started', () => {
+          isConnected = true;
+          document.getElementById('status').textContent = 'Connected - Start talking!';
+          document.getElementById('talk-btn').textContent = 'End Call';
+        });
+        
+        retellClient.on('call_ended', () => {
+          isConnected = false;
+          document.getElementById('status').textContent = 'Call ended';
+          document.getElementById('talk-btn').textContent = 'Talk to Chloe';
+        });
+        
+        retellClient.on('agent_start_talking', () => {
+          document.getElementById('status').textContent = 'Chloe is speaking...';
+        });
+        
+        retellClient.on('agent_stop_talking', () => {
+          document.getElementById('status').textContent = 'Listening...';
+        });
+        
+        retellClient.on('error', (error) => {
+          console.error('Call error:', error);
+          document.getElementById('status').textContent = 'Error: ' + error.message;
+          isConnected = false;
+        });
+      }
+    }
+
+    // Start call
+    async function startCall() {
+      try {
+        document.getElementById('status').textContent = 'Connecting...';
+        
+        // Get call token from Cosentus API
+        const response = await fetch('https://cosentusai.vercel.app/api/retell/register-call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            agentId: 'agent_4c8f86fa8ce3f4f2f7b6c5b0e1' // Chloe's ID
+          })
+        });
+        
+        if (!response.ok) throw new Error('Failed to register call');
+        
+        const data = await response.json();
+        
+        // Initialize Retell and start call
+        await initRetell();
+        await retellClient.startCall({
+          accessToken: data.accessToken,
+          sampleRate: data.sampleRate || 24000,
+          emitRawAudioSamples: false
+        });
+        
+      } catch (error) {
+        console.error('Error starting call:', error);
+        document.getElementById('status').textContent = 'Error: ' + error.message;
+      }
+    }
+
+    // End call
+    function endCall() {
+      if (retellClient) {
+        retellClient.stopCall();
+      }
+    }
+
+    // Button click handler
+    document.getElementById('talk-btn').onclick = () => {
+      if (isConnected) {
+        endCall();
+      } else {
+        startCall();
+      }
+    };
+  </script>
+</body>
+</html>
+```
+
+#### **Agent IDs for Simple JavaScript:**
+
+Replace the `agentId` in the code above with these IDs:
+
+```javascript
+// Chloe - Company Info
+agentId: 'agent_4c8f86fa8ce3f4f2f7b6c5b0e1'
+
+// Cindy - Patient Billing
+agentId: 'agent_b8f3c2d4e5f6a7b8c9d0e1f2a3'
+
+// Chris - Insurance Claims
+agentId: 'agent_a1b2c3d4e5f6g7h8i9j0k1l2m3'
+
+// Cara - Eligibility Verification
+agentId: 'agent_d4e5f6a7b8c9d0e1f2a3b4c5d6'
+
+// Carly - Prior Authorization
+agentId: 'agent_e5f6a7b8c9d0e1f2a3b4c5d6e7'
+
+// Carson - Payment Reconciliation
+agentId: 'agent_f6a7b8c9d0e1f2a3b4c5d6e7f8'
+
+// Cassidy - Anesthesia Cost Estimates
+agentId: 'agent_ff8707dccf16f96ecec4c448d3'
+
+// Courtney - Appointment Scheduling
+agentId: 'agent_1b7fe9e057f84254f4fcca9256'
+```
+
+---
+
+### **Method 3: Full SDK (Most Powerful)**
+
+**Perfect for:** React apps, advanced integrations, developers who want event-driven architecture
+
 ### **How It Works**
 
 1. User clicks a button on your website
@@ -319,7 +549,169 @@ Registers an event listener.
 
 ---
 
-## 💬 Chat Assistant Integration (Headless SDK)
+## 💬 Chat Assistant Integration
+
+### **Choose Your Integration Method**
+
+| Method | Complexity | Best For | Customization |
+|--------|-----------|----------|---------------|
+| **🔵 iframe Embed** | Easiest (1 line of code) | Quick demos, landing pages | Low (colors only) |
+| **🟢 Simple JavaScript** | Easy (direct API calls) | Basic chat widgets | Medium (full UI control) |
+| **🟡 Headless SDK** | Moderate (event-driven) | Advanced chat UIs, React apps | High (complete control) |
+
+---
+
+### **Method 1: iframe Embed (Easiest)**
+
+**Perfect for:** Quick demos, landing pages, no-code builders
+
+#### **One-Line Integration:**
+
+```html
+<!-- Full-page chat -->
+<iframe 
+  src="https://cosentusai.vercel.app/embed/chat" 
+  width="100%" 
+  height="600" 
+  frameborder="0"
+></iframe>
+```
+
+#### **Customization Options:**
+
+```html
+<!-- Custom colors and theme -->
+<iframe 
+  src="https://cosentusai.vercel.app/embed/chat?color=FF5733&theme=dark&placeholder=Ask%20me%20anything" 
+  width="100%" 
+  height="600" 
+  frameborder="0"
+></iframe>
+```
+
+**Available Parameters:**
+- `color` - Primary color (hex without #, e.g., `FF5733`)
+- `theme` - `light` or `dark`
+- `placeholder` - Input placeholder text (URL encoded)
+
+---
+
+### **Method 2: Simple JavaScript (Direct API)**
+
+**Perfect for:** Developers who want to build their own chat UI without learning an SDK
+
+#### **Complete Example:**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat with Cosentus AI</title>
+  <style>
+    #chat-container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    #messages { height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+    .message { margin-bottom: 10px; padding: 8px; border-radius: 8px; }
+    .user { background: #01B2D6; color: white; text-align: right; }
+    .assistant { background: #f0f0f0; color: #333; }
+    #input-form { display: flex; gap: 10px; }
+    #message-input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+    #send-btn { padding: 10px 20px; background: #01B2D6; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    #send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <h1>Chat with Cosentus AI</h1>
+    <div id="messages"></div>
+    <form id="input-form">
+      <input type="text" id="message-input" placeholder="Ask me anything..." />
+      <button type="submit" id="send-btn">Send</button>
+    </form>
+  </div>
+
+  <script>
+    let chatId = null;
+    const messagesDiv = document.getElementById('messages');
+    const inputForm = document.getElementById('input-form');
+    const messageInput = document.getElementById('message-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    // Add message to UI
+    function addMessage(text, sender) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${sender}`;
+      msgDiv.textContent = text;
+      messagesDiv.appendChild(msgDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    // Send message
+    async function sendMessage(text) {
+      // Add user message to UI
+      addMessage(text, 'user');
+      
+      // Disable input
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending...';
+
+      try {
+        // Initialize chat if needed
+        if (!chatId) {
+          const initResp = await fetch('https://cosentusai.vercel.app/api/assist-chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({})
+          });
+          
+          if (!initResp.ok) throw new Error('Failed to initialize chat');
+          
+          const initData = await initResp.json();
+          chatId = initData.chatId;
+        }
+
+        // Send message
+        const msgResp = await fetch('https://cosentusai.vercel.app/api/chat/send-message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chatId, message: text })
+        });
+
+        if (!msgResp.ok) throw new Error('Failed to send message');
+
+        const msgData = await msgResp.json();
+        
+        // Add AI response to UI
+        addMessage(msgData.response, 'assistant');
+
+      } catch (error) {
+        console.error('Chat error:', error);
+        addMessage('Sorry, I encountered an error. Please try again.', 'assistant');
+      } finally {
+        // Re-enable input
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send';
+      }
+    }
+
+    // Handle form submit
+    inputForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const text = messageInput.value.trim();
+      if (!text) return;
+      
+      messageInput.value = '';
+      await sendMessage(text);
+    };
+  </script>
+</body>
+</html>
+```
+
+---
+
+### **Method 3: Headless SDK (Most Powerful)**
+
+**Perfect for:** React apps, advanced integrations, developers who want event-driven architecture
 
 The chat assistant is integrated via the same `cosentus-voice.js` SDK. It provides the backend communication logic, and you build the UI.
 

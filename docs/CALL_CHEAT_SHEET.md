@@ -29,14 +29,40 @@
 
 ## 🔧 How Simple It Is
 
-### **Voice Agent (3 lines of code):**
-```javascript
-const chloe = CosentusVoice.createAgent('chloe');
-document.getElementById('button').onclick = () => chloe.connect();
+### **We offer 3 integration methods:**
+
+#### **🔵 iframe (Easiest - 1 line):**
+```html
+<!-- Voice Agent -->
+<iframe src="https://cosentusai.vercel.app/embed/voice/chloe" width="400" height="600" frameborder="0" allow="microphone"></iframe>
+
+<!-- Chat Agent -->
+<iframe src="https://cosentusai.vercel.app/embed/chat" width="100%" height="600" frameborder="0"></iframe>
 ```
 
-### **Chat Agent (SDK - Headless):**
+#### **🟢 Simple JavaScript (No SDK):**
 ```javascript
+// Voice: Direct API call + Retell SDK
+const response = await fetch('https://cosentusai.vercel.app/api/retell/register-call', {
+  method: 'POST',
+  body: JSON.stringify({ agentId: 'agent_4c8f86fa8ce3f4f2f7b6c5b0e1' })
+});
+
+// Chat: Direct API calls
+const initResp = await fetch('https://cosentusai.vercel.app/api/assist-chat', { method: 'POST' });
+const msgResp = await fetch('https://cosentusai.vercel.app/api/chat/send-message', {
+  method: 'POST',
+  body: JSON.stringify({ chatId, message: 'Hello' })
+});
+```
+
+#### **🟡 Full SDK (Most Powerful):**
+```javascript
+// Voice Agent
+const chloe = CosentusVoice.createAgent('chloe');
+await chloe.connect();
+
+// Chat Agent
 const chat = CosentusVoice.createChatAssistant();
 chat.on('message', (data) => console.log(data.content));
 await chat.sendMessage('What is Cosentus?');
