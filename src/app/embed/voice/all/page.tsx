@@ -60,7 +60,7 @@ export default function AllVoiceAgents() {
   return (
     <div className="min-h-screen p-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
-<div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
   {/* Cindy - Payment & Balance Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
@@ -1318,8 +1318,7 @@ export default function AllVoiceAgents() {
     ) : null}
   </div>
 
-</div>
-
+        </div>
       </div>
     </div>
   )
