@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 // Add global styles for animations
 if (typeof document !== 'undefined') {
@@ -54,35 +55,8 @@ export default function ChatEmbed() {
   const [chatId, setChatId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const streamingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const messagesContainerRef = useRef<HTMLDivElement>(null);
-  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
-
-  // Auto-scroll to bottom when messages change (only if user hasn't scrolled away)
-  useEffect(() => {
-    if (isExpanded && shouldAutoScroll) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [messages, isExpanded, shouldAutoScroll]);
-
-  // Detect when user scrolls away from bottom
-  const handleScroll = () => {
-    if (!messagesContainerRef.current) return;
-    
-    const { scrollTop, scrollHeight, clientHeight } = messagesContainerRef.current;
-    const isAtBottom = scrollHeight - scrollTop - clientHeight < 50; // 50px threshold
-    
-    setShouldAutoScroll(isAtBottom);
-  };
-
-  // Re-enable auto-scroll when new message starts
-  useEffect(() => {
-    if (loading) {
-      setShouldAutoScroll(true);
-    }
-  }, [loading]);
 
   // Cleanup streaming timeout on unmount
   useEffect(() => {
@@ -305,8 +279,6 @@ export default function ChatEmbed() {
           {/* Messages Area */}
           <div className="h-full flex flex-col">
             <div 
-              ref={messagesContainerRef}
-              onScroll={handleScroll}
               className="flex-1 overflow-y-auto px-4 md:px-6 py-3 md:py-4 space-y-3 md:space-y-4"
             >
               {messages.map((msg) => (
@@ -322,8 +294,11 @@ export default function ChatEmbed() {
                     }`}
                   >
                     {msg.sender === 'assistant' ? (
-                      <div className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-li:text-gray-900">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      <div className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-li:text-gray-900 prose-a:text-blue-600 prose-a:underline hover:prose-a:text-blue-800">
+                        <ReactMarkdown 
+                          remarkPlugins={[remarkGfm]}
+                          rehypePlugins={[rehypeRaw]}
+                        >
                           {msg.text}
                         </ReactMarkdown>
                       </div>
@@ -351,8 +326,6 @@ export default function ChatEmbed() {
                   <p className="text-red-500 text-sm">{error}</p>
                 </div>
               )}
-
-              <div ref={messagesEndRef} />
             </div>
 
             {/* Input Area - at bottom of card */}
