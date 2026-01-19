@@ -15,7 +15,6 @@ export default function Home() {
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
   const [threadId, setThreadId] = useState<string | null>(null);
-  const chatBottomRef = useRef<HTMLDivElement>(null);
   
   // Old voice demo state:
   const [inputValue, setInputValue] = useState('');
@@ -332,7 +331,6 @@ export default function Home() {
                         <div className="text-sm text-red-800 bg-red-50 rounded-lg px-4 py-2 shadow-sm">{aiError}</div>
                       </div>
                     )}
-                    <div ref={chatBottomRef} tabIndex={-1}></div>
                   </div>
                 </div>
 
