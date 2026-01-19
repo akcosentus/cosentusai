@@ -12,7 +12,14 @@ Just copy the iframe code below and paste it into your HTML. That's it!
 
 ## 💬 Chat Assistant
 
-**AI-powered chat for answering questions about Cosentus**
+**Minimal ChatGPT-style interface with suggested questions**
+
+**Features:**
+- Long oval search bar (ChatGPT-style)
+- 7 pre-loaded suggested questions about revenue cycle management
+- Expands to full chat widget when a question is clicked
+- Clean white background with minimal styling
+- No headers or footers - pure content
 
 ```html
 <iframe 
@@ -24,23 +31,14 @@ Just copy the iframe code below and paste it into your HTML. That's it!
 ></iframe>
 ```
 
-**Customization Options:**
+**Design:**
+- Initial view: Centered search bar with 7 question buttons
+- Expanded view: Full chat interface with conversation history
+- User messages: Black background, white text
+- AI messages: Light gray background, black text
+- Minimal, professional styling
 
-```html
-<!-- Dark theme with custom color -->
-<iframe 
-  src="https://cosentusai.vercel.app/embed/chat?color=FF5733&theme=dark" 
-  width="100%" 
-  height="600" 
-  frameborder="0"
-  allowfullscreen
-></iframe>
-```
-
-**Available Parameters:**
-- `color` - Primary color (hex without #, e.g., `FF5733`)
-- `theme` - `light` or `dark`
-- `placeholder` - Input placeholder text (URL encoded, e.g., `Ask%20me%20anything`)
+**Note:** The chat assistant uses a fixed minimal design. Customization parameters are not currently supported to maintain design consistency.
 
 ---
 
