@@ -6,23 +6,220 @@
 
 ## 🚀 Quick Start
 
-### **Step 1: Include the Script**
+### **Include the Script:**
 
 ```html
 <script src="https://cosentusai.vercel.app/cosentus-simple.js"></script>
 ```
 
-### **Step 2: Use It**
-
 That's it! Now you can call Cosentus AI functions from your own code.
 
 ---
 
-## 💬 Chat Assistant
+## 📋 Complete API Reference
 
-**Build your own chat UI - we just provide the AI responses**
+### **Voice Functions:**
 
-### **Complete Example:**
+```javascript
+// Start voice call with an agent
+await CosentusSimple.startVoiceCall(agentName, {
+  onConnected: () => {},      // Called when call starts
+  onDisconnected: () => {},   // Called when call ends
+  onAgentSpeaking: () => {},  // Called when agent speaks
+  onAgentListening: () => {}, // Called when agent listens
+  onError: (error) => {}      // Called on error
+});
+
+// End voice call
+CosentusSimple.endVoiceCall();
+```
+
+### **Chat Functions:**
+
+```javascript
+// Send message and get AI response
+const response = await CosentusSimple.sendChatMessage('What is Cosentus?');
+
+// Initialize chat (optional - auto-initialized on first message)
+const chatId = await CosentusSimple.initChat();
+
+// End chat session
+await CosentusSimple.endChat();
+```
+
+### **Utility Functions:**
+
+```javascript
+// Get list of all agents
+const agents = CosentusSimple.getAgents();
+console.log(agents.chloe.name);        // "Chloe"
+console.log(agents.chloe.description); // "Cosentus company information expert"
+
+// Get library version
+console.log(CosentusSimple.version); // "1.0.0"
+```
+
+---
+
+## 🎤 Available Voice Agents
+
+Use any of these agent names with `startVoiceCall()`:
+
+| Agent Name | Description | Use Case |
+|------------|-------------|----------|
+| `'chloe'` | Company information expert | Cosentus services, pricing, general questions |
+| `'cindy'` | Patient billing support | Billing questions, payment help |
+| `'chris'` | Insurance claim follow-up | Claim status, denial resolution |
+| `'cassidy'` | Anesthesia cost estimates | Pre-surgery cost estimates |
+| `'courtney'` | Appointment scheduling | Medical appointment booking |
+| `'cara'` | Eligibility verification | Insurance verification, benefits |
+| `'carly'` | Prior authorization | Auth status, expedited reviews |
+| `'carson'` | Payment reconciliation | Missing payments, discrepancies |
+
+---
+
+## 💬 Chat Assistant Usage
+
+### **Basic Usage:**
+
+```javascript
+// Send a message
+const response = await CosentusSimple.sendChatMessage('What services does Cosentus offer?');
+console.log(response); // AI response text
+
+// Send another message (uses same chat session)
+const response2 = await CosentusSimple.sendChatMessage('How much does it cost?');
+console.log(response2);
+
+// End the chat when done
+await CosentusSimple.endChat();
+```
+
+### **Advanced Usage (Manual Session Management):**
+
+```javascript
+// Create a new chat session
+const chatId = await CosentusSimple.initChat();
+
+// Send messages to specific session
+const response = await CosentusSimple.sendChatMessage('Hello', chatId);
+
+// End specific session
+await CosentusSimple.endChat(chatId);
+```
+
+---
+
+## 🎤 Voice Agent Usage
+
+### **Basic Usage:**
+
+```javascript
+// Start a call with Chloe
+await CosentusSimple.startVoiceCall('chloe', {
+  onConnected: () => {
+    console.log('Call started - user can now speak');
+  },
+  onDisconnected: () => {
+    console.log('Call ended');
+  },
+  onAgentSpeaking: () => {
+    console.log('Chloe is speaking');
+  },
+  onAgentListening: () => {
+    console.log('Chloe is listening');
+  },
+  onError: (error) => {
+    console.error('Error:', error);
+  }
+});
+
+// End the call
+CosentusSimple.endVoiceCall();
+```
+
+### **Using Different Agents:**
+
+```javascript
+// Talk to Cindy (billing support)
+await CosentusSimple.startVoiceCall('cindy', { /* callbacks */ });
+
+// Talk to Chris (insurance claims)
+await CosentusSimple.startVoiceCall('chris', { /* callbacks */ });
+
+// Talk to Cassidy (anesthesia costs)
+await CosentusSimple.startVoiceCall('cassidy', { /* callbacks */ });
+
+// Talk to Courtney (appointment scheduling)
+await CosentusSimple.startVoiceCall('courtney', { /* callbacks */ });
+
+// Talk to Cara (eligibility verification)
+await CosentusSimple.startVoiceCall('cara', { /* callbacks */ });
+
+// Talk to Carly (prior authorization)
+await CosentusSimple.startVoiceCall('carly', { /* callbacks */ });
+
+// Talk to Carson (payment reconciliation)
+await CosentusSimple.startVoiceCall('carson', { /* callbacks */ });
+```
+
+---
+
+## 🎨 Design Freedom
+
+**You control 100% of the design:**
+
+- ✅ Your HTML structure
+- ✅ Your CSS styling
+- ✅ Your button design
+- ✅ Your layout
+- ✅ Your animations
+- ✅ Your color scheme
+- ✅ Your fonts
+- ✅ Your spacing
+
+**We only provide:**
+- ✅ AI conversation logic
+- ✅ Backend API calls
+- ✅ Voice/chat functionality
+
+---
+
+## 📦 What You Get
+
+**You control:**
+- ✅ 100% of the UI design
+- ✅ 100% of the HTML/CSS
+- ✅ 100% of the user experience
+- ✅ When/how to show the chat/voice
+- ✅ All styling and branding
+
+**We provide:**
+- ✅ AI conversation logic
+- ✅ Backend infrastructure
+- ✅ Voice/chat functionality
+- ✅ Simple JavaScript API
+
+**You're NOT responsible for:**
+- ❌ AI training
+- ❌ Backend servers
+- ❌ Voice processing
+- ❌ API maintenance
+
+---
+
+## ⚠️ Important Notes
+
+1. **HTTPS Required** - Voice calls require HTTPS for microphone access
+2. **Browser Compatibility** - Works on all modern browsers (Chrome, Firefox, Safari, Edge)
+3. **Mobile Support** - Fully responsive and works on mobile devices
+4. **No Dependencies** - Just include one script tag and you're ready
+
+---
+
+## 💡 Complete Examples
+
+### **Chat Assistant Example:**
 
 ```html
 <!DOCTYPE html>
@@ -93,27 +290,9 @@ That's it! Now you can call Cosentus AI functions from your own code.
 </html>
 ```
 
-### **API Reference:**
-
-```javascript
-// Send a message and get AI response
-const response = await CosentusSimple.sendChatMessage('What is Cosentus?');
-console.log(response); // "Cosentus is a healthcare RCM company..."
-
-// Initialize a new chat session (optional - auto-initialized on first message)
-const chatId = await CosentusSimple.initChat();
-
-// End the chat session
-await CosentusSimple.endChat();
-```
-
 ---
 
-## 🎤 Voice Agents
-
-**Build your own voice UI - we just handle the AI conversation**
-
-### **Complete Example:**
+### **Voice Agent Example:**
 
 ```html
 <!DOCTYPE html>
@@ -184,101 +363,6 @@ await CosentusSimple.endChat();
 </html>
 ```
 
-### **API Reference:**
-
-```javascript
-// Start a voice call with an agent
-await CosentusSimple.startVoiceCall('chloe', {
-  onConnected: () => console.log('Call started'),
-  onDisconnected: () => console.log('Call ended'),
-  onAgentSpeaking: () => console.log('Agent is speaking'),
-  onAgentListening: () => console.log('Agent is listening'),
-  onError: (error) => console.error('Error:', error)
-});
-
-// End the current call
-CosentusSimple.endVoiceCall();
-```
-
-### **Available Agents:**
-
-```javascript
-// Use any of these agent names:
-'chloe'     // Cosentus company information expert
-'cindy'     // Patient billing support specialist
-'chris'     // Insurance claim follow-up specialist
-'cara'      // Eligibility & benefits verification
-'carly'     // Prior authorization follow-up
-'carson'    // Payment reconciliation specialist
-'cassidy'   // Pre-service anesthesia cost estimates
-'courtney'  // Medical appointment scheduling
-```
-
----
-
-## 🎨 Design Freedom
-
-**You control 100% of the design:**
-
-- ✅ Your HTML structure
-- ✅ Your CSS styling
-- ✅ Your button design
-- ✅ Your layout
-- ✅ Your animations
-- ✅ Your color scheme
-- ✅ Your fonts
-- ✅ Your spacing
-
-**We only provide:**
-- ✅ AI conversation logic
-- ✅ Backend API calls
-- ✅ Voice/chat functionality
-
----
-
-## 📋 Complete API Reference
-
-### **Chat Functions:**
-
-```javascript
-// Initialize chat (optional - auto-initialized on first message)
-const chatId = await CosentusSimple.initChat();
-
-// Send message and get response
-const response = await CosentusSimple.sendChatMessage('Hello');
-
-// End chat session
-await CosentusSimple.endChat();
-```
-
-### **Voice Functions:**
-
-```javascript
-// Start voice call
-await CosentusSimple.startVoiceCall(agentName, {
-  onConnected: () => {},      // Called when call starts
-  onDisconnected: () => {},   // Called when call ends
-  onAgentSpeaking: () => {},  // Called when agent speaks
-  onAgentListening: () => {}, // Called when agent listens
-  onError: (error) => {}      // Called on error
-});
-
-// End voice call
-CosentusSimple.endVoiceCall();
-```
-
-### **Utility Functions:**
-
-```javascript
-// Get list of all agents
-const agents = CosentusSimple.getAgents();
-console.log(agents.chloe.name);        // "Chloe"
-console.log(agents.chloe.description); // "Cosentus company information expert"
-
-// Get library version
-console.log(CosentusSimple.version); // "1.0.0"
-```
-
 ---
 
 ## 🌐 Framework Examples
@@ -320,6 +404,8 @@ function ChatWidget() {
 }
 ```
 
+---
+
 ### **Vue:**
 
 ```vue
@@ -351,6 +437,8 @@ export default {
 </script>
 ```
 
+---
+
 ### **WordPress:**
 
 ```php
@@ -379,40 +467,8 @@ jQuery(document).ready(function($) {
 
 ---
 
-## ⚠️ Important Notes
-
-1. **HTTPS Required** - Voice calls require HTTPS for microphone access
-2. **Browser Compatibility** - Works on all modern browsers (Chrome, Firefox, Safari, Edge)
-3. **Mobile Support** - Fully responsive and works on mobile devices
-4. **No Dependencies** - Just include one script tag and you're ready
-
----
-
 ## 🆘 Need Help?
 
 Contact the Cosentus team:
 - **Email:** support@cosentus.com
 - **Demo Site:** https://cosentusai.vercel.app
-
----
-
-## 📦 What You Get
-
-**You control:**
-- ✅ 100% of the UI design
-- ✅ 100% of the HTML/CSS
-- ✅ 100% of the user experience
-- ✅ When/how to show the chat/voice
-- ✅ All styling and branding
-
-**We provide:**
-- ✅ AI conversation logic
-- ✅ Backend infrastructure
-- ✅ Voice/chat functionality
-- ✅ Simple JavaScript API
-
-**You're NOT responsible for:**
-- ❌ AI training
-- ❌ Backend servers
-- ❌ Voice processing
-- ❌ API maintenance
