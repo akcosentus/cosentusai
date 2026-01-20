@@ -299,7 +299,7 @@ export default function ChatEmbed() {
     <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
       <div className="w-full max-w-4xl animate-fadeIn">
         {/* Chat Card */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[80vh] md:h-[70vh]">
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[85vh] md:h-[80vh]">
           {/* Messages Area */}
           <div className="h-full flex flex-col">
             <div 
