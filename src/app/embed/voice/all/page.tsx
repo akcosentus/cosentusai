@@ -58,7 +58,7 @@ export default function AllVoiceAgents() {
   };
 
   return (
-    <div className="min-h-screen p-4 md:p-8 bg-transparent">
+    <div className="min-h-screen pt-16 pb-4 px-4 md:pt-20 md:pb-8 md:px-8 bg-transparent">
       <div className="max-w-[1600px] mx-auto relative">
         {/* Logo - Top Right of Grid */}
         <img 
