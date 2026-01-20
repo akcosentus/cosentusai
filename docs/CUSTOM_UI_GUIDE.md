@@ -181,6 +181,51 @@ Returns: { "content": "AI response here" }
 - **HTTPS required** for voice (microphone access)
 - **Modern browser** (Chrome, Firefox, Safari, Edge)
 - **CORS enabled** (already configured on our end)
+- **No API keys needed** - everything is handled through our endpoints
+
+---
+
+## 🔐 Security & Keys
+
+**You don't need any API keys!**
+
+All authentication is handled server-side through our API endpoints. Just call:
+- `https://cosentusai.vercel.app/api/retell/register-call`
+- `https://cosentusai.vercel.app/api/assist-chat`
+- `https://cosentusai.vercel.app/api/chat/send-message`
+
+We handle the Retell API keys securely on our backend.
+
+---
+
+## 🎨 Build Your UI
+
+You have **complete design freedom**. The library only handles:
+- Voice call connection (audio)
+- Chat message sending/receiving (text)
+
+**You build:**
+- All buttons, inputs, layouts
+- All styling and animations
+- All user interactions
+- All loading states and error handling
+
+**Example UI elements you might create:**
+- Microphone button with animation
+- Chat bubbles with your brand colors
+- Loading spinners
+- Error messages
+- Agent selection cards
+- Conversation history display
+
+---
+
+## 🧪 Testing
+
+1. **Local testing:** Open the HTML file directly in your browser (must use `http://localhost` or `https://` for voice)
+2. **Test chat first:** Easiest to verify - no microphone permissions needed
+3. **Test voice:** Click allow when browser asks for microphone access
+4. **Check console:** Use browser DevTools to see any errors
 
 ---
 
@@ -188,3 +233,27 @@ Returns: { "content": "AI response here" }
 
 Email: support@cosentus.com  
 Demo: https://cosentusai.vercel.app
+
+---
+
+## 📝 Quick Reference
+
+### Voice Call (2 steps):
+```javascript
+// 1. Get token
+const res = await fetch('https://cosentusai.vercel.app/api/retell/register-call', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ agentId: 'agent_d6497c4fabcc7bebdf9e4b0b20' })
+});
+const { access_token } = await res.json();
+
+// 2. Start call
+CosentusSimple.startVoiceCall('cindy', access_token);
+```
+
+### Chat (1 step):
+```javascript
+const response = await CosentusSimple.sendChatMessage('Your question here');
+console.log(response.content); // AI response
+```
