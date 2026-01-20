@@ -325,7 +325,7 @@ export default function ChatEmbed() {
                   <div
                     className={`max-w-[90%] md:max-w-[85%] rounded-2xl px-3 md:px-4 py-2 md:py-2.5 text-sm md:text-base ${
                       msg.sender === 'user'
-                        ? 'bg-gray-900 text-white'
+                        ? 'bg-black/70 text-white'
                         : 'bg-gray-100 text-gray-900'
                     }`}
                   >
