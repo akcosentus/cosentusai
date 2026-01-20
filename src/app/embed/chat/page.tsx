@@ -66,6 +66,7 @@ export default function ChatEmbed() {
   const [chatId, setChatId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const streamingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -249,6 +250,8 @@ export default function ChatEmbed() {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
                 placeholder="Ask me anything..."
                 className="w-full px-4 md:px-6 py-3 md:py-4 text-sm md:text-base text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors shadow-sm"
               />
@@ -264,19 +267,22 @@ export default function ChatEmbed() {
             </div>
           </form>
 
-          {/* Suggested Questions - 4x2 grid with glassy effect, only show when typing */}
-          {inputValue.trim() && (
+          {/* Suggested Questions - 4x2 grid with glassy effect, show when focused */}
+          {isFocused && (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
               {SUGGESTED_QUESTIONS.map((question, index) => (
                 <button
                   key={index}
-                  onClick={() => handleQuestionClick(question)}
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    handleQuestionClick(question);
+                  }}
                   style={{
                     animation: `fadeInUp 0.5s ease-out ${index * 0.05}s both`,
                     backdropFilter: 'blur(10px)',
                     WebkitBackdropFilter: 'blur(10px)',
                   }}
-                  className="px-4 py-4 text-left text-xs md:text-sm text-gray-900 bg-white/40 border border-white/60 rounded-xl hover:bg-white/60 hover:border-white/80 hover:shadow-lg transition-all duration-300 backdrop-blur-md"
+                  className="px-4 py-4 text-left text-xs md:text-sm text-gray-900 bg-white/70 border border-white/90 rounded-xl hover:bg-white/90 hover:border-white hover:shadow-lg transition-all duration-300 backdrop-blur-md"
                 >
                   {question}
                 </button>
