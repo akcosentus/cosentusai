@@ -47,11 +47,11 @@ export default function AllVoiceAgents() {
   const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'olivia' | 'michael' | 'emily' | 'sarah' | null>(null);
   const [startAnimation, setStartAnimation] = useState(false);
 
-  // Wait 1.5 seconds before starting animation to ensure iframe is fully loaded
+  // Wait 3 seconds before starting animation to ensure iframe is fully loaded
   useEffect(() => {
     const timer = setTimeout(() => {
       setStartAnimation(true);
-    }, 1500);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
