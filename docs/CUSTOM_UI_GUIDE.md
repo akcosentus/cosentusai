@@ -12,12 +12,21 @@
 
 <!-- 2. Use it -->
 <script>
-  // Voice Agent
-  CosentusSimple.startVoiceCall('cindy', 'YOUR_ACCESS_TOKEN_HERE');
-  
-  // Chat Agent
+  // Chat Agent (simplest - no token needed)
   const response = await CosentusSimple.sendChatMessage('How do I reduce denials?');
   console.log(response);
+  
+  // Voice Agent (requires getting token first - see below)
+  // Step 1: Get token from our API
+  const res = await fetch('https://cosentusai.vercel.app/api/retell/register-call', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ agentId: 'agent_d6497c4fabcc7bebdf9e4b0b20' })
+  });
+  const { access_token } = await res.json();
+  
+  // Step 2: Start the call with the token
+  CosentusSimple.startVoiceCall('cindy', access_token);
 </script>
 ```
 
@@ -37,13 +46,10 @@
 
 ### Start a Voice Call:
 
-```javascript
-CosentusSimple.startVoiceCall(agentId, accessToken);
-```
+**2 Steps Required:**
 
-**Example:**
 ```javascript
-// Get access token first
+// Step 1: Get access token from our API
 const tokenResponse = await fetch('https://cosentusai.vercel.app/api/retell/register-call', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
@@ -51,9 +57,11 @@ const tokenResponse = await fetch('https://cosentusai.vercel.app/api/retell/regi
 });
 const { access_token } = await tokenResponse.json();
 
-// Start the call
+// Step 2: Start the call with the token
 CosentusSimple.startVoiceCall('cindy', access_token);
 ```
+
+**Why the token?** Security. The token authorizes the voice call and expires after use.
 
 **Agent IDs:**
 ```javascript
