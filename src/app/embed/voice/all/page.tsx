@@ -59,8 +59,8 @@ export default function AllVoiceAgents() {
 
   return (
     <div className="min-h-screen p-4 md:p-8 bg-transparent">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 auto-rows-fr">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
   {/* Cindy - Payment & Balance Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
@@ -1014,10 +1014,8 @@ export default function AllVoiceAgents() {
     ) : null}
   </div>
 
-  {/* Bottom Row Wrapper - Centers Carly and Carson */}
-  <div className="md:col-span-3 flex justify-center gap-8">
-    {/* Carly - Prior Authorization Follow-Up */}
-    <div 
+  {/* Carly - Prior Authorization Follow-Up */}
+  <div 
       onClick={() => !isConnected && handleExpandCard('carly')}
       className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
         expandedCard === 'carly' 
@@ -1324,7 +1322,6 @@ export default function AllVoiceAgents() {
         )}
       </>
     ) : null}
-    </div>
   </div>
 
         </div>

@@ -33,14 +33,14 @@
 <iframe 
   src="https://cosentusai.vercel.app/embed/voice/all" 
   width="100%" 
-  height="800" 
+  height="700" 
   style="border: none;" 
   allow="microphone">
 </iframe>
 ```
 
 **What you get:**
-- Grid of 8 agent cards
+- 4 columns x 2 rows grid (8 agent cards)
 - Click any card to expand and start talking
 - Each agent specializes in different tasks:
   - **Cindy** - Patient billing & payments
@@ -68,12 +68,12 @@ Both iframes are fully optimized for mobile:
 
 ### Full-width (recommended):
 ```html
-<iframe src="..." width="100%" height="800" style="border: none;"></iframe>
+<iframe src="..." width="100%" height="700" style="border: none;"></iframe>
 ```
 
 ### Fixed width:
 ```html
-<iframe src="..." width="1200px" height="800" style="border: none;"></iframe>
+<iframe src="..." width="1600px" height="700" style="border: none;"></iframe>
 ```
 
 ### Full-page:
