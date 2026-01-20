@@ -395,7 +395,7 @@ export default function ChatEmbed() {
               
               {/* Disclaimer */}
               <p className="text-[10px] md:text-xs text-gray-400 text-center">
-                Powered by Cosentus AI - Responses are informational only
+                Powered by Cosentus Ai - Responses are informational only
               </p>
             </div>
           </div>
