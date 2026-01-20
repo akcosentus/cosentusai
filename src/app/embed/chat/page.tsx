@@ -82,7 +82,7 @@ export default function ChatEmbed() {
   // Stream text character by character
   const streamMessage = (fullText: string, messageId: string) => {
     let currentIndex = 0;
-    const streamSpeed = 20; // milliseconds per character
+    const streamSpeed = 35; // milliseconds per character - slower for smoother feel
 
     const streamNextChunk = () => {
       if (currentIndex < fullText.length) {
