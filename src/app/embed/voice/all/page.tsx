@@ -66,7 +66,7 @@ export default function AllVoiceAgents() {
     onClick={() => !isConnected && handleExpandCard('cindy')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
-        ? 'md:col-span-3 p-6 md:p-12' 
+        ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
@@ -92,6 +92,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'cindy' && (
+          <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
             <div className="flex-1 md:max-w-md">
@@ -216,6 +217,7 @@ export default function AllVoiceAgents() {
               )}
             </div>
           </div>
+          </div>
         )}
       </>
     ) : null}
@@ -226,7 +228,7 @@ export default function AllVoiceAgents() {
     onClick={() => !isConnected && handleExpandCard('chris')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
-        ? 'md:col-span-3 p-6 md:p-12' 
+        ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
@@ -252,6 +254,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'chris' && (
+          <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
             <div className="flex-1 md:max-w-md">
@@ -376,6 +379,7 @@ export default function AllVoiceAgents() {
               )}
             </div>
           </div>
+        </div>
         )}
       </>
     ) : null}
@@ -386,7 +390,7 @@ export default function AllVoiceAgents() {
     onClick={() => !isConnected && handleExpandCard('cassidy')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'cassidy' 
-        ? 'md:col-span-3 p-6 md:p-12' 
+        ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cassidy' ? 'hidden' : ''}`}
   >
@@ -412,6 +416,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'cassidy' && (
+          <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
             <div className="flex-1 md:max-w-md">
@@ -533,6 +538,7 @@ export default function AllVoiceAgents() {
               )}
             </div>
           </div>
+        </div>
         )}
       </>
     ) : null}
@@ -543,7 +549,7 @@ export default function AllVoiceAgents() {
     onClick={() => !isConnected && handleExpandCard('courtney')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'courtney' 
-        ? 'md:col-span-3 p-6 md:p-12' 
+        ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'courtney' ? 'hidden' : ''}`}
   >
@@ -569,6 +575,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'courtney' && (
+          <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
             <div className="flex-1 md:max-w-md">
@@ -691,6 +698,7 @@ export default function AllVoiceAgents() {
               )}
             </div>
           </div>
+        </div>
         )}
       </>
     ) : null}
@@ -700,7 +708,7 @@ export default function AllVoiceAgents() {
     onClick={() => !isConnected && handleExpandCard('chloe')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'chloe' 
-        ? 'md:col-span-3 p-6 md:p-12' 
+        ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chloe' ? 'hidden' : ''}`}
   >
@@ -726,6 +734,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'chloe' && (
+          <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
             <div className="flex-1 md:max-w-md">
@@ -854,6 +863,7 @@ export default function AllVoiceAgents() {
               )}
             </div>
           </div>
+        </div>
         )}
       </>
     ) : null}
@@ -864,7 +874,7 @@ export default function AllVoiceAgents() {
     onClick={() => !isConnected && handleExpandCard('cara')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'cara' 
-        ? 'md:col-span-3 p-6 md:p-12' 
+        ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-8 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cara' ? 'hidden' : ''}`}
   >
@@ -890,6 +900,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'cara' && (
+          <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
             <div className="flex-1 md:max-w-md">
@@ -1009,6 +1020,7 @@ export default function AllVoiceAgents() {
               )}
             </div>
           </div>
+        </div>
         )}
       </>
     ) : null}
@@ -1045,6 +1057,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'carly' && (
+          <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
             <div className="flex-1 md:max-w-md">
@@ -1164,6 +1177,7 @@ export default function AllVoiceAgents() {
               )}
             </div>
           </div>
+        </div>
         )}
       </>
     ) : null}
@@ -1200,6 +1214,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'carson' && (
+          <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
             <div className="flex-1 md:max-w-md">
@@ -1319,6 +1334,7 @@ export default function AllVoiceAgents() {
               )}
             </div>
           </div>
+        </div>
         )}
       </>
     ) : null}
