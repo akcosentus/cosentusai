@@ -19,6 +19,16 @@ if (typeof document !== 'undefined') {
         transform: translateY(0);
       }
     }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
     .animate-fadeIn {
       animation: fadeIn 0.3s ease-out;
     }
@@ -39,13 +49,14 @@ interface Message {
 
 // Suggested questions
 const SUGGESTED_QUESTIONS = [
+  "How much revenue is my practice missing today?",
+  "What's causing delays, denials, or write-offs in my revenue cycle?",
+  "How can Cosentus improve collections without adding staff or risk?",
   "My A/R is through the roof — what are the most common causes?",
   "Why are my denials increasing — and what should I look at first?",
   "I think we're getting underpaid by payers — how do I know?",
-  "Collections are flat but volume is up — where does revenue usually leak?",
   "Patient payments are getting harder — how do we improve patient pay without upsetting patients?",
-  "What KPIs should I track weekly to know if my billing is healthy?",
-  "I feel like we're losing money — but I can't tell how much or why. Where do practices typically leak revenue?"
+  "Our clean claim rate is dropping — what's causing it, and how do we fix it fast?"
 ];
 
 export default function ChatEmbed() {
@@ -253,18 +264,25 @@ export default function ChatEmbed() {
             </div>
           </form>
 
-          {/* Suggested Questions - with fade animation */}
-          <div className="space-y-2 md:space-y-3 transition-opacity duration-500 ease-out">
-            {SUGGESTED_QUESTIONS.map((question, index) => (
-              <button
-                key={index}
-                onClick={() => handleQuestionClick(question)}
-                className="w-full px-4 md:px-5 py-3 md:py-4 text-left text-xs md:text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm transition-all"
-              >
-                {question}
-              </button>
-            ))}
-          </div>
+          {/* Suggested Questions - 4x2 grid with glassy effect, only show when typing */}
+          {inputValue.trim() && (
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
+              {SUGGESTED_QUESTIONS.map((question, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleQuestionClick(question)}
+                  style={{
+                    animation: `fadeInUp 0.5s ease-out ${index * 0.05}s both`,
+                    backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
+                  }}
+                  className="px-4 py-4 text-left text-xs md:text-sm text-gray-900 bg-white/40 border border-white/60 rounded-xl hover:bg-white/60 hover:border-white/80 hover:shadow-lg transition-all duration-300 backdrop-blur-md"
+                >
+                  {question}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );
