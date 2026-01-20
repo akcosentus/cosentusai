@@ -391,7 +391,7 @@ export default function AllVoiceAgents() {
     ) : null}
   </div>
 
-  {/* Cassidy - Pre-Service Anesthesia Cost Estimates */}
+  {/* Emily - Pre-Service Anesthesia Cost Estimates */}
   <div 
     onClick={() => !isConnected && handleExpandCard('emily')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
@@ -442,7 +442,7 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">About Cassidy</h4>
                   <p className="text-gray-600">
-                    Cassidy helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
+                    Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
                   </p>
                 </div>
                 <div>
@@ -528,8 +528,8 @@ export default function AllVoiceAgents() {
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
                     {isRecording 
-                      ? 'Cassidy is providing your cost estimate...' 
-                      : 'Tell Cassidy about your upcoming surgery'}
+                      ? 'Emily is providing your cost estimate...' 
+                      : 'Tell Emily about your upcoming surgery'}
                   </p>
                 </div>
               ) : (
@@ -550,7 +550,7 @@ export default function AllVoiceAgents() {
     ) : null}
   </div>
 
-  {/* Courtney - Medical Appointment Scheduling */}
+  {/* Sarah - Medical Appointment Scheduling */}
   <div 
     onClick={() => !isConnected && handleExpandCard('sarah')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
@@ -601,7 +601,7 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">About Courtney</h4>
                   <p className="text-gray-600">
-                    Courtney handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
+                    Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
                   </p>
                 </div>
                 <div>
@@ -688,8 +688,8 @@ export default function AllVoiceAgents() {
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
                     {isRecording 
-                      ? 'Courtney is finding available appointment times...' 
-                      : 'Tell Courtney when you need an appointment'}
+                      ? 'Sarah is finding available appointment times...' 
+                      : 'Tell Sarah when you need an appointment'}
                   </p>
                 </div>
               ) : (
@@ -709,7 +709,7 @@ export default function AllVoiceAgents() {
       </>
     ) : null}
   </div>
-  {/* Chloe - Customer Service Agent */}
+  {/* Allison - Customer Service Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('allison')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
@@ -760,7 +760,7 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">About Chloe</h4>
                   <p className="text-gray-600">
-                    Chloe is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
+                    Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
                   </p>
                 </div>
                 <div>
@@ -875,7 +875,7 @@ export default function AllVoiceAgents() {
     ) : null}
   </div>
 
-  {/* Cara - Eligibility & Benefits Verification */}
+  {/* James - Eligibility & Benefits Verification */}
   <div 
     onClick={() => !isConnected && handleExpandCard('james')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
@@ -926,7 +926,7 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">About Cara</h4>
                   <p className="text-gray-600">
-                    Cara specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
+                    James specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
                   </p>
                 </div>
                 <div>
@@ -1189,7 +1189,7 @@ export default function AllVoiceAgents() {
     ) : null}
     </div>
 
-    {/* Carson - Payment Reconciliation */}
+    {/* Michael - Payment Reconciliation */}
     <div 
       onClick={() => !isConnected && handleExpandCard('michael')}
       className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
@@ -1240,7 +1240,7 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">About Carson</h4>
                   <p className="text-gray-600">
-                    Carson is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
+                    Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
                   </p>
                 </div>
                 <div>
