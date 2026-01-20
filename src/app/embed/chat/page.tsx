@@ -246,7 +246,7 @@ export default function ChatEmbed() {
           <img 
             src="/cosentu-white-logo.png" 
             alt="Cosentus" 
-            className="absolute -top-12 right-0 w-28 md:w-32 z-10"
+            className="absolute -top-12 right-0 w-40 md:w-48 z-10"
           />
           {/* Oval Search Bar */}
           <form onSubmit={handleSubmit} className="mb-6">
@@ -308,7 +308,7 @@ export default function ChatEmbed() {
         <img 
           src="/cosentu-white-logo.png" 
           alt="Cosentus" 
-          className="absolute -top-12 right-0 w-28 md:w-32 z-10"
+          className="absolute -top-12 right-0 w-40 md:w-48 z-10"
         />
         {/* Chat Card */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[75vh] md:h-[65vh]">
