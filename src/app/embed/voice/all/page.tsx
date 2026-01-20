@@ -1031,8 +1031,8 @@ export default function AllVoiceAgents() {
       onClick={() => !isConnected && handleExpandCard('carly')}
       className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
         expandedCard === 'carly' 
-          ? 'w-full p-6 md:p-12' 
-          : 'w-full max-w-sm p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
+          ? 'md:col-span-4 p-6 md:p-12' 
+          : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'carly' ? 'hidden' : ''}`}
     >
     {!expandedCard || expandedCard === 'carly' ? (
@@ -1188,8 +1188,8 @@ export default function AllVoiceAgents() {
       onClick={() => !isConnected && handleExpandCard('carson')}
       className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
         expandedCard === 'carson' 
-          ? 'w-full p-6 md:p-12'
-          : 'w-full max-w-sm p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
+          ? 'md:col-span-4 p-6 md:p-12'
+          : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'carson' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'carson' ? (
