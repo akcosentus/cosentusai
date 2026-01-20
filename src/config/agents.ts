@@ -12,10 +12,10 @@
 
 export const AGENTS = {
   /**
-   * Chloe - Customer Service Agent
+   * Allison - Customer Service Agent
    * General customer service, handles inquiries
    */
-  chloe: 'agent_9d9f880dbde25925f75e5b2739',
+  allison: 'agent_9d9f880dbde25925f75e5b2739',
 
   /**
    * Cindy - Payment & Balance Specialist
@@ -31,34 +31,34 @@ export const AGENTS = {
   chris: 'agent_9571fe9261e3944f33777a1406',
   
   /**
-   * Cara - Eligibility & Benefits Verification
+   * James - Eligibility & Benefits Verification
    * Verifies patient insurance coverage and benefits
    */
-  cara: 'agent_f7e96fe43ce9bb611481839af8',
+  james: 'agent_f7e96fe43ce9bb611481839af8',
   
   /**
-   * Carly - Prior Authorization Follow-Up
+   * Claire - Prior Authorization Follow-Up
    * Tracks prior authorization approvals with insurance companies
    */
-  carly: 'agent_a8f606995d3160a92be6874661',
+  claire: 'agent_a8f606995d3160a92be6874661',
   
   /**
-   * Carson - Payment Reconciliation
+   * Michael - Payment Reconciliation
    * Tracks down and resolves payment discrepancies with insurance companies
    */
-  carson: 'agent_443ead51c8a35f874d0ca1a8c1',
+  michael: 'agent_443ead51c8a35f874d0ca1a8c1',
   
   /**
-   * Cassidy - Pre-Service Anesthesia Cost Estimates
+   * Emily - Pre-Service Anesthesia Cost Estimates
    * Helps patients understand anesthesia costs before surgery
    */
-  cassidy: 'agent_ff8707dccf16f96ecec4c448d3',
+  emily: 'agent_ff8707dccf16f96ecec4c448d3',
   
   /**
-   * Courtney - Medical Appointment Scheduling
+   * Sarah - Medical Appointment Scheduling
    * Handles inbound and outbound appointment scheduling for medical practices
    */
-  courtney: 'agent_1b7fe9e057f84254f4fcca9256',
+  sarah: 'agent_1b7fe9e057f84254f4fcca9256',
   
   /**
    * Chat Agent - Text-based AI Assistant
@@ -89,8 +89,8 @@ export function getAgentId(name: AgentName): string {
 export function validateAgentConfig(): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
 
-  if (!AGENTS.chloe) {
-    errors.push('NEXT_PUBLIC_RETELL_AGENT_ID not set for Chloe');
+  if (!AGENTS.allison) {
+    errors.push('Agent ID not set for Allison');
   }
 
   if (!AGENTS.cindy) {

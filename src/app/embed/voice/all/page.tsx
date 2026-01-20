@@ -8,27 +8,27 @@ import { AGENTS } from '@/config/agents';
 
 export default function AllVoiceAgents() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
-  const [activeAgent, setActiveAgent] = useState<'chloe' | 'cindy' | 'chris' | 'cara' | 'carly' | 'carson' | 'cassidy' | 'courtney' | null>(null);
+  const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'claire' | 'michael' | 'emily' | 'sarah' | null>(null);
 
   // Centralized Agent IDs
-  const CHLOE_AGENT_ID = AGENTS.chloe;
+  const ALLISON_AGENT_ID = AGENTS.allison;
   const CINDY_AGENT_ID = AGENTS.cindy;
   const CHRIS_AGENT_ID = AGENTS.chris;
-  const CARA_AGENT_ID = AGENTS.cara;
-  const CARLY_AGENT_ID = AGENTS.carly;
-  const CARSON_AGENT_ID = AGENTS.carson;
-  const CASSIDY_AGENT_ID = AGENTS.cassidy;
-  const COURTNEY_AGENT_ID = AGENTS.courtney;
+  const JAMES_AGENT_ID = AGENTS.james;
+  const CLAIRE_AGENT_ID = AGENTS.claire;
+  const MICHAEL_AGENT_ID = AGENTS.michael;
+  const EMILY_AGENT_ID = AGENTS.emily;
+  const SARAH_AGENT_ID = AGENTS.sarah;
 
   // Determine which agent ID to use
-  const currentAgentId = activeAgent === 'chloe' ? CHLOE_AGENT_ID : 
+  const currentAgentId = activeAgent === 'allison' ? ALLISON_AGENT_ID : 
                          activeAgent === 'cindy' ? CINDY_AGENT_ID :
                          activeAgent === 'chris' ? CHRIS_AGENT_ID :
-                         activeAgent === 'cara' ? CARA_AGENT_ID :
-                         activeAgent === 'carly' ? CARLY_AGENT_ID :
-                         activeAgent === 'carson' ? CARSON_AGENT_ID :
-                         activeAgent === 'cassidy' ? CASSIDY_AGENT_ID :
-                         activeAgent === 'courtney' ? COURTNEY_AGENT_ID : '';
+                         activeAgent === 'james' ? JAMES_AGENT_ID :
+                         activeAgent === 'claire' ? CLAIRE_AGENT_ID :
+                         activeAgent === 'michael' ? MICHAEL_AGENT_ID :
+                         activeAgent === 'emily' ? EMILY_AGENT_ID :
+                         activeAgent === 'sarah' ? SARAH_AGENT_ID : '';
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
     agentId: currentAgentId || '',
@@ -43,7 +43,7 @@ export default function AllVoiceAgents() {
       }
     } else {
       setExpandedCard(cardId);
-      setActiveAgent(cardId as 'chloe' | 'cindy' | 'chris' | 'cara' | 'carly' | 'carson' | 'cassidy' | 'courtney');
+      setActiveAgent(cardId as 'allison' | 'cindy' | 'chris' | 'james' | 'claire' | 'michael' | 'emily' | 'sarah');
     }
   };
 
@@ -393,24 +393,24 @@ export default function AllVoiceAgents() {
 
   {/* Cassidy - Pre-Service Anesthesia Cost Estimates */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('cassidy')}
+    onClick={() => !isConnected && handleExpandCard('emily')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-      expandedCard === 'cassidy' 
+      expandedCard === 'emily' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'cassidy' ? 'hidden' : ''}`}
+    } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
-    {!expandedCard || expandedCard === 'cassidy' ? (
+    {!expandedCard || expandedCard === 'emily' ? (
       <>
         {/* Collapsed State */}
-        {expandedCard !== 'cassidy' && (
+        {expandedCard !== 'emily' && (
           <>
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-4 group-hover:bg-[#01B2D6]/20 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Cassidy</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Emily</h3>
             <p className="text-gray-600 mb-4">
               Provides pre-surgery anesthesia cost estimates for patients.
             </p>
@@ -421,7 +421,7 @@ export default function AllVoiceAgents() {
         )}
 
         {/* Expanded State */}
-        {expandedCard === 'cassidy' && (
+        {expandedCard === 'emily' && (
           <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
@@ -433,7 +433,7 @@ export default function AllVoiceAgents() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Cassidy</h3>
+                  <h3 className="text-4xl font-bold text-gray-900">Emily</h3>
                   <p className="text-lg text-gray-600">Pre-Service Anesthesia Cost Estimates</p>
                 </div>
               </div>
@@ -497,7 +497,7 @@ export default function AllVoiceAgents() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleExpandCard('cassidy');
+                    handleExpandCard('emily');
                   }}
                   className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                 >
@@ -523,7 +523,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Cassidy is speaking...' : 'Listening...'}
+                    {isRecording ? 'Emily is speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -552,24 +552,24 @@ export default function AllVoiceAgents() {
 
   {/* Courtney - Medical Appointment Scheduling */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('courtney')}
+    onClick={() => !isConnected && handleExpandCard('sarah')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-      expandedCard === 'courtney' 
+      expandedCard === 'sarah' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'courtney' ? 'hidden' : ''}`}
+    } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
-    {!expandedCard || expandedCard === 'courtney' ? (
+    {!expandedCard || expandedCard === 'sarah' ? (
       <>
         {/* Collapsed State */}
-        {expandedCard !== 'courtney' && (
+        {expandedCard !== 'sarah' && (
           <>
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-4 group-hover:bg-[#01B2D6]/20 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Courtney</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Sarah</h3>
             <p className="text-gray-600 mb-4">
               Handles medical appointment scheduling for practices and patients.
             </p>
@@ -580,7 +580,7 @@ export default function AllVoiceAgents() {
         )}
 
         {/* Expanded State */}
-        {expandedCard === 'courtney' && (
+        {expandedCard === 'sarah' && (
           <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
@@ -592,7 +592,7 @@ export default function AllVoiceAgents() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Courtney</h3>
+                  <h3 className="text-4xl font-bold text-gray-900">Sarah</h3>
                   <p className="text-lg text-gray-600">Medical Appointment Scheduling</p>
                 </div>
               </div>
@@ -657,7 +657,7 @@ export default function AllVoiceAgents() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleExpandCard('courtney');
+                    handleExpandCard('sarah');
                   }}
                   className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                 >
@@ -683,7 +683,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Courtney is speaking...' : 'Listening...'}
+                    {isRecording ? 'Sarah is speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -711,24 +711,24 @@ export default function AllVoiceAgents() {
   </div>
   {/* Chloe - Customer Service Agent */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('chloe')}
+    onClick={() => !isConnected && handleExpandCard('allison')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-      expandedCard === 'chloe' 
+      expandedCard === 'allison' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'chloe' ? 'hidden' : ''}`}
+    } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
-    {!expandedCard || expandedCard === 'chloe' ? (
+    {!expandedCard || expandedCard === 'allison' ? (
       <>
         {/* Collapsed State */}
-        {expandedCard !== 'chloe' && (
+        {expandedCard !== 'allison' && (
           <>
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-4 group-hover:bg-[#01B2D6]/20 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Chloe</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Allison</h3>
             <p className="text-gray-600 mb-4">
               General customer service agent ready to assist with any questions.
             </p>
@@ -739,7 +739,7 @@ export default function AllVoiceAgents() {
         )}
 
         {/* Expanded State */}
-        {expandedCard === 'chloe' && (
+        {expandedCard === 'allison' && (
           <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
@@ -751,7 +751,7 @@ export default function AllVoiceAgents() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Chloe</h3>
+                  <h3 className="text-4xl font-bold text-gray-900">Allison</h3>
                   <p className="text-lg text-gray-600">Customer Service Agent</p>
                 </div>
               </div>
@@ -819,7 +819,7 @@ export default function AllVoiceAgents() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleExpandCard('chloe');
+                    handleExpandCard('allison');
                   }}
                   className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                 >
@@ -845,7 +845,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Chloe is speaking...' : 'Listening...'}
+                    {isRecording ? 'Allison is speaking...' : 'Listening...'}
                   </p>
                 </div>
               ) : (
@@ -877,24 +877,24 @@ export default function AllVoiceAgents() {
 
   {/* Cara - Eligibility & Benefits Verification */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('cara')}
+    onClick={() => !isConnected && handleExpandCard('james')}
     className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-      expandedCard === 'cara' 
+      expandedCard === 'james' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
-    } ${expandedCard && expandedCard !== 'cara' ? 'hidden' : ''}`}
+    } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
-    {!expandedCard || expandedCard === 'cara' ? (
+    {!expandedCard || expandedCard === 'james' ? (
       <>
         {/* Collapsed State */}
-        {expandedCard !== 'cara' && (
+        {expandedCard !== 'james' && (
           <>
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-4 group-hover:bg-[#01B2D6]/20 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Cara</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">James</h3>
             <p className="text-gray-600 mb-4">
               Verifies patient insurance eligibility and benefits before services.
             </p>
@@ -905,7 +905,7 @@ export default function AllVoiceAgents() {
         )}
 
         {/* Expanded State */}
-        {expandedCard === 'cara' && (
+        {expandedCard === 'james' && (
           <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
@@ -917,7 +917,7 @@ export default function AllVoiceAgents() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Cara</h3>
+                  <h3 className="text-4xl font-bold text-gray-900">James</h3>
                   <p className="text-lg text-gray-600">Eligibility & Benefits Verification</p>
                 </div>
               </div>
@@ -981,7 +981,7 @@ export default function AllVoiceAgents() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleExpandCard('cara');
+                    handleExpandCard('james');
                   }}
                   className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                 >
@@ -1007,7 +1007,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Cara is speaking...' : 'Listening...'}
+                    {isRecording ? 'James is speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -1034,24 +1034,24 @@ export default function AllVoiceAgents() {
 
   {/* Carly - Prior Authorization Follow-Up */}
   <div 
-      onClick={() => !isConnected && handleExpandCard('carly')}
+      onClick={() => !isConnected && handleExpandCard('claire')}
       className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-        expandedCard === 'carly' 
+        expandedCard === 'claire' 
           ? 'md:col-span-4 p-6 md:p-12' 
           : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
-      } ${expandedCard && expandedCard !== 'carly' ? 'hidden' : ''}`}
+      } ${expandedCard && expandedCard !== 'claire' ? 'hidden' : ''}`}
     >
-    {!expandedCard || expandedCard === 'carly' ? (
+    {!expandedCard || expandedCard === 'claire' ? (
       <>
         {/* Collapsed State */}
-        {expandedCard !== 'carly' && (
+        {expandedCard !== 'claire' && (
           <>
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-4 group-hover:bg-[#01B2D6]/20 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Carly</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Claire</h3>
             <p className="text-gray-600 mb-4">
               Tracks prior authorization approvals and expedites urgent cases.
             </p>
@@ -1062,7 +1062,7 @@ export default function AllVoiceAgents() {
         )}
 
         {/* Expanded State */}
-        {expandedCard === 'carly' && (
+        {expandedCard === 'claire' && (
           <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
@@ -1074,7 +1074,7 @@ export default function AllVoiceAgents() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Carly</h3>
+                  <h3 className="text-4xl font-bold text-gray-900">Claire</h3>
                   <p className="text-lg text-gray-600">Prior Authorization Follow-Up</p>
                 </div>
               </div>
@@ -1138,7 +1138,7 @@ export default function AllVoiceAgents() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleExpandCard('carly');
+                    handleExpandCard('claire');
                   }}
                   className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                 >
@@ -1164,7 +1164,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Carly is speaking...' : 'Listening...'}
+                    {isRecording ? 'Claire is speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -1191,24 +1191,24 @@ export default function AllVoiceAgents() {
 
     {/* Carson - Payment Reconciliation */}
     <div 
-      onClick={() => !isConnected && handleExpandCard('carson')}
+      onClick={() => !isConnected && handleExpandCard('michael')}
       className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-        expandedCard === 'carson' 
+        expandedCard === 'michael' 
           ? 'md:col-span-4 p-6 md:p-12'
           : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
-      } ${expandedCard && expandedCard !== 'carson' ? 'hidden' : ''}`}
+      } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
-    {!expandedCard || expandedCard === 'carson' ? (
+    {!expandedCard || expandedCard === 'michael' ? (
       <>
         {/* Collapsed State */}
-        {expandedCard !== 'carson' && (
+        {expandedCard !== 'michael' && (
           <>
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-4 group-hover:bg-[#01B2D6]/20 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Carson</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Michael</h3>
             <p className="text-gray-600 mb-4">
               Tracks down payment discrepancies and resolves missing or incorrect payments.
             </p>
@@ -1219,7 +1219,7 @@ export default function AllVoiceAgents() {
         )}
 
         {/* Expanded State */}
-        {expandedCard === 'carson' && (
+        {expandedCard === 'michael' && (
           <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
@@ -1231,7 +1231,7 @@ export default function AllVoiceAgents() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Carson</h3>
+                  <h3 className="text-4xl font-bold text-gray-900">Michael</h3>
                   <p className="text-lg text-gray-600">Payment Reconciliation</p>
                 </div>
               </div>
@@ -1295,7 +1295,7 @@ export default function AllVoiceAgents() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleExpandCard('carson');
+                    handleExpandCard('michael');
                   }}
                   className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                 >
@@ -1321,7 +1321,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Carson is speaking...' : 'Listening...'}
+                    {isRecording ? 'Michael is speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">

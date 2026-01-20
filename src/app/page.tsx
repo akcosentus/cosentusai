@@ -20,27 +20,27 @@ export default function Home() {
   const [inputValue, setInputValue] = useState('');
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [agentStatus, setAgentStatus] = useState<string>('');
-  const [activeAgent, setActiveAgent] = useState<'chloe' | 'cindy' | 'chris' | 'cara' | 'carly' | 'carson' | 'cassidy' | 'courtney' | null>(null);
+  const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'claire' | 'michael' | 'emily' | 'sarah' | null>(null);
 
   // Centralized Agent IDs
-  const CHLOE_AGENT_ID = AGENTS.chloe;
+  const ALLISON_AGENT_ID = AGENTS.allison;
   const CINDY_AGENT_ID = AGENTS.cindy;
   const CHRIS_AGENT_ID = AGENTS.chris;
-  const CARA_AGENT_ID = AGENTS.cara;
-  const CARLY_AGENT_ID = AGENTS.carly;
-  const CARSON_AGENT_ID = AGENTS.carson;
-  const CASSIDY_AGENT_ID = AGENTS.cassidy;
-  const COURTNEY_AGENT_ID = AGENTS.courtney;
+  const JAMES_AGENT_ID = AGENTS.james;
+  const CLAIRE_AGENT_ID = AGENTS.claire;
+  const MICHAEL_AGENT_ID = AGENTS.michael;
+  const EMILY_AGENT_ID = AGENTS.emily;
+  const SARAH_AGENT_ID = AGENTS.sarah;
 
   // Determine which agent ID to use
-  const currentAgentId = activeAgent === 'chloe' ? CHLOE_AGENT_ID : 
+  const currentAgentId = activeAgent === 'allison' ? ALLISON_AGENT_ID : 
                          activeAgent === 'cindy' ? CINDY_AGENT_ID :
                          activeAgent === 'chris' ? CHRIS_AGENT_ID :
-                         activeAgent === 'cara' ? CARA_AGENT_ID :
-                         activeAgent === 'carly' ? CARLY_AGENT_ID :
-                         activeAgent === 'carson' ? CARSON_AGENT_ID :
-                         activeAgent === 'cassidy' ? CASSIDY_AGENT_ID :
-                         activeAgent === 'courtney' ? COURTNEY_AGENT_ID : '';
+                         activeAgent === 'james' ? JAMES_AGENT_ID :
+                         activeAgent === 'claire' ? CLAIRE_AGENT_ID :
+                         activeAgent === 'michael' ? MICHAEL_AGENT_ID :
+                         activeAgent === 'emily' ? EMILY_AGENT_ID :
+                         activeAgent === 'sarah' ? SARAH_AGENT_ID : '';
 
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
     agentId: currentAgentId || '',
@@ -50,7 +50,7 @@ export default function Home() {
   });
 
   // Check if environment variables are configured
-  const isConfigured = !!CHLOE_AGENT_ID;
+  const isConfigured = !!ALLISON_AGENT_ID;
 
   // Chat submit handler
   const handleAiChatSubmit = async (e?: React.FormEvent) => {
@@ -168,7 +168,7 @@ export default function Home() {
       }
     } else {
       setExpandedCard(cardId);
-      setActiveAgent(cardId as 'chloe' | 'cindy' | 'chris' | 'cara' | 'carly' | 'carson' | 'cassidy' | 'courtney');
+      setActiveAgent(cardId as 'allison' | 'cindy' | 'chris' | 'james' | 'claire' | 'michael' | 'emily' | 'sarah');
     }
   };
 
@@ -743,17 +743,17 @@ export default function Home() {
 
             {/* Cassidy - Pre-Service Anesthesia Cost Estimates */}
             <div 
-              onClick={() => !isConnected && handleExpandCard('cassidy')}
+              onClick={() => !isConnected && handleExpandCard('emily')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-                expandedCard === 'cassidy' 
+                expandedCard === 'emily' 
                   ? 'md:col-span-3 p-12' 
                   : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-              } ${expandedCard && expandedCard !== 'cassidy' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+              } ${expandedCard && expandedCard !== 'emily' ? 'opacity-0 pointer-events-none absolute' : ''}`}
             >
-              {!expandedCard || expandedCard === 'cassidy' ? (
+              {!expandedCard || expandedCard === 'emily' ? (
                 <>
                   {/* Collapsed State */}
-                  {expandedCard !== 'cassidy' && (
+                  {expandedCard !== 'emily' && (
                     <>
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
@@ -771,7 +771,7 @@ export default function Home() {
                   )}
 
                   {/* Expanded State */}
-                  {expandedCard === 'cassidy' && (
+                  {expandedCard === 'emily' && (
                     <div className="flex flex-col md:flex-row gap-12 items-start">
                       {/* Left Side - Agent Info */}
                       <div className="flex-1 md:max-w-md">
@@ -849,7 +849,7 @@ export default function Home() {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleExpandCard('cassidy');
+                              handleExpandCard('emily');
                             }}
                             className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                           >
@@ -899,17 +899,17 @@ export default function Home() {
 
             {/* Courtney - Medical Appointment Scheduling */}
             <div 
-              onClick={() => !isConnected && handleExpandCard('courtney')}
+              onClick={() => !isConnected && handleExpandCard('sarah')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-                expandedCard === 'courtney' 
+                expandedCard === 'sarah' 
                   ? 'md:col-span-3 p-12' 
                   : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-              } ${expandedCard && expandedCard !== 'courtney' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+              } ${expandedCard && expandedCard !== 'sarah' ? 'opacity-0 pointer-events-none absolute' : ''}`}
             >
-              {!expandedCard || expandedCard === 'courtney' ? (
+              {!expandedCard || expandedCard === 'sarah' ? (
                 <>
                   {/* Collapsed State */}
-                  {expandedCard !== 'courtney' && (
+                  {expandedCard !== 'sarah' && (
                     <>
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
@@ -927,7 +927,7 @@ export default function Home() {
                   )}
 
                   {/* Expanded State */}
-                  {expandedCard === 'courtney' && (
+                  {expandedCard === 'sarah' && (
                     <div className="flex flex-col md:flex-row gap-12 items-start">
                       {/* Left Side - Agent Info */}
                       <div className="flex-1 md:max-w-md">
@@ -1005,7 +1005,7 @@ export default function Home() {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleExpandCard('courtney');
+                              handleExpandCard('sarah');
                             }}
                             className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                           >
@@ -1054,17 +1054,17 @@ export default function Home() {
             </div>
             {/* Chloe - Customer Service Agent */}
             <div 
-              onClick={() => !isConnected && handleExpandCard('chloe')}
+              onClick={() => !isConnected && handleExpandCard('allison')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-                expandedCard === 'chloe' 
+                expandedCard === 'allison' 
                   ? 'md:col-span-3 p-12' 
                   : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-              } ${expandedCard && expandedCard !== 'chloe' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+              } ${expandedCard && expandedCard !== 'allison' ? 'opacity-0 pointer-events-none absolute' : ''}`}
             >
-              {!expandedCard || expandedCard === 'chloe' ? (
+              {!expandedCard || expandedCard === 'allison' ? (
                 <>
                   {/* Collapsed State */}
-                  {expandedCard !== 'chloe' && (
+                  {expandedCard !== 'allison' && (
                     <>
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
@@ -1082,7 +1082,7 @@ export default function Home() {
                   )}
 
                   {/* Expanded State */}
-                  {expandedCard === 'chloe' && (
+                  {expandedCard === 'allison' && (
                     <div className="flex flex-col md:flex-row gap-12 items-start">
                       {/* Left Side - Agent Info */}
                       <div className="flex-1 md:max-w-md">
@@ -1161,7 +1161,7 @@ export default function Home() {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleExpandCard('chloe');
+                              handleExpandCard('allison');
                             }}
                             className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                           >
@@ -1218,17 +1218,17 @@ export default function Home() {
 
             {/* Cara - Eligibility & Benefits Verification */}
             <div 
-              onClick={() => !isConnected && handleExpandCard('cara')}
+              onClick={() => !isConnected && handleExpandCard('james')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-                expandedCard === 'cara' 
+                expandedCard === 'james' 
                   ? 'md:col-span-3 p-12' 
                   : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-              } ${expandedCard && expandedCard !== 'cara' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+              } ${expandedCard && expandedCard !== 'james' ? 'opacity-0 pointer-events-none absolute' : ''}`}
             >
-              {!expandedCard || expandedCard === 'cara' ? (
+              {!expandedCard || expandedCard === 'james' ? (
                 <>
                   {/* Collapsed State */}
-                  {expandedCard !== 'cara' && (
+                  {expandedCard !== 'james' && (
                     <>
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
@@ -1246,7 +1246,7 @@ export default function Home() {
                   )}
 
                   {/* Expanded State */}
-                  {expandedCard === 'cara' && (
+                  {expandedCard === 'james' && (
                     <div className="flex flex-col md:flex-row gap-12 items-start">
                       {/* Left Side - Agent Info */}
                       <div className="flex-1 md:max-w-md">
@@ -1323,7 +1323,7 @@ export default function Home() {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleExpandCard('cara');
+                              handleExpandCard('james');
                             }}
                             className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                           >
@@ -1371,17 +1371,17 @@ export default function Home() {
 
             {/* Carly - Prior Authorization Follow-Up */}
             <div 
-              onClick={() => !isConnected && handleExpandCard('carly')}
+              onClick={() => !isConnected && handleExpandCard('claire')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer md:col-start-2 ${
-                expandedCard === 'carly' 
+                expandedCard === 'claire' 
                   ? 'md:col-span-3 p-12' 
                   : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-              } ${expandedCard && expandedCard !== 'carly' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+              } ${expandedCard && expandedCard !== 'claire' ? 'opacity-0 pointer-events-none absolute' : ''}`}
             >
-              {!expandedCard || expandedCard === 'carly' ? (
+              {!expandedCard || expandedCard === 'claire' ? (
                 <>
                   {/* Collapsed State */}
-                  {expandedCard !== 'carly' && (
+                  {expandedCard !== 'claire' && (
                     <>
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
@@ -1399,7 +1399,7 @@ export default function Home() {
                   )}
 
                   {/* Expanded State */}
-                  {expandedCard === 'carly' && (
+                  {expandedCard === 'claire' && (
                     <div className="flex flex-col md:flex-row gap-12 items-start">
                       {/* Left Side - Agent Info */}
                       <div className="flex-1 md:max-w-md">
@@ -1476,7 +1476,7 @@ export default function Home() {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleExpandCard('carly');
+                              handleExpandCard('claire');
                             }}
                             className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                           >
@@ -1524,17 +1524,17 @@ export default function Home() {
 
             {/* Carson - Payment Reconciliation */}
             <div 
-              onClick={() => !isConnected && handleExpandCard('carson')}
+              onClick={() => !isConnected && handleExpandCard('michael')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-                expandedCard === 'carson' 
+                expandedCard === 'michael' 
                   ? 'md:col-span-3 p-12' 
                   : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-              } ${expandedCard && expandedCard !== 'carson' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+              } ${expandedCard && expandedCard !== 'michael' ? 'opacity-0 pointer-events-none absolute' : ''}`}
             >
-              {!expandedCard || expandedCard === 'carson' ? (
+              {!expandedCard || expandedCard === 'michael' ? (
                 <>
                   {/* Collapsed State */}
-                  {expandedCard !== 'carson' && (
+                  {expandedCard !== 'michael' && (
                     <>
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
@@ -1552,7 +1552,7 @@ export default function Home() {
                   )}
 
                   {/* Expanded State */}
-                  {expandedCard === 'carson' && (
+                  {expandedCard === 'michael' && (
                     <div className="flex flex-col md:flex-row gap-12 items-start">
                       {/* Left Side - Agent Info */}
                       <div className="flex-1 md:max-w-md">
@@ -1630,7 +1630,7 @@ export default function Home() {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleExpandCard('carson');
+                              handleExpandCard('michael');
                             }}
                             className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                           >
