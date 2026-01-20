@@ -238,7 +238,7 @@ export default function ChatEmbed() {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask me anything about Cosentus..."
+                placeholder="Ask me anything..."
                 className="w-full px-4 md:px-6 py-3 md:py-4 text-sm md:text-base text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors shadow-sm"
               />
               <button
@@ -335,7 +335,7 @@ export default function ChatEmbed() {
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Ask a follow-up question..."
+                  placeholder="Ask me anything..."
                   className="w-full pl-4 md:pl-6 pr-12 md:pr-14 py-2.5 md:py-3 text-xs md:text-sm text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors"
                   disabled={loading}
                 />
