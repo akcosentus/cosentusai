@@ -240,16 +240,16 @@ export default function ChatEmbed() {
   // Initial state - search bar with suggested questions
   if (!isExpanded) {
     return (
-      <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
-        <div className="w-full max-w-4xl relative">
+      <div className="flex items-center md:items-center justify-center min-h-screen p-4 md:p-8">
+        <div className="w-full max-w-4xl relative flex flex-col items-center md:block">
           {/* Logo - Top Right of Search Bar */}
           <img 
             src="/cosentu-white-logo.png" 
             alt="Cosentus" 
             className="absolute -top-12 right-0 w-40 md:w-48 z-10"
           />
-          {/* Oval Search Bar */}
-          <form onSubmit={handleSubmit} className="mb-6">
+          {/* Oval Search Bar - Fixed position on mobile */}
+          <form onSubmit={handleSubmit} className="mb-6 w-full">
             <div className="relative">
               <input
                 ref={inputRef}
@@ -275,7 +275,7 @@ export default function ChatEmbed() {
 
           {/* Suggested Questions - 4x2 grid with glassy effect, show when focused */}
           {isFocused && (
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
+            <div className="absolute md:relative top-full left-0 right-0 mt-2 md:mt-0 grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 max-h-[60vh] md:max-h-none overflow-y-auto md:overflow-visible">
               {SUGGESTED_QUESTIONS.map((question, index) => (
                 <button
                   key={index}
