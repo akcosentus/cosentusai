@@ -64,7 +64,7 @@ export default function AllVoiceAgents() {
         <img 
           src="/cosentu-white-logo.png" 
           alt="Cosentus" 
-          className="absolute -top-12 right-0 w-28 md:w-32 z-10"
+          className="absolute -top-12 right-0 w-28 md:w-32 z-[100]"
         />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
   {/* Cindy - Payment & Balance Agent */}
