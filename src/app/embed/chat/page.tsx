@@ -55,7 +55,7 @@ const SUGGESTED_QUESTIONS = [
   "My A/R is through the roof — what are the most common causes?",
   "Why are my denials increasing — and what should I look at first?",
   "I think we're getting underpaid by payers — how do I know?",
-  "Patient payments are getting harder — how do we improve patient pay without upsetting patients?",
+  "How can we improve patient payments without upsetting patients?",
   "Our clean claim rate is dropping — what's causing it, and how do we fix it fast?"
 ];
 
