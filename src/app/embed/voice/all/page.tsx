@@ -8,14 +8,14 @@ import { AGENTS } from '@/config/agents';
 
 export default function AllVoiceAgents() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
-  const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'claire' | 'michael' | 'emily' | 'sarah' | null>(null);
+  const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'olivia' | 'michael' | 'emily' | 'sarah' | null>(null);
 
   // Centralized Agent IDs
   const ALLISON_AGENT_ID = AGENTS.allison;
   const CINDY_AGENT_ID = AGENTS.cindy;
   const CHRIS_AGENT_ID = AGENTS.chris;
   const JAMES_AGENT_ID = AGENTS.james;
-  const CLAIRE_AGENT_ID = AGENTS.claire;
+  const OLIVIA_AGENT_ID = AGENTS.olivia;
   const MICHAEL_AGENT_ID = AGENTS.michael;
   const EMILY_AGENT_ID = AGENTS.emily;
   const SARAH_AGENT_ID = AGENTS.sarah;
@@ -25,7 +25,7 @@ export default function AllVoiceAgents() {
                          activeAgent === 'cindy' ? CINDY_AGENT_ID :
                          activeAgent === 'chris' ? CHRIS_AGENT_ID :
                          activeAgent === 'james' ? JAMES_AGENT_ID :
-                         activeAgent === 'claire' ? CLAIRE_AGENT_ID :
+                         activeAgent === 'olivia' ? OLIVIA_AGENT_ID :
                          activeAgent === 'michael' ? MICHAEL_AGENT_ID :
                          activeAgent === 'emily' ? EMILY_AGENT_ID :
                          activeAgent === 'sarah' ? SARAH_AGENT_ID : '';
@@ -43,7 +43,7 @@ export default function AllVoiceAgents() {
       }
     } else {
       setExpandedCard(cardId);
-      setActiveAgent(cardId as 'allison' | 'cindy' | 'chris' | 'james' | 'claire' | 'michael' | 'emily' | 'sarah');
+      setActiveAgent(cardId as 'allison' | 'cindy' | 'chris' | 'james' | 'olivia' | 'michael' | 'emily' | 'sarah');
     }
   };
 
@@ -1034,24 +1034,24 @@ export default function AllVoiceAgents() {
 
   {/* Carly - Prior Authorization Follow-Up */}
   <div 
-      onClick={() => !isConnected && handleExpandCard('claire')}
+      onClick={() => !isConnected && handleExpandCard('olivia')}
       className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
-        expandedCard === 'claire' 
+        expandedCard === 'olivia' 
           ? 'md:col-span-4 p-6 md:p-12' 
           : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
-      } ${expandedCard && expandedCard !== 'claire' ? 'hidden' : ''}`}
+      } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
-    {!expandedCard || expandedCard === 'claire' ? (
+    {!expandedCard || expandedCard === 'olivia' ? (
       <>
         {/* Collapsed State */}
-        {expandedCard !== 'claire' && (
+        {expandedCard !== 'olivia' && (
           <>
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-4 group-hover:bg-[#01B2D6]/20 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Claire</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">Olivia</h3>
             <p className="text-gray-600 mb-4">
               Tracks prior authorization approvals and expedites urgent cases.
             </p>
@@ -1062,7 +1062,7 @@ export default function AllVoiceAgents() {
         )}
 
         {/* Expanded State */}
-        {expandedCard === 'claire' && (
+        {expandedCard === 'olivia' && (
           <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 items-start">
             {/* Left Side - Agent Info */}
@@ -1074,7 +1074,7 @@ export default function AllVoiceAgents() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Claire</h3>
+                  <h3 className="text-4xl font-bold text-gray-900">Olivia</h3>
                   <p className="text-lg text-gray-600">Prior Authorization Follow-Up</p>
                 </div>
               </div>
@@ -1138,7 +1138,7 @@ export default function AllVoiceAgents() {
                 <button 
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleExpandCard('claire');
+                    handleExpandCard('olivia');
                   }}
                   className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                 >
@@ -1164,7 +1164,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Claire is speaking...' : 'Listening...'}
+                    {isRecording ? 'Olivia is speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">

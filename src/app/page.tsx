@@ -20,14 +20,14 @@ export default function Home() {
   const [inputValue, setInputValue] = useState('');
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [agentStatus, setAgentStatus] = useState<string>('');
-  const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'claire' | 'michael' | 'emily' | 'sarah' | null>(null);
+  const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'olivia' | 'michael' | 'emily' | 'sarah' | null>(null);
 
   // Centralized Agent IDs
   const ALLISON_AGENT_ID = AGENTS.allison;
   const CINDY_AGENT_ID = AGENTS.cindy;
   const CHRIS_AGENT_ID = AGENTS.chris;
   const JAMES_AGENT_ID = AGENTS.james;
-  const CLAIRE_AGENT_ID = AGENTS.claire;
+  const OLIVIA_AGENT_ID = AGENTS.olivia;
   const MICHAEL_AGENT_ID = AGENTS.michael;
   const EMILY_AGENT_ID = AGENTS.emily;
   const SARAH_AGENT_ID = AGENTS.sarah;
@@ -37,7 +37,7 @@ export default function Home() {
                          activeAgent === 'cindy' ? CINDY_AGENT_ID :
                          activeAgent === 'chris' ? CHRIS_AGENT_ID :
                          activeAgent === 'james' ? JAMES_AGENT_ID :
-                         activeAgent === 'claire' ? CLAIRE_AGENT_ID :
+                         activeAgent === 'olivia' ? OLIVIA_AGENT_ID :
                          activeAgent === 'michael' ? MICHAEL_AGENT_ID :
                          activeAgent === 'emily' ? EMILY_AGENT_ID :
                          activeAgent === 'sarah' ? SARAH_AGENT_ID : '';
@@ -168,7 +168,7 @@ export default function Home() {
       }
     } else {
       setExpandedCard(cardId);
-      setActiveAgent(cardId as 'allison' | 'cindy' | 'chris' | 'james' | 'claire' | 'michael' | 'emily' | 'sarah');
+      setActiveAgent(cardId as 'allison' | 'cindy' | 'chris' | 'james' | 'olivia' | 'michael' | 'emily' | 'sarah');
     }
   };
 
@@ -1371,17 +1371,17 @@ export default function Home() {
 
             {/* Carly - Prior Authorization Follow-Up */}
             <div 
-              onClick={() => !isConnected && handleExpandCard('claire')}
+              onClick={() => !isConnected && handleExpandCard('olivia')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer md:col-start-2 ${
-                expandedCard === 'claire' 
+                expandedCard === 'olivia' 
                   ? 'md:col-span-3 p-12' 
                   : 'p-8 hover:shadow-2xl hover:-translate-y-1'
-              } ${expandedCard && expandedCard !== 'claire' ? 'opacity-0 pointer-events-none absolute' : ''}`}
+              } ${expandedCard && expandedCard !== 'olivia' ? 'opacity-0 pointer-events-none absolute' : ''}`}
             >
-              {!expandedCard || expandedCard === 'claire' ? (
+              {!expandedCard || expandedCard === 'olivia' ? (
                 <>
                   {/* Collapsed State */}
-                  {expandedCard !== 'claire' && (
+                  {expandedCard !== 'olivia' && (
                     <>
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#01B2D6]/10 mb-6 group-hover:bg-[#01B2D6]/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-[#01B2D6]">
@@ -1399,7 +1399,7 @@ export default function Home() {
                   )}
 
                   {/* Expanded State */}
-                  {expandedCard === 'claire' && (
+                  {expandedCard === 'olivia' && (
                     <div className="flex flex-col md:flex-row gap-12 items-start">
                       {/* Left Side - Agent Info */}
                       <div className="flex-1 md:max-w-md">
@@ -1476,7 +1476,7 @@ export default function Home() {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleExpandCard('claire');
+                              handleExpandCard('olivia');
                             }}
                             className="px-6 py-4 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                           >

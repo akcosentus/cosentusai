@@ -37,10 +37,10 @@ export const AGENTS = {
   james: 'agent_f7e96fe43ce9bb611481839af8',
   
   /**
-   * Claire - Prior Authorization Follow-Up
+   * Olivia - Prior Authorization Follow-Up
    * Tracks prior authorization approvals with insurance companies
    */
-  claire: 'agent_a8f606995d3160a92be6874661',
+  olivia: 'agent_a8f606995d3160a92be6874661',
   
   /**
    * Michael - Payment Reconciliation
