@@ -2,9 +2,42 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 import { AGENTS } from '@/config/agents';
+
+// Add animation styles with nth-child delays
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .agent-card {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out both;
+    }
+    .agent-card:nth-child(1) { animation-delay: 0s; }
+    .agent-card:nth-child(2) { animation-delay: 0.1s; }
+    .agent-card:nth-child(3) { animation-delay: 0.2s; }
+    .agent-card:nth-child(4) { animation-delay: 0.3s; }
+    .agent-card:nth-child(5) { animation-delay: 0.4s; }
+    .agent-card:nth-child(6) { animation-delay: 0.5s; }
+    .agent-card:nth-child(7) { animation-delay: 0.6s; }
+    .agent-card:nth-child(8) { animation-delay: 0.7s; }
+  `;
+  if (!document.head.querySelector('style[data-voice-animations]')) {
+    style.setAttribute('data-voice-animations', 'true');
+    document.head.appendChild(style);
+  }
+}
 
 export default function AllVoiceAgents() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
@@ -70,7 +103,7 @@ export default function AllVoiceAgents() {
   {/* Cindy - Payment & Balance Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
-    className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -232,7 +265,7 @@ export default function AllVoiceAgents() {
   {/* Chris - Insurance Claim Follow-Up */}
   <div 
     onClick={() => !isConnected && handleExpandCard('chris')}
-    className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -394,7 +427,7 @@ export default function AllVoiceAgents() {
   {/* Emily - Pre-Service Anesthesia Cost Estimates */}
   <div 
     onClick={() => !isConnected && handleExpandCard('emily')}
-    className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -553,7 +586,7 @@ export default function AllVoiceAgents() {
   {/* Sarah - Medical Appointment Scheduling */}
   <div 
     onClick={() => !isConnected && handleExpandCard('sarah')}
-    className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -712,7 +745,7 @@ export default function AllVoiceAgents() {
   {/* Allison - Customer Service Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('allison')}
-    className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -878,7 +911,7 @@ export default function AllVoiceAgents() {
   {/* James - Eligibility & Benefits Verification */}
   <div 
     onClick={() => !isConnected && handleExpandCard('james')}
-    className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -1035,7 +1068,7 @@ export default function AllVoiceAgents() {
   {/* Carly - Prior Authorization Follow-Up */}
   <div 
       onClick={() => !isConnected && handleExpandCard('olivia')}
-      className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+      className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'md:col-span-4 p-6 md:p-12' 
           : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -1192,7 +1225,7 @@ export default function AllVoiceAgents() {
     {/* Michael - Payment Reconciliation */}
     <div 
       onClick={() => !isConnected && handleExpandCard('michael')}
-      className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+      className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'md:col-span-4 p-6 md:p-12'
           : 'p-4 md:p-6 h-full hover:shadow-2xl hover:-translate-y-1'
