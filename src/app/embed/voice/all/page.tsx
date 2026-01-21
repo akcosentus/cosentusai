@@ -505,7 +505,7 @@ export default function AllVoiceAgents() {
 
               <div className="space-y-4 mb-8">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">About Cassidy</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">About Emily</h4>
                   <p className="text-gray-600">
                     Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
                   </p>
@@ -664,7 +664,7 @@ export default function AllVoiceAgents() {
 
               <div className="space-y-4 mb-8">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">About Courtney</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">About Sarah</h4>
                   <p className="text-gray-600">
                     Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
                   </p>
@@ -823,7 +823,7 @@ export default function AllVoiceAgents() {
 
               <div className="space-y-4 mb-8">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">About Chloe</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">About Allison</h4>
                   <p className="text-gray-600">
                     Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
                   </p>
@@ -989,7 +989,7 @@ export default function AllVoiceAgents() {
 
               <div className="space-y-4 mb-8">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">About Cara</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">About James</h4>
                   <p className="text-gray-600">
                     James specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
                   </p>
@@ -1097,7 +1097,7 @@ export default function AllVoiceAgents() {
     ) : null}
   </div>
 
-  {/* Carly - Prior Authorization Follow-Up */}
+  {/* Olivia - Prior Authorization Follow-Up */}
   <div 
       onClick={() => !isConnected && handleExpandCard('olivia')}
       className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
@@ -1146,9 +1146,9 @@ export default function AllVoiceAgents() {
 
               <div className="space-y-4 mb-8">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">About Carly</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">About Olivia</h4>
                   <p className="text-gray-600">
-                    Carly specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
+                    Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
                   </p>
                 </div>
                 <div>
@@ -1303,7 +1303,7 @@ export default function AllVoiceAgents() {
 
               <div className="space-y-4 mb-8">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">About Carson</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">About Michael</h4>
                   <p className="text-gray-600">
                     Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
                   </p>
