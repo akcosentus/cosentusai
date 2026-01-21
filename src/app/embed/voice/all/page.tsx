@@ -45,15 +45,7 @@ if (typeof document !== 'undefined') {
 export default function AllVoiceAgents() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'olivia' | 'michael' | 'emily' | 'sarah' | null>(null);
-  const [startAnimation, setStartAnimation] = useState(false);
-
-  // Wait 2.8 seconds before starting animation to ensure iframe is fully loaded
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setStartAnimation(true);
-    }, 2800);
-    return () => clearTimeout(timer);
-  }, []);
+  const [startAnimation, setStartAnimation] = useState(true);
 
   // Centralized Agent IDs
   const ALLISON_AGENT_ID = AGENTS.allison;
