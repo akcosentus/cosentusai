@@ -86,15 +86,33 @@ export default function AllVoiceAgents() {
 
   const handleBeginDemo = async () => {
     try {
+      // Check if getUserMedia is available
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert('Your browser does not support microphone access. Please use a modern browser like Chrome, Firefox, Safari, or Edge.');
+        return;
+      }
+
       // Request microphone permission first
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       // Stop the test stream immediately (we just needed to check permission)
       stream.getTracks().forEach(track => track.stop());
       // Now start the actual call
       await connect();
-    } catch (err) {
-      console.error('Microphone permission denied:', err);
-      alert('Microphone access is required to start the conversation. Please allow microphone access and try again.');
+    } catch (err: any) {
+      console.error('Microphone permission error:', err);
+      
+      // Provide specific error messages
+      if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+        alert('Microphone access was denied. Please allow microphone access in your browser settings and try again.');
+      } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+        alert('No microphone found. Please connect a microphone and try again.');
+      } else if (err.name === 'NotReadableError' || err.name === 'TrackStartError') {
+        alert('Your microphone is being used by another application. Please close other apps using the microphone and try again.');
+      } else if (err.name === 'SecurityError') {
+        alert('Microphone access is blocked. This iframe needs the "allow=microphone" attribute. Please contact the website administrator.');
+      } else {
+        alert(`Microphone error: ${err.message || 'Unknown error'}. Please check your browser settings and try again.`);
+      }
     }
   };
 
