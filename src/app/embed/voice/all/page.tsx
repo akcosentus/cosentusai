@@ -85,7 +85,17 @@ export default function AllVoiceAgents() {
   };
 
   const handleBeginDemo = async () => {
-    await connect();
+    try {
+      // Request microphone permission first
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      // Stop the test stream immediately (we just needed to check permission)
+      stream.getTracks().forEach(track => track.stop());
+      // Now start the actual call
+      await connect();
+    } catch (err) {
+      console.error('Microphone permission denied:', err);
+      alert('Microphone access is required to start the conversation. Please allow microphone access and try again.');
+    }
   };
 
   const handleEndDemo = () => {
