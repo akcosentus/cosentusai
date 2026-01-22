@@ -241,7 +241,7 @@ export default function ChatEmbed() {
   if (!isExpanded) {
     return (
       <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
-        <div className={`w-full max-w-4xl relative ${isFocused ? 'pt-12' : ''} md:pt-0`}>
+        <div className={`w-full max-w-4xl relative ${isFocused ? 'pt-16' : ''} md:pt-0`}>
           {/* Logo - Top Right of Search Bar */}
           <img 
             src="/cosentu-white-logo.png" 
