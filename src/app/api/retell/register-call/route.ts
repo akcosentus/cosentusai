@@ -11,36 +11,28 @@
 
 import { NextResponse } from 'next/server';
 
-const RATE_LIMIT_WINDOW = 5 * 60 * 1000;   // 5 minutes
-const MAX_REQUESTS_PER_IP = 3;             // 3 calls per IP per window
-const rateLimitStore: { [ip: string]: number[] } = {};
+// RATE LIMITING DISABLED FOR CONFERENCE DEMOS
+// const RATE_LIMIT_WINDOW = 5 * 60 * 1000;   // 5 minutes
+// const MAX_REQUESTS_PER_IP = 3;             // 3 calls per IP per window
+// const rateLimitStore: { [ip: string]: number[] } = {};
 
 export async function POST(request: Request) {
-  // Get IP address:
+  // Get IP address for logging only
   const ipRaw = request.headers.get('x-forwarded-for');
   const ip = ipRaw?.split(',')[0].trim() || "127.0.0.1";
-  const now = Date.now();
 
-  // Cleanup old timestamps for this IP
-  const timestamps = (rateLimitStore[ip] || []).filter(ts => now - ts < RATE_LIMIT_WINDOW);
-
-  // Check if max attempts reached
-  if (timestamps.length >= MAX_REQUESTS_PER_IP) {
-    console.warn(`[RATE LIMIT BLOCK] ${ip} hit limit (${MAX_REQUESTS_PER_IP} in ${RATE_LIMIT_WINDOW / 60000}min) - ${new Date().toISOString()}`);
-    return NextResponse.json(
-      { error: "Too many demo attempts from your device. Please wait a few minutes and try again." },
-      { 
-        status: 429,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'POST, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type',
-        },
-      }
-    );
-  }
-  timestamps.push(now);
-  rateLimitStore[ip] = timestamps;
+  // RATE LIMITING DISABLED - Comment out for conference demos
+  // const now = Date.now();
+  // const timestamps = (rateLimitStore[ip] || []).filter(ts => now - ts < RATE_LIMIT_WINDOW);
+  // if (timestamps.length >= MAX_REQUESTS_PER_IP) {
+  //   console.warn(`[RATE LIMIT BLOCK] ${ip} hit limit - ${new Date().toISOString()}`);
+  //   return NextResponse.json(
+  //     { error: "Too many demo attempts from your device. Please wait a few minutes and try again." },
+  //     { status: 429, headers: { 'Access-Control-Allow-Origin': '*' } }
+  //   );
+  // }
+  // timestamps.push(now);
+  // rateLimitStore[ip] = timestamps;
 
   // Log calls for tracking
   const userAgent = request.headers.get("user-agent") || "unknown";
