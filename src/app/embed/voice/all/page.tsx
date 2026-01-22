@@ -230,7 +230,7 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
                   <p className="text-[11px] text-gray-600 leading-relaxed">
-                    Cindy specializes in handling inbound patient calls for outstanding balance inquiries and payment processing. She provides clear, empathetic assistance to help patients understand and resolve their billing questions.
+                    Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
                   </p>
                 </div>
 
@@ -239,8 +239,8 @@ export default function AllVoiceAgents() {
                   <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
                   <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
                     <li>• Real-time balance inquiries and payment history</li>
-                    <li>• Secure credit card and ACH payment processing</li>
-                    <li>• Payment plan setup and modification</li>
+                    <li>• Secure credit card payment processing</li>
+                    <li>• Balance breakdown by date of service</li>
                     <li>• Insurance coverage explanations</li>
                   </ul>
                 </div>
@@ -304,15 +304,15 @@ export default function AllVoiceAgents() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">About Cindy</h4>
                   <p className="text-gray-600">
-                    Cindy specializes in handling inbound patient calls for outstanding balance inquiries and payment processing. She provides clear, empathetic assistance to help patients understand and resolve their billing questions.
+                    Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
                   </p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                   <ul className="text-gray-600 space-y-1">
                     <li>• Real-time balance inquiries and payment history</li>
-                    <li>• Secure credit card and ACH payment processing</li>
-                    <li>• Payment plan setup and modification</li>
+                    <li>• Secure credit card payment processing</li>
+                    <li>• Balance breakdown by date of service</li>
                     <li>• Insurance coverage explanations</li>
                   </ul>
                 </div>
