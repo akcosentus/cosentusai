@@ -143,13 +143,13 @@ export default function AllVoiceAgents() {
   };
 
   return (
-    <div className="min-h-screen pt-8 pb-4 px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
+    <div className="min-h-screen pt-16 pb-4 px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
       <div className="max-w-[1600px] mx-auto relative">
         {/* Logo - Top Right of Grid */}
         <img 
           src="/cosentu-white-logo.png" 
           alt="Cosentus" 
-          className="absolute -top-12 right-0 w-28 md:w-48 z-[100]"
+          className="absolute -top-8 right-0 w-28 md:-top-12 md:w-48 z-[100]"
         />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
   {/* Cindy - Payment & Balance Agent */}
