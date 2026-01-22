@@ -7,6 +7,7 @@ import type { CSSProperties } from 'react';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 import { AGENTS } from '@/config/agents';
 
+
 declare global {
   interface Window {
     __cosentusVoiceAgentsAnimated?: boolean;

@@ -35,7 +35,7 @@
   width="100%" 
   height="700" 
   style="border: none;" 
-  allow="microphone">
+  allow="microphone https://cosentusai.vercel.app">
 </iframe>
 ```
 
