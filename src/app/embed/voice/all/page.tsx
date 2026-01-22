@@ -3,11 +3,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import type { CSSProperties } from 'react';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 import { AGENTS } from '@/config/agents';
 
-// Add animation styles with nth-child delays
-// Cards stay hidden for 1.5s, then animate in one by one
+declare global {
+  interface Window {
+    __cosentusVoiceAgentsAnimated?: boolean;
+  }
+}
+
+// Add global styles for animations (match chat embed)
 if (typeof document !== 'undefined') {
   const style = document.createElement('style');
   style.textContent = `
@@ -21,20 +27,6 @@ if (typeof document !== 'undefined') {
         transform: translateY(0);
       }
     }
-    .agent-card {
-      opacity: 0;
-    }
-    .agent-card.animate {
-      animation: fadeInUp 0.6s ease-out both;
-    }
-    .agent-card.animate:nth-child(1) { animation-delay: 0s; }
-    .agent-card.animate:nth-child(2) { animation-delay: 0.1s; }
-    .agent-card.animate:nth-child(3) { animation-delay: 0.2s; }
-    .agent-card.animate:nth-child(4) { animation-delay: 0.3s; }
-    .agent-card.animate:nth-child(5) { animation-delay: 0.4s; }
-    .agent-card.animate:nth-child(6) { animation-delay: 0.5s; }
-    .agent-card.animate:nth-child(7) { animation-delay: 0.6s; }
-    .agent-card.animate:nth-child(8) { animation-delay: 0.7s; }
   `;
   if (!document.head.querySelector('style[data-voice-animations]')) {
     style.setAttribute('data-voice-animations', 'true');
@@ -45,7 +37,26 @@ if (typeof document !== 'undefined') {
 export default function AllVoiceAgents() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'olivia' | 'michael' | 'emily' | 'sarah' | null>(null);
-  const [startAnimation, setStartAnimation] = useState(true);
+
+  // Only animate cards once per page load (prevents "second ripple" on remount/hydration)
+  const [shouldAnimateCards] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return !window.__cosentusVoiceAgentsAnimated;
+  });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.__cosentusVoiceAgentsAnimated = true;
+    }
+  }, []);
+
+  const cardAnimationStyle = (index: number): CSSProperties | undefined => {
+    if (!shouldAnimateCards) return undefined;
+    return {
+      // Match chat embed suggested question animation
+      animation: `fadeInUp 0.5s ease-out ${index * 0.05}s both`,
+    };
+  };
 
   // Centralized Agent IDs
   const ALLISON_AGENT_ID = AGENTS.allison;
@@ -135,7 +146,8 @@ export default function AllVoiceAgents() {
   {/* Cindy - Payment & Balance Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
-    className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    style={cardAnimationStyle(0)}
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-3 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -297,7 +309,8 @@ export default function AllVoiceAgents() {
   {/* Chris - Insurance Claim Follow-Up */}
   <div 
     onClick={() => !isConnected && handleExpandCard('chris')}
-    className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    style={cardAnimationStyle(1)}
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-3 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -459,7 +472,8 @@ export default function AllVoiceAgents() {
   {/* Emily - Pre-Service Anesthesia Cost Estimates */}
   <div 
     onClick={() => !isConnected && handleExpandCard('emily')}
-    className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    style={cardAnimationStyle(2)}
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-3 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -618,7 +632,8 @@ export default function AllVoiceAgents() {
   {/* Sarah - Medical Appointment Scheduling */}
   <div 
     onClick={() => !isConnected && handleExpandCard('sarah')}
-    className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    style={cardAnimationStyle(3)}
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-3 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -777,7 +792,8 @@ export default function AllVoiceAgents() {
   {/* Allison - Customer Service Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('allison')}
-    className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    style={cardAnimationStyle(4)}
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-3 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -943,7 +959,8 @@ export default function AllVoiceAgents() {
   {/* James - Eligibility & Benefits Verification */}
   <div 
     onClick={() => !isConnected && handleExpandCard('james')}
-    className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+    style={cardAnimationStyle(5)}
+    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
         ? 'md:col-span-4 p-6 md:p-12' 
         : 'p-3 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -1100,7 +1117,8 @@ export default function AllVoiceAgents() {
   {/* Olivia - Prior Authorization Follow-Up */}
   <div 
       onClick={() => !isConnected && handleExpandCard('olivia')}
-      className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+      style={cardAnimationStyle(6)}
+      className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'md:col-span-4 p-6 md:p-12' 
           : 'p-3 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
@@ -1257,7 +1275,8 @@ export default function AllVoiceAgents() {
     {/* Michael - Payment Reconciliation */}
     <div 
       onClick={() => !isConnected && handleExpandCard('michael')}
-      className={`agent-card ${startAnimation ? "animate" : ""} group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
+      style={cardAnimationStyle(7)}
+      className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'md:col-span-4 p-6 md:p-12'
           : 'p-3 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
