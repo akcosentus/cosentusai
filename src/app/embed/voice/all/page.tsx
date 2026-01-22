@@ -54,7 +54,8 @@ export default function AllVoiceAgents() {
     if (!shouldAnimateCards) return undefined;
     return {
       // Match chat embed suggested question animation
-      animation: `fadeInUp 0.5s ease-out ${index * 0.05}s both`,
+      // Slightly slower than chat (≈75% longer), with a rounder stagger
+      animation: `fadeInUp 0.9s ease-out ${index * 0.1}s both`,
     };
   };
 
