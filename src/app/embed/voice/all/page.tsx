@@ -431,7 +431,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'chris' && (
           <>
             <img 
-              src="/avatar-chris.png" 
+              src="/avatar-michael.png" 
               alt="Chris" 
               className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
             />
@@ -454,7 +454,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-chris.png" 
+                  src="/avatar-michael.png" 
                   alt="Chris" 
                   className="w-8 h-8 rounded-full object-cover"
                 />
@@ -553,7 +553,7 @@ export default function AllVoiceAgents() {
             <div className="flex-1 md:max-w-md">
               <div className="flex items-center gap-4 mb-6">
                 <img 
-                  src="/avatar-chris.png" 
+                  src="/avatar-michael.png" 
                   alt="Chris" 
                   className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
                 />
@@ -1996,7 +1996,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'michael' && (
           <>
             <img 
-              src="/avatar-michael.png" 
+              src="/avatar-chris.png" 
               alt="Michael" 
               className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
             />
@@ -2019,7 +2019,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
               <div className="flex items-center gap-3">
                 <img 
-                  src="/avatar-michael.png" 
+                  src="/avatar-chris.png" 
                   alt="Michael" 
                   className="w-8 h-8 rounded-full object-cover"
                 />
@@ -2118,7 +2118,7 @@ export default function AllVoiceAgents() {
             <div className="flex-1 md:max-w-md">
               <div className="flex items-center gap-4 mb-6">
                 <img 
-                  src="/avatar-michael.png" 
+                  src="/avatar-chris.png" 
                   alt="Michael" 
                   className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
                 />
