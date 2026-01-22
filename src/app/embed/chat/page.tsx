@@ -241,12 +241,12 @@ export default function ChatEmbed() {
   if (!isExpanded) {
     return (
       <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
-        <div className="w-full max-w-4xl relative">
+        <div className="w-full max-w-4xl relative pt-16 md:pt-0">
           {/* Logo - Top Right of Search Bar */}
           <img 
             src="/cosentu-white-logo.png" 
             alt="Cosentus" 
-            className="absolute -top-12 right-0 w-40 md:w-48 z-10"
+            className="absolute -top-2 md:-top-12 right-0 w-32 md:w-48 z-10"
           />
           {/* Oval Search Bar */}
           <form onSubmit={handleSubmit} className="mb-6">
@@ -303,12 +303,12 @@ export default function ChatEmbed() {
   // Expanded state - chat widget (responsive height, same width as search bar)
   return (
     <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
-      <div className="w-full max-w-4xl animate-fadeIn relative">
+      <div className="w-full max-w-4xl animate-fadeIn relative pt-16 md:pt-0">
         {/* Logo - Top Right of Chat Widget */}
         <img 
           src="/cosentu-white-logo.png" 
           alt="Cosentus" 
-          className="absolute -top-12 right-0 w-40 md:w-48 z-10"
+          className="absolute -top-2 md:-top-12 right-0 w-32 md:w-48 z-10"
         />
         {/* Chat Card */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[75vh] md:h-[65vh]">
