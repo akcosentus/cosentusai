@@ -31,7 +31,7 @@ export const AGENTS = {
   chris: 'agent_9571fe9261e3944f33777a1406',
   
   /**
-   * James - Eligibility & Benefits Verification
+   * Harper - Eligibility & Benefits Verification
    * Verifies patient insurance coverage and benefits
    */
   james: 'agent_f7e96fe43ce9bb611481839af8',
