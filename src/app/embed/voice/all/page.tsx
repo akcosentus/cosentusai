@@ -186,18 +186,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'cindy' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[85vh] max-h-[700px]">
+          <div className="md:hidden flex flex-col h-[500px]">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#01B2D6]/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#01B2D6]">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#01B2D6]/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#01B2D6]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Cindy</h3>
-                  <p className="text-xs text-gray-600">Payment & Balance</p>
+                  <h3 className="text-sm font-bold text-gray-900">Cindy</h3>
+                  <p className="text-[10px] text-gray-600">Payment & Balance</p>
                 </div>
               </div>
               <button 
@@ -207,82 +207,48 @@ export default function AllVoiceAgents() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-1"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
             {/* Status Bar */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-sm">
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
                 <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Cindy is speaking...' : 'Listening...') : 'Click "Begin Conversation" to start'}
+                  {isConnected ? (isRecording ? 'Speaking...' : 'Listening...') : 'Ready to start'}
                 </span>
               </div>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {/* About Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">About</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${aboutExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {aboutExpanded && (
-                  <div className="p-3 text-sm text-gray-600 bg-white">
+            {/* Content - All visible, no scrolling */}
+            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
+              <div className="space-y-2">
+                {/* About */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-[10px] text-gray-600 leading-relaxed">
                     Cindy specializes in handling inbound patient calls for outstanding balance inquiries and payment processing. She provides clear, empathetic assistance to help patients understand and resolve their billing questions.
-                  </div>
-                )}
-              </div>
+                  </p>
+                </div>
 
-              {/* Capabilities Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setCapabilitiesExpanded(!capabilitiesExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">Capabilities</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${capabilitiesExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {capabilitiesExpanded && (
-                  <div className="p-3 bg-white">
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Real-time balance inquiries and payment history</li>
-                      <li>• Secure credit card and ACH payment processing</li>
-                      <li>• Payment plan setup and modification</li>
-                      <li>• Insurance coverage explanations</li>
-                    </ul>
-                  </div>
-                )}
+                {/* Capabilities */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-[10px] text-gray-600 space-y-0.5 leading-relaxed">
+                    <li>• Real-time balance inquiries and payment history</li>
+                    <li>• Secure credit card and ACH payment processing</li>
+                    <li>• Payment plan setup and modification</li>
+                    <li>• Insurance coverage explanations</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Fixed Bottom Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-3 border-t border-gray-200 bg-white">
               {!isConnected ? (
                 <button 
                   onClick={(e) => {
@@ -290,11 +256,11 @@ export default function AllVoiceAgents() {
                     handleBeginDemo();
                   }}
                   disabled={isConnecting}
-                  className="w-full py-3 bg-[#01B2D6] text-white rounded-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isConnecting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -310,7 +276,7 @@ export default function AllVoiceAgents() {
                     e.stopPropagation();
                     handleEndDemo();
                   }}
-                  className="w-full py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   End Conversation
                 </button>
@@ -483,18 +449,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'chris' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[85vh] max-h-[700px]">
+          <div className="md:hidden flex flex-col h-[500px]">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#01B2D6]/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#01B2D6]">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#01B2D6]/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#01B2D6]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Chris</h3>
-                  <p className="text-xs text-gray-600">Insurance Claims</p>
+                  <h3 className="text-sm font-bold text-gray-900">Chris</h3>
+                  <p className="text-[10px] text-gray-600">Insurance Claims</p>
                 </div>
               </div>
               <button 
@@ -504,82 +470,48 @@ export default function AllVoiceAgents() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-1"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
             {/* Status Bar */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-sm">
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
                 <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Chris is speaking...' : 'Listening...') : 'Click "Begin Conversation" to start'}
+                  {isConnected ? (isRecording ? 'Speaking...' : 'Listening...') : 'Ready to start'}
                 </span>
               </div>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {/* About Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">About</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${aboutExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {aboutExpanded && (
-                  <div className="p-3 text-sm text-gray-600 bg-white">
+            {/* Content - All visible, no scrolling */}
+            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
+              <div className="space-y-2">
+                {/* About */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-[10px] text-gray-600 leading-relaxed">
                     Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
-                  </div>
-                )}
-              </div>
+                  </p>
+                </div>
 
-              {/* Capabilities Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setCapabilitiesExpanded(!capabilitiesExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">Capabilities</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${capabilitiesExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {capabilitiesExpanded && (
-                  <div className="p-3 bg-white">
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Outbound claim status follow-ups with carriers</li>
-                      <li>• Denial investigation and appeal preparation</li>
-                      <li>• Missing information requests and documentation</li>
-                      <li>• Timely filing deadline tracking</li>
-                    </ul>
-                  </div>
-                )}
+                {/* Capabilities */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-[10px] text-gray-600 space-y-0.5 leading-relaxed">
+                    <li>• Outbound claim status follow-ups with carriers</li>
+                    <li>• Denial investigation and appeal preparation</li>
+                    <li>• Missing information requests and documentation</li>
+                    <li>• Timely filing deadline tracking</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Fixed Bottom Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-3 border-t border-gray-200 bg-white">
               {!isConnected ? (
                 <button 
                   onClick={(e) => {
@@ -587,11 +519,11 @@ export default function AllVoiceAgents() {
                     handleBeginDemo();
                   }}
                   disabled={isConnecting}
-                  className="w-full py-3 bg-[#01B2D6] text-white rounded-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isConnecting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -607,7 +539,7 @@ export default function AllVoiceAgents() {
                     e.stopPropagation();
                     handleEndDemo();
                   }}
-                  className="w-full py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   End Conversation
                 </button>
@@ -780,18 +712,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'emily' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[85vh] max-h-[700px]">
+          <div className="md:hidden flex flex-col h-[500px]">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#01B2D6]/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#01B2D6]">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#01B2D6]/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#01B2D6]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Emily</h3>
-                  <p className="text-xs text-gray-600">Anesthesia Estimates</p>
+                  <h3 className="text-sm font-bold text-gray-900">Emily</h3>
+                  <p className="text-[10px] text-gray-600">Anesthesia Estimates</p>
                 </div>
               </div>
               <button 
@@ -801,82 +733,48 @@ export default function AllVoiceAgents() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-1"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
             {/* Status Bar */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-sm">
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
                 <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Emily is speaking...' : 'Listening...') : 'Click "Begin Conversation" to start'}
+                  {isConnected ? (isRecording ? 'Speaking...' : 'Listening...') : 'Ready to start'}
                 </span>
               </div>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {/* About Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">About</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${aboutExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {aboutExpanded && (
-                  <div className="p-3 text-sm text-gray-600 bg-white">
+            {/* Content - All visible, no scrolling */}
+            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
+              <div className="space-y-2">
+                {/* About */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-[10px] text-gray-600 leading-relaxed">
                     Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
-                  </div>
-                )}
-              </div>
+                  </p>
+                </div>
 
-              {/* Capabilities Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setCapabilitiesExpanded(!capabilitiesExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">Capabilities</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${capabilitiesExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {capabilitiesExpanded && (
-                  <div className="p-3 bg-white">
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Pre-surgery anesthesia cost estimates</li>
-                      <li>• Insurance vs. self-pay pricing calculations</li>
-                      <li>• Facility-specific rate application</li>
-                      <li>• Payment plan and financial assistance options</li>
-                    </ul>
-                  </div>
-                )}
+                {/* Capabilities */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-[10px] text-gray-600 space-y-0.5 leading-relaxed">
+                    <li>• Pre-surgery anesthesia cost estimates</li>
+                    <li>• Insurance vs. self-pay pricing calculations</li>
+                    <li>• Facility-specific rate application</li>
+                    <li>• Payment plan and financial assistance options</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Fixed Bottom Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-3 border-t border-gray-200 bg-white">
               {!isConnected ? (
                 <button 
                   onClick={(e) => {
@@ -884,11 +782,11 @@ export default function AllVoiceAgents() {
                     handleBeginDemo();
                   }}
                   disabled={isConnecting}
-                  className="w-full py-3 bg-[#01B2D6] text-white rounded-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isConnecting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -904,7 +802,7 @@ export default function AllVoiceAgents() {
                     e.stopPropagation();
                     handleEndDemo();
                   }}
-                  className="w-full py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   End Conversation
                 </button>
