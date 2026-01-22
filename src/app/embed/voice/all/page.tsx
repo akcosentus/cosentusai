@@ -326,11 +326,11 @@ export default function AllVoiceAgents() {
                       handleBeginDemo();
                     }}
                     disabled={isConnecting}
-                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {isConnecting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -351,7 +351,7 @@ export default function AllVoiceAgents() {
                       e.stopPropagation();
                       handleEndDemo();
                     }}
-                    className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                    className="px-8 py-4 bg-red-500 text-white rounded-lg text-sm font-semibold text-lg hover:bg-red-600 transition-colors"
                   >
                     End Conversation
                   </button>
@@ -385,7 +385,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Cindy is speaking...' : 'Listening...'}
+                    {isRecording ? 'Cindy Speaking...' : 'Listening...'}
                   </p>
                 </div>
               ) : (
@@ -394,7 +394,7 @@ export default function AllVoiceAgents() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                   </svg>
                   <p className="text-sm">
-                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                    {isConnecting ? 'Connecting...' : 'Ready to start'}
                   </p>
                 </div>
               )}
@@ -589,11 +589,11 @@ export default function AllVoiceAgents() {
                       handleBeginDemo();
                     }}
                     disabled={isConnecting}
-                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {isConnecting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -614,7 +614,7 @@ export default function AllVoiceAgents() {
                       e.stopPropagation();
                       handleEndDemo();
                     }}
-                    className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                    className="px-8 py-4 bg-red-500 text-white rounded-lg text-sm font-semibold text-lg hover:bg-red-600 transition-colors"
                   >
                     End Conversation
                   </button>
@@ -648,7 +648,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Chris is speaking...' : 'Listening...'}
+                    {isRecording ? 'Chris Speaking...' : 'Listening...'}
                   </p>
                 </div>
               ) : (
@@ -657,7 +657,7 @@ export default function AllVoiceAgents() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                   </svg>
                   <p className="text-sm">
-                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                    {isConnecting ? 'Connecting...' : 'Ready to start'}
                   </p>
                 </div>
               )}
@@ -852,11 +852,11 @@ export default function AllVoiceAgents() {
                       handleBeginDemo();
                     }}
                     disabled={isConnecting}
-                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {isConnecting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -877,7 +877,7 @@ export default function AllVoiceAgents() {
                       e.stopPropagation();
                       handleEndDemo();
                     }}
-                    className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                    className="px-8 py-4 bg-red-500 text-white rounded-lg text-sm font-semibold text-lg hover:bg-red-600 transition-colors"
                   >
                     End Conversation
                   </button>
@@ -911,7 +911,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Emily is speaking...' : 'Listening...'}
+                    {isRecording ? 'Emily Speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -926,7 +926,7 @@ export default function AllVoiceAgents() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
                   <p className="text-sm">
-                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                    {isConnecting ? 'Connecting...' : 'Ready to start'}
                   </p>
                 </div>
               )}
@@ -972,18 +972,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'sarah' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[85vh] max-h-[700px]">
+          <div className="md:hidden flex flex-col h-[500px]">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#01B2D6]/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#01B2D6]">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#01B2D6]/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#01B2D6]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Sarah</h3>
-                  <p className="text-xs text-gray-600">Appointment Scheduling</p>
+                  <h3 className="text-sm font-bold text-gray-900">Sarah</h3>
+                  <p className="text-[10px] text-gray-600">Appointment Scheduling</p>
                 </div>
               </div>
               <button 
@@ -1000,75 +1000,41 @@ export default function AllVoiceAgents() {
             </div>
 
             {/* Status Bar */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-sm">
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
                 <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Sarah is speaking...' : 'Listening...') : 'Click "Begin Conversation" to start'}
+                  {isConnected ? (isRecording ? 'Sarah Speaking...' : 'Listening...') : 'Ready to start'}
                 </span>
               </div>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {/* About Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">About</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${aboutExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {aboutExpanded && (
-                  <div className="p-3 text-sm text-gray-600 bg-white">
+            {/* Content - All visible, no scrolling */}
+            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
+              <div className="space-y-2">
+                {/* About */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-[10px] text-gray-600 leading-relaxed">
                     Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
-                  </div>
-                )}
-              </div>
+                  </p>
+                </div>
 
-              {/* Capabilities Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setCapabilitiesExpanded(!capabilitiesExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">Capabilities</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${capabilitiesExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {capabilitiesExpanded && (
-                  <div className="p-3 bg-white">
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Inbound and outbound appointment scheduling</li>
-                      <li>• Real-time calendar availability checks</li>
-                      <li>• Insurance verification and referral management</li>
-                      <li>• Automated reminders and rescheduling</li>
-                    </ul>
-                  </div>
-                )}
+                {/* Capabilities */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-[10px] text-gray-600 space-y-0.5 leading-relaxed">
+                    <li>• Inbound and outbound appointment scheduling</li>
+                    <li>• Real-time calendar availability checks</li>
+                    <li>• Insurance verification and referral management</li>
+                    <li>• Automated reminders and rescheduling</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Fixed Bottom Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-3 border-t border-gray-200 bg-white">
               {!isConnected ? (
                 <button 
                   onClick={(e) => {
@@ -1076,11 +1042,11 @@ export default function AllVoiceAgents() {
                     handleBeginDemo();
                   }}
                   disabled={isConnecting}
-                  className="w-full py-3 bg-[#01B2D6] text-white rounded-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isConnecting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -1096,7 +1062,7 @@ export default function AllVoiceAgents() {
                     e.stopPropagation();
                     handleEndDemo();
                   }}
-                  className="w-full py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   End Conversation
                 </button>
@@ -1146,11 +1112,11 @@ export default function AllVoiceAgents() {
                       handleBeginDemo();
                     }}
                     disabled={isConnecting}
-                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {isConnecting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -1171,7 +1137,7 @@ export default function AllVoiceAgents() {
                       e.stopPropagation();
                       handleEndDemo();
                     }}
-                    className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                    className="px-8 py-4 bg-red-500 text-white rounded-lg text-sm font-semibold text-lg hover:bg-red-600 transition-colors"
                   >
                     End Conversation
                   </button>
@@ -1205,7 +1171,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Sarah is speaking...' : 'Listening...'}
+                    {isRecording ? 'Sarah Speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -1220,7 +1186,7 @@ export default function AllVoiceAgents() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
                   <p className="text-sm">
-                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                    {isConnecting ? 'Connecting...' : 'Ready to start'}
                   </p>
                 </div>
               )}
@@ -1265,18 +1231,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'allison' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[85vh] max-h-[700px]">
+          <div className="md:hidden flex flex-col h-[500px]">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#01B2D6]/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#01B2D6]">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#01B2D6]/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#01B2D6]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Allison</h3>
-                  <p className="text-xs text-gray-600">Customer Service</p>
+                  <h3 className="text-sm font-bold text-gray-900">Allison</h3>
+                  <p className="text-[10px] text-gray-600">Customer Service</p>
                 </div>
               </div>
               <button 
@@ -1293,75 +1259,41 @@ export default function AllVoiceAgents() {
             </div>
 
             {/* Status Bar */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-sm">
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
                 <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Allison is speaking...' : 'Listening...') : 'Click "Begin Conversation" to start'}
+                  {isConnected ? (isRecording ? 'Allison Speaking...' : 'Listening...') : 'Ready to start'}
                 </span>
               </div>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {/* About Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">About</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${aboutExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {aboutExpanded && (
-                  <div className="p-3 text-sm text-gray-600 bg-white">
+            {/* Content - All visible, no scrolling */}
+            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
+              <div className="space-y-2">
+                {/* About */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-[10px] text-gray-600 leading-relaxed">
                     Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
-                  </div>
-                )}
-              </div>
+                  </p>
+                </div>
 
-              {/* Capabilities Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setCapabilitiesExpanded(!capabilitiesExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">Capabilities</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${capabilitiesExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {capabilitiesExpanded && (
-                  <div className="p-3 bg-white">
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• General billing and account inquiries</li>
+                {/* Capabilities */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-[10px] text-gray-600 space-y-0.5 leading-relaxed">
+                    <li>• General billing and account inquiries</li>
                       <li>• Appointment scheduling assistance</li>
                       <li>• Practice information and directions</li>
                       <li>• After-hours call handling</li>
-                    </ul>
-                  </div>
-                )}
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Fixed Bottom Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-3 border-t border-gray-200 bg-white">
               {!isConnected ? (
                 <button 
                   onClick={(e) => {
@@ -1369,11 +1301,11 @@ export default function AllVoiceAgents() {
                     handleBeginDemo();
                   }}
                   disabled={isConnecting}
-                  className="w-full py-3 bg-[#01B2D6] text-white rounded-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isConnecting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -1389,7 +1321,7 @@ export default function AllVoiceAgents() {
                     e.stopPropagation();
                     handleEndDemo();
                   }}
-                  className="w-full py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   End Conversation
                 </button>
@@ -1443,11 +1375,11 @@ export default function AllVoiceAgents() {
                       handleBeginDemo();
                     }}
                     disabled={isConnecting}
-                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {isConnecting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -1468,7 +1400,7 @@ export default function AllVoiceAgents() {
                       e.stopPropagation();
                       handleEndDemo();
                     }}
-                    className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                    className="px-8 py-4 bg-red-500 text-white rounded-lg text-sm font-semibold text-lg hover:bg-red-600 transition-colors"
                   >
                     End Conversation
                   </button>
@@ -1502,7 +1434,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Allison is speaking...' : 'Listening...'}
+                    {isRecording ? 'Allison Speaking...' : 'Listening...'}
                   </p>
                 </div>
               ) : (
@@ -1511,7 +1443,7 @@ export default function AllVoiceAgents() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                   </svg>
                   <p className="text-sm">
-                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                    {isConnecting ? 'Connecting...' : 'Ready to start'}
                   </p>
                 </div>
                 )}
@@ -1566,18 +1498,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'james' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[85vh] max-h-[700px]">
+          <div className="md:hidden flex flex-col h-[500px]">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#01B2D6]/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#01B2D6]">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#01B2D6]/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#01B2D6]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">James</h3>
-                  <p className="text-xs text-gray-600">Eligibility & Benefits</p>
+                  <h3 className="text-sm font-bold text-gray-900">James</h3>
+                  <p className="text-[10px] text-gray-600">Eligibility & Benefits</p>
                 </div>
               </div>
               <button 
@@ -1594,75 +1526,41 @@ export default function AllVoiceAgents() {
             </div>
 
             {/* Status Bar */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-sm">
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
                 <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'James is speaking...' : 'Listening...') : 'Click "Begin Conversation" to start'}
+                  {isConnected ? (isRecording ? 'James Speaking...' : 'Listening...') : 'Ready to start'}
                 </span>
               </div>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {/* About Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">About</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${aboutExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {aboutExpanded && (
-                  <div className="p-3 text-sm text-gray-600 bg-white">
+            {/* Content - All visible, no scrolling */}
+            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
+              <div className="space-y-2">
+                {/* About */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-[10px] text-gray-600 leading-relaxed">
                     James specializes in calling insurance companies to verify patient coverage before services are rendered. He checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
-                  </div>
-                )}
-              </div>
+                  </p>
+                </div>
 
-              {/* Capabilities Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setCapabilitiesExpanded(!capabilitiesExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">Capabilities</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${capabilitiesExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {capabilitiesExpanded && (
-                  <div className="p-3 bg-white">
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Real-time insurance eligibility verification</li>
+                {/* Capabilities */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-[10px] text-gray-600 space-y-0.5 leading-relaxed">
+                    <li>• Real-time insurance eligibility verification</li>
                       <li>• Benefits, deductibles, and coverage limits</li>
                       <li>• In-network vs. out-of-network status</li>
                       <li>• Secondary insurance coordination</li>
-                    </ul>
-                  </div>
-                )}
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Fixed Bottom Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-3 border-t border-gray-200 bg-white">
               {!isConnected ? (
                 <button 
                   onClick={(e) => {
@@ -1670,11 +1568,11 @@ export default function AllVoiceAgents() {
                     handleBeginDemo();
                   }}
                   disabled={isConnecting}
-                  className="w-full py-3 bg-[#01B2D6] text-white rounded-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isConnecting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -1690,7 +1588,7 @@ export default function AllVoiceAgents() {
                     e.stopPropagation();
                     handleEndDemo();
                   }}
-                  className="w-full py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   End Conversation
                 </button>
@@ -1740,11 +1638,11 @@ export default function AllVoiceAgents() {
                       handleBeginDemo();
                     }}
                     disabled={isConnecting}
-                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {isConnecting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -1765,7 +1663,7 @@ export default function AllVoiceAgents() {
                       e.stopPropagation();
                       handleEndDemo();
                     }}
-                    className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                    className="px-8 py-4 bg-red-500 text-white rounded-lg text-sm font-semibold text-lg hover:bg-red-600 transition-colors"
                   >
                     End Conversation
                   </button>
@@ -1799,7 +1697,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'James is speaking...' : 'Listening...'}
+                    {isRecording ? 'James Speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -1812,7 +1710,7 @@ export default function AllVoiceAgents() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
                   <p className="text-sm">
-                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                    {isConnecting ? 'Connecting...' : 'Ready to start'}
                   </p>
                 </div>
               )}
@@ -1858,18 +1756,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'olivia' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[85vh] max-h-[700px]">
+          <div className="md:hidden flex flex-col h-[500px]">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#01B2D6]/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#01B2D6]">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#01B2D6]/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#01B2D6]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Olivia</h3>
-                  <p className="text-xs text-gray-600">Prior Authorization</p>
+                  <h3 className="text-sm font-bold text-gray-900">Olivia</h3>
+                  <p className="text-[10px] text-gray-600">Prior Authorization</p>
                 </div>
               </div>
               <button 
@@ -1886,75 +1784,41 @@ export default function AllVoiceAgents() {
             </div>
 
             {/* Status Bar */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-sm">
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
                 <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Olivia is speaking...' : 'Listening...') : 'Click "Begin Conversation" to start'}
+                  {isConnected ? (isRecording ? 'Olivia Speaking...' : 'Listening...') : 'Ready to start'}
                 </span>
               </div>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {/* About Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">About</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${aboutExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {aboutExpanded && (
-                  <div className="p-3 text-sm text-gray-600 bg-white">
+            {/* Content - All visible, no scrolling */}
+            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
+              <div className="space-y-2">
+                {/* About */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-[10px] text-gray-600 leading-relaxed">
                     Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
-                  </div>
-                )}
-              </div>
+                  </p>
+                </div>
 
-              {/* Capabilities Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setCapabilitiesExpanded(!capabilitiesExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">Capabilities</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${capabilitiesExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {capabilitiesExpanded && (
-                  <div className="p-3 bg-white">
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Prior authorization status tracking</li>
+                {/* Capabilities */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-[10px] text-gray-600 space-y-0.5 leading-relaxed">
+                    <li>• Prior authorization status tracking</li>
                       <li>• Expedited review requests for urgent cases</li>
                       <li>• Denial reason documentation and appeals</li>
                       <li>• Authorization number and validity tracking</li>
-                    </ul>
-                  </div>
-                )}
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Fixed Bottom Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-3 border-t border-gray-200 bg-white">
               {!isConnected ? (
                 <button 
                   onClick={(e) => {
@@ -1962,11 +1826,11 @@ export default function AllVoiceAgents() {
                     handleBeginDemo();
                   }}
                   disabled={isConnecting}
-                  className="w-full py-3 bg-[#01B2D6] text-white rounded-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isConnecting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -1982,7 +1846,7 @@ export default function AllVoiceAgents() {
                     e.stopPropagation();
                     handleEndDemo();
                   }}
-                  className="w-full py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   End Conversation
                 </button>
@@ -2032,11 +1896,11 @@ export default function AllVoiceAgents() {
                       handleBeginDemo();
                     }}
                     disabled={isConnecting}
-                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {isConnecting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -2057,7 +1921,7 @@ export default function AllVoiceAgents() {
                       e.stopPropagation();
                       handleEndDemo();
                     }}
-                    className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                    className="px-8 py-4 bg-red-500 text-white rounded-lg text-sm font-semibold text-lg hover:bg-red-600 transition-colors"
                   >
                     End Conversation
                   </button>
@@ -2091,7 +1955,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Olivia is speaking...' : 'Listening...'}
+                    {isRecording ? 'Olivia Speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -2104,7 +1968,7 @@ export default function AllVoiceAgents() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
                   <p className="text-sm">
-                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                    {isConnecting ? 'Connecting...' : 'Ready to start'}
                   </p>
                 </div>
               )}
@@ -2150,18 +2014,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'michael' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[85vh] max-h-[700px]">
+          <div className="md:hidden flex flex-col h-[500px]">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#01B2D6]/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#01B2D6]">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#01B2D6]/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#01B2D6]">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Michael</h3>
-                  <p className="text-xs text-gray-600">Payment Reconciliation</p>
+                  <h3 className="text-sm font-bold text-gray-900">Michael</h3>
+                  <p className="text-[10px] text-gray-600">Payment Reconciliation</p>
                 </div>
               </div>
               <button 
@@ -2178,75 +2042,41 @@ export default function AllVoiceAgents() {
             </div>
 
             {/* Status Bar */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-sm">
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
+            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
                 <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Michael is speaking...' : 'Listening...') : 'Click "Begin Conversation" to start'}
+                  {isConnected ? (isRecording ? 'Michael Speaking...' : 'Listening...') : 'Ready to start'}
                 </span>
               </div>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-              {/* About Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setAboutExpanded(!aboutExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">About</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${aboutExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {aboutExpanded && (
-                  <div className="p-3 text-sm text-gray-600 bg-white">
+            {/* Content - All visible, no scrolling */}
+            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
+              <div className="space-y-2">
+                {/* About */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-[10px] text-gray-600 leading-relaxed">
                     Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
-                  </div>
-                )}
-              </div>
+                  </p>
+                </div>
 
-              {/* Capabilities Section - Collapsible */}
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
-                <button
-                  onClick={() => setCapabilitiesExpanded(!capabilitiesExpanded)}
-                  className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 text-sm">Capabilities</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className={`w-5 h-5 text-gray-600 transition-transform ${capabilitiesExpanded ? 'rotate-180' : ''}`}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                {capabilitiesExpanded && (
-                  <div className="p-3 bg-white">
-                    <ul className="text-sm text-gray-600 space-y-2">
-                      <li>• Missing payment investigation and recovery</li>
+                {/* Capabilities */}
+                <div>
+                  <h4 className="text-[11px] font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-[10px] text-gray-600 space-y-0.5 leading-relaxed">
+                    <li>• Missing payment investigation and recovery</li>
                       <li>• Payment discrepancy resolution with carriers</li>
                       <li>• Check trace and reissue requests</li>
                       <li>• EOB retrieval and overpayment refunds</li>
-                    </ul>
-                  </div>
-                )}
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Fixed Bottom Button */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className="p-3 border-t border-gray-200 bg-white">
               {!isConnected ? (
                 <button 
                   onClick={(e) => {
@@ -2254,11 +2084,11 @@ export default function AllVoiceAgents() {
                     handleBeginDemo();
                   }}
                   disabled={isConnecting}
-                  className="w-full py-3 bg-[#01B2D6] text-white rounded-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                   {isConnecting ? (
                     <>
-                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -2274,7 +2104,7 @@ export default function AllVoiceAgents() {
                     e.stopPropagation();
                     handleEndDemo();
                   }}
-                  className="w-full py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
                 >
                   End Conversation
                 </button>
@@ -2324,11 +2154,11 @@ export default function AllVoiceAgents() {
                       handleBeginDemo();
                     }}
                     disabled={isConnecting}
-                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
+                    className="px-8 py-4 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold text-lg hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
                   >
                     {isConnecting ? (
                       <>
-                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -2349,7 +2179,7 @@ export default function AllVoiceAgents() {
                       e.stopPropagation();
                       handleEndDemo();
                     }}
-                    className="px-8 py-4 bg-red-500 text-white rounded-lg font-semibold text-lg hover:bg-red-600 transition-colors"
+                    className="px-8 py-4 bg-red-500 text-white rounded-lg text-sm font-semibold text-lg hover:bg-red-600 transition-colors"
                   >
                     End Conversation
                   </button>
@@ -2383,7 +2213,7 @@ export default function AllVoiceAgents() {
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Michael is speaking...' : 'Listening...'}
+                    {isRecording ? 'Michael Speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -2396,7 +2226,7 @@ export default function AllVoiceAgents() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
                   <p className="text-sm">
-                    {isConnecting ? 'Connecting...' : 'Click "Begin Conversation" to start'}
+                    {isConnecting ? 'Connecting...' : 'Ready to start'}
                   </p>
                 </div>
               )}
