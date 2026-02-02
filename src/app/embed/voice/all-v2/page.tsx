@@ -159,7 +159,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
+        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cindy' ? (
@@ -168,19 +168,19 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'cindy' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-cindy.png" 
                 alt="Cindy" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-3 px-4 text-center">
-              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">CINDY</h3>
-              <p className="text-white text-xs md:text-sm mb-2">Patient Support</p>
-              <p className="text-white text-xs opacity-80">Click to learn more →</p>
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">CINDY</h3>
+              <p className="text-white text-[10px] md:text-xs mb-1.5">Patient Support</p>
+              <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
             </div>
           </div>
         )}
@@ -425,7 +425,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
+        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'chris' ? (
@@ -434,19 +434,19 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'chris' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-michael.png" 
                 alt="Chris" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-3 px-4 text-center">
-              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">CHRIS</h3>
-              <p className="text-white text-xs md:text-sm mb-2">Claims Follow-Up</p>
-              <p className="text-white text-xs opacity-80">Click to learn more →</p>
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">CHRIS</h3>
+              <p className="text-white text-[10px] md:text-xs mb-1.5">Claims Follow-Up</p>
+              <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
             </div>
           </div>
         )}
@@ -691,7 +691,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
+        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'emily' ? (
@@ -700,19 +700,19 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'emily' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-emily.png" 
                 alt="Emily" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-3 px-4 text-center">
-              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">EMILY</h3>
-              <p className="text-white text-xs md:text-sm mb-2">Cost Estimation</p>
-              <p className="text-white text-xs opacity-80">Click to learn more →</p>
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">EMILY</h3>
+              <p className="text-white text-[10px] md:text-xs mb-1.5">Cost Estimation</p>
+              <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
             </div>
           </div>
         )}
@@ -954,7 +954,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
+        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'sarah' ? (
@@ -963,19 +963,19 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'sarah' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-sarah.png" 
                 alt="Sarah" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-3 px-4 text-center">
-              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">SARAH</h3>
-              <p className="text-white text-xs md:text-sm mb-2">Appt. Scheduling</p>
-              <p className="text-white text-xs opacity-80">Click to learn more →</p>
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">SARAH</h3>
+              <p className="text-white text-[10px] md:text-xs mb-1.5">Appt. Scheduling</p>
+              <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
             </div>
           </div>
         )}
@@ -1216,7 +1216,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
+        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'allison' ? (
@@ -1225,19 +1225,19 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'allison' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-allison.png" 
                 alt="Allison" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-3 px-4 text-center">
-              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">ALLISON</h3>
-              <p className="text-white text-xs md:text-sm mb-2">Customer Support</p>
-              <p className="text-white text-xs opacity-80">Click to learn more →</p>
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">ALLISON</h3>
+              <p className="text-white text-[10px] md:text-xs mb-1.5">Customer Support</p>
+              <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
             </div>
           </div>
         )}
@@ -1486,7 +1486,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
+        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'james' ? (
@@ -1495,19 +1495,19 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'james' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-harper.png" 
                 alt="Harper" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-3 px-4 text-center">
-              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">HARPER</h3>
-              <p className="text-white text-xs md:text-sm mb-2">Eligibility Verification</p>
-              <p className="text-white text-xs opacity-80">Click to learn more →</p>
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">HARPER</h3>
+              <p className="text-white text-[10px] md:text-xs mb-1.5">Eligibility Verification</p>
+              <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
             </div>
           </div>
         )}
@@ -1747,7 +1747,7 @@ export default function AllVoiceAgents() {
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'md:col-span-4 p-4 md:p-12' 
-          : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
+          : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
     {!expandedCard || expandedCard === 'olivia' ? (
@@ -1756,19 +1756,19 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'olivia' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-olivia.png" 
                 alt="Olivia" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-3 px-4 text-center">
-              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">OLIVIA</h3>
-              <p className="text-white text-xs md:text-sm mb-2">Prior Authorization</p>
-              <p className="text-white text-xs opacity-80">Click to learn more →</p>
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">OLIVIA</h3>
+              <p className="text-white text-[10px] md:text-xs mb-1.5">Prior Authorization</p>
+              <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
             </div>
           </div>
         )}
@@ -2008,7 +2008,7 @@ export default function AllVoiceAgents() {
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'md:col-span-4 p-4 md:p-12'
-          : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
+          : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'michael' ? (
@@ -2017,19 +2017,19 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'michael' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-chris.png" 
                 alt="Michael" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-3 px-4 text-center">
-              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">MICHAEL</h3>
-              <p className="text-white text-xs md:text-sm mb-2">Payment Recovery</p>
-              <p className="text-white text-xs opacity-80">Click to learn more →</p>
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">MICHAEL</h3>
+              <p className="text-white text-[10px] md:text-xs mb-1.5">Payment Recovery</p>
+              <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
             </div>
           </div>
         )}
