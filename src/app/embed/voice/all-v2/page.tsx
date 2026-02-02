@@ -168,16 +168,16 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'cindy' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden flex items-center justify-center">
+            <div className="h-[75%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-cindy.png" 
                 alt="Cindy" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain scale-125"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">CINDY</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Patient Support</p>
               <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
@@ -434,16 +434,16 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'chris' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden flex items-center justify-center">
+            <div className="h-[75%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-michael.png" 
                 alt="Chris" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain scale-125"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">CHRIS</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Claims Follow-Up</p>
               <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
@@ -700,16 +700,16 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'emily' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden flex items-center justify-center">
+            <div className="h-[75%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-emily.png" 
                 alt="Emily" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain scale-125"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">EMILY</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Cost Estimation</p>
               <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
@@ -963,16 +963,16 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'sarah' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden flex items-center justify-center">
+            <div className="h-[75%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-sarah.png" 
                 alt="Sarah" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain scale-125"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">SARAH</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Appt. Scheduling</p>
               <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
@@ -1225,16 +1225,16 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'allison' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden flex items-center justify-center">
+            <div className="h-[75%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-allison.png" 
                 alt="Allison" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain scale-125"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">ALLISON</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Customer Support</p>
               <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
@@ -1495,16 +1495,16 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'james' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden flex items-center justify-center">
+            <div className="h-[75%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-harper.png" 
                 alt="Harper" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain scale-125"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">HARPER</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Eligibility Verification</p>
               <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
@@ -1756,16 +1756,16 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'olivia' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden flex items-center justify-center">
+            <div className="h-[75%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-olivia.png" 
                 alt="Olivia" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain scale-125"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">OLIVIA</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Prior Authorization</p>
               <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
@@ -2017,16 +2017,16 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'michael' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="flex-1 overflow-hidden flex items-center justify-center">
+            <div className="h-[75%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-chris.png" 
                 alt="Michael" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain scale-125"
               />
             </div>
             
             {/* Blue strip at bottom */}
-            <div className="bg-[#01B2D6] py-2.5 px-4 text-center">
+            <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">MICHAEL</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Payment Recovery</p>
               <p className="text-white text-[10px] opacity-80">Click to learn more →</p>
