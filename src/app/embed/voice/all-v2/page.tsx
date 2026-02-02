@@ -159,7 +159,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'w-full p-4 md:p-12' 
-        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cindy' ? (
@@ -425,7 +425,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
         ? 'w-full p-4 md:p-12' 
-        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'chris' ? (
@@ -691,7 +691,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
         ? 'w-full p-4 md:p-12' 
-        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'emily' ? (
@@ -954,7 +954,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
         ? 'w-full p-4 md:p-12' 
-        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'sarah' ? (
@@ -1216,7 +1216,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
         ? 'w-full p-4 md:p-12' 
-        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'allison' ? (
@@ -1486,7 +1486,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
         ? 'w-full p-4 md:p-12' 
-        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'james' ? (
@@ -1747,7 +1747,7 @@ export default function AllVoiceAgents() {
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'md:col-span-4 p-4 md:p-12' 
-          : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+          : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
     {!expandedCard || expandedCard === 'olivia' ? (
@@ -2008,7 +2008,7 @@ export default function AllVoiceAgents() {
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'md:col-span-4 p-4 md:p-12'
-          : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+          : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'michael' ? (
