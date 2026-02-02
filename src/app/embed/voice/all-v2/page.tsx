@@ -168,7 +168,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'cindy' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="h-[75%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-cindy.png" 
                 alt="Cindy" 
@@ -434,7 +434,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'chris' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="h-[75%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-michael.png" 
                 alt="Chris" 
@@ -700,7 +700,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'emily' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="h-[75%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-emily.png" 
                 alt="Emily" 
@@ -963,7 +963,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'sarah' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="h-[75%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-sarah.png" 
                 alt="Sarah" 
@@ -1225,7 +1225,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'allison' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="h-[75%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-allison.png" 
                 alt="Allison" 
@@ -1495,7 +1495,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'james' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="h-[75%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-harper.png" 
                 alt="Harper" 
@@ -1756,7 +1756,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'olivia' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="h-[75%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-olivia.png" 
                 alt="Olivia" 
@@ -2017,7 +2017,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'michael' && (
           <div className="flex flex-col h-full -m-2.5 md:-m-5">
             {/* Avatar - takes most of card space */}
-            <div className="h-[75%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
                 src="/avatar-chris.png" 
                 alt="Michael" 
