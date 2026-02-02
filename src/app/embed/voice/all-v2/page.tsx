@@ -61,9 +61,8 @@ export default function AllVoiceAgents() {
   const cardAnimationStyle = (index: number): CSSProperties | undefined => {
     if (!shouldAnimateCards) return undefined;
     return {
-      // Match chat embed suggested question animation
-      // Slightly slower than chat (≈75% longer), with a rounder stagger
-      animation: `fadeInUp 0.9s ease-out ${index * 0.1}s both`,
+      // Fast fade in when cards appear
+      animation: `fadeInUp 0.4s ease-out ${index * 0.05}s both`,
     };
   };
 
@@ -93,10 +92,24 @@ export default function AllVoiceAgents() {
 
   const handleExpandCard = (cardId: string) => {
     if (expandedCard === cardId) {
-      setExpandedCard(null);
-      setActiveAgent(null);
-      if (isConnected) {
-        disconnect();
+      // Fade out expanded card, then show all cards
+      const expandedCardEl = document.querySelector('.agent-card:not(.hidden)') as HTMLElement;
+      if (expandedCardEl) {
+        expandedCardEl.style.transition = 'opacity 300ms ease-out';
+        expandedCardEl.style.opacity = '0';
+        setTimeout(() => {
+          setExpandedCard(null);
+          setActiveAgent(null);
+          if (isConnected) {
+            disconnect();
+          }
+        }, 300);
+      } else {
+        setExpandedCard(null);
+        setActiveAgent(null);
+        if (isConnected) {
+          disconnect();
+        }
       }
     } else {
       setExpandedCard(cardId);
@@ -156,7 +169,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
     style={cardAnimationStyle(0)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -377,7 +390,7 @@ export default function AllVoiceAgents() {
                 <div className="flex flex-col items-center gap-6">
                   {/* Single Glowing Orb */}
                   <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-opacity duration-300"
                     style={{
                       boxShadow: isRecording 
                         ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
@@ -422,7 +435,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('chris')}
     style={cardAnimationStyle(1)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'chris' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -643,7 +656,7 @@ export default function AllVoiceAgents() {
                 <div className="flex flex-col items-center gap-6">
                   {/* Single Glowing Orb */}
                   <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-opacity duration-300"
                     style={{
                       boxShadow: isRecording 
                         ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
@@ -688,7 +701,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('emily')}
     style={cardAnimationStyle(2)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'emily' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -909,7 +922,7 @@ export default function AllVoiceAgents() {
                 <div className="flex flex-col items-center gap-6">
                   {/* Single Glowing Orb */}
                   <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-opacity duration-300"
                     style={{
                       boxShadow: isRecording 
                         ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
@@ -951,7 +964,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('sarah')}
     style={cardAnimationStyle(3)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'sarah' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -1172,7 +1185,7 @@ export default function AllVoiceAgents() {
                 <div className="flex flex-col items-center gap-6">
                   {/* Single Glowing Orb */}
                   <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-opacity duration-300"
                     style={{
                       boxShadow: isRecording 
                         ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
@@ -1213,7 +1226,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('allison')}
     style={cardAnimationStyle(4)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'allison' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -1438,7 +1451,7 @@ export default function AllVoiceAgents() {
                 <div className="flex flex-col items-center gap-6">
                   {/* Single Glowing Orb */}
                   <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-opacity duration-300"
                     style={{
                       boxShadow: isRecording 
                         ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
@@ -1483,7 +1496,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('james')}
     style={cardAnimationStyle(5)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'james' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -1704,7 +1717,7 @@ export default function AllVoiceAgents() {
                 <div className="flex flex-col items-center gap-6">
                   {/* Single Glowing Orb */}
                   <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-opacity duration-300"
                     style={{
                       boxShadow: isRecording 
                         ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
@@ -1744,7 +1757,7 @@ export default function AllVoiceAgents() {
   <div 
       onClick={() => !isConnected && handleExpandCard('olivia')}
       style={cardAnimationStyle(6)}
-      className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+      className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'md:col-span-4 p-4 md:p-12' 
           : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -1965,7 +1978,7 @@ export default function AllVoiceAgents() {
                 <div className="flex flex-col items-center gap-6">
                   {/* Single Glowing Orb */}
                   <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-opacity duration-300"
                     style={{
                       boxShadow: isRecording 
                         ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
@@ -2005,7 +2018,7 @@ export default function AllVoiceAgents() {
     <div 
       onClick={() => !isConnected && handleExpandCard('michael')}
       style={cardAnimationStyle(7)}
-      className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+      className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'md:col-span-4 p-4 md:p-12'
           : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -2226,7 +2239,7 @@ export default function AllVoiceAgents() {
                 <div className="flex flex-col items-center gap-6">
                   {/* Single Glowing Orb */}
                   <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-opacity duration-300"
                     style={{
                       boxShadow: isRecording 
                         ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
