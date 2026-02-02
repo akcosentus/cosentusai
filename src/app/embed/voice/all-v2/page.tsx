@@ -1759,7 +1759,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(6)}
       className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'olivia' 
-          ? 'md:col-span-4 p-4 md:p-12' 
+          ? 'w-full p-4 md:p-12' 
           : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
@@ -2020,7 +2020,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(7)}
       className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'michael' 
-          ? 'md:col-span-4 p-4 md:p-12'
+          ? 'w-full p-4 md:p-12'
           : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
