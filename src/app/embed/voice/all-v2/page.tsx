@@ -166,20 +166,22 @@ export default function AllVoiceAgents() {
       <>
         {/* Collapsed State */}
         {expandedCard !== 'cindy' && (
-          <>
-            <img 
-              src="/avatar-cindy.png" 
-              alt="Cindy" 
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
-            />
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5 break-words">Cindy</h3>
-            <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              Handles outstanding balances and payment processing in 50+ languages.
-            </p>
-            <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
-              Click to learn more →
+          <div className="flex flex-col h-full">
+            {/* Avatar - takes most of card space */}
+            <div className="flex-1 flex items-center justify-center p-4">
+              <img 
+                src="/avatar-cindy.png" 
+                alt="Cindy" 
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </div>
-          </>
+            
+            {/* Blue strip at bottom */}
+            <div className="bg-[#01B2D6] py-3 px-4 text-center rounded-b-2xl">
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">CINDY</h3>
+              <p className="text-white text-xs md:text-sm">Patient Support</p>
+            </div>
+          </div>
         )}
 
         {/* Expanded State */}
@@ -429,20 +431,22 @@ export default function AllVoiceAgents() {
       <>
         {/* Collapsed State */}
         {expandedCard !== 'chris' && (
-          <>
-            <img 
-              src="/avatar-michael.png" 
-              alt="Chris" 
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
-            />
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5 break-words">Chris</h3>
-            <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              Handles outbound insurance claim follow-ups with carriers to resolve denials and track status.
-            </p>
-            <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
-              Click to learn more →
+          <div className="flex flex-col h-full">
+            {/* Avatar - takes most of card space */}
+            <div className="flex-1 flex items-center justify-center p-4">
+              <img 
+                src="/avatar-michael.png" 
+                alt="Chris" 
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </div>
-          </>
+            
+            {/* Blue strip at bottom */}
+            <div className="bg-[#01B2D6] py-3 px-4 text-center rounded-b-2xl">
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">CHRIS</h3>
+              <p className="text-white text-xs md:text-sm">Claims Follow-Up</p>
+            </div>
+          </div>
         )}
 
         {/* Expanded State */}
@@ -692,20 +696,22 @@ export default function AllVoiceAgents() {
       <>
         {/* Collapsed State */}
         {expandedCard !== 'emily' && (
-          <>
-            <img 
-              src="/avatar-emily.png" 
-              alt="Emily" 
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
-            />
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5 break-words">Emily</h3>
-            <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              Provides pre-surgery anesthesia cost estimates for patients.
-            </p>
-            <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
-              Click to learn more →
+          <div className="flex flex-col h-full">
+            {/* Avatar - takes most of card space */}
+            <div className="flex-1 flex items-center justify-center p-4">
+              <img 
+                src="/avatar-emily.png" 
+                alt="Emily" 
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </div>
-          </>
+            
+            {/* Blue strip at bottom */}
+            <div className="bg-[#01B2D6] py-3 px-4 text-center rounded-b-2xl">
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">EMILY</h3>
+              <p className="text-white text-xs md:text-sm">Cost Estimation</p>
+            </div>
+          </div>
         )}
 
         {/* Expanded State */}
@@ -952,20 +958,22 @@ export default function AllVoiceAgents() {
       <>
         {/* Collapsed State */}
         {expandedCard !== 'sarah' && (
-          <>
-            <img 
-              src="/avatar-sarah.png" 
-              alt="Sarah" 
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
-            />
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5 break-words">Sarah</h3>
-            <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              Handles medical appointment scheduling for practices and patients.
-            </p>
-            <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
-              Click to learn more →
+          <div className="flex flex-col h-full">
+            {/* Avatar - takes most of card space */}
+            <div className="flex-1 flex items-center justify-center p-4">
+              <img 
+                src="/avatar-sarah.png" 
+                alt="Sarah" 
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </div>
-          </>
+            
+            {/* Blue strip at bottom */}
+            <div className="bg-[#01B2D6] py-3 px-4 text-center rounded-b-2xl">
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">SARAH</h3>
+              <p className="text-white text-xs md:text-sm">Appt. Scheduling</p>
+            </div>
+          </div>
         )}
 
         {/* Expanded State */}
@@ -1211,20 +1219,22 @@ export default function AllVoiceAgents() {
       <>
         {/* Collapsed State */}
         {expandedCard !== 'allison' && (
-          <>
-            <img 
-              src="/avatar-allison.png" 
-              alt="Allison" 
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
-            />
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5 break-words">Allison</h3>
-            <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              General customer service agent ready to assist with any questions.
-            </p>
-            <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
-              Click to learn more →
+          <div className="flex flex-col h-full">
+            {/* Avatar - takes most of card space */}
+            <div className="flex-1 flex items-center justify-center p-4">
+              <img 
+                src="/avatar-allison.png" 
+                alt="Allison" 
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </div>
-          </>
+            
+            {/* Blue strip at bottom */}
+            <div className="bg-[#01B2D6] py-3 px-4 text-center rounded-b-2xl">
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">ALLISON</h3>
+              <p className="text-white text-xs md:text-sm">Customer Support</p>
+            </div>
+          </div>
         )}
 
         {/* Expanded State */}
@@ -1478,20 +1488,22 @@ export default function AllVoiceAgents() {
       <>
         {/* Collapsed State */}
         {expandedCard !== 'james' && (
-          <>
-            <img 
-              src="/avatar-harper.png" 
-              alt="Harper" 
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
-            />
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5 break-words">Harper</h3>
-            <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              Verifies patient insurance eligibility and benefits before services.
-            </p>
-            <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
-              Click to learn more →
+          <div className="flex flex-col h-full">
+            {/* Avatar - takes most of card space */}
+            <div className="flex-1 flex items-center justify-center p-4">
+              <img 
+                src="/avatar-harper.png" 
+                alt="Harper" 
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </div>
-          </>
+            
+            {/* Blue strip at bottom */}
+            <div className="bg-[#01B2D6] py-3 px-4 text-center rounded-b-2xl">
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">HARPER</h3>
+              <p className="text-white text-xs md:text-sm">Eligibility Verification</p>
+            </div>
+          </div>
         )}
 
         {/* Expanded State */}
@@ -1736,20 +1748,22 @@ export default function AllVoiceAgents() {
       <>
         {/* Collapsed State */}
         {expandedCard !== 'olivia' && (
-          <>
-            <img 
-              src="/avatar-olivia.png" 
-              alt="Olivia" 
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
-            />
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5 break-words">Olivia</h3>
-            <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              Tracks prior authorization approvals and expedites urgent cases.
-            </p>
-            <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
-              Click to learn more →
+          <div className="flex flex-col h-full">
+            {/* Avatar - takes most of card space */}
+            <div className="flex-1 flex items-center justify-center p-4">
+              <img 
+                src="/avatar-olivia.png" 
+                alt="Olivia" 
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </div>
-          </>
+            
+            {/* Blue strip at bottom */}
+            <div className="bg-[#01B2D6] py-3 px-4 text-center rounded-b-2xl">
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">OLIVIA</h3>
+              <p className="text-white text-xs md:text-sm">Prior Authorization</p>
+            </div>
+          </div>
         )}
 
         {/* Expanded State */}
@@ -1994,20 +2008,22 @@ export default function AllVoiceAgents() {
       <>
         {/* Collapsed State */}
         {expandedCard !== 'michael' && (
-          <>
-            <img 
-              src="/avatar-chris.png" 
-              alt="Michael" 
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mb-3"
-            />
-            <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-1.5 break-words">Michael</h3>
-            <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              Tracks down payment discrepancies and resolves missing or incorrect payments.
-            </p>
-            <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
-              Click to learn more →
+          <div className="flex flex-col h-full">
+            {/* Avatar - takes most of card space */}
+            <div className="flex-1 flex items-center justify-center p-4">
+              <img 
+                src="/avatar-chris.png" 
+                alt="Michael" 
+                className="w-full h-full object-cover rounded-t-2xl"
+              />
             </div>
-          </>
+            
+            {/* Blue strip at bottom */}
+            <div className="bg-[#01B2D6] py-3 px-4 text-center rounded-b-2xl">
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">MICHAEL</h3>
+              <p className="text-white text-xs md:text-sm">Payment Recovery</p>
+            </div>
+          </div>
         )}
 
         {/* Expanded State */}
