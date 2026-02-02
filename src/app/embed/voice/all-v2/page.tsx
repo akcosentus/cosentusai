@@ -172,7 +172,7 @@ export default function AllVoiceAgents() {
               <img 
                 src="/avatar-cindy.png" 
                 alt="Cindy" 
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain scale-[1.02]"
               />
             </div>
             
@@ -438,7 +438,7 @@ export default function AllVoiceAgents() {
               <img 
                 src="/avatar-michael.png" 
                 alt="Chris" 
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain scale-[1.02]"
               />
             </div>
             
@@ -704,7 +704,7 @@ export default function AllVoiceAgents() {
               <img 
                 src="/avatar-emily.png" 
                 alt="Emily" 
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain scale-[1.02]"
               />
             </div>
             
@@ -967,7 +967,7 @@ export default function AllVoiceAgents() {
               <img 
                 src="/avatar-sarah.png" 
                 alt="Sarah" 
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain scale-[1.02]"
               />
             </div>
             
@@ -1229,7 +1229,7 @@ export default function AllVoiceAgents() {
               <img 
                 src="/avatar-allison.png" 
                 alt="Allison" 
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain scale-[1.02]"
               />
             </div>
             
@@ -1499,7 +1499,7 @@ export default function AllVoiceAgents() {
               <img 
                 src="/avatar-harper.png" 
                 alt="Harper" 
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain scale-[1.02]"
               />
             </div>
             
@@ -1760,7 +1760,7 @@ export default function AllVoiceAgents() {
               <img 
                 src="/avatar-olivia.png" 
                 alt="Olivia" 
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain scale-[1.02]"
               />
             </div>
             
@@ -2021,7 +2021,7 @@ export default function AllVoiceAgents() {
               <img 
                 src="/avatar-chris.png" 
                 alt="Michael" 
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain scale-[1.02]"
               />
             </div>
             
