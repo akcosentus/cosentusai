@@ -159,14 +159,14 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cindy' ? (
       <>
         {/* Collapsed State */}
         {expandedCard !== 'cindy' && (
-          <div className="flex flex-col h-full -m-2.5 md:-m-5">
+          <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
@@ -425,14 +425,14 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'chris' ? (
       <>
         {/* Collapsed State */}
         {expandedCard !== 'chris' && (
-          <div className="flex flex-col h-full -m-2.5 md:-m-5">
+          <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
@@ -691,14 +691,14 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'emily' ? (
       <>
         {/* Collapsed State */}
         {expandedCard !== 'emily' && (
-          <div className="flex flex-col h-full -m-2.5 md:-m-5">
+          <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
@@ -954,14 +954,14 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'sarah' ? (
       <>
         {/* Collapsed State */}
         {expandedCard !== 'sarah' && (
-          <div className="flex flex-col h-full -m-2.5 md:-m-5">
+          <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
@@ -1216,14 +1216,14 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'allison' ? (
       <>
         {/* Collapsed State */}
         {expandedCard !== 'allison' && (
-          <div className="flex flex-col h-full -m-2.5 md:-m-5">
+          <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
@@ -1486,14 +1486,14 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'james' ? (
       <>
         {/* Collapsed State */}
         {expandedCard !== 'james' && (
-          <div className="flex flex-col h-full -m-2.5 md:-m-5">
+          <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
@@ -1747,14 +1747,14 @@ export default function AllVoiceAgents() {
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'md:col-span-4 p-4 md:p-12' 
-          : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+          : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
     {!expandedCard || expandedCard === 'olivia' ? (
       <>
         {/* Collapsed State */}
         {expandedCard !== 'olivia' && (
-          <div className="flex flex-col h-full -m-2.5 md:-m-5">
+          <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
@@ -2008,14 +2008,14 @@ export default function AllVoiceAgents() {
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'md:col-span-4 p-4 md:p-12'
-          : 'p-2.5 md:p-5 h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+          : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'michael' ? (
       <>
         {/* Collapsed State */}
         {expandedCard !== 'michael' && (
-          <div className="flex flex-col h-full -m-2.5 md:-m-5">
+          <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] overflow-hidden flex items-center justify-center">
               <img 
