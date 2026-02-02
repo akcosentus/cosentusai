@@ -151,7 +151,7 @@ export default function AllVoiceAgents() {
           alt="Cosentus" 
           className="absolute -top-8 right-0 w-28 md:-top-12 md:w-48 z-[100]"
         />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-fr justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
   {/* Cindy - Payment & Balance Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
@@ -159,7 +159,7 @@ export default function AllVoiceAgents() {
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'md:col-span-4 p-4 md:p-12' 
-        : 'h-64 md:h-72 w-full md:max-w-[240px] hover:shadow-2xl hover:-translate-y-1'
+        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cindy' ? (
