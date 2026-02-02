@@ -156,7 +156,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
     style={cardAnimationStyle(0)}
-    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -168,7 +168,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'cindy' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden">
               <img 
                 src="/avatar-cindy.png" 
                 alt="Cindy" 
@@ -422,7 +422,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('chris')}
     style={cardAnimationStyle(1)}
-    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -434,7 +434,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'chris' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden">
               <img 
                 src="/avatar-michael.png" 
                 alt="Chris" 
@@ -688,7 +688,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('emily')}
     style={cardAnimationStyle(2)}
-    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -700,7 +700,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'emily' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden">
               <img 
                 src="/avatar-emily.png" 
                 alt="Emily" 
@@ -951,7 +951,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('sarah')}
     style={cardAnimationStyle(3)}
-    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -963,7 +963,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'sarah' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden">
               <img 
                 src="/avatar-sarah.png" 
                 alt="Sarah" 
@@ -1213,7 +1213,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('allison')}
     style={cardAnimationStyle(4)}
-    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -1225,7 +1225,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'allison' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden">
               <img 
                 src="/avatar-allison.png" 
                 alt="Allison" 
@@ -1483,7 +1483,7 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('james')}
     style={cardAnimationStyle(5)}
-    className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
         ? 'w-full p-4 md:p-12' 
         : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -1495,7 +1495,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'james' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden">
               <img 
                 src="/avatar-harper.png" 
                 alt="Harper" 
@@ -1744,7 +1744,7 @@ export default function AllVoiceAgents() {
   <div 
       onClick={() => !isConnected && handleExpandCard('olivia')}
       style={cardAnimationStyle(6)}
-      className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+      className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'md:col-span-4 p-4 md:p-12' 
           : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -1756,7 +1756,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'olivia' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden">
               <img 
                 src="/avatar-olivia.png" 
                 alt="Olivia" 
@@ -2005,7 +2005,7 @@ export default function AllVoiceAgents() {
     <div 
       onClick={() => !isConnected && handleExpandCard('michael')}
       style={cardAnimationStyle(7)}
-      className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
+      className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'md:col-span-4 p-4 md:p-12'
           : 'w-full md:w-[200px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
@@ -2017,7 +2017,7 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'michael' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] overflow-hidden flex items-center justify-center">
+            <div className="h-[80%] overflow-hidden">
               <img 
                 src="/avatar-chris.png" 
                 alt="Michael" 
