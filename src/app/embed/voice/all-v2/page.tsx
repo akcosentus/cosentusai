@@ -151,15 +151,15 @@ export default function AllVoiceAgents() {
           alt="Cosentus" 
           className="absolute -top-8 right-0 w-28 md:-top-12 md:w-48 z-[100]"
         />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
+        <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
   {/* Cindy - Payment & Balance Agent */}
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
     style={cardAnimationStyle(0)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
-        ? 'md:col-span-4 p-4 md:p-12' 
-        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        ? 'w-full p-4 md:p-12' 
+        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cindy' ? (
@@ -424,8 +424,8 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(1)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
-        ? 'md:col-span-4 p-4 md:p-12' 
-        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        ? 'w-full p-4 md:p-12' 
+        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'chris' ? (
@@ -690,8 +690,8 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(2)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
-        ? 'md:col-span-4 p-4 md:p-12' 
-        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        ? 'w-full p-4 md:p-12' 
+        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'emily' ? (
@@ -953,8 +953,8 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(3)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
-        ? 'md:col-span-4 p-4 md:p-12' 
-        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        ? 'w-full p-4 md:p-12' 
+        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'sarah' ? (
@@ -1215,8 +1215,8 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(4)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
-        ? 'md:col-span-4 p-4 md:p-12' 
-        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        ? 'w-full p-4 md:p-12' 
+        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'allison' ? (
@@ -1485,8 +1485,8 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(5)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
-        ? 'md:col-span-4 p-4 md:p-12' 
-        : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+        ? 'w-full p-4 md:p-12' 
+        : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'james' ? (
@@ -1747,7 +1747,7 @@ export default function AllVoiceAgents() {
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'md:col-span-4 p-4 md:p-12' 
-          : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+          : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
     {!expandedCard || expandedCard === 'olivia' ? (
@@ -2008,7 +2008,7 @@ export default function AllVoiceAgents() {
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'md:col-span-4 p-4 md:p-12'
-          : 'h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
+          : 'w-full md:w-[240px] h-64 md:h-72 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'michael' ? (
