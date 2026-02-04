@@ -33,8 +33,8 @@ if (typeof document !== 'undefined') {
       animation: fadeIn 0.3s ease-out;
     }
   `;
-  if (!document.head.querySelector('style[data-chat-animations]')) {
-    style.setAttribute('data-chat-animations', 'true');
+  if (!document.head.querySelector('style[data-chat-v2-animations]')) {
+    style.setAttribute('data-chat-v2-animations', 'true');
     document.head.appendChild(style);
   }
 }
@@ -59,7 +59,7 @@ const SUGGESTED_QUESTIONS = [
   "Our clean claim rate is dropping — what's causing it, and how do we fix it fast?"
 ];
 
-export default function ChatEmbed() {
+export default function ChatEmbedV2() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
@@ -241,13 +241,7 @@ export default function ChatEmbed() {
   if (!isExpanded) {
     return (
       <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
-        <div className={`w-full max-w-4xl relative ${isFocused ? 'pt-16' : ''} md:pt-0`}>
-          {/* Logo - Top Right of Search Bar */}
-          <img 
-            src="/cosentu-white-logo.png" 
-            alt="Cosentus" 
-            className="absolute -top-10 md:-top-12 right-0 w-32 md:w-48 z-10"
-          />
+        <div className="w-full max-w-4xl relative">
           {/* Oval Search Bar */}
           <form onSubmit={handleSubmit} className="mb-6">
             <div className="relative">
@@ -304,12 +298,6 @@ export default function ChatEmbed() {
   return (
     <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
       <div className="w-full max-w-4xl animate-fadeIn relative">
-        {/* Logo - Top Right of Chat Widget */}
-        <img 
-          src="/cosentu-white-logo.png" 
-          alt="Cosentus" 
-          className="absolute -top-10 md:-top-12 right-0 w-32 md:w-48 z-10"
-        />
         {/* Chat Card */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[90vh] md:h-[78vh]">
           {/* Messages Area */}
