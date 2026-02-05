@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -68,51 +68,130 @@ export default function ChatEmbed() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const streamingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  // Store active streaming sessions by messageId to prevent conflicts
+  const streamingSessionsRef = useRef<Map<string, {
+    fullText: string;
+    currentIndex: number;
+    animationFrameId: number | null;
+    lastUpdateTime: number;
+    isPaused: boolean;
+  }>>(new Map());
+  const streamSpeed = 22; // milliseconds per character
 
-  // Cleanup streaming timeout on unmount
+  // Cleanup all streaming sessions on unmount
   useEffect(() => {
     return () => {
-      if (streamingTimeoutRef.current) {
-        clearTimeout(streamingTimeoutRef.current);
-      }
+      streamingSessionsRef.current.forEach((session) => {
+        if (session.animationFrameId !== null) {
+          cancelAnimationFrame(session.animationFrameId);
+        }
+      });
+      streamingSessionsRef.current.clear();
     };
   }, []);
 
-  // Stream text character by character
-  const streamMessage = (fullText: string, messageId: string) => {
-    let currentIndex = 0;
-    const streamSpeed = 22; // milliseconds per character - optimized for faster streaming (35% faster)
+  // Resume streaming for a specific message
+  const resumeStreaming = useCallback((messageId: string) => {
+    const session = streamingSessionsRef.current.get(messageId);
+    if (!session || session.currentIndex >= session.fullText.length) {
+      return;
+    }
 
-    const streamNextChunk = () => {
-      if (currentIndex < fullText.length) {
-        const chunkSize = Math.floor(Math.random() * 3) + 1; // 1-3 characters at a time for natural feel
-        const nextIndex = Math.min(currentIndex + chunkSize, fullText.length);
-        const textChunk = fullText.slice(0, nextIndex);
-        
-        setMessages(prev => 
-          prev.map(msg => 
-            msg.id === messageId 
-              ? { ...msg, text: textChunk, isStreaming: nextIndex < fullText.length }
-              : msg
-          )
-        );
-        
-        currentIndex = nextIndex;
-        streamingTimeoutRef.current = setTimeout(streamNextChunk, streamSpeed);
-      } else {
-        // Streaming complete
-        setMessages(prev => 
-          prev.map(msg => 
-            msg.id === messageId 
-              ? { ...msg, isStreaming: false }
-              : msg
-          )
-        );
+    const streamNextChunk = (currentTime: number) => {
+      const session = streamingSessionsRef.current.get(messageId);
+      if (!session) return;
+
+      // Check if tab is hidden - pause streaming
+      if (document.hidden) {
+        session.isPaused = true;
+        session.animationFrameId = null;
+        return;
+      }
+
+      // Calculate elapsed time since last update
+      const elapsed = currentTime - session.lastUpdateTime;
+      
+      // Only update if enough time has passed (throttle to streamSpeed)
+      if (elapsed >= streamSpeed) {
+        if (session.currentIndex < session.fullText.length) {
+          const chunkSize = Math.floor(Math.random() * 3) + 1; // 1-3 characters at a time
+          const nextIndex = Math.min(session.currentIndex + chunkSize, session.fullText.length);
+          const textChunk = session.fullText.slice(0, nextIndex);
+          
+          setMessages(prev => 
+            prev.map(msg => 
+              msg.id === messageId 
+                ? { ...msg, text: textChunk, isStreaming: nextIndex < session.fullText.length }
+                : msg
+            )
+          );
+          
+          session.currentIndex = nextIndex;
+          session.lastUpdateTime = currentTime;
+
+          // Check if streaming is complete
+          if (nextIndex >= session.fullText.length) {
+            setMessages(prev => 
+              prev.map(msg => 
+                msg.id === messageId 
+                  ? { ...msg, isStreaming: false }
+                  : msg
+              )
+            );
+            streamingSessionsRef.current.delete(messageId);
+            return;
+          }
+        }
+      }
+
+      // Continue streaming using requestAnimationFrame (more reliable than setTimeout)
+      session.animationFrameId = requestAnimationFrame(streamNextChunk);
+    };
+
+    session.animationFrameId = requestAnimationFrame(streamNextChunk);
+  }, [streamSpeed]);
+
+  // Handle Page Visibility API - resume streaming when tab becomes visible
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        // Tab became visible - resume all paused streams
+        streamingSessionsRef.current.forEach((session, messageId) => {
+          if (session.isPaused && session.currentIndex < session.fullText.length) {
+            session.isPaused = false;
+            session.lastUpdateTime = performance.now();
+            resumeStreaming(messageId);
+          }
+        });
       }
     };
 
-    streamNextChunk();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [resumeStreaming]);
+
+  // Stream text character by character with bulletproof implementation
+  const streamMessage = (fullText: string, messageId: string) => {
+    // Cancel any existing stream for this message
+    const existingSession = streamingSessionsRef.current.get(messageId);
+    if (existingSession && existingSession.animationFrameId !== null) {
+      cancelAnimationFrame(existingSession.animationFrameId);
+    }
+
+    // Create new streaming session
+    const session = {
+      fullText,
+      currentIndex: 0,
+      animationFrameId: null as number | null,
+      lastUpdateTime: performance.now(),
+      isPaused: false,
+    };
+    streamingSessionsRef.current.set(messageId, session);
+
+    // Start streaming
+    resumeStreaming(messageId);
   };
 
   const handleSend = async (messageText?: string) => {
@@ -302,7 +381,7 @@ export default function ChatEmbed() {
 
   // Expanded state - chat widget (responsive height, same width as search bar)
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
+    <div className="flex items-center justify-center min-h-screen pt-8 px-4 pb-4 md:p-8">
       <div className="w-full max-w-4xl animate-fadeIn relative">
         {/* Logo - Top Right of Chat Widget */}
         <img 
