@@ -3,6 +3,7 @@
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
+import { useRateLimit } from '@/hooks/useRateLimit';
 import { AGENTS } from '@/config/agents';
 
 // Agent metadata
@@ -131,6 +132,8 @@ export default function VoiceEmbed() {
     agentId: agentId || '',
   });
 
+  const { rateLimitState, recordCall } = useRateLimit();
+
   if (!agentInfo || !agentId) {
     return (
       <div className="flex items-center justify-center min-h-screen p-4">
@@ -155,6 +158,12 @@ export default function VoiceEmbed() {
 
   const handleBeginDemo = async () => {
     try {
+      // Check client-side rate limit first (friction layer)
+      if (!rateLimitState.allowed) {
+        alert(rateLimitState.message || 'Please wait before starting another conversation.');
+        return;
+      }
+
       // Check if getUserMedia is available
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         alert('Your browser does not support microphone access. Please use a modern browser like Chrome, Firefox, Safari, or Edge.');
@@ -165,12 +174,28 @@ export default function VoiceEmbed() {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       // Stop the test stream immediately (we just needed to check permission)
       stream.getTracks().forEach(track => track.stop());
+      
+      // Record the call attempt (before connecting - if connection fails, we still count it as attempt)
+      recordCall();
+      
       // Now start the actual call
       await connect();
     } catch (err: any) {
-      console.error('Microphone permission error:', err);
+      console.error('Connection error:', err);
       
-      // Provide specific error messages
+      // Check if it's a rate limit error from backend
+      if (err.message && (
+        err.message.includes('Too many') || 
+        err.message.includes('wait') || 
+        err.message.includes('rate limit') ||
+        err.message.includes('429')
+      )) {
+        // Backend rate limit - show the error message from backend
+        alert(err.message || 'Too many demo attempts. Please wait before trying again.');
+        return;
+      }
+      
+      // Provide specific error messages for microphone errors
       if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
         alert('Microphone access was denied. Please allow microphone access in your browser settings and try again.');
       } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
@@ -180,7 +205,8 @@ export default function VoiceEmbed() {
       } else if (err.name === 'SecurityError') {
         alert('Microphone access is blocked. This iframe needs the "allow=microphone" attribute. Please contact the website administrator.');
       } else {
-        alert(`Microphone error: ${err.message || 'Unknown error'}. Please check your browser settings and try again.`);
+        // Generic error - could be connection error, rate limit, etc.
+        alert(err.message || 'Failed to start conversation. Please try again.');
       }
     }
   };

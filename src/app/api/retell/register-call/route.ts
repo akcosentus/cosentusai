@@ -11,28 +11,180 @@
 
 import { NextResponse } from 'next/server';
 
-// RATE LIMITING DISABLED FOR CONFERENCE DEMOS
-// const RATE_LIMIT_WINDOW = 5 * 60 * 1000;   // 5 minutes
-// const MAX_REQUESTS_PER_IP = 3;             // 3 calls per IP per window
-// const rateLimitStore: { [ip: string]: number[] } = {};
+/**
+ * Smart Rate Limiting for Voice Agent Calls
+ * 
+ * Prevents abuse while allowing legitimate use cases:
+ * - User exploring different agents (8 available)
+ * - Reconnection after connection issues
+ * - Multiple users from same network
+ * 
+ * Detection:
+ * - Rapid start/stop cycles (< 30 seconds)
+ * - Too many calls in short time window
+ * - Progressive penalties for abuse
+ */
+
+interface RateLimitEntry {
+  timestamps: number[]; // Call start timestamps
+  rapidCycles: number[]; // Timestamps of rapid cycles (calls < 30s apart)
+  lastCallTime: number | null;
+  suspiciousCount: number; // Count of suspicious patterns
+  blockedUntil: number | null; // Timestamp when block expires
+}
+
+const rateLimitStore: { [ip: string]: RateLimitEntry } = {};
+
+// Rate limit configuration
+// Unlimited for legitimate use - only detect and block automated attacks
+// Attacks are characterized by: very rapid cycles (< 5 seconds), many in quick succession
+const RAPID_CYCLE_THRESHOLD = 5000; // 5 seconds between calls = rapid cycle (catches only aggressive automation)
+const RAPID_CYCLE_LIMIT = 15; // 15 rapid cycles in a row = attack (very high threshold)
+const RAPID_CYCLE_COOLDOWN = 5 * 60 * 1000; // 5 minute cooldown after attack detected
+const BLOCK_DURATION = 30 * 60 * 1000; // 30 minute block for severe attacks
+
+/**
+ * Clean old timestamps using sliding window
+ */
+const cleanTimestamps = (entry: RateLimitEntry, windowMs: number): number[] => {
+  const now = Date.now();
+  return entry.timestamps.filter(ts => now - ts < windowMs);
+};
+
+/**
+ * Check if IP is currently blocked
+ */
+const isBlocked = (entry: RateLimitEntry): { blocked: boolean; until?: number } => {
+  const now = Date.now();
+  if (entry.blockedUntil && now < entry.blockedUntil) {
+    return { blocked: true, until: entry.blockedUntil };
+  }
+  // Reset block if expired
+  if (entry.blockedUntil && now >= entry.blockedUntil) {
+    entry.blockedUntil = null;
+    entry.suspiciousCount = Math.max(0, entry.suspiciousCount - 1); // Reduce suspicion over time
+  }
+  return { blocked: false };
+};
+
+/**
+ * Check rate limits and detect abuse patterns
+ */
+const checkRateLimit = (ip: string): { allowed: boolean; reason?: string; waitTime?: number; cooldown?: number } => {
+  const now = Date.now();
+  let entry = rateLimitStore[ip];
+  
+  // Initialize entry if doesn't exist
+  if (!entry) {
+    entry = {
+      timestamps: [],
+      rapidCycles: [],
+      lastCallTime: null,
+      suspiciousCount: 0,
+      blockedUntil: null,
+    };
+    rateLimitStore[ip] = entry;
+  }
+
+  // Check if currently blocked
+  const blockCheck = isBlocked(entry);
+  if (blockCheck.blocked) {
+    const waitTime = blockCheck.until! - now;
+    return {
+      allowed: false,
+      reason: 'blocked',
+      waitTime: Math.ceil(waitTime / 1000), // Return in seconds
+    };
+  }
+
+  // Clean old timestamps (sliding window) - only for tracking, not limiting
+  entry.timestamps = cleanTimestamps(entry, 60 * 60 * 1000); // 1 hour window for tracking
+  entry.rapidCycles = entry.rapidCycles.filter(ts => now - ts < 5 * 60 * 1000); // 5 minute window for rapid cycles
+
+  // NO CALL COUNT LIMITS - Unlimited for legitimate use
+  // Only detect automated attacks via rapid cycle patterns
+
+  // Detect rapid cycles (calls started < 5 seconds apart - only catches aggressive automation)
+  if (entry.lastCallTime && (now - entry.lastCallTime) < RAPID_CYCLE_THRESHOLD) {
+    entry.rapidCycles.push(now);
+    entry.suspiciousCount++;
+    
+    // Only block if we see MANY rapid cycles in a row (15+) - this is clearly an automated attack
+    if (entry.rapidCycles.length >= RAPID_CYCLE_LIMIT) {
+      // Automated attack detected - block for 30 minutes
+      entry.blockedUntil = now + BLOCK_DURATION;
+      entry.suspiciousCount = 10; // High suspicion
+      console.warn(`[ATTACK DETECTED] IP ${ip} blocked for ${BLOCK_DURATION / 60000} minutes due to automated attack pattern (${entry.rapidCycles.length} rapid cycles)`);
+      return {
+        allowed: false,
+        reason: 'automated_attack',
+        waitTime: Math.ceil(BLOCK_DURATION / 1000),
+      };
+    }
+    
+    // Log suspicious activity but don't block yet (allows legitimate quick switching)
+    if (entry.rapidCycles.length >= 10) {
+      console.warn(`[SUSPICIOUS] IP ${ip} showing rapid cycle pattern (${entry.rapidCycles.length} cycles) - monitoring`);
+    }
+  } else {
+    // Reset rapid cycle count if there's a natural pause (legitimate use)
+    if (entry.lastCallTime && (now - entry.lastCallTime) >= RAPID_CYCLE_THRESHOLD * 2) {
+      // Natural pause detected - reset suspicion
+      entry.rapidCycles = [];
+      entry.suspiciousCount = Math.max(0, entry.suspiciousCount - 1);
+    }
+  }
+
+  // All checks passed - allow the call
+  entry.timestamps.push(now);
+  entry.lastCallTime = now;
+  
+  // Reduce suspicion over time (if no rapid cycles for a while)
+  if (entry.rapidCycles.length === 0 && entry.suspiciousCount > 0) {
+    entry.suspiciousCount = Math.max(0, entry.suspiciousCount - 0.5);
+  }
+
+  return { allowed: true };
+};
 
 export async function POST(request: Request) {
-  // Get IP address for logging only
+  // Get IP address for rate limiting and logging
   const ipRaw = request.headers.get('x-forwarded-for');
   const ip = ipRaw?.split(',')[0].trim() || "127.0.0.1";
 
-  // RATE LIMITING DISABLED - Comment out for conference demos
-  // const now = Date.now();
-  // const timestamps = (rateLimitStore[ip] || []).filter(ts => now - ts < RATE_LIMIT_WINDOW);
-  // if (timestamps.length >= MAX_REQUESTS_PER_IP) {
-  //   console.warn(`[RATE LIMIT BLOCK] ${ip} hit limit - ${new Date().toISOString()}`);
-  //   return NextResponse.json(
-  //     { error: "Too many demo attempts from your device. Please wait a few minutes and try again." },
-  //     { status: 429, headers: { 'Access-Control-Allow-Origin': '*' } }
-  //   );
-  // }
-  // timestamps.push(now);
-  // rateLimitStore[ip] = timestamps;
+  // Check rate limits
+  const rateLimitCheck = checkRateLimit(ip);
+  if (!rateLimitCheck.allowed) {
+    const userAgent = request.headers.get("user-agent") || "unknown";
+    console.warn(`[RATE LIMIT BLOCK] IP=${ip}, Reason=${rateLimitCheck.reason}, WaitTime=${rateLimitCheck.waitTime}s, Time=${new Date().toISOString()}`);
+    
+    // User-friendly error messages (only for detected attacks)
+    let errorMessage = "Automated activity detected. Please wait before trying again.";
+    if (rateLimitCheck.reason === 'automated_attack') {
+      const minutes = Math.ceil(rateLimitCheck.waitTime! / 60);
+      errorMessage = `Automated attack pattern detected. Access temporarily restricted for ${minutes} minute${minutes > 1 ? 's' : ''}.`;
+    } else if (rateLimitCheck.reason === 'blocked') {
+      const minutes = Math.ceil(rateLimitCheck.waitTime! / 60);
+      errorMessage = `Access temporarily restricted. Please wait ${minutes} minute${minutes > 1 ? 's' : ''} before trying again.`;
+    }
+    
+    return NextResponse.json(
+      { 
+        error: errorMessage,
+        waitTime: rateLimitCheck.waitTime,
+        reason: rateLimitCheck.reason,
+      },
+      { 
+        status: 429,
+        headers: { 
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Retry-After': rateLimitCheck.waitTime?.toString() || '300',
+        } 
+      }
+    );
+  }
 
   // Log calls for tracking
   const userAgent = request.headers.get("user-agent") || "unknown";
