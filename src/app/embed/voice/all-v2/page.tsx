@@ -239,11 +239,11 @@ export default function AllVoiceAgents() {
                 <img 
                   src="/avatar-cindy.png" 
                   alt="Cindy" 
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900">Cindy</h3>
-                  <p className="text-[10px] text-gray-600">Payment & Balance</p>
+                  <h3 className="text-lg font-bold text-gray-900">Cindy</h3>
+                  <p className="text-sm text-gray-600">Payment & Balance</p>
                 </div>
               </div>
               <button 
@@ -274,16 +274,16 @@ export default function AllVoiceAgents() {
               <div className="space-y-3">
                 {/* About */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-[11px] text-gray-600 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
                   </p>
                 </div>
 
                 {/* Capabilities */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
                     <li>• Real-time balance inquiries and payment history</li>
                     <li>• Secure credit card payment processing</li>
                     <li>• Balance breakdown by date of service</li>
@@ -505,11 +505,11 @@ export default function AllVoiceAgents() {
                 <img 
                   src="/avatar-michael.png" 
                   alt="Chris" 
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900">Chris</h3>
-                  <p className="text-[10px] text-gray-600">Insurance Claims</p>
+                  <h3 className="text-lg font-bold text-gray-900">Chris</h3>
+                  <p className="text-sm text-gray-600">Insurance Claims</p>
                 </div>
               </div>
               <button 
@@ -540,16 +540,16 @@ export default function AllVoiceAgents() {
               <div className="space-y-3">
                 {/* About */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-[11px] text-gray-600 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
                   </p>
                 </div>
 
                 {/* Capabilities */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
                     <li>• Outbound claim status follow-ups with carriers</li>
                     <li>• Denial investigation and appeal preparation</li>
                     <li>• Missing information requests and documentation</li>
@@ -771,11 +771,11 @@ export default function AllVoiceAgents() {
                 <img 
                   src="/avatar-emily.png" 
                   alt="Emily" 
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900">Emily</h3>
-                  <p className="text-[10px] text-gray-600">Anesthesia Estimates</p>
+                  <h3 className="text-lg font-bold text-gray-900">Emily</h3>
+                  <p className="text-sm text-gray-600">Anesthesia Estimates</p>
                 </div>
               </div>
               <button 
@@ -806,16 +806,16 @@ export default function AllVoiceAgents() {
               <div className="space-y-3">
                 {/* About */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-[11px] text-gray-600 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
                   </p>
                 </div>
 
                 {/* Capabilities */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
                     <li>• Pre-surgery anesthesia cost estimates</li>
                     <li>• Insurance vs. self-pay pricing calculations</li>
                     <li>• Facility-specific rate application</li>
@@ -1034,11 +1034,11 @@ export default function AllVoiceAgents() {
                 <img 
                   src="/avatar-sarah.png" 
                   alt="Sarah" 
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900">Sarah</h3>
-                  <p className="text-[10px] text-gray-600">Appointment Scheduling</p>
+                  <h3 className="text-lg font-bold text-gray-900">Sarah</h3>
+                  <p className="text-sm text-gray-600">Appointment Scheduling</p>
                 </div>
               </div>
               <button 
@@ -1069,16 +1069,16 @@ export default function AllVoiceAgents() {
               <div className="space-y-3">
                 {/* About */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-[11px] text-gray-600 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
                   </p>
                 </div>
 
                 {/* Capabilities */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
                     <li>• Inbound and outbound appointment scheduling</li>
                     <li>• Real-time calendar availability checks</li>
                     <li>• Insurance verification and referral management</li>
@@ -1296,11 +1296,11 @@ export default function AllVoiceAgents() {
                 <img 
                   src="/avatar-allison.png" 
                   alt="Allison" 
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900">Allison</h3>
-                  <p className="text-[10px] text-gray-600">Customer Service</p>
+                  <h3 className="text-lg font-bold text-gray-900">Allison</h3>
+                  <p className="text-sm text-gray-600">Customer Service</p>
                 </div>
               </div>
               <button 
@@ -1331,16 +1331,16 @@ export default function AllVoiceAgents() {
               <div className="space-y-3">
                 {/* About */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-[11px] text-gray-600 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
                   </p>
                 </div>
 
                 {/* Capabilities */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
                     <li>• General billing and account inquiries</li>
                       <li>• Appointment scheduling assistance</li>
                       <li>• Practice information and directions</li>
@@ -1566,11 +1566,11 @@ export default function AllVoiceAgents() {
                 <img 
                   src="/avatar-harper.png" 
                   alt="Harper" 
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900">Harper</h3>
-                  <p className="text-[10px] text-gray-600">Eligibility & Benefits</p>
+                  <h3 className="text-lg font-bold text-gray-900">Harper</h3>
+                  <p className="text-sm text-gray-600">Eligibility & Benefits</p>
                 </div>
               </div>
               <button 
@@ -1601,16 +1601,16 @@ export default function AllVoiceAgents() {
               <div className="space-y-3">
                 {/* About */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-[11px] text-gray-600 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
                   </p>
                 </div>
 
                 {/* Capabilities */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
                     <li>• Real-time insurance eligibility verification</li>
                       <li>• Benefits, deductibles, and coverage limits</li>
                       <li>• In-network vs. out-of-network status</li>
@@ -1827,11 +1827,11 @@ export default function AllVoiceAgents() {
                 <img 
                   src="/avatar-olivia.png" 
                   alt="Olivia" 
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900">Olivia</h3>
-                  <p className="text-[10px] text-gray-600">Prior Authorization</p>
+                  <h3 className="text-lg font-bold text-gray-900">Olivia</h3>
+                  <p className="text-sm text-gray-600">Prior Authorization</p>
                 </div>
               </div>
               <button 
@@ -1862,16 +1862,16 @@ export default function AllVoiceAgents() {
               <div className="space-y-3">
                 {/* About */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-[11px] text-gray-600 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
                   </p>
                 </div>
 
                 {/* Capabilities */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
                     <li>• Prior authorization status tracking</li>
                       <li>• Expedited review requests for urgent cases</li>
                       <li>• Denial reason documentation and appeals</li>
@@ -2088,11 +2088,11 @@ export default function AllVoiceAgents() {
                 <img 
                   src="/avatar-chris.png" 
                   alt="Michael" 
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-sm font-bold text-gray-900">Michael</h3>
-                  <p className="text-[10px] text-gray-600">Payment Reconciliation</p>
+                  <h3 className="text-lg font-bold text-gray-900">Michael</h3>
+                  <p className="text-sm text-gray-600">Payment Reconciliation</p>
                 </div>
               </div>
               <button 
@@ -2123,16 +2123,16 @@ export default function AllVoiceAgents() {
               <div className="space-y-3">
                 {/* About */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-[11px] text-gray-600 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
                     Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
                   </p>
                 </div>
 
                 {/* Capabilities */}
                 <div>
-                  <h4 className="text-xs font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
                     <li>• Missing payment investigation and recovery</li>
                       <li>• Payment discrepancy resolution with carriers</li>
                       <li>• Check trace and reissue requests</li>
