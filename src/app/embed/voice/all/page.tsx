@@ -164,7 +164,6 @@ export default function AllVoiceAgents() {
 
   const handleEndDemo = () => {
     disconnect();
-    setExpandedCard(null);
     setActiveAgent(null);
   };
 

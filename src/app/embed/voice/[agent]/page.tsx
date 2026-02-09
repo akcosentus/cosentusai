@@ -213,7 +213,6 @@ export default function VoiceEmbed() {
 
   const handleEndDemo = () => {
     disconnect();
-    setExpandedCard(null);
   };
 
   return (
