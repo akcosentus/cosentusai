@@ -183,7 +183,7 @@ export default function AllVoiceAgents() {
 
   return (
     <div className="min-h-screen pt-16 pb-4 px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
-      <div className="max-w-[900px] mx-auto relative">
+      <div className="max-w-[872px] mx-auto relative">
         {/* Logo - Top Right of Grid */}
         <img 
           src="/cosentu-white-logo.png" 
