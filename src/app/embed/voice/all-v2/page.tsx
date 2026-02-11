@@ -200,7 +200,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(0)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'cindy' 
-        ? 'w-full p-4 md:p-12 shadow-2xl' 
+        ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
@@ -466,7 +466,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(1)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'chris' 
-        ? 'w-full p-4 md:p-12 shadow-2xl' 
+        ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
@@ -732,7 +732,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(2)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'emily' 
-        ? 'w-full p-4 md:p-12 shadow-2xl' 
+        ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
@@ -995,7 +995,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(3)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'sarah' 
-        ? 'w-full p-4 md:p-12 shadow-2xl' 
+        ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
@@ -1257,7 +1257,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(4)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'allison' 
-        ? 'w-full p-4 md:p-12 shadow-2xl' 
+        ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
@@ -1527,7 +1527,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(5)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'james' 
-        ? 'w-full p-4 md:p-12 shadow-2xl' 
+        ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
@@ -1788,7 +1788,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(6)}
       className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'olivia' 
-          ? 'w-full p-4 md:p-12 shadow-2xl' 
+          ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
           : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
@@ -2049,7 +2049,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(7)}
       className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'michael' 
-          ? 'w-full p-4 md:p-12 shadow-2xl'
+          ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]'
           : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
