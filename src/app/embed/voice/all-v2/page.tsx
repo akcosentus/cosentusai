@@ -198,10 +198,10 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('cindy')}
     style={cardAnimationStyle(0)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'cindy' 
         ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
-        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'cindy' ? (
@@ -464,10 +464,10 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('chris')}
     style={cardAnimationStyle(1)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'chris' 
         ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
-        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'chris' ? (
@@ -730,10 +730,10 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('emily')}
     style={cardAnimationStyle(2)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'emily' 
         ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
-        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'emily' ? (
@@ -993,10 +993,10 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('sarah')}
     style={cardAnimationStyle(3)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'sarah' 
         ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
-        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'sarah' ? (
@@ -1255,10 +1255,10 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('allison')}
     style={cardAnimationStyle(4)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'allison' 
         ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
-        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'allison' ? (
@@ -1525,10 +1525,10 @@ export default function AllVoiceAgents() {
   <div 
     onClick={() => !isConnected && handleExpandCard('james')}
     style={cardAnimationStyle(5)}
-    className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
+    className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'james' 
         ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
-        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
+        : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'james' ? (
@@ -1786,10 +1786,10 @@ export default function AllVoiceAgents() {
   <div 
       onClick={() => !isConnected && handleExpandCard('olivia')}
       style={cardAnimationStyle(6)}
-      className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
+      className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'olivia' 
           ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]' 
-          : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
+          : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
     {!expandedCard || expandedCard === 'olivia' ? (
@@ -2047,10 +2047,10 @@ export default function AllVoiceAgents() {
     <div 
       onClick={() => !isConnected && handleExpandCard('michael')}
       style={cardAnimationStyle(7)}
-      className={`agent-card group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-opacity duration-300 cursor-pointer ${
+      className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'michael' 
           ? 'w-full p-4 md:p-12 shadow-[0_0_40px_rgba(0,0,0,0.25)]'
-          : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1'
+          : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
     {!expandedCard || expandedCard === 'michael' ? (
