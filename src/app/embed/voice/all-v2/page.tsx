@@ -193,10 +193,10 @@ export default function AllVoiceAgents() {
   return (
     <div className="min-h-screen pt-16 pb-4 px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
 
-      {/* Preload all avatar images so expanded cards render instantly */}
-      <div className="hidden">
+      {/* Preload all avatar images (raw URLs) so expanded cards render instantly */}
+      <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
         {['/avatar-cindy.png', '/avatar-michael.png', '/avatar-emily.png', '/avatar-sarah.png', '/avatar-allison.png', '/avatar-harper.png', '/avatar-olivia.png', '/avatar-chris.png'].map((src) => (
-          <Image key={src} src={src} alt="" width={80} height={80} priority />
+          <img key={src} src={src} alt="" />
         ))}
       </div>
 
@@ -320,7 +320,7 @@ export default function AllVoiceAgents() {
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
               src="/avatar-cindy.png" 
-              alt="Cindy"
+              alt="Cindy" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
               priority
@@ -662,7 +662,7 @@ export default function AllVoiceAgents() {
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
               src="/avatar-michael.png" 
-              alt="Chris"
+              alt="Chris" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
               priority
@@ -1005,7 +1005,7 @@ export default function AllVoiceAgents() {
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
               src="/avatar-emily.png" 
-              alt="Emily"
+              alt="Emily" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
               priority
@@ -1348,7 +1348,7 @@ export default function AllVoiceAgents() {
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
               src="/avatar-sarah.png" 
-              alt="Sarah"
+              alt="Sarah" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
               priority
@@ -1690,7 +1690,7 @@ export default function AllVoiceAgents() {
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
               src="/avatar-allison.png" 
-              alt="Allison"
+              alt="Allison" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
               priority
@@ -2033,7 +2033,7 @@ export default function AllVoiceAgents() {
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
               src="/avatar-harper.png" 
-              alt="Harper"
+              alt="Harper" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
               priority
@@ -2376,7 +2376,7 @@ export default function AllVoiceAgents() {
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
               src="/avatar-olivia.png" 
-              alt="Olivia"
+              alt="Olivia" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
               priority
@@ -2719,7 +2719,7 @@ export default function AllVoiceAgents() {
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
               src="/avatar-chris.png" 
-              alt="Michael"
+              alt="Michael" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
               priority
