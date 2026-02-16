@@ -630,7 +630,7 @@ export default function AllVoiceAgents() {
           <>
             <div className="flex items-center gap-3 mb-3 md:flex-col md:items-start md:gap-0">
               <img 
-                src="/avatar-michael.png" 
+                src="/avatar-chris.png" 
                 alt="Chris" 
                 className="w-20 h-20 md:w-12 md:h-12 rounded-full object-cover md:mb-3"
               />
@@ -837,7 +837,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-michael.png" 
+                    src="/avatar-chris.png" 
 
                     alt="Chris" 
 
@@ -2009,12 +2009,12 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-james.png" 
-                  alt="James" 
+                  src="/avatar-harper.png" 
+                  alt="Harper" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">James</h3>
+                  <h3 className="text-lg font-bold text-gray-900">Harper</h3>
                   <p className="text-sm text-gray-600">Eligibility Verification</p>
                 </div>
               </div>
@@ -2041,7 +2041,7 @@ export default function AllVoiceAgents() {
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
-                          James specializes in real-time insurance eligibility verification. He can check patient coverage, verify benefits, and confirm authorization requirements before appointments.
+                          Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
                         </p>
                       </div>
                       <div>
@@ -2057,7 +2057,7 @@ export default function AllVoiceAgents() {
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Prior authorization requirement identification</span>
+                            <span className="text-gray-600 text-sm">Deductible and co-pay confirmation</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
@@ -2097,7 +2097,7 @@ export default function AllVoiceAgents() {
                 {isConnected && (
                   <>
                     <p className="text-sm text-gray-500 mt-3">
-                      {isRecording ? 'James is speaking...' : 'Listening...'}
+                      {isRecording ? 'Harper is speaking...' : 'Listening...'}
                     </p>
                     <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
@@ -2134,7 +2134,7 @@ export default function AllVoiceAgents() {
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            James specializes in real-time insurance eligibility verification. He can check patient coverage, verify benefits, and confirm authorization requirements before appointments.
+                            Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
                           </p>
                         </div>
                         <div>
@@ -2150,7 +2150,7 @@ export default function AllVoiceAgents() {
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Prior authorization requirement identification</span>
+                            <span className="text-gray-600 text-sm">Deductible and co-pay confirmation</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
@@ -2663,7 +2663,7 @@ export default function AllVoiceAgents() {
           <>
             <div className="flex items-center gap-3 mb-3 md:flex-col md:items-start md:gap-0">
               <img 
-                src="/avatar-chris.png" 
+                src="/avatar-michael.png" 
                 alt="Michael" 
                 className="w-20 h-20 md:w-12 md:h-12 rounded-full object-cover md:mb-3"
               />
@@ -2870,7 +2870,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-chris.png" 
+                    src="/avatar-michael.png" 
 
                     alt="Michael" 
 

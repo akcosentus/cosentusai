@@ -313,7 +313,7 @@ export default function AllVoiceAgents() {
             <img 
               src="/avatar-cindy.png" 
               alt="Cindy" 
-                className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
+                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -650,9 +650,9 @@ export default function AllVoiceAgents() {
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
             <img 
-              src="/avatar-michael.png" 
+              src="/avatar-chris.png" 
               alt="Chris" 
-                className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
+                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -857,7 +857,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-michael.png" 
+                    src="/avatar-chris.png" 
 
                     alt="Chris" 
 
@@ -992,7 +992,7 @@ export default function AllVoiceAgents() {
             <img 
               src="/avatar-emily.png" 
               alt="Emily" 
-                className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
+                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -1332,7 +1332,7 @@ export default function AllVoiceAgents() {
             <img 
               src="/avatar-sarah.png" 
               alt="Sarah" 
-                className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
+                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -1671,7 +1671,7 @@ export default function AllVoiceAgents() {
             <img 
               src="/avatar-allison.png" 
               alt="Allison" 
-                className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
+                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -2011,7 +2011,7 @@ export default function AllVoiceAgents() {
             <img 
               src="/avatar-harper.png" 
               alt="Harper" 
-                className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
+                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -2033,12 +2033,12 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-james.png" 
-                  alt="James" 
+                  src="/avatar-harper.png" 
+                  alt="Harper" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">James</h3>
+                  <h3 className="text-lg font-bold text-gray-900">Harper</h3>
                   <p className="text-sm text-gray-600">Eligibility Verification</p>
                 </div>
               </div>
@@ -2065,7 +2065,7 @@ export default function AllVoiceAgents() {
                 <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
-                          James specializes in real-time insurance eligibility verification. He can check patient coverage, verify benefits, and confirm authorization requirements before appointments.
+                    Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
                   </p>
                 </div>
                 <div>
@@ -2081,7 +2081,7 @@ export default function AllVoiceAgents() {
               </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Prior authorization requirement identification</span>
+                            <span className="text-gray-600 text-sm">Deductible and co-pay confirmation</span>
             </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
@@ -2121,7 +2121,7 @@ export default function AllVoiceAgents() {
                 {isConnected && (
                   <>
                     <p className="text-sm text-gray-500 mt-3">
-                      {isRecording ? 'James is speaking...' : 'Listening...'}
+                      {isRecording ? 'Harper is speaking...' : 'Listening...'}
                     </p>
                 <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
@@ -2158,7 +2158,7 @@ export default function AllVoiceAgents() {
                 <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            James specializes in real-time insurance eligibility verification. He can check patient coverage, verify benefits, and confirm authorization requirements before appointments.
+                    Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
                   </p>
                 </div>
                 <div>
@@ -2174,7 +2174,7 @@ export default function AllVoiceAgents() {
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Prior authorization requirement identification</span>
+                            <span className="text-gray-600 text-sm">Deductible and co-pay confirmation</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
@@ -2351,7 +2351,7 @@ export default function AllVoiceAgents() {
             <img 
               src="/avatar-olivia.png" 
               alt="Olivia" 
-                className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
+                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -2689,9 +2689,9 @@ export default function AllVoiceAgents() {
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
             <img 
-              src="/avatar-chris.png" 
+              src="/avatar-michael.png" 
               alt="Michael" 
-                className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
+                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -2896,7 +2896,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-chris.png" 
+                    src="/avatar-michael.png" 
 
                     alt="Michael" 
 
