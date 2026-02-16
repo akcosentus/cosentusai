@@ -189,7 +189,7 @@ export default function AllVoiceAgents() {
           position: relative !important;
           overflow: hidden !important;
           border: none !important;
-          background: transparent !important;
+          background: #01B2D6 !important;
           filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.12));
         }
         
@@ -202,25 +202,19 @@ export default function AllVoiceAgents() {
           height: 300%;
           background: conic-gradient(
             from 0deg,
-            rgba(1, 178, 214, 0.5) 0%,
-            rgba(1, 178, 214, 0.5) 5%,
-            rgba(1, 178, 214, 0.55) 12%,
-            rgba(1, 178, 214, 0.62) 20%,
-            rgba(1, 178, 214, 0.7) 27%,
-            rgba(1, 178, 214, 0.8) 33%,
-            rgba(1, 178, 214, 0.9) 39%,
-            #01B2D6 45%,
-            #01B2D6 50%,
-            rgba(1, 178, 214, 0.9) 56%,
-            rgba(1, 178, 214, 0.8) 62%,
-            rgba(1, 178, 214, 0.7) 68%,
-            rgba(1, 178, 214, 0.62) 75%,
-            rgba(1, 178, 214, 0.55) 83%,
-            rgba(1, 178, 214, 0.5) 90%,
-            rgba(1, 178, 214, 0.5) 100%
+            transparent 0%,
+            transparent 30%,
+            rgba(255, 255, 255, 0.12) 37%,
+            rgba(255, 255, 255, 0.25) 42%,
+            rgba(255, 255, 255, 0.35) 46%,
+            rgba(255, 255, 255, 0.35) 54%,
+            rgba(255, 255, 255, 0.25) 58%,
+            rgba(255, 255, 255, 0.12) 63%,
+            transparent 70%,
+            transparent 100%
           );
           transform: translate(-50%, -50%) rotate(0deg);
-          animation: border-spin 8s linear infinite;
+          animation: border-spin 10s linear infinite;
           z-index: 0;
           pointer-events: none;
         }
