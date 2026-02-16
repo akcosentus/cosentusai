@@ -190,18 +190,18 @@ export default function AllVoiceAgents() {
           background: conic-gradient(
             from 0deg,
             transparent 0%,
-            transparent 30%,
-            rgba(255, 255, 255, 0.12) 37%,
-            rgba(255, 255, 255, 0.25) 42%,
-            rgba(255, 255, 255, 0.35) 46%,
-            rgba(255, 255, 255, 0.35) 54%,
-            rgba(255, 255, 255, 0.25) 58%,
-            rgba(255, 255, 255, 0.12) 63%,
-            transparent 70%,
+            transparent 28%,
+            rgba(255, 255, 255, 0.18) 35%,
+            rgba(255, 255, 255, 0.38) 41%,
+            rgba(255, 255, 255, 0.5) 46%,
+            rgba(255, 255, 255, 0.5) 54%,
+            rgba(255, 255, 255, 0.38) 59%,
+            rgba(255, 255, 255, 0.18) 65%,
+            transparent 72%,
             transparent 100%
           );
           transform: translate(-50%, -50%) rotate(0deg);
-          animation: border-spin 10s linear infinite;
+          animation: border-spin 14s linear infinite;
           z-index: 0;
           pointer-events: none;
         }
