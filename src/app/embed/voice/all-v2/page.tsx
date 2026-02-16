@@ -203,8 +203,8 @@ export default function AllVoiceAgents() {
           height: 300%;
           background: conic-gradient(
             from 0deg,
-            transparent 0%,
-            transparent 5%,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0) 5%,
             rgba(255, 255, 255, 0.05) 7%,
             rgba(255, 255, 255, 0.12) 9%,
             rgba(255, 255, 255, 0.22) 11%,
@@ -216,8 +216,8 @@ export default function AllVoiceAgents() {
             rgba(255, 255, 255, 0.22) 23%,
             rgba(255, 255, 255, 0.12) 25%,
             rgba(255, 255, 255, 0.05) 27%,
-            transparent 29%,
-            transparent 55%,
+            rgba(255, 255, 255, 0) 29%,
+            rgba(255, 255, 255, 0) 55%,
             rgba(255, 255, 255, 0.05) 57%,
             rgba(255, 255, 255, 0.12) 59%,
             rgba(255, 255, 255, 0.22) 61%,
@@ -229,8 +229,8 @@ export default function AllVoiceAgents() {
             rgba(255, 255, 255, 0.22) 73%,
             rgba(255, 255, 255, 0.12) 75%,
             rgba(255, 255, 255, 0.05) 77%,
-            transparent 79%,
-            transparent 100%
+            rgba(255, 255, 255, 0) 79%,
+            rgba(255, 255, 255, 0) 100%
           );
           transform: translate(-50%, -50%) rotate(0deg);
           animation: border-spin 14s linear infinite;
