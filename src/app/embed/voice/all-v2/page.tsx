@@ -41,6 +41,7 @@ export default function AllVoiceAgents() {
   const [activeAgent, setActiveAgent] = useState<'allison' | 'cindy' | 'chris' | 'james' | 'olivia' | 'michael' | 'emily' | 'sarah' | null>(null);
   const [aboutExpanded, setAboutExpanded] = useState(false);
   const [capabilitiesExpanded, setCapabilitiesExpanded] = useState(false);
+  const [mobileDetailsOpen, setMobileDetailsOpen] = useState(false);
 
   // Only animate cards once per page load (prevents "second ripple" on remount/hydration)
   const [shouldAnimateCards] = useState(() => {
@@ -58,7 +59,13 @@ export default function AllVoiceAgents() {
   useEffect(() => {
     setAboutExpanded(false);
     setCapabilitiesExpanded(false);
+    setMobileDetailsOpen(false);
   }, [expandedCard]);
+
+  // Reset mobile details sheet when conversation ends
+  useEffect(() => {
+    if (!isConnected) setMobileDetailsOpen(false);
+  }, [isConnected]);
 
   const cardAnimationStyle = (index: number): CSSProperties | undefined => {
     if (!shouldAnimateCards) return undefined;
@@ -316,9 +323,9 @@ export default function AllVoiceAgents() {
         {expandedCard === 'cindy' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[500px]">
+          <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
                   src="/avatar-cindy.png" 
@@ -343,73 +350,111 @@ export default function AllVoiceAgents() {
               </button>
             </div>
 
-            {/* Status Bar */}
-            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Speaking...' : 'Listening...') : 'Ready to start'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content - All visible, no scrolling */}
-            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
-              <div className="space-y-3">
-                {/* About */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
-                  </p>
+            {/* Content Area */}
+            <div className="flex-1 relative overflow-hidden">
+              {/* Idle State - About/Capabilities */}
+              {!isConnected && !isConnecting && (
+                <div className="h-full flex flex-col">
+                  <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                          <li>• Real-time balance inquiries and payment history</li>
+                          <li>• Secure credit card payment processing</li>
+                          <li>• Balance breakdown by date of service</li>
+                          <li>• Insurance coverage explanations</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 border-t border-gray-200 bg-white">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
+                      className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
+                    >
+                      Begin Conversation
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                {/* Capabilities */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                    <li>• Real-time balance inquiries and payment history</li>
-                    <li>• Secure credit card payment processing</li>
-                    <li>• Balance breakdown by date of service</li>
-                    <li>• Insurance coverage explanations</li>
-                  </ul>
+              {/* Connecting State */}
+              {isConnecting && (
+                <div className="h-full flex flex-col items-center justify-center bg-white">
+                  <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
-              </div>
-            </div>
+              )}
 
-            {/* Fixed Bottom Button */}
-            <div className="p-3 border-t border-gray-200 bg-white">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBeginDemo();
-                  }}
-                  disabled={isConnecting}
-                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    'Begin Conversation'
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
-                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
+              {/* Active Conversation State */}
+              {isConnected && (
+                <>
+                  {/* Orb + Status */}
+                  <div className="h-full flex flex-col items-center justify-center bg-white pb-12">
+                    <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
+                      <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">
+                      {isRecording ? 'Cindy is speaking...' : 'Listening...'}
+                    </p>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
+                      className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
+                    >
+                      End Conversation
+                    </button>
+                  </div>
+
+                  {/* Bottom Sheet Overlay */}
+                  <div 
+                    className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl z-20 transition-transform duration-300 ease-out ${
+                      mobileDetailsOpen ? 'translate-y-0' : 'translate-y-[calc(100%-44px)]'
+                    }`}
+                    style={{ height: 'calc(100% - 48px)', boxShadow: '0 -4px 20px rgba(0,0,0,0.12)' }}
+                  >
+                    {/* Handle */}
+                    <div 
+                      onClick={() => setMobileDetailsOpen(!mobileDetailsOpen)}
+                      className="flex flex-col items-center pt-3 pb-2 cursor-pointer"
+                    >
+                      <div className="w-10 h-1 bg-gray-300 rounded-full" />
+                      <p className="text-xs font-medium text-gray-400 mt-1.5">
+                        {mobileDetailsOpen ? 'Tap to close' : 'Details'}
+                      </p>
+                    </div>
+                    
+                    {/* Scrollable Content */}
+                    <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                            <li>• Real-time balance inquiries and payment history</li>
+                            <li>• Secure credit card payment processing</li>
+                            <li>• Balance breakdown by date of service</li>
+                            <li>• Insurance coverage explanations</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -573,12 +618,12 @@ export default function AllVoiceAgents() {
         {expandedCard === 'chris' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[500px]">
+          <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-michael.png" 
+                  src="/avatar-chris.png" 
                   alt="Chris" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -600,76 +645,115 @@ export default function AllVoiceAgents() {
               </button>
             </div>
 
-            {/* Status Bar */}
-            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Speaking...' : 'Listening...') : 'Ready to start'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content - All visible, no scrolling */}
-            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
-              <div className="space-y-3">
-                {/* About */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
-                  </p>
+            {/* Content Area */}
+            <div className="flex-1 relative overflow-hidden">
+              {/* Idle State - About/Capabilities */}
+              {!isConnected && !isConnecting && (
+                <div className="h-full flex flex-col">
+                  <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Chris specializes in outbound calls to insurance carriers. He can follow up on claim statuses, investigate denials, and handle the time-consuming process of waiting on hold with insurance companies.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                            <li>• Outbound claim status follow-ups with carriers</li>
+                            <li>• Denial investigation and appeal preparation</li>
+                            <li>• Missing information requests and documentation</li>
+                            <li>• Timely filing deadline tracking</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 border-t border-gray-200 bg-white">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
+                      className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
+                    >
+                      Begin Conversation
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                {/* Capabilities */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                    <li>• Outbound claim status follow-ups with carriers</li>
-                    <li>• Denial investigation and appeal preparation</li>
-                    <li>• Missing information requests and documentation</li>
-                    <li>• Timely filing deadline tracking</li>
-                  </ul>
+              {/* Connecting State */}
+              {isConnecting && (
+                <div className="h-full flex flex-col items-center justify-center bg-white">
+                  <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
-              </div>
-            </div>
+              )}
 
-            {/* Fixed Bottom Button */}
-            <div className="p-3 border-t border-gray-200 bg-white">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBeginDemo();
-                  }}
-                  disabled={isConnecting}
-                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    'Begin Conversation'
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
-                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
+              {/* Active Conversation State */}
+              {isConnected && (
+                <>
+                  {/* Orb + Status */}
+                  <div className="h-full flex flex-col items-center justify-center bg-white pb-12">
+                    <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
+                      <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">
+                      {isRecording ? 'Chris is speaking...' : 'Listening...'}
+                    </p>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
+                      className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
+                    >
+                      End Conversation
+                    </button>
+                  </div>
+
+                  {/* Bottom Sheet Overlay */}
+                  <div 
+                    className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl z-20 transition-transform duration-300 ease-out ${
+                      mobileDetailsOpen ? 'translate-y-0' : 'translate-y-[calc(100%-44px)]'
+                    }`}
+                    style={{ height: 'calc(100% - 48px)', boxShadow: '0 -4px 20px rgba(0,0,0,0.12)' }}
+                  >
+                    {/* Handle */}
+                    <div 
+                      onClick={() => setMobileDetailsOpen(!mobileDetailsOpen)}
+                      className="flex flex-col items-center pt-3 pb-2 cursor-pointer"
+                    >
+                      <div className="w-10 h-1 bg-gray-300 rounded-full" />
+                      <p className="text-xs font-medium text-gray-400 mt-1.5">
+                        {mobileDetailsOpen ? 'Tap to close' : 'Details'}
+                      </p>
+                    </div>
+                    
+                    {/* Scrollable Content */}
+                    <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            Chris specializes in outbound calls to insurance carriers. He can follow up on claim statuses, investigate denials, and handle the time-consuming process of waiting on hold with insurance companies.
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                              <li>• Outbound claim status follow-ups with carriers</li>
+                              <li>• Denial investigation and appeal preparation</li>
+                              <li>• Missing information requests and documentation</li>
+                              <li>• Timely filing deadline tracking</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
+
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
@@ -830,9 +914,9 @@ export default function AllVoiceAgents() {
         {expandedCard === 'emily' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[500px]">
+          <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
                   src="/avatar-emily.png" 
@@ -857,76 +941,115 @@ export default function AllVoiceAgents() {
               </button>
             </div>
 
-            {/* Status Bar */}
-            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Speaking...' : 'Listening...') : 'Ready to start'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content - All visible, no scrolling */}
-            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
-              <div className="space-y-3">
-                {/* About */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
-                  </p>
+            {/* Content Area */}
+            <div className="flex-1 relative overflow-hidden">
+              {/* Idle State - About/Capabilities */}
+              {!isConnected && !isConnecting && (
+                <div className="h-full flex flex-col">
+                  <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Emily provides detailed, accurate anesthesia cost estimates based on procedure type and patient insurance. She helps patients understand their expected out-of-pocket costs before surgery.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                            <li>• Personalized anesthesia cost calculations</li>
+                            <li>• Insurance benefit verification for procedures</li>
+                            <li>• Out-of-pocket cost breakdowns</li>
+                            <li>• Pre-procedure financial counseling</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 border-t border-gray-200 bg-white">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
+                      className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
+                    >
+                      Begin Conversation
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                {/* Capabilities */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                    <li>• Pre-surgery anesthesia cost estimates</li>
-                    <li>• Insurance vs. self-pay pricing calculations</li>
-                    <li>• Facility-specific rate application</li>
-                    <li>• Payment plan and financial assistance options</li>
-                  </ul>
+              {/* Connecting State */}
+              {isConnecting && (
+                <div className="h-full flex flex-col items-center justify-center bg-white">
+                  <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
-              </div>
-            </div>
+              )}
 
-            {/* Fixed Bottom Button */}
-            <div className="p-3 border-t border-gray-200 bg-white">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBeginDemo();
-                  }}
-                  disabled={isConnecting}
-                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    'Begin Conversation'
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
-                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
+              {/* Active Conversation State */}
+              {isConnected && (
+                <>
+                  {/* Orb + Status */}
+                  <div className="h-full flex flex-col items-center justify-center bg-white pb-12">
+                    <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
+                      <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">
+                      {isRecording ? 'Emily is speaking...' : 'Listening...'}
+                    </p>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
+                      className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
+                    >
+                      End Conversation
+                    </button>
+                  </div>
+
+                  {/* Bottom Sheet Overlay */}
+                  <div 
+                    className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl z-20 transition-transform duration-300 ease-out ${
+                      mobileDetailsOpen ? 'translate-y-0' : 'translate-y-[calc(100%-44px)]'
+                    }`}
+                    style={{ height: 'calc(100% - 48px)', boxShadow: '0 -4px 20px rgba(0,0,0,0.12)' }}
+                  >
+                    {/* Handle */}
+                    <div 
+                      onClick={() => setMobileDetailsOpen(!mobileDetailsOpen)}
+                      className="flex flex-col items-center pt-3 pb-2 cursor-pointer"
+                    >
+                      <div className="w-10 h-1 bg-gray-300 rounded-full" />
+                      <p className="text-xs font-medium text-gray-400 mt-1.5">
+                        {mobileDetailsOpen ? 'Tap to close' : 'Details'}
+                      </p>
+                    </div>
+                    
+                    {/* Scrollable Content */}
+                    <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            Emily provides detailed, accurate anesthesia cost estimates based on procedure type and patient insurance. She helps patients understand their expected out-of-pocket costs before surgery.
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                              <li>• Personalized anesthesia cost calculations</li>
+                              <li>• Insurance benefit verification for procedures</li>
+                              <li>• Out-of-pocket cost breakdowns</li>
+                              <li>• Pre-procedure financial counseling</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
+
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
@@ -1087,10 +1210,10 @@ export default function AllVoiceAgents() {
         {expandedCard === 'sarah' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[500px]">
+          <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
+              <div className="flex items-center gap-2">
                 <img 
                   src="/avatar-sarah.png" 
                   alt="Sarah" 
@@ -1098,7 +1221,7 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">Sarah</h3>
-                  <p className="text-sm text-gray-600">Appointment Scheduling</p>
+                  <p className="text-sm text-gray-600">Appt. Scheduling</p>
                 </div>
               </div>
               <button 
@@ -1108,82 +1231,121 @@ export default function AllVoiceAgents() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-1"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Status Bar */}
-            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Sarah Speaking...' : 'Listening...') : 'Ready to start'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content - All visible, no scrolling */}
-            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
-              <div className="space-y-3">
-                {/* About */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
-                  </p>
+            {/* Content Area */}
+            <div className="flex-1 relative overflow-hidden">
+              {/* Idle State - About/Capabilities */}
+              {!isConnected && !isConnecting && (
+                <div className="h-full flex flex-col">
+                  <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Sarah handles appointment scheduling with natural, conversational interactions. She can check availability, book appointments, send confirmations, and manage rescheduling requests across multiple providers.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                            <li>• Real-time availability checking across providers</li>
+                            <li>• Automated appointment confirmations and reminders</li>
+                            <li>• Intelligent rescheduling and cancellation handling</li>
+                            <li>• Multi-location scheduling coordination</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 border-t border-gray-200 bg-white">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
+                      className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
+                    >
+                      Begin Conversation
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                {/* Capabilities */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                    <li>• Inbound and outbound appointment scheduling</li>
-                    <li>• Real-time calendar availability checks</li>
-                    <li>• Insurance verification and referral management</li>
-                    <li>• Automated reminders and rescheduling</li>
-                  </ul>
+              {/* Connecting State */}
+              {isConnecting && (
+                <div className="h-full flex flex-col items-center justify-center bg-white">
+                  <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
-              </div>
-            </div>
+              )}
 
-            {/* Fixed Bottom Button */}
-            <div className="p-3 border-t border-gray-200 bg-white">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBeginDemo();
-                  }}
-                  disabled={isConnecting}
-                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    'Begin Conversation'
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
-                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
+              {/* Active Conversation State */}
+              {isConnected && (
+                <>
+                  {/* Orb + Status */}
+                  <div className="h-full flex flex-col items-center justify-center bg-white pb-12">
+                    <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
+                      <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">
+                      {isRecording ? 'Sarah is speaking...' : 'Listening...'}
+                    </p>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
+                      className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
+                    >
+                      End Conversation
+                    </button>
+                  </div>
+
+                  {/* Bottom Sheet Overlay */}
+                  <div 
+                    className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl z-20 transition-transform duration-300 ease-out ${
+                      mobileDetailsOpen ? 'translate-y-0' : 'translate-y-[calc(100%-44px)]'
+                    }`}
+                    style={{ height: 'calc(100% - 48px)', boxShadow: '0 -4px 20px rgba(0,0,0,0.12)' }}
+                  >
+                    {/* Handle */}
+                    <div 
+                      onClick={() => setMobileDetailsOpen(!mobileDetailsOpen)}
+                      className="flex flex-col items-center pt-3 pb-2 cursor-pointer"
+                    >
+                      <div className="w-10 h-1 bg-gray-300 rounded-full" />
+                      <p className="text-xs font-medium text-gray-400 mt-1.5">
+                        {mobileDetailsOpen ? 'Tap to close' : 'Details'}
+                      </p>
+                    </div>
+                    
+                    {/* Scrollable Content */}
+                    <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            Sarah handles appointment scheduling with natural, conversational interactions. She can check availability, book appointments, send confirmations, and manage rescheduling requests across multiple providers.
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                              <li>• Real-time availability checking across providers</li>
+                              <li>• Automated appointment confirmations and reminders</li>
+                              <li>• Intelligent rescheduling and cancellation handling</li>
+                              <li>• Multi-location scheduling coordination</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
+
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
@@ -1343,10 +1505,10 @@ export default function AllVoiceAgents() {
         {expandedCard === 'allison' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[500px]">
+          <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
+              <div className="flex items-center gap-2">
                 <img 
                   src="/avatar-allison.png" 
                   alt="Allison" 
@@ -1354,7 +1516,7 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">Allison</h3>
-                  <p className="text-sm text-gray-600">Customer Service</p>
+                  <p className="text-sm text-gray-600">Customer Support</p>
                 </div>
               </div>
               <button 
@@ -1364,82 +1526,121 @@ export default function AllVoiceAgents() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-1"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Status Bar */}
-            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Allison Speaking...' : 'Listening...') : 'Ready to start'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content - All visible, no scrolling */}
-            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
-              <div className="space-y-3">
-                {/* About */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
-                  </p>
+            {/* Content Area */}
+            <div className="flex-1 relative overflow-hidden">
+              {/* Idle State - About/Capabilities */}
+              {!isConnected && !isConnecting && (
+                <div className="h-full flex flex-col">
+                  <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Allison provides comprehensive front-desk support, handling general inquiries, routing calls, and ensuring patients get connected to the right department or information they need.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                            <li>• General inquiry handling and call routing</li>
+                            <li>• Office hours and location information</li>
+                            <li>• Patient intake and registration assistance</li>
+                            <li>• FAQ and common question resolution</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 border-t border-gray-200 bg-white">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
+                      className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
+                    >
+                      Begin Conversation
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                {/* Capabilities */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                    <li>• General billing and account inquiries</li>
-                      <li>• Appointment scheduling assistance</li>
-                      <li>• Practice information and directions</li>
-                      <li>• After-hours call handling</li>
-                  </ul>
+              {/* Connecting State */}
+              {isConnecting && (
+                <div className="h-full flex flex-col items-center justify-center bg-white">
+                  <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
-              </div>
-            </div>
+              )}
 
-            {/* Fixed Bottom Button */}
-            <div className="p-3 border-t border-gray-200 bg-white">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBeginDemo();
-                  }}
-                  disabled={isConnecting}
-                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    'Begin Conversation'
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
-                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
+              {/* Active Conversation State */}
+              {isConnected && (
+                <>
+                  {/* Orb + Status */}
+                  <div className="h-full flex flex-col items-center justify-center bg-white pb-12">
+                    <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
+                      <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">
+                      {isRecording ? 'Allison is speaking...' : 'Listening...'}
+                    </p>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
+                      className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
+                    >
+                      End Conversation
+                    </button>
+                  </div>
+
+                  {/* Bottom Sheet Overlay */}
+                  <div 
+                    className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl z-20 transition-transform duration-300 ease-out ${
+                      mobileDetailsOpen ? 'translate-y-0' : 'translate-y-[calc(100%-44px)]'
+                    }`}
+                    style={{ height: 'calc(100% - 48px)', boxShadow: '0 -4px 20px rgba(0,0,0,0.12)' }}
+                  >
+                    {/* Handle */}
+                    <div 
+                      onClick={() => setMobileDetailsOpen(!mobileDetailsOpen)}
+                      className="flex flex-col items-center pt-3 pb-2 cursor-pointer"
+                    >
+                      <div className="w-10 h-1 bg-gray-300 rounded-full" />
+                      <p className="text-xs font-medium text-gray-400 mt-1.5">
+                        {mobileDetailsOpen ? 'Tap to close' : 'Details'}
+                      </p>
+                    </div>
+                    
+                    {/* Scrollable Content */}
+                    <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            Allison provides comprehensive front-desk support, handling general inquiries, routing calls, and ensuring patients get connected to the right department or information they need.
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                              <li>• General inquiry handling and call routing</li>
+                              <li>• Office hours and location information</li>
+                              <li>• Patient intake and registration assistance</li>
+                              <li>• FAQ and common question resolution</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
+
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
@@ -1600,18 +1801,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'james' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[500px]">
+          <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
+              <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-harper.png" 
-                  alt="Harper" 
+                  src="/avatar-james.png" 
+                  alt="James" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Harper</h3>
-                  <p className="text-sm text-gray-600">Eligibility & Benefits</p>
+                  <h3 className="text-lg font-bold text-gray-900">James</h3>
+                  <p className="text-sm text-gray-600">Eligibility Verification</p>
                 </div>
               </div>
               <button 
@@ -1621,82 +1822,121 @@ export default function AllVoiceAgents() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-1"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Status Bar */}
-            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Harper Speaking...' : 'Listening...') : 'Ready to start'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content - All visible, no scrolling */}
-            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
-              <div className="space-y-3">
-                {/* About */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
-                  </p>
+            {/* Content Area */}
+            <div className="flex-1 relative overflow-hidden">
+              {/* Idle State - About/Capabilities */}
+              {!isConnected && !isConnecting && (
+                <div className="h-full flex flex-col">
+                  <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          James specializes in real-time insurance eligibility verification. He can check patient coverage, verify benefits, and confirm authorization requirements before appointments.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                            <li>• Real-time insurance eligibility checks</li>
+                            <li>• Benefit verification and coverage details</li>
+                            <li>• Prior authorization requirement identification</li>
+                            <li>• Network status and provider verification</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 border-t border-gray-200 bg-white">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
+                      className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
+                    >
+                      Begin Conversation
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                {/* Capabilities */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                    <li>• Real-time insurance eligibility verification</li>
-                      <li>• Benefits, deductibles, and coverage limits</li>
-                      <li>• In-network vs. out-of-network status</li>
-                      <li>• Secondary insurance coordination</li>
-                  </ul>
+              {/* Connecting State */}
+              {isConnecting && (
+                <div className="h-full flex flex-col items-center justify-center bg-white">
+                  <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
-              </div>
-            </div>
+              )}
 
-            {/* Fixed Bottom Button */}
-            <div className="p-3 border-t border-gray-200 bg-white">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBeginDemo();
-                  }}
-                  disabled={isConnecting}
-                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    'Begin Conversation'
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
-                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
+              {/* Active Conversation State */}
+              {isConnected && (
+                <>
+                  {/* Orb + Status */}
+                  <div className="h-full flex flex-col items-center justify-center bg-white pb-12">
+                    <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
+                      <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">
+                      {isRecording ? 'James is speaking...' : 'Listening...'}
+                    </p>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
+                      className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
+                    >
+                      End Conversation
+                    </button>
+                  </div>
+
+                  {/* Bottom Sheet Overlay */}
+                  <div 
+                    className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl z-20 transition-transform duration-300 ease-out ${
+                      mobileDetailsOpen ? 'translate-y-0' : 'translate-y-[calc(100%-44px)]'
+                    }`}
+                    style={{ height: 'calc(100% - 48px)', boxShadow: '0 -4px 20px rgba(0,0,0,0.12)' }}
+                  >
+                    {/* Handle */}
+                    <div 
+                      onClick={() => setMobileDetailsOpen(!mobileDetailsOpen)}
+                      className="flex flex-col items-center pt-3 pb-2 cursor-pointer"
+                    >
+                      <div className="w-10 h-1 bg-gray-300 rounded-full" />
+                      <p className="text-xs font-medium text-gray-400 mt-1.5">
+                        {mobileDetailsOpen ? 'Tap to close' : 'Details'}
+                      </p>
+                    </div>
+                    
+                    {/* Scrollable Content */}
+                    <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            James specializes in real-time insurance eligibility verification. He can check patient coverage, verify benefits, and confirm authorization requirements before appointments.
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                              <li>• Real-time insurance eligibility checks</li>
+                              <li>• Benefit verification and coverage details</li>
+                              <li>• Prior authorization requirement identification</li>
+                              <li>• Network status and provider verification</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
+
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
@@ -1857,10 +2097,10 @@ export default function AllVoiceAgents() {
         {expandedCard === 'olivia' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[500px]">
+          <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
+              <div className="flex items-center gap-2">
                 <img 
                   src="/avatar-olivia.png" 
                   alt="Olivia" 
@@ -1878,82 +2118,121 @@ export default function AllVoiceAgents() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-1"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Status Bar */}
-            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Olivia Speaking...' : 'Listening...') : 'Ready to start'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content - All visible, no scrolling */}
-            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
-              <div className="space-y-3">
-                {/* About */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
-                  </p>
+            {/* Content Area */}
+            <div className="flex-1 relative overflow-hidden">
+              {/* Idle State - About/Capabilities */}
+              {!isConnected && !isConnecting && (
+                <div className="h-full flex flex-col">
+                  <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Olivia manages the complex prior authorization process, submitting requests, tracking statuses, and following up with insurance companies to ensure timely approvals for procedures and medications.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                            <li>• Prior authorization request submission</li>
+                            <li>• Status tracking and follow-up calls</li>
+                            <li>• Clinical documentation coordination</li>
+                            <li>• Appeal management for denied authorizations</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 border-t border-gray-200 bg-white">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
+                      className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
+                    >
+                      Begin Conversation
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                {/* Capabilities */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                    <li>• Prior authorization status tracking</li>
-                      <li>• Expedited review requests for urgent cases</li>
-                      <li>• Denial reason documentation and appeals</li>
-                      <li>• Authorization number and validity tracking</li>
-                  </ul>
+              {/* Connecting State */}
+              {isConnecting && (
+                <div className="h-full flex flex-col items-center justify-center bg-white">
+                  <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
-              </div>
-            </div>
+              )}
 
-            {/* Fixed Bottom Button */}
-            <div className="p-3 border-t border-gray-200 bg-white">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBeginDemo();
-                  }}
-                  disabled={isConnecting}
-                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    'Begin Conversation'
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
-                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
+              {/* Active Conversation State */}
+              {isConnected && (
+                <>
+                  {/* Orb + Status */}
+                  <div className="h-full flex flex-col items-center justify-center bg-white pb-12">
+                    <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
+                      <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">
+                      {isRecording ? 'Olivia is speaking...' : 'Listening...'}
+                    </p>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
+                      className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
+                    >
+                      End Conversation
+                    </button>
+                  </div>
+
+                  {/* Bottom Sheet Overlay */}
+                  <div 
+                    className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl z-20 transition-transform duration-300 ease-out ${
+                      mobileDetailsOpen ? 'translate-y-0' : 'translate-y-[calc(100%-44px)]'
+                    }`}
+                    style={{ height: 'calc(100% - 48px)', boxShadow: '0 -4px 20px rgba(0,0,0,0.12)' }}
+                  >
+                    {/* Handle */}
+                    <div 
+                      onClick={() => setMobileDetailsOpen(!mobileDetailsOpen)}
+                      className="flex flex-col items-center pt-3 pb-2 cursor-pointer"
+                    >
+                      <div className="w-10 h-1 bg-gray-300 rounded-full" />
+                      <p className="text-xs font-medium text-gray-400 mt-1.5">
+                        {mobileDetailsOpen ? 'Tap to close' : 'Details'}
+                      </p>
+                    </div>
+                    
+                    {/* Scrollable Content */}
+                    <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            Olivia manages the complex prior authorization process, submitting requests, tracking statuses, and following up with insurance companies to ensure timely approvals for procedures and medications.
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                              <li>• Prior authorization request submission</li>
+                              <li>• Status tracking and follow-up calls</li>
+                              <li>• Clinical documentation coordination</li>
+                              <li>• Appeal management for denied authorizations</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
+
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
@@ -2114,18 +2393,18 @@ export default function AllVoiceAgents() {
         {expandedCard === 'michael' && (
           <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
-          <div className="md:hidden flex flex-col h-[500px]">
+          <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
-            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
+              <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-chris.png" 
+                  src="/avatar-michael.png" 
                   alt="Michael" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">Michael</h3>
-                  <p className="text-sm text-gray-600">Payment Reconciliation</p>
+                  <p className="text-sm text-gray-600">Payment Recovery</p>
                 </div>
               </div>
               <button 
@@ -2135,82 +2414,121 @@ export default function AllVoiceAgents() {
                 }}
                 className="text-gray-400 hover:text-gray-600 p-1"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Status Bar */}
-            <div className="px-3 py-2 bg-gray-50 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-green-500' : 'bg-gray-400'}`} />
-                <span className="text-gray-700">
-                  {isConnected ? (isRecording ? 'Michael Speaking...' : 'Listening...') : 'Ready to start'}
-                </span>
-              </div>
-            </div>
-
-            {/* Content - All visible, no scrolling */}
-            <div className="flex-1 px-3 py-3 overflow-y-auto bg-white">
-              <div className="space-y-3">
-                {/* About */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
-                  </p>
+            {/* Content Area */}
+            <div className="flex-1 relative overflow-hidden">
+              {/* Idle State - About/Capabilities */}
+              {!isConnected && !isConnecting && (
+                <div className="h-full flex flex-col">
+                  <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          Michael handles sensitive payment recovery conversations with empathy and professionalism. He helps patients understand their balances and works with them to establish manageable payment plans.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                            <li>• Outstanding balance follow-up calls</li>
+                            <li>• Payment plan setup and negotiation</li>
+                            <li>• Financial hardship assessment and options</li>
+                            <li>• Insurance billing dispute resolution</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-3 border-t border-gray-200 bg-white">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
+                      className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
+                    >
+                      Begin Conversation
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                {/* Capabilities */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                  <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                    <li>• Missing payment investigation and recovery</li>
-                      <li>• Payment discrepancy resolution with carriers</li>
-                      <li>• Check trace and reissue requests</li>
-                      <li>• EOB retrieval and overpayment refunds</li>
-                  </ul>
+              {/* Connecting State */}
+              {isConnecting && (
+                <div className="h-full flex flex-col items-center justify-center bg-white">
+                  <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
-              </div>
-            </div>
+              )}
 
-            {/* Fixed Bottom Button */}
-            <div className="p-3 border-t border-gray-200 bg-white">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleBeginDemo();
-                  }}
-                  disabled={isConnecting}
-                  className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    'Begin Conversation'
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
-                  className="w-full py-2.5 bg-red-500 text-white rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
+              {/* Active Conversation State */}
+              {isConnected && (
+                <>
+                  {/* Orb + Status */}
+                  <div className="h-full flex flex-col items-center justify-center bg-white pb-12">
+                    <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
+                      <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">
+                      {isRecording ? 'Michael is speaking...' : 'Listening...'}
+                    </p>
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
+                      className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
+                    >
+                      End Conversation
+                    </button>
+                  </div>
+
+                  {/* Bottom Sheet Overlay */}
+                  <div 
+                    className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl z-20 transition-transform duration-300 ease-out ${
+                      mobileDetailsOpen ? 'translate-y-0' : 'translate-y-[calc(100%-44px)]'
+                    }`}
+                    style={{ height: 'calc(100% - 48px)', boxShadow: '0 -4px 20px rgba(0,0,0,0.12)' }}
+                  >
+                    {/* Handle */}
+                    <div 
+                      onClick={() => setMobileDetailsOpen(!mobileDetailsOpen)}
+                      className="flex flex-col items-center pt-3 pb-2 cursor-pointer"
+                    >
+                      <div className="w-10 h-1 bg-gray-300 rounded-full" />
+                      <p className="text-xs font-medium text-gray-400 mt-1.5">
+                        {mobileDetailsOpen ? 'Tap to close' : 'Details'}
+                      </p>
+                    </div>
+                    
+                    {/* Scrollable Content */}
+                    <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
+                      <div className="space-y-3">
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            Michael handles sensitive payment recovery conversations with empathy and professionalism. He helps patients understand their balances and works with them to establish manageable payment plans.
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
+                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
+                              <li>• Outstanding balance follow-up calls</li>
+                              <li>• Payment plan setup and negotiation</li>
+                              <li>• Financial hardship assessment and options</li>
+                              <li>• Insurance billing dispute resolution</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
+
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
