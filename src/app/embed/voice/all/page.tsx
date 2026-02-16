@@ -7,6 +7,7 @@ import type { CSSProperties } from 'react';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 import { useRateLimit } from '@/hooks/useRateLimit';
 import { AGENTS } from '@/config/agents';
+import Orb from '@/components/Orb';
 
 declare global {
   interface Window {
@@ -399,16 +400,16 @@ export default function AllVoiceAgents() {
             <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
-                  {/* Single Glowing Orb */}
-                  <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                    style={{
-                      boxShadow: isRecording 
-                        ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                        : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                      animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                    }}
-                  />
+                  {/* WebGL Orb */}
+                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                    <Orb 
+                      hue={180}
+                      hoverIntensity={0.09}
+                      rotateOnHover={true}
+                      forceHoverState={isRecording}
+                      backgroundColor="#ffffff"
+                    />
+                  </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
@@ -664,16 +665,16 @@ export default function AllVoiceAgents() {
             <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
-                  {/* Single Glowing Orb */}
-                  <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                    style={{
-                      boxShadow: isRecording 
-                        ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                        : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                      animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                    }}
-                  />
+                  {/* WebGL Orb */}
+                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                    <Orb 
+                      hue={180}
+                      hoverIntensity={0.09}
+                      rotateOnHover={true}
+                      forceHoverState={isRecording}
+                      backgroundColor="#ffffff"
+                    />
+                  </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
@@ -929,16 +930,16 @@ export default function AllVoiceAgents() {
             <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
-                  {/* Single Glowing Orb */}
-                  <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                    style={{
-                      boxShadow: isRecording 
-                        ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                        : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                      animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                    }}
-                  />
+                  {/* WebGL Orb */}
+                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                    <Orb 
+                      hue={180}
+                      hoverIntensity={0.09}
+                      rotateOnHover={true}
+                      forceHoverState={isRecording}
+                      backgroundColor="#ffffff"
+                    />
+                  </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
@@ -1191,16 +1192,16 @@ export default function AllVoiceAgents() {
             <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
-                  {/* Single Glowing Orb */}
-                  <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                    style={{
-                      boxShadow: isRecording 
-                        ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                        : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                      animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                    }}
-                  />
+                  {/* WebGL Orb */}
+                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                    <Orb 
+                      hue={180}
+                      hoverIntensity={0.09}
+                      rotateOnHover={true}
+                      forceHoverState={isRecording}
+                      backgroundColor="#ffffff"
+                    />
+                  </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
@@ -1456,16 +1457,16 @@ export default function AllVoiceAgents() {
             <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
-                  {/* Single Glowing Orb */}
-                  <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                    style={{
-                      boxShadow: isRecording 
-                        ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                        : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                      animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                    }}
-                  />
+                  {/* WebGL Orb */}
+                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                    <Orb 
+                      hue={180}
+                      hoverIntensity={0.09}
+                      rotateOnHover={true}
+                      forceHoverState={isRecording}
+                      backgroundColor="#ffffff"
+                    />
+                  </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
@@ -1721,16 +1722,16 @@ export default function AllVoiceAgents() {
             <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
-                  {/* Single Glowing Orb */}
-                  <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                    style={{
-                      boxShadow: isRecording 
-                        ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                        : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                      animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                    }}
-                  />
+                  {/* WebGL Orb */}
+                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                    <Orb 
+                      hue={180}
+                      hoverIntensity={0.09}
+                      rotateOnHover={true}
+                      forceHoverState={isRecording}
+                      backgroundColor="#ffffff"
+                    />
+                  </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
@@ -1981,16 +1982,16 @@ export default function AllVoiceAgents() {
             <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
-                  {/* Single Glowing Orb */}
-                  <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                    style={{
-                      boxShadow: isRecording 
-                        ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                        : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                      animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                    }}
-                  />
+                  {/* WebGL Orb */}
+                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                    <Orb 
+                      hue={180}
+                      hoverIntensity={0.09}
+                      rotateOnHover={true}
+                      forceHoverState={isRecording}
+                      backgroundColor="#ffffff"
+                    />
+                  </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
@@ -2241,16 +2242,16 @@ export default function AllVoiceAgents() {
             <div className="flex-1 flex flex-col items-center justify-center min-h-[400px] py-8">
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
-                  {/* Single Glowing Orb */}
-                  <div 
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-[#01B2D6] via-[#0195b3] to-[#017a8f] transition-all duration-700"
-                    style={{
-                      boxShadow: isRecording 
-                        ? '0 0 80px 20px rgba(1, 178, 214, 0.6), 0 0 120px 30px rgba(1, 178, 214, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.2)'
-                        : '0 0 40px 10px rgba(1, 178, 214, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1)',
-                      animation: isRecording ? 'pulse-glow 2s ease-in-out infinite' : 'none'
-                    }}
-                  />
+                  {/* WebGL Orb */}
+                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                    <Orb 
+                      hue={180}
+                      hoverIntensity={0.09}
+                      rotateOnHover={true}
+                      forceHoverState={isRecording}
+                      backgroundColor="#ffffff"
+                    />
+                  </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
