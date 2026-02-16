@@ -401,12 +401,12 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={isRecording}
+                      forceHoverState={false}
                       backgroundColor="#000000"
                     />
                   </div>
@@ -666,12 +666,12 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={isRecording}
+                      forceHoverState={false}
                       backgroundColor="#000000"
                     />
                   </div>
@@ -931,12 +931,12 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={isRecording}
+                      forceHoverState={false}
                       backgroundColor="#000000"
                     />
                   </div>
@@ -1193,12 +1193,12 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={isRecording}
+                      forceHoverState={false}
                       backgroundColor="#000000"
                     />
                   </div>
@@ -1458,12 +1458,12 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={isRecording}
+                      forceHoverState={false}
                       backgroundColor="#000000"
                     />
                   </div>
@@ -1723,12 +1723,12 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={isRecording}
+                      forceHoverState={false}
                       backgroundColor="#000000"
                     />
                   </div>
@@ -1983,12 +1983,12 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={isRecording}
+                      forceHoverState={false}
                       backgroundColor="#000000"
                     />
                   </div>
@@ -2243,12 +2243,12 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative' }}>
+                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={isRecording}
+                      forceHoverState={false}
                       backgroundColor="#000000"
                     />
                   </div>
