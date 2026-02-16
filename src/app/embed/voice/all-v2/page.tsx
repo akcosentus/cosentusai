@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 import { useRateLimit } from '@/hooks/useRateLimit';
 import { AGENTS } from '@/config/agents';
@@ -309,11 +310,14 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'cindy' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] md:h-[230px] overflow-hidden">
-            <img 
+            <div className="h-[80%] md:h-[230px] overflow-hidden relative">
+            <Image 
               src="/avatar-cindy.png" 
-              alt="Cindy" 
-                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
+              alt="Cindy"
+              fill
+              sizes="(max-width: 768px) 45vw, 200px"
+              priority
+              className="object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -648,11 +652,14 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'chris' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] md:h-[230px] overflow-hidden">
-            <img 
+            <div className="h-[80%] md:h-[230px] overflow-hidden relative">
+            <Image 
               src="/avatar-chris.png" 
-              alt="Chris" 
-                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
+              alt="Chris"
+              fill
+              sizes="(max-width: 768px) 45vw, 200px"
+              priority
+              className="object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -988,11 +995,14 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'emily' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] md:h-[230px] overflow-hidden">
-            <img 
+            <div className="h-[80%] md:h-[230px] overflow-hidden relative">
+            <Image 
               src="/avatar-emily.png" 
-              alt="Emily" 
-                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
+              alt="Emily"
+              fill
+              sizes="(max-width: 768px) 45vw, 200px"
+              priority
+              className="object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -1328,11 +1338,14 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'sarah' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] md:h-[230px] overflow-hidden">
-            <img 
+            <div className="h-[80%] md:h-[230px] overflow-hidden relative">
+            <Image 
               src="/avatar-sarah.png" 
-              alt="Sarah" 
-                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
+              alt="Sarah"
+              fill
+              sizes="(max-width: 768px) 45vw, 200px"
+              priority
+              className="object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -1667,11 +1680,14 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'allison' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] md:h-[230px] overflow-hidden">
-            <img 
+            <div className="h-[80%] md:h-[230px] overflow-hidden relative">
+            <Image 
               src="/avatar-allison.png" 
-              alt="Allison" 
-                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
+              alt="Allison"
+              fill
+              sizes="(max-width: 768px) 45vw, 200px"
+              priority
+              className="object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -2007,11 +2023,14 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'james' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] md:h-[230px] overflow-hidden">
-            <img 
+            <div className="h-[80%] md:h-[230px] overflow-hidden relative">
+            <Image 
               src="/avatar-harper.png" 
-              alt="Harper" 
-                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
+              alt="Harper"
+              fill
+              sizes="(max-width: 768px) 45vw, 200px"
+              priority
+              className="object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -2347,11 +2366,14 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'olivia' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] md:h-[230px] overflow-hidden">
-            <img 
+            <div className="h-[80%] md:h-[230px] overflow-hidden relative">
+            <Image 
               src="/avatar-olivia.png" 
-              alt="Olivia" 
-                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
+              alt="Olivia"
+              fill
+              sizes="(max-width: 768px) 45vw, 200px"
+              priority
+              className="object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
@@ -2687,11 +2709,14 @@ export default function AllVoiceAgents() {
         {expandedCard !== 'michael' && (
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
-            <div className="h-[80%] md:h-[230px] overflow-hidden">
-            <img 
+            <div className="h-[80%] md:h-[230px] overflow-hidden relative">
+            <Image 
               src="/avatar-michael.png" 
-              alt="Michael" 
-                className="w-full h-full object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
+              alt="Michael"
+              fill
+              sizes="(max-width: 768px) 45vw, 200px"
+              priority
+              className="object-contain scale-y-[1.07] scale-x-[1.09] md:scale-[1.06]"
               />
             </div>
             
