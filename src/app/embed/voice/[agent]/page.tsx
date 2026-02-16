@@ -342,7 +342,7 @@ export default function VoiceEmbed() {
                             hue={55}
                             hoverIntensity={0.22}
                             rotateOnHover={true}
-                            forceHoverState={isRecording}
+                            forceHoverState={false}
                             backgroundColor="#ffffff"
                           />
                         </div>

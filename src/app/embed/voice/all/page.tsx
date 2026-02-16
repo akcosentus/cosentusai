@@ -170,6 +170,47 @@ export default function AllVoiceAgents() {
 
   return (
     <div className="min-h-screen pt-16 pb-4 px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
+
+      <style>{`
+        @property --border-angle {
+          syntax: '<angle>';
+          initial-value: 0deg;
+          inherits: false;
+        }
+        
+        .animated-border-card {
+          border: 2px solid transparent !important;
+          background: 
+            linear-gradient(white, white) padding-box,
+            conic-gradient(
+              from var(--border-angle),
+              rgba(1, 178, 214, 0.06) 0%,
+              rgba(1, 178, 214, 0.06) 10%,
+              rgba(1, 178, 214, 0.1) 18%,
+              rgba(1, 178, 214, 0.18) 24%,
+              rgba(1, 178, 214, 0.3) 30%,
+              rgba(1, 178, 214, 0.45) 34%,
+              rgba(1, 178, 214, 0.65) 38%,
+              rgba(1, 178, 214, 0.85) 42%,
+              #01B2D6 47%,
+              rgba(1, 178, 214, 0.85) 52%,
+              rgba(1, 178, 214, 0.65) 56%,
+              rgba(1, 178, 214, 0.45) 60%,
+              rgba(1, 178, 214, 0.3) 64%,
+              rgba(1, 178, 214, 0.18) 70%,
+              rgba(1, 178, 214, 0.1) 76%,
+              rgba(1, 178, 214, 0.06) 84%,
+              rgba(1, 178, 214, 0.06) 100%
+            ) border-box !important;
+          animation: border-rotate 8s linear infinite;
+        }
+        
+        @keyframes border-rotate {
+          to {
+            --border-angle: 360deg;
+          }
+        }
+      `}</style>
       <div className="max-w-[1600px] mx-auto relative">
         {/* Logo - Top Right of Grid */}
         <img 
@@ -184,7 +225,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(0)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
-        ? 'md:col-span-4 p-4 md:p-12' 
+        ? 'md:col-span-4 p-4 md:p-12 animated-border-card shadow-[0_0_30px_rgba(0,0,0,0.15)]' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
@@ -330,8 +371,19 @@ export default function AllVoiceAgents() {
                 </div>
               </div>
               
-              {/* Right: Orb + Status */}
-              <div className="flex items-center gap-5">
+              </div>
+            
+            {/* Content: Description (left) + Orb/Status (right) */}
+            <div className="flex items-start mt-6 mb-6 gap-8">
+              {/* Left Half - Description */}
+              <div className="w-1/2">
+                <p className="text-gray-600 text-base leading-relaxed">
+                Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
+              </p>
+              </div>
+              
+              {/* Right Half - Orb / Status */}
+              <div className="w-1/2 flex flex-col items-center justify-center">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -339,30 +391,23 @@ export default function AllVoiceAgents() {
                         hue={55}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
-                        forceHoverState={isRecording}
+                        forceHoverState={false}
                         backgroundColor="#ffffff"
                       />
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Cindy is speaking...' : 'Listening...'}
                     </p>
                   </>
                 ) : (
-                  <div className="flex items-center gap-3 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                  <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                     </svg>
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
               </div>
-            </div>
-            
-            {/* Description */}
-            <div className="mt-4 mb-6">
-              <p className="text-gray-600 text-base leading-relaxed">
-                Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
-              </p>
             </div>
             
             {/* Capabilities */}
@@ -459,7 +504,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(1)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
-        ? 'md:col-span-4 p-4 md:p-12' 
+        ? 'md:col-span-4 p-4 md:p-12 animated-border-card shadow-[0_0_30px_rgba(0,0,0,0.15)]' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
@@ -605,8 +650,19 @@ export default function AllVoiceAgents() {
                 </div>
               </div>
               
-              {/* Right: Orb + Status */}
-              <div className="flex items-center gap-5">
+              </div>
+            
+            {/* Content: Description (left) + Orb/Status (right) */}
+            <div className="flex items-start mt-6 mb-6 gap-8">
+              {/* Left Half - Description */}
+              <div className="w-1/2">
+                <p className="text-gray-600 text-base leading-relaxed">
+                Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
+              </p>
+              </div>
+              
+              {/* Right Half - Orb / Status */}
+              <div className="w-1/2 flex flex-col items-center justify-center">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -614,30 +670,23 @@ export default function AllVoiceAgents() {
                         hue={55}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
-                        forceHoverState={isRecording}
+                        forceHoverState={false}
                         backgroundColor="#ffffff"
                       />
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Chris is speaking...' : 'Listening...'}
                     </p>
                   </>
                 ) : (
-                  <div className="flex items-center gap-3 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                  <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                     </svg>
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
               </div>
-            </div>
-            
-            {/* Description */}
-            <div className="mt-4 mb-6">
-              <p className="text-gray-600 text-base leading-relaxed">
-                Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
-              </p>
             </div>
             
             {/* Capabilities */}
@@ -734,7 +783,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(2)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
-        ? 'md:col-span-4 p-4 md:p-12' 
+        ? 'md:col-span-4 p-4 md:p-12 animated-border-card shadow-[0_0_30px_rgba(0,0,0,0.15)]' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
@@ -880,8 +929,19 @@ export default function AllVoiceAgents() {
                 </div>
               </div>
               
-              {/* Right: Orb + Status */}
-              <div className="flex items-center gap-5">
+              </div>
+            
+            {/* Content: Description (left) + Orb/Status (right) */}
+            <div className="flex items-start mt-6 mb-6 gap-8">
+              {/* Left Half - Description */}
+              <div className="w-1/2">
+                <p className="text-gray-600 text-base leading-relaxed">
+                Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
+              </p>
+              </div>
+              
+              {/* Right Half - Orb / Status */}
+              <div className="w-1/2 flex flex-col items-center justify-center">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -889,30 +949,23 @@ export default function AllVoiceAgents() {
                         hue={55}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
-                        forceHoverState={isRecording}
+                        forceHoverState={false}
                         backgroundColor="#ffffff"
                       />
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Emily is speaking...' : 'Listening...'}
                     </p>
                   </>
                 ) : (
-                  <div className="flex items-center gap-3 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                  <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                     </svg>
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
               </div>
-            </div>
-            
-            {/* Description */}
-            <div className="mt-4 mb-6">
-              <p className="text-gray-600 text-base leading-relaxed">
-                Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
-              </p>
             </div>
             
             {/* Capabilities */}
@@ -1009,7 +1062,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(3)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
-        ? 'md:col-span-4 p-4 md:p-12' 
+        ? 'md:col-span-4 p-4 md:p-12 animated-border-card shadow-[0_0_30px_rgba(0,0,0,0.15)]' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
@@ -1155,8 +1208,19 @@ export default function AllVoiceAgents() {
                 </div>
               </div>
               
-              {/* Right: Orb + Status */}
-              <div className="flex items-center gap-5">
+              </div>
+            
+            {/* Content: Description (left) + Orb/Status (right) */}
+            <div className="flex items-start mt-6 mb-6 gap-8">
+              {/* Left Half - Description */}
+              <div className="w-1/2">
+                <p className="text-gray-600 text-base leading-relaxed">
+                Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
+              </p>
+              </div>
+              
+              {/* Right Half - Orb / Status */}
+              <div className="w-1/2 flex flex-col items-center justify-center">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -1164,30 +1228,23 @@ export default function AllVoiceAgents() {
                         hue={55}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
-                        forceHoverState={isRecording}
+                        forceHoverState={false}
                         backgroundColor="#ffffff"
                       />
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Sarah is speaking...' : 'Listening...'}
                     </p>
                   </>
                 ) : (
-                  <div className="flex items-center gap-3 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                  <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                     </svg>
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
               </div>
-            </div>
-            
-            {/* Description */}
-            <div className="mt-4 mb-6">
-              <p className="text-gray-600 text-base leading-relaxed">
-                Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
-              </p>
             </div>
             
             {/* Capabilities */}
@@ -1283,7 +1340,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(4)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
-        ? 'md:col-span-4 p-4 md:p-12' 
+        ? 'md:col-span-4 p-4 md:p-12 animated-border-card shadow-[0_0_30px_rgba(0,0,0,0.15)]' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
@@ -1429,8 +1486,19 @@ export default function AllVoiceAgents() {
                 </div>
               </div>
               
-              {/* Right: Orb + Status */}
-              <div className="flex items-center gap-5">
+              </div>
+            
+            {/* Content: Description (left) + Orb/Status (right) */}
+            <div className="flex items-start mt-6 mb-6 gap-8">
+              {/* Left Half - Description */}
+              <div className="w-1/2">
+                <p className="text-gray-600 text-base leading-relaxed">
+                Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
+              </p>
+              </div>
+              
+              {/* Right Half - Orb / Status */}
+              <div className="w-1/2 flex flex-col items-center justify-center">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -1438,30 +1506,23 @@ export default function AllVoiceAgents() {
                         hue={55}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
-                        forceHoverState={isRecording}
+                        forceHoverState={false}
                         backgroundColor="#ffffff"
                       />
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Allison is speaking...' : 'Listening...'}
                     </p>
                   </>
                 ) : (
-                  <div className="flex items-center gap-3 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                  <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                     </svg>
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
               </div>
-            </div>
-            
-            {/* Description */}
-            <div className="mt-4 mb-6">
-              <p className="text-gray-600 text-base leading-relaxed">
-                Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
-              </p>
             </div>
             
             {/* Capabilities */}
@@ -1562,7 +1623,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(5)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
-        ? 'md:col-span-4 p-4 md:p-12' 
+        ? 'md:col-span-4 p-4 md:p-12 animated-border-card shadow-[0_0_30px_rgba(0,0,0,0.15)]' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
@@ -1708,8 +1769,19 @@ export default function AllVoiceAgents() {
                 </div>
               </div>
               
-              {/* Right: Orb + Status */}
-              <div className="flex items-center gap-5">
+              </div>
+            
+            {/* Content: Description (left) + Orb/Status (right) */}
+            <div className="flex items-start mt-6 mb-6 gap-8">
+              {/* Left Half - Description */}
+              <div className="w-1/2">
+                <p className="text-gray-600 text-base leading-relaxed">
+                Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
+              </p>
+              </div>
+              
+              {/* Right Half - Orb / Status */}
+              <div className="w-1/2 flex flex-col items-center justify-center">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -1717,30 +1789,23 @@ export default function AllVoiceAgents() {
                         hue={55}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
-                        forceHoverState={isRecording}
+                        forceHoverState={false}
                         backgroundColor="#ffffff"
                       />
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Harper is speaking...' : 'Listening...'}
                     </p>
                   </>
                 ) : (
-                  <div className="flex items-center gap-3 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                  <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                     </svg>
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
               </div>
-            </div>
-            
-            {/* Description */}
-            <div className="mt-4 mb-6">
-              <p className="text-gray-600 text-base leading-relaxed">
-                Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
-              </p>
             </div>
             
             {/* Capabilities */}
@@ -1837,7 +1902,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(6)}
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
-          ? 'md:col-span-4 p-4 md:p-12' 
+          ? 'md:col-span-4 p-4 md:p-12 animated-border-card shadow-[0_0_30px_rgba(0,0,0,0.15)]' 
           : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
@@ -1983,8 +2048,19 @@ export default function AllVoiceAgents() {
                 </div>
               </div>
               
-              {/* Right: Orb + Status */}
-              <div className="flex items-center gap-5">
+              </div>
+            
+            {/* Content: Description (left) + Orb/Status (right) */}
+            <div className="flex items-start mt-6 mb-6 gap-8">
+              {/* Left Half - Description */}
+              <div className="w-1/2">
+                <p className="text-gray-600 text-base leading-relaxed">
+                Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
+              </p>
+              </div>
+              
+              {/* Right Half - Orb / Status */}
+              <div className="w-1/2 flex flex-col items-center justify-center">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -1992,30 +2068,23 @@ export default function AllVoiceAgents() {
                         hue={55}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
-                        forceHoverState={isRecording}
+                        forceHoverState={false}
                         backgroundColor="#ffffff"
                       />
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Olivia is speaking...' : 'Listening...'}
                     </p>
                   </>
                 ) : (
-                  <div className="flex items-center gap-3 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                  <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                     </svg>
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
               </div>
-            </div>
-            
-            {/* Description */}
-            <div className="mt-4 mb-6">
-              <p className="text-gray-600 text-base leading-relaxed">
-                Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
-              </p>
             </div>
             
             {/* Capabilities */}
@@ -2112,7 +2181,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(7)}
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
-          ? 'md:col-span-4 p-4 md:p-12'
+          ? 'md:col-span-4 p-4 md:p-12 animated-border-card shadow-[0_0_30px_rgba(0,0,0,0.15)]'
           : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
@@ -2258,8 +2327,19 @@ export default function AllVoiceAgents() {
                 </div>
               </div>
               
-              {/* Right: Orb + Status */}
-              <div className="flex items-center gap-5">
+              </div>
+            
+            {/* Content: Description (left) + Orb/Status (right) */}
+            <div className="flex items-start mt-6 mb-6 gap-8">
+              {/* Left Half - Description */}
+              <div className="w-1/2">
+                <p className="text-gray-600 text-base leading-relaxed">
+                Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
+              </p>
+              </div>
+              
+              {/* Right Half - Orb / Status */}
+              <div className="w-1/2 flex flex-col items-center justify-center">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -2267,30 +2347,23 @@ export default function AllVoiceAgents() {
                         hue={55}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
-                        forceHoverState={isRecording}
+                        forceHoverState={false}
                         backgroundColor="#ffffff"
                       />
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Michael is speaking...' : 'Listening...'}
                     </p>
                   </>
                 ) : (
-                  <div className="flex items-center gap-3 text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                  <div className="flex flex-col items-center gap-2 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                     </svg>
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
               </div>
-            </div>
-            
-            {/* Description */}
-            <div className="mt-4 mb-6">
-              <p className="text-gray-600 text-base leading-relaxed">
-                Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
-              </p>
             </div>
             
             {/* Capabilities */}
