@@ -498,36 +498,53 @@ export default function AllVoiceAgents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
             </button>
-            {/* Top Row: Header + Orb */}
-            <div className="flex items-start justify-between">
-              {/* Left: Avatar + Name */}
-              <div className="flex items-center gap-5">
-                <img 
-                  src="/avatar-cindy.png" 
-                  alt="Cindy" 
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Cindy</h3>
-                  <div className="inline-block">
-                    <p className="text-lg text-gray-500 mt-1">Payment & Balance Specialist</p>
-                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
-                  </div>
-                </div>
-              </div>
+            {/* Two-Column Layout */}
 
-              </div>
-            
-            {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
-              {/* Left Half - Description */}
+            <div className="flex gap-8 mb-6">
+
+              {/* Left Column - Header + Description */}
+
               <div className="w-1/2">
-                <p className="text-gray-600 text-base leading-relaxed">
-                    Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
-                  </p>
+
+                <div className="flex items-center gap-5">
+
+                  <img 
+
+                    src="/avatar-cindy.png" 
+
+                    alt="Cindy" 
+
+                    className="w-20 h-20 rounded-full object-cover"
+
+                  />
+
+                  <div>
+
+                    <h3 className="text-4xl font-bold text-gray-900">Cindy</h3>
+
+                    <div className="inline-block">
+
+                      <p className="text-lg text-gray-500 mt-1">Payment & Balance Specialist</p>
+
+                      <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <p className="mt-4 text-gray-600 text-base leading-relaxed">
+
+                  Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
+
+                </p>
+
               </div>
 
-              {/* Right Half - Orb / Status */}
+
+              {/* Right Column - Orb / Status */}
+
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
@@ -821,36 +838,53 @@ export default function AllVoiceAgents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
             </button>
-            {/* Top Row: Header + Orb */}
-            <div className="flex items-start justify-between">
-              {/* Left: Avatar + Name */}
-              <div className="flex items-center gap-5">
-                <img 
-                  src="/avatar-michael.png" 
-                  alt="Chris" 
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Chris</h3>
-                  <div className="inline-block">
-                    <p className="text-lg text-gray-500 mt-1">Insurance Claim Specialist</p>
-                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
-                  </div>
-                </div>
-              </div>
+            {/* Two-Column Layout */}
 
-              </div>
-            
-            {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
-              {/* Left Half - Description */}
+            <div className="flex gap-8 mb-6">
+
+              {/* Left Column - Header + Description */}
+
               <div className="w-1/2">
-                <p className="text-gray-600 text-base leading-relaxed">
-                    Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
-                  </p>
+
+                <div className="flex items-center gap-5">
+
+                  <img 
+
+                    src="/avatar-michael.png" 
+
+                    alt="Chris" 
+
+                    className="w-20 h-20 rounded-full object-cover"
+
+                  />
+
+                  <div>
+
+                    <h3 className="text-4xl font-bold text-gray-900">Chris</h3>
+
+                    <div className="inline-block">
+
+                      <p className="text-lg text-gray-500 mt-1">Insurance Claim Specialist</p>
+
+                      <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <p className="mt-4 text-gray-600 text-base leading-relaxed">
+
+                  Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
+
+                </p>
+
               </div>
 
-              {/* Right Half - Orb / Status */}
+
+              {/* Right Column - Orb / Status */}
+
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
@@ -1144,36 +1178,53 @@ export default function AllVoiceAgents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
             </button>
-            {/* Top Row: Header + Orb */}
-            <div className="flex items-start justify-between">
-              {/* Left: Avatar + Name */}
-              <div className="flex items-center gap-5">
-                <img 
-                  src="/avatar-emily.png" 
-                  alt="Emily" 
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Emily</h3>
-                  <div className="inline-block">
-                    <p className="text-lg text-gray-500 mt-1">Pre-Service Anesthesia Cost Estimates</p>
-                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
-                  </div>
-                </div>
-              </div>
+            {/* Two-Column Layout */}
 
-              </div>
-            
-            {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
-              {/* Left Half - Description */}
+            <div className="flex gap-8 mb-6">
+
+              {/* Left Column - Header + Description */}
+
               <div className="w-1/2">
-                <p className="text-gray-600 text-base leading-relaxed">
-                    Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
-                  </p>
+
+                <div className="flex items-center gap-5">
+
+                  <img 
+
+                    src="/avatar-emily.png" 
+
+                    alt="Emily" 
+
+                    className="w-20 h-20 rounded-full object-cover"
+
+                  />
+
+                  <div>
+
+                    <h3 className="text-4xl font-bold text-gray-900">Emily</h3>
+
+                    <div className="inline-block">
+
+                      <p className="text-lg text-gray-500 mt-1">Pre-Service Anesthesia Cost Estimates</p>
+
+                      <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <p className="mt-4 text-gray-600 text-base leading-relaxed">
+
+                  Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
+
+                </p>
+
               </div>
 
-              {/* Right Half - Orb / Status */}
+
+              {/* Right Column - Orb / Status */}
+
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
@@ -1467,36 +1518,53 @@ export default function AllVoiceAgents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
             </button>
-            {/* Top Row: Header + Orb */}
-            <div className="flex items-start justify-between">
-              {/* Left: Avatar + Name */}
-              <div className="flex items-center gap-5">
-                <img 
-                  src="/avatar-sarah.png" 
-                  alt="Sarah" 
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Sarah</h3>
-                  <div className="inline-block">
-                    <p className="text-lg text-gray-500 mt-1">Medical Appointment Scheduling</p>
-                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
-                  </div>
-                </div>
-              </div>
+            {/* Two-Column Layout */}
 
-              </div>
-            
-            {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
-              {/* Left Half - Description */}
+            <div className="flex gap-8 mb-6">
+
+              {/* Left Column - Header + Description */}
+
               <div className="w-1/2">
-                <p className="text-gray-600 text-base leading-relaxed">
-                    Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
-                  </p>
+
+                <div className="flex items-center gap-5">
+
+                  <img 
+
+                    src="/avatar-sarah.png" 
+
+                    alt="Sarah" 
+
+                    className="w-20 h-20 rounded-full object-cover"
+
+                  />
+
+                  <div>
+
+                    <h3 className="text-4xl font-bold text-gray-900">Sarah</h3>
+
+                    <div className="inline-block">
+
+                      <p className="text-lg text-gray-500 mt-1">Medical Appointment Scheduling</p>
+
+                      <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <p className="mt-4 text-gray-600 text-base leading-relaxed">
+
+                  Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
+
+                </p>
+
               </div>
 
-              {/* Right Half - Orb / Status */}
+
+              {/* Right Column - Orb / Status */}
+
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
@@ -1789,36 +1857,53 @@ export default function AllVoiceAgents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
             </button>
-            {/* Top Row: Header + Orb */}
-            <div className="flex items-start justify-between">
-              {/* Left: Avatar + Name */}
-              <div className="flex items-center gap-5">
-                <img 
-                  src="/avatar-allison.png" 
-                  alt="Allison" 
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Allison</h3>
-                  <div className="inline-block">
-                    <p className="text-lg text-gray-500 mt-1">Customer Service Agent</p>
-                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
-                  </div>
-                </div>
-              </div>
+            {/* Two-Column Layout */}
 
-              </div>
-            
-            {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
-              {/* Left Half - Description */}
+            <div className="flex gap-8 mb-6">
+
+              {/* Left Column - Header + Description */}
+
               <div className="w-1/2">
-                <p className="text-gray-600 text-base leading-relaxed">
-                    Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
-                  </p>
+
+                <div className="flex items-center gap-5">
+
+                  <img 
+
+                    src="/avatar-allison.png" 
+
+                    alt="Allison" 
+
+                    className="w-20 h-20 rounded-full object-cover"
+
+                  />
+
+                  <div>
+
+                    <h3 className="text-4xl font-bold text-gray-900">Allison</h3>
+
+                    <div className="inline-block">
+
+                      <p className="text-lg text-gray-500 mt-1">Customer Service Agent</p>
+
+                      <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <p className="mt-4 text-gray-600 text-base leading-relaxed">
+
+                  Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
+
+                </p>
+
               </div>
 
-              {/* Right Half - Orb / Status */}
+
+              {/* Right Column - Orb / Status */}
+
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
@@ -2112,36 +2197,53 @@ export default function AllVoiceAgents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
             </button>
-            {/* Top Row: Header + Orb */}
-            <div className="flex items-start justify-between">
-              {/* Left: Avatar + Name */}
-              <div className="flex items-center gap-5">
-                <img 
-                  src="/avatar-harper.png" 
-                  alt="Harper" 
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Harper</h3>
-                  <div className="inline-block">
-                    <p className="text-lg text-gray-500 mt-1">Eligibility & Benefits Verification</p>
-                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
-                  </div>
-                </div>
-              </div>
+            {/* Two-Column Layout */}
 
-              </div>
-            
-            {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
-              {/* Left Half - Description */}
+            <div className="flex gap-8 mb-6">
+
+              {/* Left Column - Header + Description */}
+
               <div className="w-1/2">
-                <p className="text-gray-600 text-base leading-relaxed">
-                    Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
-                  </p>
+
+                <div className="flex items-center gap-5">
+
+                  <img 
+
+                    src="/avatar-harper.png" 
+
+                    alt="Harper" 
+
+                    className="w-20 h-20 rounded-full object-cover"
+
+                  />
+
+                  <div>
+
+                    <h3 className="text-4xl font-bold text-gray-900">Harper</h3>
+
+                    <div className="inline-block">
+
+                      <p className="text-lg text-gray-500 mt-1">Eligibility & Benefits Verification</p>
+
+                      <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <p className="mt-4 text-gray-600 text-base leading-relaxed">
+
+                  Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
+
+                </p>
+
               </div>
 
-              {/* Right Half - Orb / Status */}
+
+              {/* Right Column - Orb / Status */}
+
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
@@ -2435,36 +2537,53 @@ export default function AllVoiceAgents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
             </button>
-            {/* Top Row: Header + Orb */}
-            <div className="flex items-start justify-between">
-              {/* Left: Avatar + Name */}
-              <div className="flex items-center gap-5">
-                <img 
-                  src="/avatar-olivia.png" 
-                  alt="Olivia" 
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Olivia</h3>
-                  <div className="inline-block">
-                    <p className="text-lg text-gray-500 mt-1">Prior Authorization Follow-Up</p>
-                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
-                  </div>
-                </div>
-              </div>
+            {/* Two-Column Layout */}
 
-              </div>
-            
-            {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
-              {/* Left Half - Description */}
+            <div className="flex gap-8 mb-6">
+
+              {/* Left Column - Header + Description */}
+
               <div className="w-1/2">
-                <p className="text-gray-600 text-base leading-relaxed">
-                    Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
-                  </p>
+
+                <div className="flex items-center gap-5">
+
+                  <img 
+
+                    src="/avatar-olivia.png" 
+
+                    alt="Olivia" 
+
+                    className="w-20 h-20 rounded-full object-cover"
+
+                  />
+
+                  <div>
+
+                    <h3 className="text-4xl font-bold text-gray-900">Olivia</h3>
+
+                    <div className="inline-block">
+
+                      <p className="text-lg text-gray-500 mt-1">Prior Authorization Follow-Up</p>
+
+                      <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <p className="mt-4 text-gray-600 text-base leading-relaxed">
+
+                  Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
+
+                </p>
+
               </div>
 
-              {/* Right Half - Orb / Status */}
+
+              {/* Right Column - Orb / Status */}
+
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
@@ -2758,36 +2877,53 @@ export default function AllVoiceAgents() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
             </button>
-            {/* Top Row: Header + Orb */}
-            <div className="flex items-start justify-between">
-              {/* Left: Avatar + Name */}
-              <div className="flex items-center gap-5">
-                <img 
-                  src="/avatar-chris.png" 
-                  alt="Michael" 
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div>
-                  <h3 className="text-4xl font-bold text-gray-900">Michael</h3>
-                  <div className="inline-block">
-                    <p className="text-lg text-gray-500 mt-1">Payment Reconciliation</p>
-                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
-                  </div>
-                </div>
-              </div>
+            {/* Two-Column Layout */}
 
-              </div>
-            
-            {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
-              {/* Left Half - Description */}
+            <div className="flex gap-8 mb-6">
+
+              {/* Left Column - Header + Description */}
+
               <div className="w-1/2">
-                <p className="text-gray-600 text-base leading-relaxed">
-                    Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
-                  </p>
+
+                <div className="flex items-center gap-5">
+
+                  <img 
+
+                    src="/avatar-chris.png" 
+
+                    alt="Michael" 
+
+                    className="w-20 h-20 rounded-full object-cover"
+
+                  />
+
+                  <div>
+
+                    <h3 className="text-4xl font-bold text-gray-900">Michael</h3>
+
+                    <div className="inline-block">
+
+                      <p className="text-lg text-gray-500 mt-1">Payment Reconciliation</p>
+
+                      <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <p className="mt-4 text-gray-600 text-base leading-relaxed">
+
+                  Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
+
+                </p>
+
               </div>
 
-              {/* Right Half - Orb / Status */}
+
+              {/* Right Column - Orb / Status */}
+
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
