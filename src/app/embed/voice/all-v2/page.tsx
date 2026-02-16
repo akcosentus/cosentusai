@@ -185,42 +185,66 @@ export default function AllVoiceAgents() {
     <div className="min-h-screen pt-16 pb-4 px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
 
       <style>{`
-        @property --border-angle {
-          syntax: '<angle>';
-          initial-value: 0deg;
-          inherits: false;
-        }
-        
         .animated-border-card {
-          border: 2px solid transparent !important;
-          background: 
-            linear-gradient(white, white) padding-box,
-            conic-gradient(
-              from var(--border-angle),
-              rgba(1, 178, 214, 0.06) 0%,
-              rgba(1, 178, 214, 0.06) 10%,
-              rgba(1, 178, 214, 0.1) 18%,
-              rgba(1, 178, 214, 0.18) 24%,
-              rgba(1, 178, 214, 0.3) 30%,
-              rgba(1, 178, 214, 0.45) 34%,
-              rgba(1, 178, 214, 0.65) 38%,
-              rgba(1, 178, 214, 0.85) 42%,
-              #01B2D6 47%,
-              rgba(1, 178, 214, 0.85) 52%,
-              rgba(1, 178, 214, 0.65) 56%,
-              rgba(1, 178, 214, 0.45) 60%,
-              rgba(1, 178, 214, 0.3) 64%,
-              rgba(1, 178, 214, 0.18) 70%,
-              rgba(1, 178, 214, 0.1) 76%,
-              rgba(1, 178, 214, 0.06) 84%,
-              rgba(1, 178, 214, 0.06) 100%
-            ) border-box !important;
-          animation: border-rotate 8s linear infinite;
+          position: relative !important;
+          overflow: hidden !important;
+          border: none !important;
+          background: transparent !important;
+          filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.12));
         }
         
-        @keyframes border-rotate {
+        .animated-border-card::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300%;
+          height: 300%;
+          background: conic-gradient(
+            from 0deg,
+            rgba(1, 178, 214, 0.08) 0%,
+            rgba(1, 178, 214, 0.08) 8%,
+            rgba(1, 178, 214, 0.14) 16%,
+            rgba(1, 178, 214, 0.24) 22%,
+            rgba(1, 178, 214, 0.38) 27%,
+            rgba(1, 178, 214, 0.55) 32%,
+            rgba(1, 178, 214, 0.75) 37%,
+            rgba(1, 178, 214, 0.9) 41%,
+            #01B2D6 45%,
+            #01B2D6 50%,
+            rgba(1, 178, 214, 0.9) 54%,
+            rgba(1, 178, 214, 0.75) 58%,
+            rgba(1, 178, 214, 0.55) 63%,
+            rgba(1, 178, 214, 0.38) 68%,
+            rgba(1, 178, 214, 0.24) 73%,
+            rgba(1, 178, 214, 0.14) 79%,
+            rgba(1, 178, 214, 0.08) 87%,
+            rgba(1, 178, 214, 0.08) 100%
+          );
+          transform: translate(-50%, -50%) rotate(0deg);
+          animation: border-spin 8s linear infinite;
+          z-index: 0;
+          pointer-events: none;
+        }
+        
+        .animated-border-card::after {
+          content: '';
+          position: absolute;
+          inset: 3px;
+          background: white;
+          border-radius: 14px;
+          z-index: 1;
+          pointer-events: none;
+        }
+        
+        .animated-border-card > * {
+          position: relative;
+          z-index: 2;
+        }
+        
+        @keyframes border-spin {
           to {
-            --border-angle: 360deg;
+            transform: translate(-50%, -50%) rotate(360deg);
           }
         }
       `}</style>
@@ -242,7 +266,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(0)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'cindy' 
-        ? 'w-full p-4 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.15)] animated-border-card' 
+        ? 'w-full p-4 md:p-12 animated-border-card' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
@@ -522,7 +546,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(1)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'chris' 
-        ? 'w-full p-4 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.15)] animated-border-card' 
+        ? 'w-full p-4 md:p-12 animated-border-card' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
@@ -802,7 +826,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(2)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'emily' 
-        ? 'w-full p-4 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.15)] animated-border-card' 
+        ? 'w-full p-4 md:p-12 animated-border-card' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
@@ -1082,7 +1106,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(3)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'sarah' 
-        ? 'w-full p-4 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.15)] animated-border-card' 
+        ? 'w-full p-4 md:p-12 animated-border-card' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
@@ -1361,7 +1385,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(4)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'allison' 
-        ? 'w-full p-4 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.15)] animated-border-card' 
+        ? 'w-full p-4 md:p-12 animated-border-card' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
@@ -1645,7 +1669,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(5)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'james' 
-        ? 'w-full p-4 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.15)] animated-border-card' 
+        ? 'w-full p-4 md:p-12 animated-border-card' 
         : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
@@ -1925,7 +1949,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(6)}
       className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'olivia' 
-          ? 'w-full p-4 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.15)] animated-border-card' 
+          ? 'w-full p-4 md:p-12 animated-border-card' 
           : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
@@ -2205,7 +2229,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(7)}
       className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'michael' 
-          ? 'w-full p-4 md:p-12 shadow-[0_0_30px_rgba(0,0,0,0.15)] animated-border-card'
+          ? 'w-full p-4 md:p-12 animated-border-card'
           : 'w-[calc((100%-1rem)/2-12px)] md:w-[200px] h-[241px] md:h-64 hover:shadow-2xl hover:-translate-y-1 overflow-hidden'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
