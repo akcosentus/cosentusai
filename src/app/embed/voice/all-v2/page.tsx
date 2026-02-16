@@ -654,7 +654,7 @@ export default function AllVoiceAgents() {
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
-              src="/avatar-chris.png" 
+              src="/avatar-michael.png" 
               alt="Chris"
               fill
               sizes="(max-width: 768px) 45vw, 200px"
@@ -681,7 +681,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-chris.png" 
+                  src="/avatar-michael.png" 
                   alt="Chris" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -864,7 +864,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-chris.png" 
+                    src="/avatar-michael.png" 
 
                     alt="Chris" 
 
@@ -2711,7 +2711,7 @@ export default function AllVoiceAgents() {
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
-              src="/avatar-michael.png" 
+              src="/avatar-chris.png" 
               alt="Michael"
               fill
               sizes="(max-width: 768px) 45vw, 200px"
@@ -2738,7 +2738,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-michael.png" 
+                  src="/avatar-chris.png" 
                   alt="Michael" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -2921,7 +2921,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-michael.png" 
+                    src="/avatar-chris.png" 
 
                     alt="Michael" 
 
