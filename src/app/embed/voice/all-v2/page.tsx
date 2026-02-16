@@ -178,7 +178,8 @@ export default function AllVoiceAgents() {
 
   const handleEndDemo = () => {
     disconnect();
-    setActiveAgent(null);
+    // Keep activeAgent set so the user can start a new conversation
+    // activeAgent is only cleared when the card is collapsed via handleExpandCard
   };
 
   return (
