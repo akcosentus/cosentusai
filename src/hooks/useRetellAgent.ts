@@ -41,6 +41,14 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
       setIsConnecting(false);
       setError(null);
       onStatusChange?.('Connected');
+      
+      // Critical for mobile: ensure audio playback is unblocked
+      // Mobile browsers (especially iOS Safari) require explicit audio activation
+      try {
+        client.startAudioPlayback();
+      } catch (e) {
+        console.warn('startAudioPlayback not needed or failed:', e);
+      }
     });
 
     // Event: Call ended
@@ -130,11 +138,16 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
 
       const { accessToken } = await response.json();
 
-      // Step 2: Start the call (must be within 30 seconds of token creation)
-      // SDK automatically handles microphone access and audio playback
+      // Step 2: Detect mobile for optimized audio settings
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      
+      // Step 3: Start the call (must be within 30 seconds of token creation)
+      // Use 16000 on mobile for better compatibility (avoids resampling artifacts)
+      // Use 24000 on desktop for higher quality
       await retellClientRef.current.startCall({
         accessToken,
-        sampleRate: 24000, // Recommended: 24000 or 16000
+        sampleRate: isMobile ? 16000 : 24000,
+        emitRawAudioSamples: false, // Reduce processing overhead
       });
 
     } catch (err: any) {
