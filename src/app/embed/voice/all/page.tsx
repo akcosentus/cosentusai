@@ -377,6 +377,18 @@ export default function AllVoiceAgents() {
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
+            {/* Close X - Top Right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExpandCard('cindy');
+              }}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
               {/* Left: Avatar + Name */}
@@ -396,7 +408,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-start mt-6 mb-6 gap-8">
+            <div className="flex items-center mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -494,15 +506,6 @@ export default function AllVoiceAgents() {
                   End Conversation
                 </button>
               )}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleExpandCard('cindy');
-                }}
-                className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
             </div>
             
             {/* Error Display */}
@@ -656,6 +659,18 @@ export default function AllVoiceAgents() {
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
+            {/* Close X - Top Right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExpandCard('chris');
+              }}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
               {/* Left: Avatar + Name */}
@@ -675,7 +690,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-start mt-6 mb-6 gap-8">
+            <div className="flex items-center mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -773,15 +788,6 @@ export default function AllVoiceAgents() {
                   End Conversation
                 </button>
               )}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleExpandCard('chris');
-                }}
-                className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
             </div>
             
             {/* Error Display */}
@@ -935,6 +941,18 @@ export default function AllVoiceAgents() {
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
+            {/* Close X - Top Right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExpandCard('emily');
+              }}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
               {/* Left: Avatar + Name */}
@@ -954,7 +972,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-start mt-6 mb-6 gap-8">
+            <div className="flex items-center mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -1052,15 +1070,6 @@ export default function AllVoiceAgents() {
                   End Conversation
                 </button>
               )}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleExpandCard('emily');
-                }}
-                className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
             </div>
             
             {/* Error Display */}
@@ -1214,6 +1223,18 @@ export default function AllVoiceAgents() {
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
+            {/* Close X - Top Right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExpandCard('sarah');
+              }}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
               {/* Left: Avatar + Name */}
@@ -1233,7 +1254,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-start mt-6 mb-6 gap-8">
+            <div className="flex items-center mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -1331,15 +1352,6 @@ export default function AllVoiceAgents() {
                   End Conversation
                 </button>
               )}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleExpandCard('sarah');
-                }}
-                className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
             </div>
             
             {/* Error Display */}
@@ -1492,6 +1504,18 @@ export default function AllVoiceAgents() {
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
+            {/* Close X - Top Right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExpandCard('allison');
+              }}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
               {/* Left: Avatar + Name */}
@@ -1511,7 +1535,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-start mt-6 mb-6 gap-8">
+            <div className="flex items-center mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -1613,15 +1637,6 @@ export default function AllVoiceAgents() {
                   End Conversation
                 </button>
               )}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleExpandCard('allison');
-                }}
-                className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
             </div>
             
             {/* Error Display */}
@@ -1775,6 +1790,18 @@ export default function AllVoiceAgents() {
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
+            {/* Close X - Top Right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExpandCard('james');
+              }}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
               {/* Left: Avatar + Name */}
@@ -1794,7 +1821,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-start mt-6 mb-6 gap-8">
+            <div className="flex items-center mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -1892,15 +1919,6 @@ export default function AllVoiceAgents() {
                   End Conversation
                 </button>
               )}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleExpandCard('harper');
-                }}
-                className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
             </div>
             
             {/* Error Display */}
@@ -2054,6 +2072,18 @@ export default function AllVoiceAgents() {
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
+            {/* Close X - Top Right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExpandCard('olivia');
+              }}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
               {/* Left: Avatar + Name */}
@@ -2073,7 +2103,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-start mt-6 mb-6 gap-8">
+            <div className="flex items-center mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -2171,15 +2201,6 @@ export default function AllVoiceAgents() {
                   End Conversation
                 </button>
               )}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleExpandCard('olivia');
-                }}
-                className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
             </div>
             
             {/* Error Display */}
@@ -2333,6 +2354,18 @@ export default function AllVoiceAgents() {
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
+            {/* Close X - Top Right */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleExpandCard('michael');
+              }}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
               {/* Left: Avatar + Name */}
@@ -2352,7 +2385,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-start mt-6 mb-6 gap-8">
+            <div className="flex items-center mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -2450,15 +2483,6 @@ export default function AllVoiceAgents() {
                   End Conversation
                 </button>
               )}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleExpandCard('michael');
-                }}
-                className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
-              >
-                Close
-              </button>
             </div>
             
             {/* Error Display */}
