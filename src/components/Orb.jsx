@@ -7,7 +7,8 @@ export default function Orb({
   hoverIntensity = 0.2,
   rotateOnHover = true,
   forceHoverState = false,
-  backgroundColor = '#000000'
+  backgroundColor = '#000000',
+  lowPowerMode = false // Throttle rendering to reduce CPU/GPU load (e.g. during voice calls)
 }) {
   const ctnDom = useRef(null);
 
@@ -187,6 +188,9 @@ export default function Orb({
     const container = ctnDom.current;
     if (!container) return;
 
+    // Detect mobile for performance optimizations
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
     const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
@@ -213,7 +217,9 @@ export default function Orb({
 
     function resize() {
       if (!container) return;
-      const dpr = window.devicePixelRatio || 1;
+      // On mobile, cap DPR at 1.5 to reduce GPU pixel fill rate
+      const maxDpr = isMobile ? 1.5 : (window.devicePixelRatio || 1);
+      const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
       const width = container.clientWidth;
       const height = container.clientHeight;
       renderer.setSize(width * dpr, height * dpr);
@@ -228,6 +234,16 @@ export default function Orb({
     let lastTime = 0;
     let currentRot = 0;
     const rotationSpeed = 0.075;
+    let lastRenderTime = 0;
+    
+    // Throttle: on mobile in lowPowerMode, render at ~20fps instead of 60fps
+    // This frees CPU/GPU cycles for WebRTC audio processing
+    // Normal mobile: 30fps cap. Desktop: 60fps (no cap)
+    const getFrameInterval = () => {
+      if (isMobile && lowPowerMode) return 50;   // 20fps during active calls
+      if (isMobile) return 33;                     // 30fps normal mobile
+      return 0;                                     // 60fps desktop (no throttle)
+    };
 
     const handleMouseMove = e => {
       const rect = container.getBoundingClientRect();
@@ -258,6 +274,14 @@ export default function Orb({
     let rafId;
     const update = t => {
       rafId = requestAnimationFrame(update);
+      
+      // Frame rate throttling for mobile
+      const frameInterval = getFrameInterval();
+      if (frameInterval > 0 && (t - lastRenderTime) < frameInterval) {
+        return; // Skip this frame
+      }
+      lastRenderTime = t;
+      
       const dt = (t - lastTime) * 0.001;
       lastTime = t;
       program.uniforms.iTime.value = t * 0.001;
@@ -286,7 +310,7 @@ export default function Orb({
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor]);
+  }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor, lowPowerMode]);
 
   return <div ref={ctnDom} className="orb-container" />;
 }

@@ -344,6 +344,7 @@ export default function VoiceEmbed() {
                             rotateOnHover={true}
                             forceHoverState={false}
                             backgroundColor="#ffffff"
+                            lowPowerMode={isConnected}
                           />
                         </div>
                         

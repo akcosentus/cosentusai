@@ -4,6 +4,12 @@
  * A React hook for integrating Retell AI voice agents into web applications.
  * Handles WebRTC connections, audio streaming, and real-time voice interactions.
  * 
+ * Mobile audio optimizations:
+ * - Pre-warms AudioContext on connect gesture to avoid cold-start latency
+ * - Uses 16000 Hz sample rate on mobile (native WebRTC rate, avoids resampling)
+ * - Explicitly calls startAudioPlayback() to unblock mobile audio
+ * - Passes lowPowerMode to Orb component to throttle WebGL during calls
+ * 
  * @see https://docs.retellai.com/
  */
 
@@ -15,6 +21,32 @@ interface UseRetellAgentOptions {
   agentId: string;
   /** Optional callback for status updates */
   onStatusChange?: (status: string) => void;
+}
+
+// Pre-warm the AudioContext on first user interaction
+// This ensures the audio pipeline is ready before the call connects
+let audioContextWarmed = false;
+function warmAudioContext() {
+  if (audioContextWarmed) return;
+  try {
+    const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+    if (AudioCtx) {
+      const ctx = new AudioCtx();
+      // Create a silent buffer and play it to "unlock" audio on mobile
+      const buffer = ctx.createBuffer(1, 1, 22050);
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+      source.start(0);
+      // Resume if suspended (iOS requires this)
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
+      audioContextWarmed = true;
+    }
+  } catch (e) {
+    // Silently fail — this is just a warmup optimization
+  }
 }
 
 export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOptions) => {
@@ -44,11 +76,14 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
       
       // Critical for mobile: ensure audio playback is unblocked
       // Mobile browsers (especially iOS Safari) require explicit audio activation
-      try {
-        client.startAudioPlayback();
-      } catch (e) {
-        console.warn('startAudioPlayback not needed or failed:', e);
-      }
+      // Use async/await to properly handle the promise
+      (async () => {
+        try {
+          await client.startAudioPlayback();
+        } catch (e) {
+          console.warn('startAudioPlayback not needed or failed:', e);
+        }
+      })();
     });
 
     // Event: Call ended
@@ -124,7 +159,12 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
         throw new Error('Agent ID is not configured');
       }
 
-      // Step 1: Get access token from backend
+      // Step 1: Pre-warm AudioContext immediately on user gesture
+      // This must happen in the same call stack as the user click
+      // to satisfy mobile browser autoplay policies
+      warmAudioContext();
+
+      // Step 2: Get access token from backend
       const response = await fetch('/api/retell/register-call', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -138,10 +178,10 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
 
       const { accessToken } = await response.json();
 
-      // Step 2: Detect mobile for optimized audio settings
+      // Step 3: Detect mobile for optimized audio settings
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       
-      // Step 3: Start the call (must be within 30 seconds of token creation)
+      // Step 4: Start the call (must be within 30 seconds of token creation)
       // Use 16000 on mobile for better compatibility (avoids resampling artifacts)
       // Use 24000 on desktop for higher quality
       await retellClientRef.current.startCall({
@@ -184,4 +224,3 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
     disconnect,
   };
 };
-
