@@ -102,10 +102,10 @@ export default function AllVoiceAgents() {
         expandedCardEl.style.transition = 'opacity 300ms ease-out';
         expandedCardEl.style.opacity = '0';
         setTimeout(() => {
-          setExpandedCard(null);
-          setActiveAgent(null);
-          if (isConnected) {
-            disconnect();
+      setExpandedCard(null);
+      setActiveAgent(null);
+      if (isConnected) {
+        disconnect();
           }
         }, 300);
       } else {
@@ -254,9 +254,11 @@ export default function AllVoiceAgents() {
           className="absolute -top-8 right-0 w-28 md:-top-12 md:w-48 z-[100]"
         />
         {/* Instruction Text - Top Left (Desktop Only) */}
-        <p className="absolute -top-8 left-0 text-black text-xs md:-top-12 md:text-sm font-medium z-[100] hidden md:block">
-          Click any agent to learn more
-        </p>
+        {!expandedCard && (
+          <p className="absolute -top-8 left-0 text-black text-xs md:-top-12 md:text-sm font-medium z-[100] hidden md:block">
+            Click any agent to learn more
+          </p>
+        )}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
   {/* Cindy - Payment & Balance Agent */}
   <div 
@@ -275,9 +277,9 @@ export default function AllVoiceAgents() {
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
-              <img 
-                src="/avatar-cindy.png" 
-                alt="Cindy" 
+            <img 
+              src="/avatar-cindy.png" 
+              alt="Cindy" 
                 className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
               />
             </div>
@@ -422,7 +424,7 @@ export default function AllVoiceAgents() {
                   <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
                 </div>
               </div>
-              
+
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
@@ -430,9 +432,9 @@ export default function AllVoiceAgents() {
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
-                Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
-              </p>
-              </div>
+                    Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
+                  </p>
+                </div>
               
               {/* Right Half - Orb / Status */}
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
@@ -459,9 +461,9 @@ export default function AllVoiceAgents() {
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
+                </div>
               </div>
-            </div>
-            
+
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
               <div className="flex items-center gap-3">
@@ -487,53 +489,53 @@ export default function AllVoiceAgents() {
             
             {/* Buttons - spread apart */}
             <div className="flex justify-between items-center">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
+                {!isConnected ? (
+                  <button 
+                    onClick={(e) => {
                       e.stopPropagation();
                       handleBeginDemo();
                     }}
-                  disabled={isConnecting}
+                    disabled={isConnecting}
                   className="px-8 py-4 bg-[#01B2D6] text-white rounded-xl text-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Connecting...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                      </svg>
-                      Begin Conversation
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
+                        </svg>
+                        Begin Conversation
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEndDemo();
+                    }}
                   className="px-8 py-4 bg-red-500 text-white rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
-              )}
+                  >
+                    End Conversation
+                  </button>
+                )}
             </div>
-            
+
             {/* Error Display */}
-            {error && (
+              {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-800">
-                  <strong>Error:</strong> {error}
-                </p>
-              </div>
-            )}
+                    <strong>Error:</strong> {error}
+                  </p>
+                </div>
+              )}
           </div>
           </div>
         )}
@@ -558,9 +560,9 @@ export default function AllVoiceAgents() {
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
-              <img 
-                src="/avatar-michael.png" 
-                alt="Chris" 
+            <img 
+              src="/avatar-michael.png" 
+              alt="Chris" 
                 className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
               />
             </div>
@@ -705,7 +707,7 @@ export default function AllVoiceAgents() {
                   <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
                 </div>
               </div>
-              
+
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
@@ -713,9 +715,9 @@ export default function AllVoiceAgents() {
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
-                Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
-              </p>
-              </div>
+                    Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
+                  </p>
+                </div>
               
               {/* Right Half - Orb / Status */}
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
@@ -742,9 +744,9 @@ export default function AllVoiceAgents() {
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
+                </div>
               </div>
-            </div>
-            
+
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
               <div className="flex items-center gap-3">
@@ -770,53 +772,53 @@ export default function AllVoiceAgents() {
             
             {/* Buttons - spread apart */}
             <div className="flex justify-between items-center">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
+                {!isConnected ? (
+                  <button 
+                    onClick={(e) => {
                       e.stopPropagation();
                       handleBeginDemo();
                     }}
-                  disabled={isConnecting}
+                    disabled={isConnecting}
                   className="px-8 py-4 bg-[#01B2D6] text-white rounded-xl text-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Connecting...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                      </svg>
-                      Begin Conversation
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
+                        </svg>
+                        Begin Conversation
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEndDemo();
+                    }}
                   className="px-8 py-4 bg-red-500 text-white rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
-              )}
+                  >
+                    End Conversation
+                  </button>
+                )}
             </div>
-            
+
             {/* Error Display */}
-            {error && (
+              {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-800">
-                  <strong>Error:</strong> {error}
-                </p>
-              </div>
-            )}
+                    <strong>Error:</strong> {error}
+                  </p>
+                </div>
+              )}
           </div>
         </div>
         )}
@@ -841,9 +843,9 @@ export default function AllVoiceAgents() {
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
-              <img 
-                src="/avatar-emily.png" 
-                alt="Emily" 
+            <img 
+              src="/avatar-emily.png" 
+              alt="Emily" 
                 className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
               />
             </div>
@@ -988,7 +990,7 @@ export default function AllVoiceAgents() {
                   <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
                 </div>
               </div>
-              
+
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
@@ -996,9 +998,9 @@ export default function AllVoiceAgents() {
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
-                Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
-              </p>
-              </div>
+                    Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
+                  </p>
+                </div>
               
               {/* Right Half - Orb / Status */}
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
@@ -1025,9 +1027,9 @@ export default function AllVoiceAgents() {
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
+                </div>
               </div>
-            </div>
-            
+
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
               <div className="flex items-center gap-3">
@@ -1053,53 +1055,53 @@ export default function AllVoiceAgents() {
             
             {/* Buttons - spread apart */}
             <div className="flex justify-between items-center">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
+                {!isConnected ? (
+                  <button 
+                    onClick={(e) => {
                       e.stopPropagation();
                       handleBeginDemo();
                     }}
-                  disabled={isConnecting}
+                    disabled={isConnecting}
                   className="px-8 py-4 bg-[#01B2D6] text-white rounded-xl text-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Connecting...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                      </svg>
-                      Begin Conversation
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
+                        </svg>
+                        Begin Conversation
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEndDemo();
+                    }}
                   className="px-8 py-4 bg-red-500 text-white rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
-              )}
+                  >
+                    End Conversation
+                  </button>
+                )}
             </div>
-            
+
             {/* Error Display */}
             {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-800">
                   <strong>Error:</strong> {error}
-                </p>
-              </div>
-            )}
+                  </p>
+                </div>
+              )}
           </div>
         </div>
         )}
@@ -1124,9 +1126,9 @@ export default function AllVoiceAgents() {
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
-              <img 
-                src="/avatar-sarah.png" 
-                alt="Sarah" 
+            <img 
+              src="/avatar-sarah.png" 
+              alt="Sarah" 
                 className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
               />
             </div>
@@ -1271,7 +1273,7 @@ export default function AllVoiceAgents() {
                   <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
                 </div>
               </div>
-              
+
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
@@ -1279,9 +1281,9 @@ export default function AllVoiceAgents() {
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
-                Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
-              </p>
-              </div>
+                    Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
+                  </p>
+                </div>
               
               {/* Right Half - Orb / Status */}
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
@@ -1308,9 +1310,9 @@ export default function AllVoiceAgents() {
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
+                </div>
               </div>
-            </div>
-            
+
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
               <div className="flex items-center gap-3">
@@ -1336,53 +1338,53 @@ export default function AllVoiceAgents() {
             
             {/* Buttons - spread apart */}
             <div className="flex justify-between items-center">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
+                {!isConnected ? (
+                  <button 
+                    onClick={(e) => {
                       e.stopPropagation();
                       handleBeginDemo();
                     }}
-                  disabled={isConnecting}
+                    disabled={isConnecting}
                   className="px-8 py-4 bg-[#01B2D6] text-white rounded-xl text-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Connecting...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                      </svg>
-                      Begin Conversation
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
+                        </svg>
+                        Begin Conversation
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEndDemo();
+                    }}
                   className="px-8 py-4 bg-red-500 text-white rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
-              )}
+                  >
+                    End Conversation
+                  </button>
+                )}
             </div>
-            
+
             {/* Error Display */}
             {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-800">
                   <strong>Error:</strong> {error}
-                </p>
-              </div>
-            )}
+                  </p>
+                </div>
+              )}
           </div>
         </div>
         )}
@@ -1406,9 +1408,9 @@ export default function AllVoiceAgents() {
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
-              <img 
-                src="/avatar-allison.png" 
-                alt="Allison" 
+            <img 
+              src="/avatar-allison.png" 
+              alt="Allison" 
                 className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
               />
             </div>
@@ -1553,7 +1555,7 @@ export default function AllVoiceAgents() {
                   <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
                 </div>
               </div>
-              
+
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
@@ -1561,9 +1563,9 @@ export default function AllVoiceAgents() {
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
-                Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
-              </p>
-              </div>
+                    Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
+                  </p>
+                </div>
               
               {/* Right Half - Orb / Status */}
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
@@ -1590,9 +1592,9 @@ export default function AllVoiceAgents() {
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
+                </div>
               </div>
-            </div>
-            
+
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
               <div className="flex items-center gap-3">
@@ -1618,9 +1620,9 @@ export default function AllVoiceAgents() {
             
             {/* Buttons - spread apart */}
             <div className="flex justify-between items-center">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
+                {!isConnected ? (
+                  <button 
+                    onClick={(e) => {
                       e.stopPropagation();
                       if (false) {
                         alert('⚠️ Environment variables not configured!\n\nPlease add RETELL_API_KEY and NEXT_PUBLIC_RETELL_AGENT_ID to your .env.local file.\n\nSee ENV_SETUP.md for instructions.');
@@ -1628,47 +1630,47 @@ export default function AllVoiceAgents() {
                       }
                       handleBeginDemo();
                     }}
-                  disabled={isConnecting}
+                    disabled={isConnecting}
                   className="px-8 py-4 bg-[#01B2D6] text-white rounded-xl text-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Connecting...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                      </svg>
-                      Begin Conversation
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
+                        </svg>
+                        Begin Conversation
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEndDemo();
+                    }}
                   className="px-8 py-4 bg-red-500 text-white rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
-              )}
+                  >
+                    End Conversation
+                  </button>
+                )}
             </div>
-            
+
             {/* Error Display */}
-            {error && (
+              {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-800">
-                  <strong>Error:</strong> {error}
-                </p>
-              </div>
-            )}
+                    <strong>Error:</strong> {error}
+                  </p>
+                </div>
+              )}
           </div>
         </div>
         )}
@@ -1693,9 +1695,9 @@ export default function AllVoiceAgents() {
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
-              <img 
-                src="/avatar-harper.png" 
-                alt="Harper" 
+            <img 
+              src="/avatar-harper.png" 
+              alt="Harper" 
                 className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
               />
             </div>
@@ -1840,7 +1842,7 @@ export default function AllVoiceAgents() {
                   <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
                 </div>
               </div>
-              
+
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
@@ -1848,9 +1850,9 @@ export default function AllVoiceAgents() {
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
-                Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
-              </p>
-              </div>
+                    Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
+                  </p>
+                </div>
               
               {/* Right Half - Orb / Status */}
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
@@ -1877,9 +1879,9 @@ export default function AllVoiceAgents() {
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
+                </div>
               </div>
-            </div>
-            
+
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
               <div className="flex items-center gap-3">
@@ -1905,53 +1907,53 @@ export default function AllVoiceAgents() {
             
             {/* Buttons - spread apart */}
             <div className="flex justify-between items-center">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
+                {!isConnected ? (
+                  <button 
+                    onClick={(e) => {
                       e.stopPropagation();
                       handleBeginDemo();
                     }}
-                  disabled={isConnecting}
+                    disabled={isConnecting}
                   className="px-8 py-4 bg-[#01B2D6] text-white rounded-xl text-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Connecting...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                      </svg>
-                      Begin Conversation
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
+                        </svg>
+                        Begin Conversation
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEndDemo();
+                    }}
                   className="px-8 py-4 bg-red-500 text-white rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
-              )}
+                  >
+                    End Conversation
+                  </button>
+                )}
             </div>
-            
+
             {/* Error Display */}
             {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-800">
                   <strong>Error:</strong> {error}
-                </p>
-              </div>
-            )}
+                  </p>
+                </div>
+              )}
           </div>
         </div>
         )}
@@ -1976,9 +1978,9 @@ export default function AllVoiceAgents() {
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
-              <img 
-                src="/avatar-olivia.png" 
-                alt="Olivia" 
+            <img 
+              src="/avatar-olivia.png" 
+              alt="Olivia" 
                 className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
               />
             </div>
@@ -2123,7 +2125,7 @@ export default function AllVoiceAgents() {
                   <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
                 </div>
               </div>
-              
+
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
@@ -2131,9 +2133,9 @@ export default function AllVoiceAgents() {
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
-                Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
-              </p>
-              </div>
+                    Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
+                  </p>
+                </div>
               
               {/* Right Half - Orb / Status */}
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
@@ -2160,9 +2162,9 @@ export default function AllVoiceAgents() {
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
+                </div>
               </div>
-            </div>
-            
+
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
               <div className="flex items-center gap-3">
@@ -2188,53 +2190,53 @@ export default function AllVoiceAgents() {
             
             {/* Buttons - spread apart */}
             <div className="flex justify-between items-center">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
+                {!isConnected ? (
+                  <button 
+                    onClick={(e) => {
                       e.stopPropagation();
                       handleBeginDemo();
                     }}
-                  disabled={isConnecting}
+                    disabled={isConnecting}
                   className="px-8 py-4 bg-[#01B2D6] text-white rounded-xl text-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Connecting...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                      </svg>
-                      Begin Conversation
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
+                        </svg>
+                        Begin Conversation
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEndDemo();
+                    }}
                   className="px-8 py-4 bg-red-500 text-white rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
-              )}
+                  >
+                    End Conversation
+                  </button>
+                )}
             </div>
-            
+
             {/* Error Display */}
             {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-800">
                   <strong>Error:</strong> {error}
-                </p>
-              </div>
-            )}
+                  </p>
+                </div>
+              )}
           </div>
         </div>
         )}
@@ -2259,9 +2261,9 @@ export default function AllVoiceAgents() {
           <div className="flex flex-col h-full">
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden">
-              <img 
-                src="/avatar-chris.png" 
-                alt="Michael" 
+            <img 
+              src="/avatar-chris.png" 
+              alt="Michael" 
                 className="w-full h-full object-contain scale-[1.07] md:scale-[1.06]"
               />
             </div>
@@ -2406,7 +2408,7 @@ export default function AllVoiceAgents() {
                   <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
                 </div>
               </div>
-              
+
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
@@ -2414,9 +2416,9 @@ export default function AllVoiceAgents() {
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
-                Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
-              </p>
-              </div>
+                    Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
+                  </p>
+                </div>
               
               {/* Right Half - Orb / Status */}
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
@@ -2443,9 +2445,9 @@ export default function AllVoiceAgents() {
                     <p className="text-sm">{isConnecting ? 'Connecting...' : 'Ready to start'}</p>
                   </div>
                 )}
+                </div>
               </div>
-            </div>
-            
+
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
               <div className="flex items-center gap-3">
@@ -2471,53 +2473,53 @@ export default function AllVoiceAgents() {
             
             {/* Buttons - spread apart */}
             <div className="flex justify-between items-center">
-              {!isConnected ? (
-                <button 
-                  onClick={(e) => {
+                {!isConnected ? (
+                  <button 
+                    onClick={(e) => {
                       e.stopPropagation();
                       handleBeginDemo();
                     }}
-                  disabled={isConnecting}
+                    disabled={isConnecting}
                   className="px-8 py-4 bg-[#01B2D6] text-white rounded-xl text-lg font-semibold hover:bg-[#0195b3] transition-colors disabled:opacity-50 flex items-center gap-2"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Connecting...
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Connecting...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-                      </svg>
-                      Begin Conversation
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEndDemo();
-                  }}
+                        </svg>
+                        Begin Conversation
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEndDemo();
+                    }}
                   className="px-8 py-4 bg-red-500 text-white rounded-xl text-lg font-semibold hover:bg-red-600 transition-colors"
-                >
-                  End Conversation
-                </button>
-              )}
+                  >
+                    End Conversation
+                  </button>
+                )}
             </div>
-            
+
             {/* Error Display */}
             {error && (
               <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
                 <p className="text-sm text-red-800">
                   <strong>Error:</strong> {error}
-                </p>
-              </div>
-            )}
+                  </p>
+                </div>
+              )}
           </div>
         </div>
         )}
