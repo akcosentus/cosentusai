@@ -946,11 +946,6 @@ export default function AllVoiceAgents() {
                     {isRecording ? 'Emily is speaking...' : 'Listening...'}
                   </p>
                   
-                  <p className="text-sm text-gray-500 text-center max-w-xs">
-                    {isRecording 
-                      ? 'Emily is providing your cost estimate...' 
-                      : 'Tell Emily about your upcoming surgery'}
-                  </p>
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
@@ -1208,11 +1203,6 @@ export default function AllVoiceAgents() {
                     {isRecording ? 'Sarah is speaking...' : 'Listening...'}
                   </p>
                   
-                  <p className="text-sm text-gray-500 text-center max-w-xs">
-                    {isRecording 
-                      ? 'Sarah is finding available appointment times...' 
-                      : 'Tell Sarah when you need an appointment'}
-                  </p>
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
