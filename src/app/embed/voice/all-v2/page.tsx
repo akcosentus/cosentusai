@@ -424,7 +424,7 @@ export default function AllVoiceAgents() {
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={false}
+                      forceHoverState={isRecording}
                       backgroundColor="#ffffff"
                     />
                   </div>
@@ -435,7 +435,7 @@ export default function AllVoiceAgents() {
                   </p>
                 </div>
               ) : (
-                <div className="text-center text-gray-400">
+                <div className="text-center text-gray-400 mt-6">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                   </svg>
@@ -690,7 +690,7 @@ export default function AllVoiceAgents() {
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={false}
+                      forceHoverState={isRecording}
                       backgroundColor="#ffffff"
                     />
                   </div>
@@ -701,7 +701,7 @@ export default function AllVoiceAgents() {
                   </p>
                 </div>
               ) : (
-                <div className="text-center text-gray-400">
+                <div className="text-center text-gray-400 mt-6">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                   </svg>
@@ -956,7 +956,7 @@ export default function AllVoiceAgents() {
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={false}
+                      forceHoverState={isRecording}
                       backgroundColor="#ffffff"
                     />
                   </div>
@@ -968,7 +968,7 @@ export default function AllVoiceAgents() {
                   
                 </div>
               ) : (
-                <div className="text-center text-gray-500">
+                <div className="text-center text-gray-500 mt-6">
                   <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
@@ -1214,7 +1214,7 @@ export default function AllVoiceAgents() {
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={false}
+                      forceHoverState={isRecording}
                       backgroundColor="#ffffff"
                     />
                   </div>
@@ -1226,7 +1226,7 @@ export default function AllVoiceAgents() {
                   
                 </div>
               ) : (
-                <div className="text-center text-gray-500">
+                <div className="text-center text-gray-500 mt-6">
                   <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
@@ -1475,7 +1475,7 @@ export default function AllVoiceAgents() {
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={false}
+                      forceHoverState={isRecording}
                       backgroundColor="#ffffff"
                     />
                   </div>
@@ -1486,7 +1486,7 @@ export default function AllVoiceAgents() {
                   </p>
                 </div>
               ) : (
-                <div className="text-center text-gray-400">
+                <div className="text-center text-gray-400 mt-6">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-16 h-16 mx-auto mb-4 opacity-50">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
                   </svg>
@@ -1741,7 +1741,7 @@ export default function AllVoiceAgents() {
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={false}
+                      forceHoverState={isRecording}
                       backgroundColor="#ffffff"
                     />
                   </div>
@@ -1753,7 +1753,7 @@ export default function AllVoiceAgents() {
                   
                 </div>
               ) : (
-                <div className="text-center text-gray-500">
+                <div className="text-center text-gray-500 mt-6">
                   <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
@@ -1999,7 +1999,7 @@ export default function AllVoiceAgents() {
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={false}
+                      forceHoverState={isRecording}
                       backgroundColor="#ffffff"
                     />
                   </div>
@@ -2011,7 +2011,7 @@ export default function AllVoiceAgents() {
                   
                 </div>
               ) : (
-                <div className="text-center text-gray-500">
+                <div className="text-center text-gray-500 mt-6">
                   <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
@@ -2257,7 +2257,7 @@ export default function AllVoiceAgents() {
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
-                      forceHoverState={false}
+                      forceHoverState={isRecording}
                       backgroundColor="#ffffff"
                     />
                   </div>
@@ -2269,7 +2269,7 @@ export default function AllVoiceAgents() {
                   
                 </div>
               ) : (
-                <div className="text-center text-gray-500">
+                <div className="text-center text-gray-500 mt-6">
                   <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                   </svg>
