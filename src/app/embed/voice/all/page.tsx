@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import { useRetellAgent } from '@/hooks/useRetellAgent';
 import { useRateLimit } from '@/hooks/useRateLimit';
 import { AGENTS } from '@/config/agents';
@@ -178,6 +179,13 @@ export default function AllVoiceAgents() {
 
   return (
     <div className="min-h-screen pt-16 pb-4 px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
+
+      {/* Preload all avatar images so expanded cards render instantly */}
+      <div className="hidden">
+        {['/avatar-cindy.png', '/avatar-michael.png', '/avatar-emily.png', '/avatar-sarah.png', '/avatar-allison.png', '/avatar-harper.png', '/avatar-olivia.png', '/avatar-chris.png'].map((src) => (
+          <Image key={src} src={src} alt="" width={80} height={80} priority />
+        ))}
+      </div>
 
       <style>{`
         .animated-border-card {
