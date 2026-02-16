@@ -337,13 +337,13 @@ export default function VoiceEmbed() {
                     {isConnected ? (
                       <div className="flex flex-col items-center gap-6">
                         {/* WebGL Orb */}
-                        <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                        <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                           <Orb 
                             hue={55}
                             hoverIntensity={0.22}
                             rotateOnHover={true}
                             forceHoverState={false}
-                            backgroundColor="#000000"
+                            backgroundColor="#ffffff"
                           />
                         </div>
                         

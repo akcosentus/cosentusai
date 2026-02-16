@@ -401,19 +401,19 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                  <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={false}
-                      backgroundColor="#000000"
+                      backgroundColor="#ffffff"
                     />
                   </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Cindy Speaking...' : 'Listening...'}
+                    {isRecording ? 'Cindy is speaking...' : 'Listening...'}
                   </p>
                 </div>
               ) : (
@@ -666,19 +666,19 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                  <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={false}
-                      backgroundColor="#000000"
+                      backgroundColor="#ffffff"
                     />
                   </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Chris Speaking...' : 'Listening...'}
+                    {isRecording ? 'Chris is speaking...' : 'Listening...'}
                   </p>
                 </div>
               ) : (
@@ -931,19 +931,19 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                  <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={false}
-                      backgroundColor="#000000"
+                      backgroundColor="#ffffff"
                     />
                   </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Emily Speaking...' : 'Listening...'}
+                    {isRecording ? 'Emily is speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -1193,19 +1193,19 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                  <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={false}
-                      backgroundColor="#000000"
+                      backgroundColor="#ffffff"
                     />
                   </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Sarah Speaking...' : 'Listening...'}
+                    {isRecording ? 'Sarah is speaking...' : 'Listening...'}
                   </p>
                   
                   <p className="text-sm text-gray-500 text-center max-w-xs">
@@ -1458,19 +1458,19 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                  <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={false}
-                      backgroundColor="#000000"
+                      backgroundColor="#ffffff"
                     />
                   </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Allison Speaking...' : 'Listening...'}
+                    {isRecording ? 'Allison is speaking...' : 'Listening...'}
                   </p>
                 </div>
               ) : (
@@ -1723,24 +1723,21 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                  <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={false}
-                      backgroundColor="#000000"
+                      backgroundColor="#ffffff"
                     />
                   </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Harper Speaking...' : 'Listening...'}
+                    {isRecording ? 'Harper is speaking...' : 'Listening...'}
                   </p>
                   
-                  <p className="text-sm text-gray-500 text-center max-w-xs">
-                    Try asking: "Can you show me how you verify insurance?" or "Walk me through an eligibility check"
-                  </p>
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
@@ -1983,24 +1980,21 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                  <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={false}
-                      backgroundColor="#000000"
+                      backgroundColor="#ffffff"
                     />
                   </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Olivia Speaking...' : 'Listening...'}
+                    {isRecording ? 'Olivia is speaking...' : 'Listening...'}
                   </p>
                   
-                  <p className="text-sm text-gray-500 text-center max-w-xs">
-                    Try asking: "Can you check on a prior auth?" or "Show me how you handle an urgent case"
-                  </p>
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
@@ -2243,24 +2237,21 @@ export default function AllVoiceAgents() {
               {isConnected ? (
                 <div className="flex flex-col items-center gap-6">
                   {/* WebGL Orb */}
-                  <div style={{ width: '160px', height: '160px', position: 'relative', background: '#000000', borderRadius: '50%' }}>
+                  <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                     <Orb 
                       hue={55}
                       hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={false}
-                      backgroundColor="#000000"
+                      backgroundColor="#ffffff"
                     />
                   </div>
                   
                   {/* Status Text */}
                   <p className="text-gray-600 text-center">
-                    {isRecording ? 'Michael Speaking...' : 'Listening...'}
+                    {isRecording ? 'Michael is speaking...' : 'Listening...'}
                   </p>
                   
-                  <p className="text-sm text-gray-500 text-center max-w-xs">
-                    Try asking: "Can you track down a missing payment?" or "Show me how you resolve a discrepancy"
-                  </p>
                 </div>
               ) : (
                 <div className="text-center text-gray-500">
