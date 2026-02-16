@@ -385,7 +385,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('cindy');
               }}
-              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-1 right-1 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -422,7 +422,7 @@ export default function AllVoiceAgents() {
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
-                    <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
+                    <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
                         hue={360}
                         hoverIntensity={0.22}
@@ -667,7 +667,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('chris');
               }}
-              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-1 right-1 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -704,7 +704,7 @@ export default function AllVoiceAgents() {
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
-                    <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
+                    <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
                         hue={360}
                         hoverIntensity={0.22}
@@ -949,7 +949,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('emily');
               }}
-              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-1 right-1 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -986,7 +986,7 @@ export default function AllVoiceAgents() {
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
-                    <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
+                    <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
                         hue={360}
                         hoverIntensity={0.22}
@@ -1231,7 +1231,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('sarah');
               }}
-              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-1 right-1 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1268,7 +1268,7 @@ export default function AllVoiceAgents() {
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
-                    <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
+                    <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
                         hue={360}
                         hoverIntensity={0.22}
@@ -1512,7 +1512,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('allison');
               }}
-              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-1 right-1 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1549,7 +1549,7 @@ export default function AllVoiceAgents() {
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
-                    <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
+                    <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
                         hue={360}
                         hoverIntensity={0.22}
@@ -1798,7 +1798,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('james');
               }}
-              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-1 right-1 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1835,7 +1835,7 @@ export default function AllVoiceAgents() {
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
-                    <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
+                    <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
                         hue={360}
                         hoverIntensity={0.22}
@@ -2080,7 +2080,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('olivia');
               }}
-              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-1 right-1 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -2117,7 +2117,7 @@ export default function AllVoiceAgents() {
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
-                    <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
+                    <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
                         hue={360}
                         hoverIntensity={0.22}
@@ -2362,7 +2362,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('michael');
               }}
-              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-1 right-1 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -2399,7 +2399,7 @@ export default function AllVoiceAgents() {
               <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
-                    <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
+                    <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
                         hue={360}
                         hoverIntensity={0.22}
