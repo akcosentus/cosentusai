@@ -427,7 +427,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
+            <div className="flex items-start mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -683,7 +683,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
+            <div className="flex items-start mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -939,7 +939,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
+            <div className="flex items-start mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -1195,7 +1195,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
+            <div className="flex items-start mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -1450,7 +1450,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
+            <div className="flex items-start mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -1706,7 +1706,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
+            <div className="flex items-start mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -1962,7 +1962,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
+            <div className="flex items-start mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -2218,7 +2218,7 @@ export default function AllVoiceAgents() {
               </div>
             
             {/* Content: Description (left) + Orb/Status (right) */}
-            <div className="flex items-center mt-2 mb-6 gap-8">
+            <div className="flex items-start mt-2 mb-6 gap-8">
               {/* Left Half - Description */}
               <div className="w-1/2">
                 <p className="text-gray-600 text-base leading-relaxed">
