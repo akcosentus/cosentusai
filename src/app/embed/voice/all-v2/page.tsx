@@ -436,7 +436,7 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={55}
+                        hue={360}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
@@ -719,7 +719,7 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={55}
+                        hue={360}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
@@ -1002,7 +1002,7 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={55}
+                        hue={360}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
@@ -1285,7 +1285,7 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={55}
+                        hue={360}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
@@ -1567,7 +1567,7 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={55}
+                        hue={360}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
@@ -1854,7 +1854,7 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={55}
+                        hue={360}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
@@ -2137,7 +2137,7 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={55}
+                        hue={360}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
@@ -2420,7 +2420,7 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={55}
+                        hue={360}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
