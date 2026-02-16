@@ -266,7 +266,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(0)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
-        ? 'md:col-span-4 p-4 md:p-12 animated-border-card' 
+        ? 'md:col-span-4 p-4 md:px-12 md:pt-12 md:pb-6 animated-border-card' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'cindy' ? 'hidden' : ''}`}
   >
@@ -481,7 +481,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Real-time balance inquiries and payment history</span>
@@ -522,7 +522,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(1)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
-        ? 'md:col-span-4 p-4 md:p-12 animated-border-card' 
+        ? 'md:col-span-4 p-4 md:px-12 md:pt-12 md:pb-6 animated-border-card' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'chris' ? 'hidden' : ''}`}
   >
@@ -737,7 +737,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Outbound claim status follow-ups with carriers</span>
@@ -778,7 +778,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(2)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
-        ? 'md:col-span-4 p-4 md:p-12 animated-border-card' 
+        ? 'md:col-span-4 p-4 md:px-12 md:pt-12 md:pb-6 animated-border-card' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'emily' ? 'hidden' : ''}`}
   >
@@ -993,7 +993,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Pre-surgery anesthesia cost estimates</span>
@@ -1034,7 +1034,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(3)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
-        ? 'md:col-span-4 p-4 md:p-12 animated-border-card' 
+        ? 'md:col-span-4 p-4 md:px-12 md:pt-12 md:pb-6 animated-border-card' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'sarah' ? 'hidden' : ''}`}
   >
@@ -1249,7 +1249,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Inbound and outbound appointment scheduling</span>
@@ -1289,7 +1289,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(4)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
-        ? 'md:col-span-4 p-4 md:p-12 animated-border-card' 
+        ? 'md:col-span-4 p-4 md:px-12 md:pt-12 md:pb-6 animated-border-card' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'allison' ? 'hidden' : ''}`}
   >
@@ -1504,7 +1504,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">General billing and account inquiries</span>
@@ -1545,7 +1545,7 @@ export default function AllVoiceAgents() {
     style={cardAnimationStyle(5)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
-        ? 'md:col-span-4 p-4 md:p-12 animated-border-card' 
+        ? 'md:col-span-4 p-4 md:px-12 md:pt-12 md:pb-6 animated-border-card' 
         : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
     } ${expandedCard && expandedCard !== 'james' ? 'hidden' : ''}`}
   >
@@ -1760,7 +1760,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Real-time insurance eligibility verification</span>
@@ -1801,7 +1801,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(6)}
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
-          ? 'md:col-span-4 p-4 md:p-12 animated-border-card' 
+          ? 'md:col-span-4 p-4 md:px-12 md:pt-12 md:pb-6 animated-border-card' 
           : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'olivia' ? 'hidden' : ''}`}
     >
@@ -2016,7 +2016,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Prior authorization status tracking</span>
@@ -2057,7 +2057,7 @@ export default function AllVoiceAgents() {
       style={cardAnimationStyle(7)}
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
-          ? 'md:col-span-4 p-4 md:p-12 animated-border-card'
+          ? 'md:col-span-4 p-4 md:px-12 md:pt-12 md:pb-6 animated-border-card'
           : 'p-2.5 md:p-5 h-full hover:shadow-2xl hover:-translate-y-1'
       } ${expandedCard && expandedCard !== 'michael' ? 'hidden' : ''}`}
   >
@@ -2272,7 +2272,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Missing payment investigation and recovery</span>
