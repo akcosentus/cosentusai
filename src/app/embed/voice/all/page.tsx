@@ -301,7 +301,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'cindy' && (
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -621,7 +621,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'chris' && (
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -941,7 +941,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'emily' && (
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -1261,7 +1261,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'sarah' && (
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -1580,7 +1580,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'allison' && (
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -1900,7 +1900,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'james' && (
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -2220,7 +2220,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'olivia' && (
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -2540,7 +2540,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'michael' && (
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
