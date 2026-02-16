@@ -516,7 +516,7 @@ export default function AllVoiceAgents() {
 
                 </div>
 
-                <p className="mt-8 text-gray-600 text-base leading-relaxed">
+                <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
                   Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
 
@@ -855,7 +855,7 @@ export default function AllVoiceAgents() {
 
                 </div>
 
-                <p className="mt-8 text-gray-600 text-base leading-relaxed">
+                <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
                   Chris specializes in calling insurance companies to follow up on claim statuses, resolve denials, and gather information needed for billing. He navigates complex phone systems and speaks naturally with insurance representatives.
 
@@ -1194,7 +1194,7 @@ export default function AllVoiceAgents() {
 
                 </div>
 
-                <p className="mt-8 text-gray-600 text-base leading-relaxed">
+                <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
                   Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
 
@@ -1533,7 +1533,7 @@ export default function AllVoiceAgents() {
 
                 </div>
 
-                <p className="mt-8 text-gray-600 text-base leading-relaxed">
+                <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
                   Sarah handles appointment scheduling for medical practices, managing both inbound calls from patients and outbound calls to schedule appointments. She coordinates with calendar systems, confirms patient details, and handles rescheduling efficiently.
 
@@ -1871,7 +1871,7 @@ export default function AllVoiceAgents() {
 
                 </div>
 
-                <p className="mt-8 text-gray-600 text-base leading-relaxed">
+                <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
                   Allison is your friendly AI assistant, trained to handle customer inquiries with professionalism and care. She can help with general questions, provide information, and guide you through various processes.
 
@@ -2210,7 +2210,7 @@ export default function AllVoiceAgents() {
 
                 </div>
 
-                <p className="mt-8 text-gray-600 text-base leading-relaxed">
+                <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
                   Harper specializes in calling insurance companies to verify patient coverage before services are rendered. She checks eligibility, benefits, deductibles, and in-network status to ensure accurate billing.
 
@@ -2549,7 +2549,7 @@ export default function AllVoiceAgents() {
 
                 </div>
 
-                <p className="mt-8 text-gray-600 text-base leading-relaxed">
+                <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
                   Olivia specializes in calling insurance companies to track down prior authorization approvals. She checks if authorizations are approved, denied, or pending, and can expedite urgent cases to keep procedures on schedule.
 
@@ -2888,7 +2888,7 @@ export default function AllVoiceAgents() {
 
                 </div>
 
-                <p className="mt-8 text-gray-600 text-base leading-relaxed">
+                <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
                   Michael is your financial detective, specializing in tracking down and resolving payment discrepancies with insurance companies. He investigates missing payments, partial payments, incorrect amounts, and overpayments to ensure every dollar is accounted for.
 
