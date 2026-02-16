@@ -288,7 +288,7 @@ export default function AllVoiceAgents() {
         />
         {/* Instruction Text - Top Left (Desktop Only) */}
         {!expandedCard && (
-          <p className="absolute -top-8 left-0 text-black text-xs md:-top-12 md:text-sm font-medium z-[100] hidden md:block">
+          <p className="absolute -top-8 left-0 text-black text-xs md:-top-12 md:text-sm font-medium z-[100]">
             Click any agent to learn more
           </p>
         )}
@@ -321,7 +321,7 @@ export default function AllVoiceAgents() {
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">CINDY</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Patient Support</p>
-              <p className="text-white text-[10px] opacity-80 md:hidden">Click to learn more →</p>
+
             </div>
           </div>
         )}
@@ -660,7 +660,7 @@ export default function AllVoiceAgents() {
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">CHRIS</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Claims Follow-Up</p>
-              <p className="text-white text-[10px] opacity-80 md:hidden">Click to learn more →</p>
+
             </div>
           </div>
         )}
@@ -1000,7 +1000,7 @@ export default function AllVoiceAgents() {
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">EMILY</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Cost Estimation</p>
-              <p className="text-white text-[10px] opacity-80 md:hidden">Click to learn more →</p>
+
             </div>
           </div>
         )}
@@ -1340,7 +1340,7 @@ export default function AllVoiceAgents() {
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">SARAH</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Appt. Scheduling</p>
-              <p className="text-white text-[10px] opacity-80 md:hidden">Click to learn more →</p>
+
             </div>
           </div>
         )}
@@ -1679,7 +1679,7 @@ export default function AllVoiceAgents() {
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">ALLISON</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Customer Support</p>
-              <p className="text-white text-[10px] opacity-80 md:hidden">Click to learn more →</p>
+
             </div>
           </div>
         )}
@@ -2019,7 +2019,7 @@ export default function AllVoiceAgents() {
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">HARPER</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Eligibility Verification</p>
-              <p className="text-white text-[10px] opacity-80 md:hidden">Click to learn more →</p>
+
             </div>
           </div>
         )}
@@ -2359,7 +2359,7 @@ export default function AllVoiceAgents() {
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">OLIVIA</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Prior Authorization</p>
-              <p className="text-white text-[10px] opacity-80 md:hidden">Click to learn more →</p>
+
             </div>
           </div>
         )}
@@ -2699,7 +2699,7 @@ export default function AllVoiceAgents() {
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
               <h3 className="text-white text-sm md:text-base font-bold mb-0.5">MICHAEL</h3>
               <p className="text-white text-[10px] md:text-xs mb-1.5">Payment Recovery</p>
-              <p className="text-white text-[10px] opacity-80 md:hidden">Click to learn more →</p>
+
             </div>
           </div>
         )}
