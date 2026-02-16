@@ -421,11 +421,11 @@ export default function AllVoiceAgents() {
                   {/* WebGL Orb */}
                   <div style={{ width: '160px', height: '160px', position: 'relative' }}>
                     <Orb 
-                      hue={180}
-                      hoverIntensity={0.09}
+                      hue={55}
+                      hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={isRecording}
-                      backgroundColor="#ffffff"
+                      backgroundColor="#000000"
                     />
                   </div>
                   
@@ -687,11 +687,11 @@ export default function AllVoiceAgents() {
                   {/* WebGL Orb */}
                   <div style={{ width: '160px', height: '160px', position: 'relative' }}>
                     <Orb 
-                      hue={180}
-                      hoverIntensity={0.09}
+                      hue={55}
+                      hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={isRecording}
-                      backgroundColor="#ffffff"
+                      backgroundColor="#000000"
                     />
                   </div>
                   
@@ -953,11 +953,11 @@ export default function AllVoiceAgents() {
                   {/* WebGL Orb */}
                   <div style={{ width: '160px', height: '160px', position: 'relative' }}>
                     <Orb 
-                      hue={180}
-                      hoverIntensity={0.09}
+                      hue={55}
+                      hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={isRecording}
-                      backgroundColor="#ffffff"
+                      backgroundColor="#000000"
                     />
                   </div>
                   
@@ -1216,11 +1216,11 @@ export default function AllVoiceAgents() {
                   {/* WebGL Orb */}
                   <div style={{ width: '160px', height: '160px', position: 'relative' }}>
                     <Orb 
-                      hue={180}
-                      hoverIntensity={0.09}
+                      hue={55}
+                      hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={isRecording}
-                      backgroundColor="#ffffff"
+                      backgroundColor="#000000"
                     />
                   </div>
                   
@@ -1482,11 +1482,11 @@ export default function AllVoiceAgents() {
                   {/* WebGL Orb */}
                   <div style={{ width: '160px', height: '160px', position: 'relative' }}>
                     <Orb 
-                      hue={180}
-                      hoverIntensity={0.09}
+                      hue={55}
+                      hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={isRecording}
-                      backgroundColor="#ffffff"
+                      backgroundColor="#000000"
                     />
                   </div>
                   
@@ -1748,11 +1748,11 @@ export default function AllVoiceAgents() {
                   {/* WebGL Orb */}
                   <div style={{ width: '160px', height: '160px', position: 'relative' }}>
                     <Orb 
-                      hue={180}
-                      hoverIntensity={0.09}
+                      hue={55}
+                      hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={isRecording}
-                      backgroundColor="#ffffff"
+                      backgroundColor="#000000"
                     />
                   </div>
                   
@@ -2009,11 +2009,11 @@ export default function AllVoiceAgents() {
                   {/* WebGL Orb */}
                   <div style={{ width: '160px', height: '160px', position: 'relative' }}>
                     <Orb 
-                      hue={180}
-                      hoverIntensity={0.09}
+                      hue={55}
+                      hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={isRecording}
-                      backgroundColor="#ffffff"
+                      backgroundColor="#000000"
                     />
                   </div>
                   
@@ -2270,11 +2270,11 @@ export default function AllVoiceAgents() {
                   {/* WebGL Orb */}
                   <div style={{ width: '160px', height: '160px', position: 'relative' }}>
                     <Orb 
-                      hue={180}
-                      hoverIntensity={0.09}
+                      hue={55}
+                      hoverIntensity={0.22}
                       rotateOnHover={true}
                       forceHoverState={isRecording}
-                      backgroundColor="#ffffff"
+                      backgroundColor="#000000"
                     />
                   </div>
                   
