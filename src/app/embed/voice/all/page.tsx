@@ -490,8 +490,10 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-4xl font-bold text-gray-900">Cindy</h3>
-                  <p className="text-lg text-gray-500 mt-1">Payment & Balance Specialist</p>
-                  <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
+                  <div className="inline-block">
+                    <p className="text-lg text-gray-500 mt-1">Payment & Balance Specialist</p>
+                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+                  </div>
                 </div>
               </div>
               
@@ -810,8 +812,10 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-4xl font-bold text-gray-900">Chris</h3>
-                  <p className="text-lg text-gray-500 mt-1">Insurance Claim Specialist</p>
-                  <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
+                  <div className="inline-block">
+                    <p className="text-lg text-gray-500 mt-1">Insurance Claim Specialist</p>
+                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+                  </div>
                 </div>
               </div>
               
@@ -1130,8 +1134,10 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-4xl font-bold text-gray-900">Emily</h3>
-                  <p className="text-lg text-gray-500 mt-1">Pre-Service Anesthesia Cost Estimates</p>
-                  <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
+                  <div className="inline-block">
+                    <p className="text-lg text-gray-500 mt-1">Pre-Service Anesthesia Cost Estimates</p>
+                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+                  </div>
                 </div>
               </div>
               
@@ -1450,8 +1456,10 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-4xl font-bold text-gray-900">Sarah</h3>
-                  <p className="text-lg text-gray-500 mt-1">Medical Appointment Scheduling</p>
-                  <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
+                  <div className="inline-block">
+                    <p className="text-lg text-gray-500 mt-1">Medical Appointment Scheduling</p>
+                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+                  </div>
                 </div>
               </div>
               
@@ -1769,8 +1777,10 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-4xl font-bold text-gray-900">Allison</h3>
-                  <p className="text-lg text-gray-500 mt-1">Customer Service Agent</p>
-                  <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
+                  <div className="inline-block">
+                    <p className="text-lg text-gray-500 mt-1">Customer Service Agent</p>
+                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+                  </div>
                 </div>
               </div>
               
@@ -2089,8 +2099,10 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-4xl font-bold text-gray-900">Harper</h3>
-                  <p className="text-lg text-gray-500 mt-1">Eligibility & Benefits Verification</p>
-                  <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
+                  <div className="inline-block">
+                    <p className="text-lg text-gray-500 mt-1">Eligibility & Benefits Verification</p>
+                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+                  </div>
                 </div>
               </div>
               
@@ -2409,8 +2421,10 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-4xl font-bold text-gray-900">Olivia</h3>
-                  <p className="text-lg text-gray-500 mt-1">Prior Authorization Follow-Up</p>
-                  <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
+                  <div className="inline-block">
+                    <p className="text-lg text-gray-500 mt-1">Prior Authorization Follow-Up</p>
+                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+                  </div>
                 </div>
               </div>
               
@@ -2729,8 +2743,10 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-4xl font-bold text-gray-900">Michael</h3>
-                  <p className="text-lg text-gray-500 mt-1">Payment Reconciliation</p>
-                  <div className="mt-3 w-48 h-[2px] bg-[#01B2D6]" />
+                  <div className="inline-block">
+                    <p className="text-lg text-gray-500 mt-1">Payment Reconciliation</p>
+                    <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
+                  </div>
                 </div>
               </div>
               
