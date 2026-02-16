@@ -269,7 +269,7 @@ export default function AllVoiceAgents() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
   {/* Cindy - Payment & Balance Agent */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('cindy')}
+    onClick={() => !isConnected && expandedCard !== 'cindy' && handleExpandCard('cindy')}
     style={cardAnimationStyle(0)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'cindy' 
@@ -301,7 +301,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'cindy' && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -589,7 +589,7 @@ export default function AllVoiceAgents() {
 
   {/* Chris - Insurance Claim Follow-Up */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('chris')}
+    onClick={() => !isConnected && expandedCard !== 'chris' && handleExpandCard('chris')}
     style={cardAnimationStyle(1)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'chris' 
@@ -621,7 +621,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'chris' && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -909,7 +909,7 @@ export default function AllVoiceAgents() {
 
   {/* Emily - Pre-Service Anesthesia Cost Estimates */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('emily')}
+    onClick={() => !isConnected && expandedCard !== 'emily' && handleExpandCard('emily')}
     style={cardAnimationStyle(2)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'emily' 
@@ -941,7 +941,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'emily' && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -1229,7 +1229,7 @@ export default function AllVoiceAgents() {
 
   {/* Sarah - Medical Appointment Scheduling */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('sarah')}
+    onClick={() => !isConnected && expandedCard !== 'sarah' && handleExpandCard('sarah')}
     style={cardAnimationStyle(3)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'sarah' 
@@ -1261,7 +1261,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'sarah' && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -1548,7 +1548,7 @@ export default function AllVoiceAgents() {
   </div>
   {/* Allison - Customer Service Agent */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('allison')}
+    onClick={() => !isConnected && expandedCard !== 'allison' && handleExpandCard('allison')}
     style={cardAnimationStyle(4)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'allison' 
@@ -1580,7 +1580,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'allison' && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -1868,7 +1868,7 @@ export default function AllVoiceAgents() {
 
   {/* Harper - Eligibility & Benefits Verification */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('james')}
+    onClick={() => !isConnected && expandedCard !== 'james' && handleExpandCard('james')}
     style={cardAnimationStyle(5)}
     className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
       expandedCard === 'james' 
@@ -1900,7 +1900,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'james' && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -2188,7 +2188,7 @@ export default function AllVoiceAgents() {
 
   {/* Olivia - Prior Authorization Follow-Up */}
   <div 
-      onClick={() => !isConnected && handleExpandCard('olivia')}
+      onClick={() => !isConnected && expandedCard !== 'olivia' && handleExpandCard('olivia')}
       style={cardAnimationStyle(6)}
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'olivia' 
@@ -2220,7 +2220,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'olivia' && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}
@@ -2508,7 +2508,7 @@ export default function AllVoiceAgents() {
 
     {/* Michael - Payment Reconciliation */}
     <div 
-      onClick={() => !isConnected && handleExpandCard('michael')}
+      onClick={() => !isConnected && expandedCard !== 'michael' && handleExpandCard('michael')}
       style={cardAnimationStyle(7)}
       className={`agent-card group relative bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-700 cursor-pointer ${
         expandedCard === 'michael' 
@@ -2540,7 +2540,7 @@ export default function AllVoiceAgents() {
 
         {/* Expanded State */}
         {expandedCard === 'michael' && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
           {/* Mobile Layout */}
           <div className="md:hidden flex flex-col h-[500px] relative">
             {/* Header with Close X */}

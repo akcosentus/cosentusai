@@ -288,7 +288,7 @@ export default function AllVoiceAgents() {
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
   {/* Cindy - Payment & Balance Agent */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('cindy')}
+    onClick={() => !isConnected && expandedCard !== 'cindy' && handleExpandCard('cindy')}
     style={cardAnimationStyle(0)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'cindy' 
@@ -356,28 +356,28 @@ export default function AllVoiceAgents() {
               {!isConnected && !isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col bg-white">
                   <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
-                    <div className="space-y-3">
-                      <div>
+              <div className="space-y-3">
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
-                          Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
-                        </p>
-                      </div>
-                      <div>
+                    Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
+                  </p>
+                </div>
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Real-time balance inquiries and payment history</span>
-                          </div>
+                </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Secure credit card payment processing</span>
-                          </div>
+              </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Balance breakdown by date of service</span>
-                          </div>
+            </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Insurance coverage explanations</span>
@@ -386,8 +386,8 @@ export default function AllVoiceAgents() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-200 bg-white">
-                    <button 
+            <div className="p-3 border-t border-gray-200 bg-white">
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
                       className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
                     >
@@ -401,9 +401,9 @@ export default function AllVoiceAgents() {
               {isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
                   <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
                   <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
               )}
@@ -418,15 +418,15 @@ export default function AllVoiceAgents() {
                     <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Cindy is speaking...' : 'Listening...'}
                     </p>
-                    <button 
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
                       className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      End Conversation
-                    </button>
+                >
+                  End Conversation
+                </button>
                   </>
-                )}
-              </div>
+              )}
+          </div>
 
               {/* Bottom Sheet - only when connected */}
               {isConnected && (
@@ -445,18 +445,18 @@ export default function AllVoiceAgents() {
                       <p className="text-xs font-medium text-gray-400 mt-1.5">
                         {mobileDetailsOpen ? 'Tap to close' : 'Details'}
                       </p>
-                    </div>
-                    
+              </div>
+
                     {/* Scrollable Content */}
                     <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
                       <div className="space-y-3">
-                        <div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
-                          </p>
-                        </div>
-                        <div>
+                    Cindy is multilingual and can handle over 20 phone calls at once. She specializes in helping patients understand their outstanding balances and payment options with clear, empathetic assistance.
+                  </p>
+                </div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
@@ -481,22 +481,22 @@ export default function AllVoiceAgents() {
                     </div>
                   </div>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
             {/* Close X - Top Right */}
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
                 handleExpandCard('cindy');
               }}
               className="absolute -top-8 -right-8 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                        </svg>
             </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
@@ -608,7 +608,7 @@ export default function AllVoiceAgents() {
 
   {/* Chris - Insurance Claim Follow-Up */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('chris')}
+    onClick={() => !isConnected && expandedCard !== 'chris' && handleExpandCard('chris')}
     style={cardAnimationStyle(1)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'chris' 
@@ -676,28 +676,28 @@ export default function AllVoiceAgents() {
               {!isConnected && !isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col bg-white">
                   <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
-                    <div className="space-y-3">
-                      <div>
+              <div className="space-y-3">
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
                           Chris specializes in outbound calls to insurance carriers. He can follow up on claim statuses, investigate denials, and handle the time-consuming process of waiting on hold with insurance companies.
-                        </p>
-                      </div>
-                      <div>
+                  </p>
+                </div>
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Outbound claim status follow-ups with carriers</span>
-                          </div>
+                </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Denial investigation and appeal preparation</span>
-                          </div>
+              </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Missing information requests and documentation</span>
-                          </div>
+            </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Timely filing deadline tracking</span>
@@ -706,8 +706,8 @@ export default function AllVoiceAgents() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-200 bg-white">
-                    <button 
+            <div className="p-3 border-t border-gray-200 bg-white">
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
                       className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
                     >
@@ -721,9 +721,9 @@ export default function AllVoiceAgents() {
               {isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
                   <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
                   <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
               )}
@@ -738,15 +738,15 @@ export default function AllVoiceAgents() {
                     <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Chris is speaking...' : 'Listening...'}
                     </p>
-                    <button 
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
                       className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      End Conversation
-                    </button>
+                >
+                  End Conversation
+                </button>
                   </>
-                )}
-              </div>
+              )}
+          </div>
 
               {/* Bottom Sheet - only when connected */}
               {isConnected && (
@@ -765,18 +765,18 @@ export default function AllVoiceAgents() {
                       <p className="text-xs font-medium text-gray-400 mt-1.5">
                         {mobileDetailsOpen ? 'Tap to close' : 'Details'}
                       </p>
-                    </div>
-                    
+              </div>
+
                     {/* Scrollable Content */}
                     <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
                       <div className="space-y-3">
-                        <div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             Chris specializes in outbound calls to insurance carriers. He can follow up on claim statuses, investigate denials, and handle the time-consuming process of waiting on hold with insurance companies.
-                          </p>
-                        </div>
-                        <div>
+                  </p>
+                </div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
@@ -801,23 +801,23 @@ export default function AllVoiceAgents() {
                     </div>
                   </div>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
             {/* Close X - Top Right */}
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
                 handleExpandCard('chris');
               }}
               className="absolute -top-8 -right-8 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                        </svg>
             </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
@@ -929,7 +929,7 @@ export default function AllVoiceAgents() {
 
   {/* Emily - Pre-Service Anesthesia Cost Estimates */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('emily')}
+    onClick={() => !isConnected && expandedCard !== 'emily' && handleExpandCard('emily')}
     style={cardAnimationStyle(2)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'emily' 
@@ -997,28 +997,28 @@ export default function AllVoiceAgents() {
               {!isConnected && !isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col bg-white">
                   <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
-                    <div className="space-y-3">
-                      <div>
+              <div className="space-y-3">
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
                           Emily provides detailed, accurate anesthesia cost estimates based on procedure type and patient insurance. She helps patients understand their expected out-of-pocket costs before surgery.
-                        </p>
-                      </div>
-                      <div>
+                  </p>
+                </div>
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Personalized anesthesia cost calculations</span>
-                          </div>
+                </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Insurance benefit verification for procedures</span>
-                          </div>
+              </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Out-of-pocket cost breakdowns</span>
-                          </div>
+            </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Pre-procedure financial counseling</span>
@@ -1027,8 +1027,8 @@ export default function AllVoiceAgents() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-200 bg-white">
-                    <button 
+            <div className="p-3 border-t border-gray-200 bg-white">
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
                       className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
                     >
@@ -1042,9 +1042,9 @@ export default function AllVoiceAgents() {
               {isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
                   <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
                   <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
               )}
@@ -1059,15 +1059,15 @@ export default function AllVoiceAgents() {
                     <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Emily is speaking...' : 'Listening...'}
                     </p>
-                    <button 
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
                       className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      End Conversation
-                    </button>
+                >
+                  End Conversation
+                </button>
                   </>
-                )}
-              </div>
+              )}
+          </div>
 
               {/* Bottom Sheet - only when connected */}
               {isConnected && (
@@ -1086,18 +1086,18 @@ export default function AllVoiceAgents() {
                       <p className="text-xs font-medium text-gray-400 mt-1.5">
                         {mobileDetailsOpen ? 'Tap to close' : 'Details'}
                       </p>
-                    </div>
-                    
+              </div>
+
                     {/* Scrollable Content */}
                     <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
                       <div className="space-y-3">
-                        <div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             Emily provides detailed, accurate anesthesia cost estimates based on procedure type and patient insurance. She helps patients understand their expected out-of-pocket costs before surgery.
-                          </p>
-                        </div>
-                        <div>
+                  </p>
+                </div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
@@ -1122,23 +1122,23 @@ export default function AllVoiceAgents() {
                     </div>
                   </div>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
             {/* Close X - Top Right */}
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
                 handleExpandCard('emily');
               }}
               className="absolute -top-8 -right-8 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                        </svg>
             </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
@@ -1250,7 +1250,7 @@ export default function AllVoiceAgents() {
 
   {/* Sarah - Medical Appointment Scheduling */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('sarah')}
+    onClick={() => !isConnected && expandedCard !== 'sarah' && handleExpandCard('sarah')}
     style={cardAnimationStyle(3)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'sarah' 
@@ -1318,28 +1318,28 @@ export default function AllVoiceAgents() {
               {!isConnected && !isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col bg-white">
                   <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
-                    <div className="space-y-3">
-                      <div>
+              <div className="space-y-3">
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
                           Sarah handles appointment scheduling with natural, conversational interactions. She can check availability, book appointments, send confirmations, and manage rescheduling requests across multiple providers.
-                        </p>
-                      </div>
-                      <div>
+                  </p>
+                </div>
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Real-time availability checking across providers</span>
-                          </div>
+                </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Automated appointment confirmations and reminders</span>
-                          </div>
+              </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Intelligent rescheduling and cancellation handling</span>
-                          </div>
+            </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Multi-location scheduling coordination</span>
@@ -1348,8 +1348,8 @@ export default function AllVoiceAgents() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-200 bg-white">
-                    <button 
+            <div className="p-3 border-t border-gray-200 bg-white">
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
                       className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
                     >
@@ -1363,9 +1363,9 @@ export default function AllVoiceAgents() {
               {isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
                   <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
                   <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
               )}
@@ -1380,15 +1380,15 @@ export default function AllVoiceAgents() {
                     <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Sarah is speaking...' : 'Listening...'}
                     </p>
-                    <button 
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
                       className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      End Conversation
-                    </button>
+                >
+                  End Conversation
+                </button>
                   </>
-                )}
-              </div>
+              )}
+          </div>
 
               {/* Bottom Sheet - only when connected */}
               {isConnected && (
@@ -1407,18 +1407,18 @@ export default function AllVoiceAgents() {
                       <p className="text-xs font-medium text-gray-400 mt-1.5">
                         {mobileDetailsOpen ? 'Tap to close' : 'Details'}
                       </p>
-                    </div>
-                    
+              </div>
+
                     {/* Scrollable Content */}
                     <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
                       <div className="space-y-3">
-                        <div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             Sarah handles appointment scheduling with natural, conversational interactions. She can check availability, book appointments, send confirmations, and manage rescheduling requests across multiple providers.
-                          </p>
-                        </div>
-                        <div>
+                  </p>
+                </div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
@@ -1443,23 +1443,23 @@ export default function AllVoiceAgents() {
                     </div>
                   </div>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
             {/* Close X - Top Right */}
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
                 handleExpandCard('sarah');
               }}
               className="absolute -top-8 -right-8 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                        </svg>
             </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
@@ -1570,7 +1570,7 @@ export default function AllVoiceAgents() {
   </div>
   {/* Allison - Customer Service Agent */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('allison')}
+    onClick={() => !isConnected && expandedCard !== 'allison' && handleExpandCard('allison')}
     style={cardAnimationStyle(4)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'allison' 
@@ -1638,28 +1638,28 @@ export default function AllVoiceAgents() {
               {!isConnected && !isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col bg-white">
                   <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
-                    <div className="space-y-3">
-                      <div>
+              <div className="space-y-3">
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
                           Allison provides comprehensive front-desk support, handling general inquiries, routing calls, and ensuring patients get connected to the right department or information they need.
-                        </p>
-                      </div>
-                      <div>
+                  </p>
+                </div>
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">General inquiry handling and call routing</span>
-                          </div>
+                </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Office hours and location information</span>
-                          </div>
+              </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Patient intake and registration assistance</span>
-                          </div>
+            </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">FAQ and common question resolution</span>
@@ -1668,8 +1668,8 @@ export default function AllVoiceAgents() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-200 bg-white">
-                    <button 
+            <div className="p-3 border-t border-gray-200 bg-white">
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
                       className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
                     >
@@ -1683,9 +1683,9 @@ export default function AllVoiceAgents() {
               {isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
                   <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
                   <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
               )}
@@ -1700,15 +1700,15 @@ export default function AllVoiceAgents() {
                     <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Allison is speaking...' : 'Listening...'}
                     </p>
-                    <button 
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
                       className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      End Conversation
-                    </button>
+                >
+                  End Conversation
+                </button>
                   </>
-                )}
-              </div>
+              )}
+          </div>
 
               {/* Bottom Sheet - only when connected */}
               {isConnected && (
@@ -1727,18 +1727,18 @@ export default function AllVoiceAgents() {
                       <p className="text-xs font-medium text-gray-400 mt-1.5">
                         {mobileDetailsOpen ? 'Tap to close' : 'Details'}
                       </p>
-                    </div>
-                    
+              </div>
+
                     {/* Scrollable Content */}
                     <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
                       <div className="space-y-3">
-                        <div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             Allison provides comprehensive front-desk support, handling general inquiries, routing calls, and ensuring patients get connected to the right department or information they need.
-                          </p>
-                        </div>
-                        <div>
+                  </p>
+                </div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
@@ -1763,23 +1763,23 @@ export default function AllVoiceAgents() {
                     </div>
                   </div>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
             {/* Close X - Top Right */}
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
                 handleExpandCard('allison');
               }}
               className="absolute -top-8 -right-8 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                        </svg>
             </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
@@ -1891,7 +1891,7 @@ export default function AllVoiceAgents() {
 
   {/* Harper - Eligibility & Benefits Verification */}
   <div 
-    onClick={() => !isConnected && handleExpandCard('james')}
+    onClick={() => !isConnected && expandedCard !== 'james' && handleExpandCard('james')}
     style={cardAnimationStyle(5)}
     className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
       expandedCard === 'james' 
@@ -1959,28 +1959,28 @@ export default function AllVoiceAgents() {
               {!isConnected && !isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col bg-white">
                   <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
-                    <div className="space-y-3">
-                      <div>
+              <div className="space-y-3">
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
                           James specializes in real-time insurance eligibility verification. He can check patient coverage, verify benefits, and confirm authorization requirements before appointments.
-                        </p>
-                      </div>
-                      <div>
+                  </p>
+                </div>
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Real-time insurance eligibility checks</span>
-                          </div>
+                </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Benefit verification and coverage details</span>
-                          </div>
+              </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Prior authorization requirement identification</span>
-                          </div>
+            </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Network status and provider verification</span>
@@ -1989,8 +1989,8 @@ export default function AllVoiceAgents() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-200 bg-white">
-                    <button 
+            <div className="p-3 border-t border-gray-200 bg-white">
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
                       className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
                     >
@@ -2004,9 +2004,9 @@ export default function AllVoiceAgents() {
               {isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
                   <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
                   <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
               )}
@@ -2021,15 +2021,15 @@ export default function AllVoiceAgents() {
                     <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'James is speaking...' : 'Listening...'}
                     </p>
-                    <button 
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
                       className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      End Conversation
-                    </button>
+                >
+                  End Conversation
+                </button>
                   </>
-                )}
-              </div>
+              )}
+          </div>
 
               {/* Bottom Sheet - only when connected */}
               {isConnected && (
@@ -2048,18 +2048,18 @@ export default function AllVoiceAgents() {
                       <p className="text-xs font-medium text-gray-400 mt-1.5">
                         {mobileDetailsOpen ? 'Tap to close' : 'Details'}
                       </p>
-                    </div>
-                    
+              </div>
+
                     {/* Scrollable Content */}
                     <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
                       <div className="space-y-3">
-                        <div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             James specializes in real-time insurance eligibility verification. He can check patient coverage, verify benefits, and confirm authorization requirements before appointments.
-                          </p>
-                        </div>
-                        <div>
+                  </p>
+                </div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
@@ -2084,23 +2084,23 @@ export default function AllVoiceAgents() {
                     </div>
                   </div>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
             {/* Close X - Top Right */}
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
                 handleExpandCard('james');
               }}
               className="absolute -top-8 -right-8 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                        </svg>
             </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
@@ -2212,7 +2212,7 @@ export default function AllVoiceAgents() {
 
   {/* Olivia - Prior Authorization Follow-Up */}
   <div 
-      onClick={() => !isConnected && handleExpandCard('olivia')}
+      onClick={() => !isConnected && expandedCard !== 'olivia' && handleExpandCard('olivia')}
       style={cardAnimationStyle(6)}
       className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'olivia' 
@@ -2280,28 +2280,28 @@ export default function AllVoiceAgents() {
               {!isConnected && !isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col bg-white">
                   <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
-                    <div className="space-y-3">
-                      <div>
+              <div className="space-y-3">
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
                           Olivia manages the complex prior authorization process, submitting requests, tracking statuses, and following up with insurance companies to ensure timely approvals for procedures and medications.
-                        </p>
-                      </div>
-                      <div>
+                  </p>
+                </div>
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Prior authorization request submission</span>
-                          </div>
+                </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Status tracking and follow-up calls</span>
-                          </div>
+              </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Clinical documentation coordination</span>
-                          </div>
+            </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Appeal management for denied authorizations</span>
@@ -2310,8 +2310,8 @@ export default function AllVoiceAgents() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-200 bg-white">
-                    <button 
+            <div className="p-3 border-t border-gray-200 bg-white">
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
                       className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
                     >
@@ -2325,9 +2325,9 @@ export default function AllVoiceAgents() {
               {isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
                   <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
                   <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
               )}
@@ -2342,15 +2342,15 @@ export default function AllVoiceAgents() {
                     <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Olivia is speaking...' : 'Listening...'}
                     </p>
-                    <button 
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
                       className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      End Conversation
-                    </button>
+                >
+                  End Conversation
+                </button>
                   </>
-                )}
-              </div>
+              )}
+          </div>
 
               {/* Bottom Sheet - only when connected */}
               {isConnected && (
@@ -2369,18 +2369,18 @@ export default function AllVoiceAgents() {
                       <p className="text-xs font-medium text-gray-400 mt-1.5">
                         {mobileDetailsOpen ? 'Tap to close' : 'Details'}
                       </p>
-                    </div>
-                    
+              </div>
+
                     {/* Scrollable Content */}
                     <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
                       <div className="space-y-3">
-                        <div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             Olivia manages the complex prior authorization process, submitting requests, tracking statuses, and following up with insurance companies to ensure timely approvals for procedures and medications.
-                          </p>
-                        </div>
-                        <div>
+                  </p>
+                </div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
@@ -2405,23 +2405,23 @@ export default function AllVoiceAgents() {
                     </div>
                   </div>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
             {/* Close X - Top Right */}
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
                 handleExpandCard('olivia');
               }}
               className="absolute -top-8 -right-8 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                        </svg>
             </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
@@ -2533,7 +2533,7 @@ export default function AllVoiceAgents() {
 
     {/* Michael - Payment Reconciliation */}
     <div 
-      onClick={() => !isConnected && handleExpandCard('michael')}
+      onClick={() => !isConnected && expandedCard !== 'michael' && handleExpandCard('michael')}
       style={cardAnimationStyle(7)}
       className={`agent-card group relative bg-white rounded-2xl shadow-lg transition-opacity duration-300 cursor-pointer ${
         expandedCard === 'michael' 
@@ -2601,28 +2601,28 @@ export default function AllVoiceAgents() {
               {!isConnected && !isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col bg-white">
                   <div className="flex-1 px-4 py-4 overflow-y-auto bg-white">
-                    <div className="space-y-3">
-                      <div>
+              <div className="space-y-3">
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
                           Michael handles sensitive payment recovery conversations with empathy and professionalism. He helps patients understand their balances and works with them to establish manageable payment plans.
-                        </p>
-                      </div>
-                      <div>
+                  </p>
+                </div>
+                <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Outstanding balance follow-up calls</span>
-                          </div>
+                </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Payment plan setup and negotiation</span>
-                          </div>
+              </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Financial hardship assessment and options</span>
-                          </div>
+            </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
                             <span className="text-gray-600 text-sm">Insurance billing dispute resolution</span>
@@ -2631,8 +2631,8 @@ export default function AllVoiceAgents() {
                       </div>
                     </div>
                   </div>
-                  <div className="p-3 border-t border-gray-200 bg-white">
-                    <button 
+            <div className="p-3 border-t border-gray-200 bg-white">
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleBeginDemo(); }}
                       className="w-full py-2.5 bg-[#01B2D6] text-white rounded-lg text-sm font-semibold hover:bg-[#0195b3] transition-colors"
                     >
@@ -2646,9 +2646,9 @@ export default function AllVoiceAgents() {
               {isConnecting && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
                   <svg className="animate-spin h-8 w-8 text-[#01B2D6]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
                   <p className="text-sm text-gray-500 mt-3">Connecting...</p>
                 </div>
               )}
@@ -2663,15 +2663,15 @@ export default function AllVoiceAgents() {
                     <p className="text-sm text-gray-500 mt-3">
                       {isRecording ? 'Michael is speaking...' : 'Listening...'}
                     </p>
-                    <button 
+                <button 
                       onClick={(e) => { e.stopPropagation(); handleEndDemo(); }}
                       className="mt-3 px-5 py-2 bg-red-50 text-red-500 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      End Conversation
-                    </button>
+                >
+                  End Conversation
+                </button>
                   </>
-                )}
-              </div>
+              )}
+          </div>
 
               {/* Bottom Sheet - only when connected */}
               {isConnected && (
@@ -2690,18 +2690,18 @@ export default function AllVoiceAgents() {
                       <p className="text-xs font-medium text-gray-400 mt-1.5">
                         {mobileDetailsOpen ? 'Tap to close' : 'Details'}
                       </p>
-                    </div>
-                    
+              </div>
+
                     {/* Scrollable Content */}
                     <div className="overflow-y-auto px-4 pb-4" style={{ height: 'calc(100% - 44px)' }}>
                       <div className="space-y-3">
-                        <div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
                             Michael handles sensitive payment recovery conversations with empathy and professionalism. He helps patients understand their balances and works with them to establish manageable payment plans.
-                          </p>
-                        </div>
-                        <div>
+                  </p>
+                </div>
+                <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
@@ -2726,23 +2726,23 @@ export default function AllVoiceAgents() {
                     </div>
                   </div>
               )}
-            </div>
-          </div>
+                </div>
+              </div>
 
 
           {/* Desktop Layout - Magazine/Editorial */}
           <div className="hidden md:block">
             {/* Close X - Top Right */}
-            <button 
-              onClick={(e) => {
-                e.stopPropagation();
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
                 handleExpandCard('michael');
               }}
               className="absolute -top-8 -right-8 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+                        </svg>
             </button>
             {/* Top Row: Header + Orb */}
             <div className="flex items-start justify-between">
