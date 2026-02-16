@@ -407,7 +407,7 @@ export default function AllVoiceAgents() {
               </div>
               
               {/* Right Half - Orb / Status */}
-              <div className="w-1/2 flex flex-col items-center justify-center">
+              <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -436,20 +436,20 @@ export default function AllVoiceAgents() {
             
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Real-time balance inquiries and payment history</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Secure credit card payment processing</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Balance breakdown by date of service</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Insurance coverage explanations</span>
               </div>
             </div>
@@ -686,7 +686,7 @@ export default function AllVoiceAgents() {
               </div>
               
               {/* Right Half - Orb / Status */}
-              <div className="w-1/2 flex flex-col items-center justify-center">
+              <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -715,20 +715,20 @@ export default function AllVoiceAgents() {
             
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Outbound claim status follow-ups with carriers</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Denial investigation and appeal preparation</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Missing information requests and documentation</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Timely filing deadline tracking</span>
               </div>
             </div>
@@ -965,7 +965,7 @@ export default function AllVoiceAgents() {
               </div>
               
               {/* Right Half - Orb / Status */}
-              <div className="w-1/2 flex flex-col items-center justify-center">
+              <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -994,20 +994,20 @@ export default function AllVoiceAgents() {
             
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Pre-surgery anesthesia cost estimates</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Insurance vs. self-pay pricing calculations</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Facility-specific rate application</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Payment plan and financial assistance options</span>
               </div>
             </div>
@@ -1244,7 +1244,7 @@ export default function AllVoiceAgents() {
               </div>
               
               {/* Right Half - Orb / Status */}
-              <div className="w-1/2 flex flex-col items-center justify-center">
+              <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -1273,20 +1273,20 @@ export default function AllVoiceAgents() {
             
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Inbound and outbound appointment scheduling</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Real-time calendar availability checks</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Insurance verification and referral management</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Automated reminders and rescheduling</span>
               </div>
             </div>
@@ -1522,7 +1522,7 @@ export default function AllVoiceAgents() {
               </div>
               
               {/* Right Half - Orb / Status */}
-              <div className="w-1/2 flex flex-col items-center justify-center">
+              <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -1551,20 +1551,20 @@ export default function AllVoiceAgents() {
             
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">General billing and account inquiries</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Appointment scheduling assistance</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Practice information and directions</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">After-hours call handling</span>
               </div>
             </div>
@@ -1805,7 +1805,7 @@ export default function AllVoiceAgents() {
               </div>
               
               {/* Right Half - Orb / Status */}
-              <div className="w-1/2 flex flex-col items-center justify-center">
+              <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -1834,20 +1834,20 @@ export default function AllVoiceAgents() {
             
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Real-time insurance eligibility verification</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Benefits, deductibles, and coverage limits</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">In-network vs. out-of-network status</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Secondary insurance coordination</span>
               </div>
             </div>
@@ -2084,7 +2084,7 @@ export default function AllVoiceAgents() {
               </div>
               
               {/* Right Half - Orb / Status */}
-              <div className="w-1/2 flex flex-col items-center justify-center">
+              <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -2113,20 +2113,20 @@ export default function AllVoiceAgents() {
             
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Prior authorization status tracking</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Expedited review requests for urgent cases</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Denial reason documentation and appeals</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Authorization number and validity tracking</span>
               </div>
             </div>
@@ -2363,7 +2363,7 @@ export default function AllVoiceAgents() {
               </div>
               
               {/* Right Half - Orb / Status */}
-              <div className="w-1/2 flex flex-col items-center justify-center">
+              <div className="w-1/2 flex flex-col items-center justify-center min-h-[200px]">
                 {isConnected ? (
                   <>
                     <div style={{ width: '160px', height: '160px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
@@ -2392,20 +2392,20 @@ export default function AllVoiceAgents() {
             
             {/* Capabilities */}
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Missing payment investigation and recovery</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Payment discrepancy resolution with carriers</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Check trace and reissue requests</span>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#01B2D6] font-light text-lg mt-[1px]">|</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">EOB retrieval and overpayment refunds</span>
               </div>
             </div>
