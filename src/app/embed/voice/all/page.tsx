@@ -322,7 +322,7 @@ export default function AllVoiceAgents() {
                   e.stopPropagation();
                   handleExpandCard('cindy');
                 }}
-                className="text-gray-400 hover:text-gray-600 p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -345,12 +345,24 @@ export default function AllVoiceAgents() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                            <li>• Real-time balance inquiries and payment history</li>
-                            <li>• Secure credit card payment processing</li>
-                            <li>• Balance breakdown by date of service</li>
-                            <li>• Insurance coverage explanations</li>
-                        </ul>
+                        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Real-time balance inquiries and payment history</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Secure credit card payment processing</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Balance breakdown by date of service</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Insurance coverage explanations</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -426,12 +438,24 @@ export default function AllVoiceAgents() {
                         </div>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                              <li>• Real-time balance inquiries and payment history</li>
-                              <li>• Secure credit card payment processing</li>
-                              <li>• Balance breakdown by date of service</li>
-                              <li>• Insurance coverage explanations</li>
-                          </ul>
+                          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Real-time balance inquiries and payment history</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Secure credit card payment processing</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Balance breakdown by date of service</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Insurance coverage explanations</span>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -618,7 +642,7 @@ export default function AllVoiceAgents() {
                   e.stopPropagation();
                   handleExpandCard('chris');
                 }}
-                className="text-gray-400 hover:text-gray-600 p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -641,12 +665,24 @@ export default function AllVoiceAgents() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                            <li>• Outbound claim status follow-ups with carriers</li>
-                            <li>• Denial investigation and appeal preparation</li>
-                            <li>• Missing information requests and documentation</li>
-                            <li>• Timely filing deadline tracking</li>
-                        </ul>
+                        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Outbound claim status follow-ups with carriers</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Denial investigation and appeal preparation</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Missing information requests and documentation</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Timely filing deadline tracking</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -722,12 +758,24 @@ export default function AllVoiceAgents() {
                         </div>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                              <li>• Outbound claim status follow-ups with carriers</li>
-                              <li>• Denial investigation and appeal preparation</li>
-                              <li>• Missing information requests and documentation</li>
-                              <li>• Timely filing deadline tracking</li>
-                          </ul>
+                          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Outbound claim status follow-ups with carriers</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Denial investigation and appeal preparation</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Missing information requests and documentation</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Timely filing deadline tracking</span>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -914,7 +962,7 @@ export default function AllVoiceAgents() {
                   e.stopPropagation();
                   handleExpandCard('emily');
                 }}
-                className="text-gray-400 hover:text-gray-600 p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -937,12 +985,24 @@ export default function AllVoiceAgents() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                            <li>• Personalized anesthesia cost calculations</li>
-                            <li>• Insurance benefit verification for procedures</li>
-                            <li>• Out-of-pocket cost breakdowns</li>
-                            <li>• Pre-procedure financial counseling</li>
-                        </ul>
+                        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Personalized anesthesia cost calculations</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Insurance benefit verification for procedures</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Out-of-pocket cost breakdowns</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Pre-procedure financial counseling</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1018,12 +1078,24 @@ export default function AllVoiceAgents() {
                         </div>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                              <li>• Personalized anesthesia cost calculations</li>
-                              <li>• Insurance benefit verification for procedures</li>
-                              <li>• Out-of-pocket cost breakdowns</li>
-                              <li>• Pre-procedure financial counseling</li>
-                          </ul>
+                          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Personalized anesthesia cost calculations</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Insurance benefit verification for procedures</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Out-of-pocket cost breakdowns</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Pre-procedure financial counseling</span>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -1210,7 +1282,7 @@ export default function AllVoiceAgents() {
                   e.stopPropagation();
                   handleExpandCard('sarah');
                 }}
-                className="text-gray-400 hover:text-gray-600 p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1233,12 +1305,24 @@ export default function AllVoiceAgents() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                            <li>• Real-time availability checking across providers</li>
-                            <li>• Automated appointment confirmations and reminders</li>
-                            <li>• Intelligent rescheduling and cancellation handling</li>
-                            <li>• Multi-location scheduling coordination</li>
-                        </ul>
+                        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Real-time availability checking across providers</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Automated appointment confirmations and reminders</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Intelligent rescheduling and cancellation handling</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Multi-location scheduling coordination</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1314,12 +1398,24 @@ export default function AllVoiceAgents() {
                         </div>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                              <li>• Real-time availability checking across providers</li>
-                              <li>• Automated appointment confirmations and reminders</li>
-                              <li>• Intelligent rescheduling and cancellation handling</li>
-                              <li>• Multi-location scheduling coordination</li>
-                          </ul>
+                          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Real-time availability checking across providers</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Automated appointment confirmations and reminders</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Intelligent rescheduling and cancellation handling</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Multi-location scheduling coordination</span>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -1505,7 +1601,7 @@ export default function AllVoiceAgents() {
                   e.stopPropagation();
                   handleExpandCard('allison');
                 }}
-                className="text-gray-400 hover:text-gray-600 p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1528,12 +1624,24 @@ export default function AllVoiceAgents() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                            <li>• General inquiry handling and call routing</li>
-                            <li>• Office hours and location information</li>
-                            <li>• Patient intake and registration assistance</li>
-                            <li>• FAQ and common question resolution</li>
-                        </ul>
+                        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">General inquiry handling and call routing</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Office hours and location information</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Patient intake and registration assistance</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">FAQ and common question resolution</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1609,12 +1717,24 @@ export default function AllVoiceAgents() {
                         </div>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                              <li>• General inquiry handling and call routing</li>
-                              <li>• Office hours and location information</li>
-                              <li>• Patient intake and registration assistance</li>
-                              <li>• FAQ and common question resolution</li>
-                          </ul>
+                          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">General inquiry handling and call routing</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Office hours and location information</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Patient intake and registration assistance</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">FAQ and common question resolution</span>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -1801,7 +1921,7 @@ export default function AllVoiceAgents() {
                   e.stopPropagation();
                   handleExpandCard('james');
                 }}
-                className="text-gray-400 hover:text-gray-600 p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1824,12 +1944,24 @@ export default function AllVoiceAgents() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                            <li>• Real-time insurance eligibility checks</li>
-                            <li>• Benefit verification and coverage details</li>
-                            <li>• Prior authorization requirement identification</li>
-                            <li>• Network status and provider verification</li>
-                        </ul>
+                        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Real-time insurance eligibility checks</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Benefit verification and coverage details</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Prior authorization requirement identification</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Network status and provider verification</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1905,12 +2037,24 @@ export default function AllVoiceAgents() {
                         </div>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                              <li>• Real-time insurance eligibility checks</li>
-                              <li>• Benefit verification and coverage details</li>
-                              <li>• Prior authorization requirement identification</li>
-                              <li>• Network status and provider verification</li>
-                          </ul>
+                          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Real-time insurance eligibility checks</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Benefit verification and coverage details</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Prior authorization requirement identification</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Network status and provider verification</span>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -2097,7 +2241,7 @@ export default function AllVoiceAgents() {
                   e.stopPropagation();
                   handleExpandCard('olivia');
                 }}
-                className="text-gray-400 hover:text-gray-600 p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -2120,12 +2264,24 @@ export default function AllVoiceAgents() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                            <li>• Prior authorization request submission</li>
-                            <li>• Status tracking and follow-up calls</li>
-                            <li>• Clinical documentation coordination</li>
-                            <li>• Appeal management for denied authorizations</li>
-                        </ul>
+                        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Prior authorization request submission</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Status tracking and follow-up calls</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Clinical documentation coordination</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Appeal management for denied authorizations</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2201,12 +2357,24 @@ export default function AllVoiceAgents() {
                         </div>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                              <li>• Prior authorization request submission</li>
-                              <li>• Status tracking and follow-up calls</li>
-                              <li>• Clinical documentation coordination</li>
-                              <li>• Appeal management for denied authorizations</li>
-                          </ul>
+                          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Prior authorization request submission</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Status tracking and follow-up calls</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Clinical documentation coordination</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Appeal management for denied authorizations</span>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -2393,7 +2561,7 @@ export default function AllVoiceAgents() {
                   e.stopPropagation();
                   handleExpandCard('michael');
                 }}
-                className="text-gray-400 hover:text-gray-600 p-1"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -2416,12 +2584,24 @@ export default function AllVoiceAgents() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                        <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                            <li>• Outstanding balance follow-up calls</li>
-                            <li>• Payment plan setup and negotiation</li>
-                            <li>• Financial hardship assessment and options</li>
-                            <li>• Insurance billing dispute resolution</li>
-                        </ul>
+                        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Outstanding balance follow-up calls</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Payment plan setup and negotiation</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Financial hardship assessment and options</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Insurance billing dispute resolution</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2497,12 +2677,24 @@ export default function AllVoiceAgents() {
                         </div>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">Capabilities</h4>
-                          <ul className="text-sm text-gray-600 space-y-1 leading-relaxed">
-                              <li>• Outstanding balance follow-up calls</li>
-                              <li>• Payment plan setup and negotiation</li>
-                              <li>• Financial hardship assessment and options</li>
-                              <li>• Insurance billing dispute resolution</li>
-                          </ul>
+                          <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Outstanding balance follow-up calls</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Payment plan setup and negotiation</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Financial hardship assessment and options</span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#01B2D6] font-light text-lg">|</span>
+                            <span className="text-gray-600 text-sm">Insurance billing dispute resolution</span>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
