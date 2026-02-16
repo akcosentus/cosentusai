@@ -62,11 +62,6 @@ export default function AllVoiceAgents() {
     setMobileDetailsOpen(false);
   }, [expandedCard]);
 
-  // Reset mobile details sheet when conversation ends
-  useEffect(() => {
-    if (!isConnected) setMobileDetailsOpen(false);
-  }, [isConnected]);
-
   const cardAnimationStyle = (index: number): CSSProperties | undefined => {
     if (!shouldAnimateCards) return undefined;
     return {
@@ -98,6 +93,11 @@ export default function AllVoiceAgents() {
   const { isConnected, isRecording, isConnecting, error, connect, disconnect } = useRetellAgent({
     agentId: currentAgentId || '',
   });
+
+  // Reset mobile details sheet when conversation ends
+  useEffect(() => {
+    if (!isConnected) setMobileDetailsOpen(false);
+  }, [isConnected]);
 
   const { rateLimitState, recordCall } = useRateLimit();
 
