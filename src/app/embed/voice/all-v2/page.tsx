@@ -247,6 +247,7 @@ export default function AllVoiceAgents() {
             );
           transform: translate(-50%, -50%) rotate(0deg);
           animation: border-spin 14s linear infinite;
+          filter: blur(20px);
           z-index: 0;
           pointer-events: none;
         }
