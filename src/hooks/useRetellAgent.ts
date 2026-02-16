@@ -178,16 +178,11 @@ export const useRetellAgent = ({ agentId, onStatusChange }: UseRetellAgentOption
 
       const { accessToken } = await response.json();
 
-      // Step 3: Detect mobile for optimized audio settings
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      
-      // Step 4: Start the call (must be within 30 seconds of token creation)
-      // Use 16000 on mobile for better compatibility (avoids resampling artifacts)
-      // Use 24000 on desktop for higher quality
+      // Step 3: Start the call (must be within 30 seconds of token creation)
       await retellClientRef.current.startCall({
         accessToken,
-        sampleRate: isMobile ? 16000 : 24000,
-        emitRawAudioSamples: false, // Reduce processing overhead
+        sampleRate: 24000,
+        emitRawAudioSamples: false,
       });
 
     } catch (err: any) {
