@@ -377,7 +377,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('cindy');
               }}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -439,7 +439,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Real-time balance inquiries and payment history</span>
@@ -659,7 +659,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('chris');
               }}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -721,7 +721,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Outbound claim status follow-ups with carriers</span>
@@ -941,7 +941,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('emily');
               }}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1003,7 +1003,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Pre-surgery anesthesia cost estimates</span>
@@ -1223,7 +1223,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('sarah');
               }}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1285,7 +1285,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Inbound and outbound appointment scheduling</span>
@@ -1504,7 +1504,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('allison');
               }}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1566,7 +1566,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">General billing and account inquiries</span>
@@ -1790,7 +1790,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('james');
               }}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -1852,7 +1852,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Real-time insurance eligibility verification</span>
@@ -2072,7 +2072,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('olivia');
               }}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -2134,7 +2134,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Prior authorization status tracking</span>
@@ -2354,7 +2354,7 @@ export default function AllVoiceAgents() {
                 e.stopPropagation();
                 handleExpandCard('michael');
               }}
-              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors z-10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -2416,7 +2416,7 @@ export default function AllVoiceAgents() {
             </div>
             
             {/* Capabilities */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-6 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
                 <span className="text-gray-600 text-sm">Missing payment investigation and recovery</span>
