@@ -339,12 +339,15 @@ export default function VoiceEmbed() {
                         {/* WebGL Orb */}
                         <div style={{ width: '220px', height: '220px', position: 'relative', background: '#ffffff', borderRadius: '50%', marginTop: '24px' }}>
                           <Orb 
-                            hue={55}
+                            hue={0}
                             hoverIntensity={0.22}
                             rotateOnHover={true}
                             forceHoverState={false}
                             backgroundColor="#ffffff"
                             lowPowerMode={isConnected}
+                            color1="#00B5D6"
+                            color2="#68D1E6"
+                            color3="#014E5C"
                           />
                         </div>
                         

@@ -429,7 +429,7 @@ export default function AllVoiceAgents() {
               {/* Orb Layer - preloaded for instant display */}
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-white pb-12 transition-opacity duration-300 ${isConnected ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
-                  <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} />
+                  <Orb hue={0} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} color1="#00B5D6" color2="#68D1E6" color3="#014E5C" />
                 </div>
                 {isConnected && (
                   <>
@@ -568,11 +568,14 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={360}
+                        hue={0}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
                         backgroundColor="#ffffff"
+                        color1="#00B5D6"
+                        color2="#68D1E6"
+                        color3="#014E5C"
                       />
                     </div>
                     <p className="text-sm text-gray-500 mt-3">
@@ -771,7 +774,7 @@ export default function AllVoiceAgents() {
               {/* Orb Layer - preloaded for instant display */}
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-white pb-12 transition-opacity duration-300 ${isConnected ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
-                  <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} />
+                  <Orb hue={0} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} color1="#00B5D6" color2="#68D1E6" color3="#014E5C" />
                 </div>
                 {isConnected && (
                   <>
@@ -911,11 +914,14 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={360}
+                        hue={0}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
                         backgroundColor="#ffffff"
+                        color1="#00B5D6"
+                        color2="#68D1E6"
+                        color3="#014E5C"
                       />
                     </div>
                     <p className="text-sm text-gray-500 mt-3">
@@ -1114,7 +1120,7 @@ export default function AllVoiceAgents() {
               {/* Orb Layer - preloaded for instant display */}
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-white pb-12 transition-opacity duration-300 ${isConnected ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
-                  <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} />
+                  <Orb hue={0} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} color1="#00B5D6" color2="#68D1E6" color3="#014E5C" />
                 </div>
                 {isConnected && (
                   <>
@@ -1254,11 +1260,14 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={360}
+                        hue={0}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
                         backgroundColor="#ffffff"
+                        color1="#00B5D6"
+                        color2="#68D1E6"
+                        color3="#014E5C"
                       />
                     </div>
                     <p className="text-sm text-gray-500 mt-3">
@@ -1457,7 +1466,7 @@ export default function AllVoiceAgents() {
               {/* Orb Layer - preloaded for instant display */}
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-white pb-12 transition-opacity duration-300 ${isConnected ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
-                  <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} />
+                  <Orb hue={0} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} color1="#00B5D6" color2="#68D1E6" color3="#014E5C" />
                 </div>
                 {isConnected && (
                   <>
@@ -1597,11 +1606,14 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={360}
+                        hue={0}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
                         backgroundColor="#ffffff"
+                        color1="#00B5D6"
+                        color2="#68D1E6"
+                        color3="#014E5C"
                       />
                     </div>
                     <p className="text-sm text-gray-500 mt-3">
@@ -1799,7 +1811,7 @@ export default function AllVoiceAgents() {
               {/* Orb Layer - preloaded for instant display */}
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-white pb-12 transition-opacity duration-300 ${isConnected ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
-                  <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} />
+                  <Orb hue={0} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} color1="#00B5D6" color2="#68D1E6" color3="#014E5C" />
                 </div>
                 {isConnected && (
                   <>
@@ -1939,11 +1951,14 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={360}
+                        hue={0}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
                         backgroundColor="#ffffff"
+                        color1="#00B5D6"
+                        color2="#68D1E6"
+                        color3="#014E5C"
                       />
                     </div>
                     <p className="text-sm text-gray-500 mt-3">
@@ -2142,7 +2157,7 @@ export default function AllVoiceAgents() {
               {/* Orb Layer - preloaded for instant display */}
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-white pb-12 transition-opacity duration-300 ${isConnected ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
-                  <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} />
+                  <Orb hue={0} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} color1="#00B5D6" color2="#68D1E6" color3="#014E5C" />
                 </div>
                 {isConnected && (
                   <>
@@ -2282,11 +2297,14 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={360}
+                        hue={0}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
                         backgroundColor="#ffffff"
+                        color1="#00B5D6"
+                        color2="#68D1E6"
+                        color3="#014E5C"
                       />
                     </div>
                     <p className="text-sm text-gray-500 mt-3">
@@ -2485,7 +2503,7 @@ export default function AllVoiceAgents() {
               {/* Orb Layer - preloaded for instant display */}
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-white pb-12 transition-opacity duration-300 ${isConnected ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
-                  <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} />
+                  <Orb hue={0} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} color1="#00B5D6" color2="#68D1E6" color3="#014E5C" />
                 </div>
                 {isConnected && (
                   <>
@@ -2625,11 +2643,14 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={360}
+                        hue={0}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
                         backgroundColor="#ffffff"
+                        color1="#00B5D6"
+                        color2="#68D1E6"
+                        color3="#014E5C"
                       />
                     </div>
                     <p className="text-sm text-gray-500 mt-3">
@@ -2828,7 +2849,7 @@ export default function AllVoiceAgents() {
               {/* Orb Layer - preloaded for instant display */}
               <div className={`absolute inset-0 flex flex-col items-center justify-center bg-white pb-12 transition-opacity duration-300 ${isConnected ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                 <div style={{ width: '200px', height: '200px', background: '#ffffff', borderRadius: '50%' }}>
-                  <Orb hue={360} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} />
+                  <Orb hue={0} hoverIntensity={0.22} rotateOnHover forceHoverState={false} backgroundColor="#ffffff" lowPowerMode={isConnected} color1="#00B5D6" color2="#68D1E6" color3="#014E5C" />
                 </div>
                 {isConnected && (
                   <>
@@ -2968,11 +2989,14 @@ export default function AllVoiceAgents() {
                   <>
                     <div style={{ width: '200px', height: '200px', position: 'relative', background: '#ffffff', borderRadius: '50%' }}>
                       <Orb 
-                        hue={360}
+                        hue={0}
                         hoverIntensity={0.22}
                         rotateOnHover={true}
                         forceHoverState={false}
                         backgroundColor="#ffffff"
+                        color1="#00B5D6"
+                        color2="#68D1E6"
+                        color3="#014E5C"
                       />
                     </div>
                     <p className="text-sm text-gray-500 mt-3">
