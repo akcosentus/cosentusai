@@ -296,8 +296,8 @@ export default function AllVoiceAgents() {
         />
         {/* Instruction Text - Top Left (Desktop Only) */}
         {!expandedCard && (
-          <p className="absolute -top-8 left-0 text-black text-xs md:-top-12 md:text-sm font-medium z-[100]">
-            Click any agent to learn more
+          <p className="absolute -top-4 left-0 text-black text-xs md:-top-6 md:text-sm font-medium italic z-[100]">
+            Click any agent to try an interactive demo
           </p>
         )}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center">
