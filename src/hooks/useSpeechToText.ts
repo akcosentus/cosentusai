@@ -25,12 +25,10 @@ export function useSpeechToText(): UseSpeechToTextReturn {
     const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
     
     if (!SpeechRecognition) {
-      console.log('Speech recognition not supported in this browser');
       setIsSupported(false);
       return;
     }
 
-    console.log('Speech recognition supported, initializing...');
     setIsSupported(true);
     const recognition = new SpeechRecognition();
     
@@ -65,17 +63,11 @@ export function useSpeechToText(): UseSpeechToTextReturn {
     };
 
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-      console.error('Speech recognition error:', event.error);
-      
       // Handle specific errors gracefully
       switch (event.error) {
         case 'not-allowed':
-          const isInIframe = window.self !== window.top;
-          if (isInIframe) {
-            setError('Microphone access denied. The website needs to add allow="microphone" to the iframe tag, and you need to grant microphone permission in your browser settings.');
-          } else {
-            setError('Microphone permission denied. Click the lock icon in your browser\'s address bar and allow microphone access, then try again.');
-          }
+          // User-friendly message - don't expose technical details
+          setError('Voice input is unavailable at the moment. Please type your message instead.');
           break;
         case 'no-speech':
           setError('No speech detected. Please try again.');
@@ -87,7 +79,7 @@ export function useSpeechToText(): UseSpeechToTextReturn {
           // User stopped manually, not an error
           break;
         default:
-          setError(`Speech recognition error: ${event.error}`);
+          setError('Voice input is unavailable at the moment. Please type your message instead.');
       }
       
       setIsListening(false);
@@ -113,14 +105,11 @@ export function useSpeechToText(): UseSpeechToTextReturn {
   }, []);
 
   const startListening = useCallback(async () => {
-    console.log('startListening called, recognitionRef.current:', !!recognitionRef.current, 'isListening:', isListening);
     if (!recognitionRef.current) {
-      console.error('Recognition not initialized');
-      setError('Speech recognition not available. Please refresh the page.');
+      setError('Voice input is unavailable at the moment. Please type your message instead.');
       return;
     }
     if (isListening) {
-      console.log('Already listening, ignoring start request');
       return;
     }
     
@@ -130,32 +119,16 @@ export function useSpeechToText(): UseSpeechToTextReturn {
       // First, explicitly request microphone permission using getUserMedia
       // This triggers the browser's permission prompt (same as voice agents do)
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        console.log('Requesting microphone permission...');
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         // Stop the test stream immediately (we just needed to check/get permission)
         stream.getTracks().forEach(track => track.stop());
-        console.log('Microphone permission granted');
-      } else {
-        console.warn('getUserMedia not available, proceeding with recognition.start()');
       }
       
       // Now start speech recognition (permission should be granted)
-      console.log('Starting speech recognition...');
       recognitionRef.current.start();
     } catch (err: any) {
-      console.error('Failed to start speech recognition:', err);
-      
-      // Handle permission denial
-      if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
-        const isInIframe = window.self !== window.top;
-        if (isInIframe) {
-          setError('Microphone access denied. The website needs to add allow="microphone" to the iframe tag, and you need to grant microphone permission in your browser settings.');
-        } else {
-          setError('Microphone permission denied. Click the lock icon in your browser\'s address bar and allow microphone access, then try again.');
-        }
-      } else {
-        setError('Failed to start microphone. Please try again.');
-      }
+      // Handle permission denial or other errors with user-friendly message
+      setError('Voice input is unavailable at the moment. Please type your message instead.');
       setIsListening(false);
     }
   }, [isListening]);

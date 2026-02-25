@@ -80,11 +80,9 @@ export default function ChatEmbedV2() {
     }
   }, [transcript]);
   
-  // Log speech errors for debugging
+  // Show speech errors to user
   useEffect(() => {
     if (speechError) {
-      console.error('Speech recognition error:', speechError);
-      // Show error to user with helpful message
       alert(speechError);
     }
   }, [speechError]);
@@ -360,7 +358,6 @@ export default function ChatEmbedV2() {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    console.log('Mic button clicked, isListening:', isListening);
                     if (isListening) {
                       stopListening();
                     } else {
