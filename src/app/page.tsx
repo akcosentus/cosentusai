@@ -741,7 +741,7 @@ export default function Home() {
               ) : null}
             </div>
 
-            {/* Cassidy - Pre-Service Anesthesia Cost Estimates */}
+            {/* Emily - Pre-Service Anesthesia Payment Solutions */}
             <div 
               onClick={() => !isConnected && handleExpandCard('emily')}
               className={`group relative bg-white rounded-2xl border border-gray-200 shadow-lg transition-all duration-700 cursor-pointer ${
@@ -760,9 +760,9 @@ export default function Home() {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
                         </svg>
                       </div>
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">Cassidy</h3>
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-3">Emily</h3>
                       <p className="text-gray-600 mb-6">
-                        Provides pre-surgery anesthesia cost estimates for patients.
+                        Provides pre-surgery anesthesia payment options for patients.
                       </p>
                       <div className="text-sm text-[#01B2D6] font-medium">
                         Click to learn more →
@@ -782,28 +782,26 @@ export default function Home() {
                             </svg>
                           </div>
                           <div>
-                            <h3 className="text-4xl font-bold text-gray-900">Cassidy</h3>
-                            <p className="text-lg text-gray-600">Pre-Service Anesthesia Cost Estimates</p>
+                            <h3 className="text-4xl font-bold text-gray-900">Emily</h3>
+                            <p className="text-lg text-gray-600">Pre-Service Anesthesia Payment Solutions</p>
                           </div>
                         </div>
 
                         <div className="space-y-4 mb-8">
                           <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">About Cassidy</h4>
+                            <h4 className="font-semibold text-gray-900 mb-2">About Emily</h4>
                             <p className="text-gray-600">
-                              Cassidy helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
+                              Emily provides pre-surgery anesthesia payment options for patients. She handles insured, self-pay, and cosmetic surgery cases, applying facility-specific pricing rules and offering payment plan options to help patients manage their anesthesia costs.
                             </p>
                           </div>
                           <div>
                             <h4 className="font-semibold text-gray-900 mb-2">Capabilities</h4>
                             <ul className="text-gray-600 space-y-1">
-                              <li>• Pre-surgery anesthesia cost estimates</li>
-                              <li>• Insurance and self-pay pricing calculations</li>
-                              <li>• Facility-specific pricing rules application</li>
-                              <li>• Unit-based and flat-rate pricing models</li>
-                              <li>• Payment plan and financial assistance guidance</li>
-                              <li>• Multi-hour complex surgery estimates</li>
-                              <li>• Handles hundreds of estimate calls per day</li>
+                              <li>• Pre-surgery anesthesia payment options</li>
+                              <li>• Handles insured, self-pay, and cosmetic surgery cases</li>
+                              <li>• Facility/provider specific pricing</li>
+                              <li>• Payment plan options and financial assistance</li>
+                              <li>• Clear cost estimates with payment flexibility</li>
                             </ul>
                           </div>
                         </div>

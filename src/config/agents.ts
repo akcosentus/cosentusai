@@ -49,8 +49,8 @@ export const AGENTS = {
   michael: 'agent_443ead51c8a35f874d0ca1a8c1',
   
   /**
-   * Emily - Pre-Service Anesthesia Cost Estimates
-   * Helps patients understand anesthesia costs before surgery
+   * Emily - Pre-Service Anesthesia Payment Solutions
+   * Provides pre-surgery anesthesia payment options for patients
    */
   emily: 'agent_ff8707dccf16f96ecec4c448d3',
   

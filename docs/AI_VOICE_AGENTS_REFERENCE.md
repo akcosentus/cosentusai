@@ -30,8 +30,8 @@ Handles patient outstanding balances and payment processing in 50+ languages. Ca
 ### 2. Chris - Insurance Claim Specialist
 Makes outbound calls to insurance companies for claim follow-up and denial resolution. Navigates complex insurance phone systems to check claim statuses, investigate denials, gather missing documentation, and track timely filing deadlines. Best for: claim follow-up, denial investigation, insurance carrier communication.
 
-### 3. Emily - Pre-Service Anesthesia Cost Estimates
-Provides pre-surgery anesthesia cost estimates for patients. Handles insured, self-pay, and cosmetic surgery cases. Applies facility-specific pricing rules and explains payment plans and financial assistance options. Best for: surgical cost transparency, pre-operative financial planning.
+### 3. Emily - Pre-Service Anesthesia Payment Solutions
+Provides pre-surgery anesthesia payment options for patients. Handles insured, self-pay, and cosmetic surgery cases. Applies facility-specific pricing rules and offers payment plan options to help patients manage their anesthesia costs. Best for: payment flexibility, pre-operative financial planning, payment plan setup.
 
 ### 4. Sarah - Medical Appointment Scheduling
 Manages medical appointments for both inbound patient requests and outbound scheduling calls. Integrates with calendar systems in real-time, verifies insurance, manages referrals, and handles rescheduling. Best for: appointment management, calendar coordination, scheduling automation.
@@ -111,21 +111,21 @@ insurance claims, claim follow-up, denial resolution, insurance carriers, claim 
 
 ---
 
-## Agent 3: Emily - Pre-Service Anesthesia Cost Estimates
+## Agent 3: Emily - Pre-Service Anesthesia Payment Solutions
 
 **Agent ID:** emily  
-**Specialization:** Anesthesia Cost Estimation  
-**Primary Function:** Pre-surgery anesthesia cost estimates for patients  
+**Specialization:** Anesthesia Payment Solutions  
+**Primary Function:** Pre-surgery anesthesia payment options for patients  
 **Patient Types Supported:** Insured, self-pay, cosmetic surgery
 
 ### Full Description
-Emily helps patients understand their expected anesthesia costs before scheduled surgeries. She gathers procedure details, applies facility-specific pricing rules, and provides transparent cost estimates. Emily can handle various patient types including those with insurance, self-pay patients, and cosmetic surgery cases, each with different pricing structures.
+Emily provides pre-surgery anesthesia payment options for patients. She handles insured, self-pay, and cosmetic surgery cases, applying facility-specific pricing rules and offering payment plan options to help patients manage their anesthesia costs. Emily focuses on providing flexible payment solutions rather than just cost estimates.
 
 ### Core Capabilities
-- **Pre-surgery cost estimates:** Accurate anesthesia cost projections before procedures
-- **Insurance vs. self-pay pricing:** Different calculation methods based on payment type
-- **Facility-specific rates:** Application of correct pricing based on location and facility
-- **Financial assistance:** Information about payment plans and assistance programs
+- **Pre-surgery payment options:** Flexible anesthesia payment solutions before procedures
+- **Handles all patient types:** Insured, self-pay, and cosmetic surgery cases
+- **Facility/provider specific pricing:** Application of correct pricing based on location and facility
+- **Payment plan options:** Information about payment plans and financial assistance programs
 
 ### Use Cases
 - Pre-operative consultations

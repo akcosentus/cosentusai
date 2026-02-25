@@ -25,10 +25,12 @@ export function useSpeechToText(): UseSpeechToTextReturn {
     const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
     
     if (!SpeechRecognition) {
+      console.log('Speech recognition not supported in this browser');
       setIsSupported(false);
       return;
     }
 
+    console.log('Speech recognition supported, initializing...');
     setIsSupported(true);
     const recognition = new SpeechRecognition();
     
@@ -106,9 +108,19 @@ export function useSpeechToText(): UseSpeechToTextReturn {
   }, []);
 
   const startListening = useCallback(() => {
-    if (!recognitionRef.current || isListening) return;
+    console.log('startListening called, recognitionRef.current:', !!recognitionRef.current, 'isListening:', isListening);
+    if (!recognitionRef.current) {
+      console.error('Recognition not initialized');
+      setError('Speech recognition not available. Please refresh the page.');
+      return;
+    }
+    if (isListening) {
+      console.log('Already listening, ignoring start request');
+      return;
+    }
     
     try {
+      console.log('Starting speech recognition...');
       setError(null);
       recognitionRef.current.start();
     } catch (err) {

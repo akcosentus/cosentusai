@@ -965,7 +965,7 @@ export default function AllVoiceAgents() {
     ) : null}
   </div>
 
-  {/* Emily - Pre-Service Anesthesia Cost Estimates */}
+  {/* Emily - Pre-Service Anesthesia Payment Solutions */}
   <div 
     onClick={() => !isConnected && expandedCard !== 'emily' && handleExpandCard('emily')}
     style={cardAnimationStyle(2)}
@@ -989,7 +989,7 @@ export default function AllVoiceAgents() {
               <h3 className="text-lg md:text-2xl font-semibold text-gray-900 md:mb-1.5 break-words">Emily</h3>
             </div>
             <p className="text-sm md:text-base text-gray-600 mb-3 break-words line-clamp-2">
-              Provides pre-surgery anesthesia cost estimates for patients.
+              Provides pre-surgery anesthesia payment options for patients.
             </p>
             <div className="text-xs md:text-sm text-[#01B2D6] font-medium">
               Click to learn more →
@@ -1012,7 +1012,7 @@ export default function AllVoiceAgents() {
                 />
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">Emily</h3>
-                  <p className="text-sm text-gray-600">Anesthesia Estimates</p>
+                  <p className="text-sm text-gray-600">Payment Solutions</p>
                 </div>
               </div>
               <button 
@@ -1038,7 +1038,7 @@ export default function AllVoiceAgents() {
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
-                          Emily provides detailed, accurate anesthesia cost estimates based on procedure type and patient insurance. She helps patients understand their expected out-of-pocket costs before surgery.
+                          Emily provides pre-surgery anesthesia payment options for patients. She handles insured, self-pay, and cosmetic surgery cases, applying facility-specific pricing rules and offering payment plan options to help patients manage their anesthesia costs.
                         </p>
                       </div>
                       <div>
@@ -1046,19 +1046,19 @@ export default function AllVoiceAgents() {
                         <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Personalized anesthesia cost calculations</span>
+                            <span className="text-gray-600 text-sm">Pre-surgery anesthesia payment options</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Insurance benefit verification for procedures</span>
+                            <span className="text-gray-600 text-sm">Handles insured, self-pay, and cosmetic surgery cases</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Out-of-pocket cost breakdowns</span>
+                            <span className="text-gray-600 text-sm">Facility/provider specific pricing</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Pre-procedure financial counseling</span>
+                            <span className="text-gray-600 text-sm">Payment plan options and financial assistance</span>
                           </div>
                         </div>
                       </div>
@@ -1131,7 +1131,7 @@ export default function AllVoiceAgents() {
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900 mb-1">About</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            Emily provides detailed, accurate anesthesia cost estimates based on procedure type and patient insurance. She helps patients understand their expected out-of-pocket costs before surgery.
+                            Emily provides pre-surgery anesthesia payment options for patients. She handles insured, self-pay, and cosmetic surgery cases, applying facility-specific pricing rules and offering payment plan options to help patients manage their anesthesia costs.
                           </p>
                         </div>
                         <div>
@@ -1139,19 +1139,19 @@ export default function AllVoiceAgents() {
                           <div className="bg-gray-50 rounded-xl p-4 space-y-3">
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Personalized anesthesia cost calculations</span>
+                            <span className="text-gray-600 text-sm">Pre-surgery anesthesia payment options</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Insurance benefit verification for procedures</span>
+                            <span className="text-gray-600 text-sm">Handles insured, self-pay, and cosmetic surgery cases</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Out-of-pocket cost breakdowns</span>
+                            <span className="text-gray-600 text-sm">Facility/provider specific pricing</span>
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[#01B2D6] font-light text-lg">|</span>
-                            <span className="text-gray-600 text-sm">Pre-procedure financial counseling</span>
+                            <span className="text-gray-600 text-sm">Payment plan options and financial assistance</span>
                           </div>
                         </div>
                         </div>
@@ -1203,7 +1203,7 @@ export default function AllVoiceAgents() {
 
                     <div className="inline-block">
 
-                      <p className="text-lg text-gray-500 mt-1">Pre-Service Anesthesia Cost Estimates</p>
+                      <p className="text-lg text-gray-500 mt-1">Pre-Service Anesthesia Payment Solutions</p>
 
                       <div className="mt-3 w-full h-[2px] bg-[#01B2D6]" />
 
@@ -1215,7 +1215,7 @@ export default function AllVoiceAgents() {
 
                 <p className="mt-10 mb-4 text-gray-600 text-base leading-relaxed">
 
-                  Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
+                  Emily provides pre-surgery anesthesia payment options for patients. She handles insured, self-pay, and cosmetic surgery cases, applying facility-specific pricing rules and offering payment plan options to help patients manage their anesthesia costs.
 
                 </p>
 

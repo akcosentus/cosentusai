@@ -46,24 +46,24 @@ Chris specializes in calling insurance companies to follow up on claim statuses,
 
 ---
 
-## 3. Emily - Pre-Service Anesthesia Cost Estimates
+## 3. Emily - Pre-Service Anesthesia Payment Solutions
 
 ### Card Front (Collapsed State)
 **Name:** Emily  
-**Title/Description:** Provides pre-surgery anesthesia cost estimates for patients.
+**Title/Description:** Provides pre-surgery anesthesia payment options for patients.
 
 ### Expanded State Details
 
-**Full Title:** Pre-Service Anesthesia Cost Estimates
+**Full Title:** Pre-Service Anesthesia Payment Solutions
 
 **About:**
-Emily helps patients understand what their anesthesia will cost before their scheduled surgery. She gathers procedure details, applies facility-specific pricing rules, and provides clear cost estimates for insured patients, self-pay patients, and cosmetic surgery cases.
+Emily provides pre-surgery anesthesia payment options for patients. She handles insured, self-pay, and cosmetic surgery cases, applying facility-specific pricing rules and offering payment plan options to help patients manage their anesthesia costs.
 
 **Capabilities:**
-- Pre-surgery anesthesia cost estimates
-- Insurance vs. self-pay pricing calculations
-- Facility-specific rate application
-- Payment plan and financial assistance options
+- Pre-surgery anesthesia payment options
+- Handles insured, self-pay, and cosmetic surgery cases
+- Facility/provider specific pricing
+- Payment plan options and financial assistance
 
 ---
 
@@ -178,7 +178,7 @@ Michael is your financial detective, specializing in tracking down and resolving
 |-------|-----------|--------------|
 | **Cindy** | Payment & Balance | Multilingual payment processing (50+ languages, 20+ concurrent calls) |
 | **Chris** | Insurance Claims | Outbound claim follow-ups and denial resolution |
-| **Emily** | Anesthesia Estimates | Pre-surgery cost estimates for all patient types |
+| **Emily** | Payment Solutions | Pre-surgery payment options for all patient types |
 | **Sarah** | Appointment Scheduling | Inbound/outbound scheduling with calendar integration |
 | **Allison** | Customer Service | General inquiries and after-hours support |
 | **Harper** | Eligibility & Benefits | Pre-service insurance verification |
