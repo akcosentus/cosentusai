@@ -1275,19 +1275,19 @@ export default function AllVoiceAgents() {
             <div className="grid grid-cols-2 gap-x-10 gap-y-4 mb-2 bg-gray-100 rounded-xl p-6">
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
-                <span className="text-gray-600 text-sm">Pre-surgery anesthesia cost estimates</span>
+                <span className="text-gray-600 text-sm">Pre-surgery anesthesia payment options</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
-                <span className="text-gray-600 text-sm">Insurance vs. self-pay pricing calculations</span>
+                <span className="text-gray-600 text-sm">Handles insured, self-pay, and cosmetic surgery cases</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
-                <span className="text-gray-600 text-sm">Facility-specific rate application</span>
+                <span className="text-gray-600 text-sm">Facility/provider specific pricing</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-[#01B2D6] font-light text-lg">|</span>
-                <span className="text-gray-600 text-sm">Payment plan and financial assistance options</span>
+                <span className="text-gray-600 text-sm">Payment plan options and financial assistance</span>
               </div>
             </div>
             
