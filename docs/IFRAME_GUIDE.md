@@ -13,7 +13,8 @@
   src="https://cosentusai.vercel.app/embed/chat" 
   width="100%" 
   height="600" 
-  style="border: none;">
+  style="border: none;"
+  allow="microphone">
 </iframe>
 ```
 
@@ -22,6 +23,7 @@
 - Expands to full chat when clicked
 - Clean, minimal design
 - Mobile-friendly
+- **Voice input** - microphone button for speech-to-text
 
 ---
 
@@ -85,7 +87,7 @@ Both iframes are fully optimized for mobile:
 
 ## ⚠️ Important
 
-1. **Microphone permission required** for voice agents - include `allow="microphone"`
+1. **Microphone permission required** for voice agents and chat voice input - include `allow="microphone"` in all iframes
 2. **HTTPS required** - your website must use HTTPS
 3. **Modern browsers** - Chrome, Firefox, Safari, Edge (all recent versions)
 

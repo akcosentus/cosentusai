@@ -37,7 +37,7 @@
 <iframe src="https://cosentusai.vercel.app/embed/voice/chloe" width="400" height="600" frameborder="0" allow="microphone"></iframe>
 
 <!-- Chat Agent -->
-<iframe src="https://cosentusai.vercel.app/embed/chat" width="100%" height="600" frameborder="0"></iframe>
+<iframe src="https://cosentusai.vercel.app/embed/chat" width="100%" height="600" frameborder="0" allow="microphone"></iframe>
 ```
 
 #### **🟢 Simple JavaScript (No SDK):**

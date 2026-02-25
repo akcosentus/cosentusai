@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { useSpeechToText } from '@/hooks/useSpeechToText';
 
 // Add global styles for animations
 if (typeof document !== 'undefined') {
@@ -68,6 +69,16 @@ export default function ChatEmbedV2() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  
+  // Speech-to-text hook
+  const { transcript, isListening, isSupported, startListening, stopListening } = useSpeechToText();
+  
+  // Update input value when transcript changes
+  useEffect(() => {
+    if (transcript) {
+      setInputValue(transcript);
+    }
+  }, [transcript]);
   // Store active streaming sessions by messageId to prevent conflicts
   const streamingSessionsRef = useRef<Map<string, {
     fullText: string;
@@ -332,8 +343,31 @@ export default function ChatEmbedV2() {
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 placeholder="Ask me anything..."
-                className="w-full px-4 md:px-6 py-3 md:py-4 text-sm md:text-base text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors shadow-sm"
+                className="w-full px-4 md:px-6 pr-20 md:pr-24 py-3 md:py-4 text-sm md:text-base text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors shadow-sm"
               />
+              {isSupported && (
+                <button
+                  type="button"
+                  onClick={() => isListening ? stopListening() : startListening()}
+                  disabled={loading}
+                  className={`absolute right-11 md:right-12 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full transition-all ${
+                    isListening
+                      ? 'bg-red-500 text-white animate-pulse'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  } ${loading ? 'opacity-40 cursor-not-allowed' : 'opacity-100'}`}
+                  title={isListening ? 'Stop recording' : 'Start voice input'}
+                >
+                  {isListening ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                    </svg>
+                  )}
+                </button>
+              )}
               <button
                 type="submit"
                 disabled={!inputValue.trim() || loading}
@@ -439,9 +473,32 @@ export default function ChatEmbedV2() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Ask me anything..."
-                  className="w-full pl-4 md:pl-6 pr-12 md:pr-14 py-2.5 md:py-3 text-xs md:text-sm text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors"
+                  className="w-full pl-4 md:pl-6 pr-20 md:pr-24 py-2.5 md:py-3 text-xs md:text-sm text-gray-900 bg-white border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 transition-colors"
                   disabled={loading}
                 />
+                {isSupported && (
+                  <button
+                    type="button"
+                    onClick={() => isListening ? stopListening() : startListening()}
+                    disabled={loading}
+                    className={`absolute right-11 md:right-12 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full transition-all ${
+                      isListening
+                        ? 'bg-red-500 text-white animate-pulse'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    } ${loading ? 'opacity-40 cursor-not-allowed' : 'opacity-100'}`}
+                    title={isListening ? 'Stop recording' : 'Start voice input'}
+                  >
+                    {isListening ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                      </svg>
+                    )}
+                  </button>
+                )}
                 <button
                   type="submit"
                   disabled={loading || !inputValue.trim()}

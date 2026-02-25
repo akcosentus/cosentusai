@@ -574,6 +574,7 @@ Registers an event listener.
   width="100%" 
   height="600" 
   frameborder="0"
+  allow="microphone"
 ></iframe>
 ```
 
@@ -586,6 +587,7 @@ Registers an event listener.
   width="100%" 
   height="600" 
   frameborder="0"
+  allow="microphone"
 ></iframe>
 ```
 
