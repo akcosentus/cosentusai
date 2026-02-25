@@ -70,7 +70,12 @@ export function useSpeechToText(): UseSpeechToTextReturn {
       // Handle specific errors gracefully
       switch (event.error) {
         case 'not-allowed':
-          setError('Microphone permission denied. Please allow microphone access in your browser settings.');
+          const isInIframe = window.self !== window.top;
+          if (isInIframe) {
+            setError('Microphone access denied. The website needs to add allow="microphone" to the iframe tag, and you need to grant microphone permission in your browser settings.');
+          } else {
+            setError('Microphone permission denied. Click the lock icon in your browser\'s address bar and allow microphone access, then try again.');
+          }
           break;
         case 'no-speech':
           setError('No speech detected. Please try again.');
@@ -107,7 +112,7 @@ export function useSpeechToText(): UseSpeechToTextReturn {
     };
   }, []);
 
-  const startListening = useCallback(() => {
+  const startListening = useCallback(async () => {
     console.log('startListening called, recognitionRef.current:', !!recognitionRef.current, 'isListening:', isListening);
     if (!recognitionRef.current) {
       console.error('Recognition not initialized');
@@ -120,12 +125,37 @@ export function useSpeechToText(): UseSpeechToTextReturn {
     }
     
     try {
-      console.log('Starting speech recognition...');
       setError(null);
+      
+      // First, explicitly request microphone permission using getUserMedia
+      // This triggers the browser's permission prompt (same as voice agents do)
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        console.log('Requesting microphone permission...');
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Stop the test stream immediately (we just needed to check/get permission)
+        stream.getTracks().forEach(track => track.stop());
+        console.log('Microphone permission granted');
+      } else {
+        console.warn('getUserMedia not available, proceeding with recognition.start()');
+      }
+      
+      // Now start speech recognition (permission should be granted)
+      console.log('Starting speech recognition...');
       recognitionRef.current.start();
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to start speech recognition:', err);
-      setError('Failed to start microphone. Please try again.');
+      
+      // Handle permission denial
+      if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+        const isInIframe = window.self !== window.top;
+        if (isInIframe) {
+          setError('Microphone access denied. The website needs to add allow="microphone" to the iframe tag, and you need to grant microphone permission in your browser settings.');
+        } else {
+          setError('Microphone permission denied. Click the lock icon in your browser\'s address bar and allow microphone access, then try again.');
+        }
+      } else {
+        setError('Failed to start microphone. Please try again.');
+      }
       setIsListening(false);
     }
   }, [isListening]);

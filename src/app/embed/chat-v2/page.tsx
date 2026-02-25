@@ -84,7 +84,7 @@ export default function ChatEmbedV2() {
   useEffect(() => {
     if (speechError) {
       console.error('Speech recognition error:', speechError);
-      // Optionally show error to user
+      // Show error to user with helpful message
       alert(speechError);
     }
   }, [speechError]);
