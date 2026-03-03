@@ -195,7 +195,7 @@ export default function AllVoiceAgents() {
 
       {/* Preload all avatar images (raw URLs) so expanded cards render instantly */}
       <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
-        {['/avatar-cindy.png', '/avatar-michael.png', '/avatar-emily.png', '/avatar-sarah.png', '/avatar-allison.png', '/avatar-harper.png', '/avatar-olivia.png', '/avatar-chris.png'].map((src) => (
+        {['/avatar-cindy.png', '/avatar-chris.png', '/avatar-emily.png', '/avatar-sarah.png', '/avatar-allison.png', '/avatar-harper.png', '/avatar-olivia.png', '/avatar-michael.png'].map((src) => (
           <img key={src} src={src} alt="" />
         ))}
       </div>
@@ -664,7 +664,7 @@ export default function AllVoiceAgents() {
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
-              src="/avatar-michael.png" 
+              src="/avatar-chris.png" 
               alt="Chris" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
@@ -691,7 +691,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-michael.png" 
+                  src="/avatar-chris.png" 
                   alt="Chris" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -874,7 +874,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-michael.png" 
+                    src="/avatar-chris.png" 
 
                     alt="Chris" 
 
@@ -2739,7 +2739,7 @@ export default function AllVoiceAgents() {
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
-              src="/avatar-chris.png" 
+              src="/avatar-michael.png" 
               alt="Michael" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
@@ -2766,7 +2766,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-chris.png" 
+                  src="/avatar-michael.png" 
                   alt="Michael" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -2949,7 +2949,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-chris.png" 
+                    src="/avatar-michael.png" 
 
                     alt="Michael" 
 

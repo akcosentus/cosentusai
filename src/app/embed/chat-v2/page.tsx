@@ -496,10 +496,10 @@ export default function ChatEmbedV2() {
                     type="button"
                     onClick={() => isListening ? stopListening() : startListening()}
                     disabled={loading}
-                    className={`absolute right-11 md:right-12 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full transition-all ${
+                    className={`absolute right-11 md:right-12 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center transition-all ${
                       isListening
-                        ? 'bg-red-500 text-white animate-pulse'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        ? 'text-red-500 animate-pulse'
+                        : 'text-gray-600 hover:text-gray-800'
                     } ${loading ? 'opacity-40 cursor-not-allowed' : 'opacity-100'}`}
                     title={isListening ? 'Stop recording' : 'Start voice input'}
                   >
