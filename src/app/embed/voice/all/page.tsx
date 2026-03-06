@@ -181,7 +181,7 @@ export default function AllVoiceAgents() {
 
       {/* Preload all avatar images (raw URLs) so expanded cards render instantly */}
       <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
-        {['/avatar-cindy.png', '/avatar-chris.png', '/avatar-emily.png', '/avatar-sarah.png', '/avatar-allison.png', '/avatar-harper.png', '/avatar-olivia.png', '/avatar-michael.png'].map((src) => (
+        {['/avatar-cindy.png', '/avatar-chris.png', '/avatar-emily.png', '/avatar-sarah.png', '/avatar-harper.png', '/avatar-allison.png', '/avatar-olivia.png', '/avatar-michael.png'].map((src) => (
           <img key={src} src={src} alt="" />
         ))}
       </div>
@@ -1665,7 +1665,7 @@ export default function AllVoiceAgents() {
           <>
             <div className="flex items-center gap-3 mb-3 md:flex-col md:items-start md:gap-0">
               <img 
-                src="/avatar-allison.png" 
+                src="/avatar-harper.png" 
                 alt="Allison" 
                 className="w-20 h-20 md:w-12 md:h-12 rounded-full object-cover md:mb-3"
               />
@@ -1689,7 +1689,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-allison.png" 
+                  src="/avatar-harper.png" 
                   alt="Allison" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -1872,7 +1872,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-allison.png" 
+                    src="/avatar-harper.png" 
 
                     alt="Allison" 
 
@@ -2007,7 +2007,7 @@ export default function AllVoiceAgents() {
           <>
             <div className="flex items-center gap-3 mb-3 md:flex-col md:items-start md:gap-0">
               <img 
-                src="/avatar-harper.png" 
+                src="/avatar-allison.png" 
                 alt="Harper" 
                 className="w-20 h-20 md:w-12 md:h-12 rounded-full object-cover md:mb-3"
               />
@@ -2031,7 +2031,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-harper.png" 
+                  src="/avatar-allison.png" 
                   alt="Harper" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -2214,7 +2214,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-harper.png" 
+                    src="/avatar-allison.png" 
 
                     alt="Harper" 
 
