@@ -191,7 +191,7 @@ export default function AllVoiceAgents() {
   };
 
   return (
-    <div className="min-h-screen pt-16 pb-4 px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
+    <div className="min-h-screen min-h-[100svh] pt-16 pb-[calc(1rem+env(safe-area-inset-bottom))] px-3 md:pt-20 md:pb-8 md:px-8 bg-transparent">
 
       {/* Preload all avatar images (raw URLs) so expanded cards render instantly */}
       <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
@@ -288,12 +288,6 @@ export default function AllVoiceAgents() {
         }
       `}</style>
       <div className="max-w-[872px] mx-auto relative">
-        {/* Logo - Top Right of Grid */}
-        <img 
-          src="/cosentu-white-logo.png" 
-          alt="Cosentus" 
-          className="absolute -top-8 right-0 w-28 md:-top-12 md:w-48 z-[100]"
-        />
         {/* Instruction Text - Top Left (Desktop Only) */}
         {!expandedCard && (
           <p className="absolute -top-4 left-0 text-black text-xs md:-top-6 md:text-sm font-medium italic z-[100]">
@@ -1701,7 +1695,7 @@ export default function AllVoiceAgents() {
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
-              src="/avatar-harper.png" 
+              src="/avatar-allison.png" 
               alt="Allison" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
@@ -1728,7 +1722,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-harper.png" 
+                  src="/avatar-allison.png" 
                   alt="Allison" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -1911,7 +1905,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-harper.png" 
+                    src="/avatar-allison.png" 
 
                     alt="Allison" 
 
@@ -2047,7 +2041,7 @@ export default function AllVoiceAgents() {
             {/* Avatar - takes most of card space */}
             <div className="h-[80%] md:h-[230px] overflow-hidden relative">
             <Image 
-              src="/avatar-allison.png" 
+              src="/avatar-harper.png" 
               alt="Harper" 
               fill
               sizes="(max-width: 768px) 45vw, 200px"
@@ -2074,7 +2068,7 @@ export default function AllVoiceAgents() {
             <div className="flex items-center justify-between p-3 border-b border-gray-200 bg-white z-10">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/avatar-allison.png" 
+                  src="/avatar-harper.png" 
                   alt="Harper" 
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -2257,7 +2251,7 @@ export default function AllVoiceAgents() {
 
                   <img 
 
-                    src="/avatar-allison.png" 
+                    src="/avatar-harper.png" 
 
                     alt="Harper" 
 
