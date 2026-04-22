@@ -69,6 +69,42 @@ export default function ChatEmbed() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Compact mode: opt-in via ?compact=1. Top-aligns the layout and posts the
+  // document's content height to the parent window so a host page (e.g.
+  // /embed/combined) can size this iframe to fit. Default behavior for the
+  // standalone /embed/chat iframe is unchanged.
+  const [compact, setCompact] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    setCompact(params.get('compact') === '1');
+  }, []);
+
+  useEffect(() => {
+    if (!compact) return;
+    if (typeof window === 'undefined') return;
+    if (window.parent === window) return;
+
+    let lastHeight = -1;
+    const post = () => {
+      const docEl = document.documentElement;
+      const h = Math.max(docEl.scrollHeight, document.body.scrollHeight);
+      if (h > 0 && h !== lastHeight) {
+        lastHeight = h;
+        window.parent.postMessage(
+          { type: 'cosentus-chat-height', height: Math.ceil(h) },
+          window.location.origin
+        );
+      }
+    };
+
+    const ro = new ResizeObserver(post);
+    ro.observe(document.documentElement);
+    ro.observe(document.body);
+    post();
+    return () => ro.disconnect();
+  }, [compact]);
   
   // Speech-to-text hook
   const { transcript, isListening, isSupported, startListening, stopListening, error: speechError } = useSpeechToText();
@@ -337,14 +373,28 @@ export default function ChatEmbed() {
   // Initial state - search bar with suggested questions
   if (!isExpanded) {
     return (
-      <div className="flex items-center justify-center min-h-screen p-4 md:p-8">
-        <div className={`w-full max-w-4xl relative ${isFocused ? 'pt-16' : ''} md:pt-0`}>
-          {/* Logo - Top Right of Search Bar */}
-          <img 
-            src="/cosentu-white-logo.png" 
-            alt="Cosentus" 
-            className="absolute -top-10 md:-top-12 right-0 w-32 md:w-48 z-10"
-          />
+      <div
+        className={
+          compact
+            ? 'px-4 pt-6 pb-4 md:px-8 md:pt-8 md:pb-6'
+            : 'flex items-center justify-center min-h-screen p-4 md:p-8'
+        }
+      >
+        <div
+          className={
+            compact
+              ? 'w-full max-w-4xl relative mx-auto'
+              : `w-full max-w-4xl relative ${isFocused ? 'pt-16' : ''} md:pt-0`
+          }
+        >
+          {/* Logo - Top Right of Search Bar (hidden in compact embed) */}
+          {!compact && (
+            <img
+              src="/cosentu-white-logo.png"
+              alt="Cosentus"
+              className="absolute -top-10 md:-top-12 right-0 w-32 md:w-48 z-10"
+            />
+          )}
           {/* Oval Search Bar */}
           <form onSubmit={handleSubmit} className="mb-6">
             <div className="relative">
@@ -430,16 +480,28 @@ export default function ChatEmbed() {
 
   // Expanded state - chat widget (responsive height, same width as search bar)
   return (
-    <div className="flex items-center justify-center min-h-screen pt-8 px-4 pb-4 md:p-8">
-      <div className="w-full max-w-4xl animate-fadeIn relative">
-        {/* Logo - Top Right of Chat Widget */}
-        <img 
-          src="/cosentu-white-logo.png" 
-          alt="Cosentus" 
-          className="absolute -top-10 md:-top-12 right-0 w-32 md:w-48 z-10"
-        />
+    <div
+      className={
+        compact
+          ? 'px-4 pt-4 pb-4 md:px-8 md:pt-6 md:pb-6'
+          : 'flex items-center justify-center min-h-screen pt-8 px-4 pb-4 md:p-8'
+      }
+    >
+      <div className={`w-full max-w-4xl animate-fadeIn relative ${compact ? 'mx-auto' : ''}`}>
+        {/* Logo - Top Right of Chat Widget (hidden in compact embed) */}
+        {!compact && (
+          <img
+            src="/cosentu-white-logo.png"
+            alt="Cosentus"
+            className="absolute -top-10 md:-top-12 right-0 w-32 md:w-48 z-10"
+          />
+        )}
         {/* Chat Card */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[90vh] md:h-[78vh]">
+        <div
+          className={`bg-white rounded-2xl shadow-lg overflow-hidden ${
+            compact ? 'h-[460px] md:h-[540px]' : 'h-[90vh] md:h-[78vh]'
+          }`}
+        >
           {/* Messages Area */}
           <div className="h-full flex flex-col">
             <div 

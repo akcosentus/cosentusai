@@ -3,31 +3,54 @@
 /**
  * Combined embed: Cosentus search bar (chat) on top, v2 voice agents grid below.
  *
- * Implementation note:
- * Uses nested iframes pointing at the existing `/embed/chat` and
- * `/embed/voice/all-v2` routes so both original embeds remain untouched.
- * The outer iframe on the customer site must still set
- * `allow="microphone"`; same-origin nested iframes delegate that permission
- * as long as we also set `allow="microphone"` on them here.
+ * Architecture:
+ * - Nested iframes preserve both existing embed routes untouched.
+ * - The top iframe uses `/embed/chat?compact=1`, which:
+ *     (a) top-aligns the search bar (no viewport centering), and
+ *     (b) posts its content height to this page via `postMessage` so we can
+ *         resize the chat iframe to exactly fit its content. As the chat
+ *         grows (search bar focused → suggested questions) or shrinks, the
+ *         voice iframe below is pushed down or up via flex layout.
+ * - The bottom iframe is `/embed/voice/all-v2`, unchanged.
  *
- * Tunable knobs:
- * - CHAT_HEIGHT_PX: height of the top (chat) pane. ~520 fits the search
- *   bar + focused suggested questions and still leaves the expanded chat
- *   panel usable when a user actually sends a message.
+ * Mic permission: the customer's outer iframe must set `allow="microphone"`.
+ * Both inner iframes also set `allow="microphone"` to delegate.
  */
 
-const CHAT_HEIGHT_PX = 520;
+import { useEffect, useState } from 'react';
+
+const INITIAL_CHAT_HEIGHT_PX = 160;
+const MIN_CHAT_HEIGHT_PX = 120;
+const MAX_CHAT_HEIGHT_PX = 2000;
 const VOICE_MIN_HEIGHT_PX = 760;
 
 export default function CombinedEmbed() {
+  const [chatHeight, setChatHeight] = useState(INITIAL_CHAT_HEIGHT_PX);
+
+  useEffect(() => {
+    const onMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      const data = event.data;
+      if (!data || typeof data !== 'object') return;
+      if (data.type !== 'cosentus-chat-height') return;
+      const raw = Number(data.height);
+      if (!Number.isFinite(raw)) return;
+      const clamped = Math.min(MAX_CHAT_HEIGHT_PX, Math.max(MIN_CHAT_HEIGHT_PX, raw));
+      setChatHeight(clamped);
+    };
+
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
+  }, []);
+
   return (
     <div className="flex flex-col w-full min-h-screen min-h-[100svh] bg-transparent">
       <iframe
-        src="/embed/chat"
+        src="/embed/chat?compact=1"
         title="Cosentus chat"
         allow="microphone"
         className="w-full border-0 block"
-        style={{ height: `${CHAT_HEIGHT_PX}px`, flex: '0 0 auto' }}
+        style={{ height: `${chatHeight}px`, flex: '0 0 auto' }}
       />
       <iframe
         src="/embed/voice/all-v2"
