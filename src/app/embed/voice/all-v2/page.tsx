@@ -324,8 +324,8 @@ export default function AllVoiceAgents() {
             
             {/* Blue strip at bottom */}
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
-              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">CINDY</h3>
-              <p className="text-white text-[10px] md:text-xs mb-1.5">Patient Support</p>
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">CINDY</h3>
+              <p className="text-white text-xs md:text-sm mb-1.5">Patient Support</p>
 
             </div>
           </div>
@@ -669,8 +669,8 @@ export default function AllVoiceAgents() {
             
             {/* Blue strip at bottom */}
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
-              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">CHRIS</h3>
-              <p className="text-white text-[10px] md:text-xs mb-1.5">Claims Follow-Up</p>
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">CHRIS</h3>
+              <p className="text-white text-xs md:text-sm mb-1.5">Claims Follow-Up</p>
 
             </div>
           </div>
@@ -1015,8 +1015,8 @@ export default function AllVoiceAgents() {
             
             {/* Blue strip at bottom */}
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
-              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">EMILY</h3>
-              <p className="text-white text-[10px] md:text-xs mb-1.5">Payment Solutions</p>
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">EMILY</h3>
+              <p className="text-white text-xs md:text-sm mb-1.5">Payment Solutions</p>
 
             </div>
           </div>
@@ -1361,8 +1361,8 @@ export default function AllVoiceAgents() {
             
             {/* Blue strip at bottom */}
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
-              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">SARAH</h3>
-              <p className="text-white text-[10px] md:text-xs mb-1.5">Appt. Scheduling</p>
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">SARAH</h3>
+              <p className="text-white text-xs md:text-sm mb-1.5">Appt. Scheduling</p>
 
             </div>
           </div>
@@ -1706,8 +1706,8 @@ export default function AllVoiceAgents() {
             
             {/* Blue strip at bottom */}
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
-              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">ALLISON</h3>
-              <p className="text-white text-[10px] md:text-xs mb-1.5">Customer Support</p>
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">ALLISON</h3>
+              <p className="text-white text-xs md:text-sm mb-1.5">Customer Support</p>
 
             </div>
           </div>
@@ -2052,8 +2052,8 @@ export default function AllVoiceAgents() {
             
             {/* Blue strip at bottom */}
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
-              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">HARPER</h3>
-              <p className="text-white text-[10px] md:text-xs mb-1.5">Eligibility Verification</p>
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">HARPER</h3>
+              <p className="text-white text-xs md:text-sm mb-1.5">Eligibility Verification</p>
 
             </div>
           </div>
@@ -2398,8 +2398,8 @@ export default function AllVoiceAgents() {
             
             {/* Blue strip at bottom */}
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
-              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">OLIVIA</h3>
-              <p className="text-white text-[10px] md:text-xs mb-1.5">Prior Authorization</p>
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">OLIVIA</h3>
+              <p className="text-white text-xs md:text-sm mb-1.5">Prior Authorization</p>
 
             </div>
           </div>
@@ -2744,8 +2744,8 @@ export default function AllVoiceAgents() {
             
             {/* Blue strip at bottom */}
             <div className="bg-[#01B2D6] py-2.5 px-4 text-center flex-1 flex flex-col justify-center">
-              <h3 className="text-white text-sm md:text-base font-bold mb-0.5">MICHAEL</h3>
-              <p className="text-white text-[10px] md:text-xs mb-1.5">Payment Recovery</p>
+              <h3 className="text-white text-base md:text-lg font-bold mb-0.5">MICHAEL</h3>
+              <p className="text-white text-xs md:text-sm mb-1.5">Payment Recovery</p>
 
             </div>
           </div>
